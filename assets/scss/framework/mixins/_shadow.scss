@@ -1,0 +1,8 @@
+@import "../functions/functions";
+@mixin shadow($x:0, $y:0,$blur:0,$spread:0,$color:black){
+  box-shadow: $x $y $blur $spread $color;
+}
+
+@mixin shadow-depth($value){
+  box-shadow: bottom-shadow($value + 1), top-shadow($value);
+}

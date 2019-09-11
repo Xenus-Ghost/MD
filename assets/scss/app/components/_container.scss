@@ -1,0 +1,17 @@
+$container-padding: 8px;
+.container {
+  width: 100%;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  margin-right: auto;
+  margin-left: auto;
+  &--full {
+    max-width: 100%;
+  }
+
+  @each $name,$width in $container-max-widths {
+    @include media_screen($name) {
+      max-width: $width;
+    }
+  }
+}

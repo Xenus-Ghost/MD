@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [{ src: 'assets/scss/app/index.scss', lang: 'scss' }],
   /*
    ** Plugins to load before mounting the App
    */
@@ -55,6 +55,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
+    postcss: [require('autoprefixer')()]
   }
 }

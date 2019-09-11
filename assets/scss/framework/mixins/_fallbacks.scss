@@ -1,0 +1,41 @@
+// Фикс для IE 10-11 & Edge
+@mixin ie_fix() {
+  details {
+    max-height: none;
+    summary {
+
+      & ~ * {
+        max-height: 0;
+        overflow: hidden;
+        position: absolute; // IE испытывает проблемы с обычным max-height: 0;
+      }
+
+      &:focus {
+        color: #d06c6c;
+
+        &::before {
+          transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+        }
+
+        & ~ * {
+          max-height: 20em;
+          position: static;
+          opacity: 1;
+        }
+
+      }
+
+    }
+  }
+}
+
+// IE 10-11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  @include ie_fix();
+}
+
+// Edge
+@supports (-ms-ime-align:auto) {
+  @include ie_fix();
+}

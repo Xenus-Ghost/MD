@@ -1,0 +1,19 @@
+.circle__container {
+  @include on-circle($item-count: 13, $circle-size: 895px, $item-size: 140px, $rotate: -90);
+  margin: 5em auto 0;
+  border: solid 5px tomato;
+
+  img {
+    display: block;
+    max-width: 100%;
+    border-radius: 50%;
+    filter: grayscale(100%);
+    border: solid 5px tomato;
+    transition: 0.15s;
+
+    &:hover,
+    &:active {
+      filter: grayscale(0);
+    }
+  }
+}

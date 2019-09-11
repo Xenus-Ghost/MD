@@ -1,0 +1,21 @@
+@mixin grid_columns($number:1) {
+  grid-template-columns: repeat($number, 1fr);
+}
+
+@mixin make-grid-column($grid-columns: 12, $screen-breakpoints:$screen-breakpoints) {
+  @for $i from 1 through $grid-columns {
+    &--#{$i} {
+      @each $name, $width in $screen-breakpoints {
+        @if ($name == 'phone') {
+          grid-column: span $i;
+        } @else {
+          &-#{$name} {
+            @include media_screen($name) {
+              grid-column: span $i;
+            }
+          }
+        }
+      }
+    }
+  }
+}

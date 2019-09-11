@@ -1,0 +1,88 @@
+//@mixin screen-up($name: 'sm') {
+//  $min-width: map-get($screen-breakpoints, $name);
+//  @media (min-width: $min-width) {
+//    @content;
+//  }
+//}
+//
+//@mixin screen-down($name: 'xl') {
+//  $max-width: map_get($screen-breakpoints, $name);
+//  @media (max-width: $max-width) {
+//    @content;
+//  }
+//}
+//
+//@mixin media-breakpoint-between($lower: 'sm', $upper:'xl') {
+//  $min-width: map_get($screen-breakpoints, $lower);
+//  $max-width: map_get($screen-breakpoints, $upper);
+//
+//  @media (min-width: $min-width) and (max-width: $max-width) {
+//    @content;
+//  }
+//}
+//
+//@mixin media-breakpoint-only($name: 'sm') {
+//  $width: map_get($screen-breakpoints, $name);
+//  @media (min-width: $width) and (max-width: $width) {
+//    @content;
+//  }
+//}
+
+@mixin screen-orientation($name: 'landscape') {
+  @media screen and (orientation: $name) {
+    @content;
+  }
+}
+
+@mixin portrait() {
+  @include screen-orientation('portrait') {
+    @content
+  }
+}
+
+@mixin landscape() {
+  @include screen-orientation('landscape') {
+    @content
+  }
+}
+
+@mixin media_screen($width, $type: min,$max-width: false) {
+  @if map_has_key($screen-breakpoints, $width) {
+    $width: map_get($screen-breakpoints, $width);
+    @if ($max-width != false) {
+      $max-width: map_get($screen-breakpoints, $max-width)
+    }
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @if ($type != 'and') {
+      @media only screen and (#{$type}-width: $width) {
+        @content;
+      }
+    } @else {
+      @if ($max-width != false) {
+        @media only screen and (min-width: $width) and (max-width: $max-width) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin media_screen_custom($width: 0,$type: min,$max-width:0) {
+  @if ($max-width == 0) {
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $width) and (max-width: $max-width) {
+      @content;
+    }
+  }
+}
+
+@mixin hdpi($ratio: 1.3, $dpi: 144dpi) {
+  @media (-webkit-min-device-pixel-ratio: $ratio), (min-resolution: #{$dpi}dpi) {
+    @content
+  }
+}
