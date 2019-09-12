@@ -18,6 +18,7 @@ $button-class: '.button';
   box-shadow: bottom-shadow(2), top-shadow(1);
   will-change: box-shadow;
   transition: box-shadow ease .2s;
+  text-decoration: none;
   &:hover{
     box-shadow: bottom-shadow(4), top-shadow(2);
   }
@@ -77,11 +78,23 @@ $button-class: '.button';
   }
 
   &_outline{
+    color: white;
     border: 1px solid currentColor;
     background: transparent !important;
     box-shadow: none;
     &:hover{
       box-shadow: none;
+    }
+  }
+  &_neon{
+    color: white;
+    border: 2px solid currentColor;
+    background: transparent !important;
+    $shadow-value: 12px;
+    box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
+    &:hover{
+      $shadow-value: 16px;
+      box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
     }
   }
 }

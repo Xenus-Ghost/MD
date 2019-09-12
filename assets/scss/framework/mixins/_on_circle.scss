@@ -30,6 +30,9 @@
           rotate($rot * 1deg)
           translate($circle-size / 2)
           rotate($rot * -1deg);
+        &:before{
+          @content
+        }
       }
 
       $rot: $rot + $angle;

@@ -1,44 +1,8 @@
 <template>
   <div class="container">
     <CircleContainer>
-      <CircleItem>
+      <CircleItem v-for="cat in categories" :key="cat" :to="cat.path">
         <div class="circle__item">1</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">2</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">3</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">4</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">5</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">6</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">7</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">8</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">9</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">10</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">11</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">12</div>
-      </CircleItem>
-      <CircleItem>
-        <div class="circle__item">13</div>
       </CircleItem>
     </CircleContainer>
   </div>
@@ -52,6 +16,51 @@ export default {
   components: {
     CircleContainer,
     CircleItem
+  },
+  data() {
+    return {
+      categories: {
+        monolith: {
+          path: '/monolith'
+        },
+        building: {
+          path: '/building'
+        },
+        renovation: {
+          path: '/renovation'
+        },
+        electric: {
+          path: '/electric'
+        },
+        plumbing: {
+          path: '/plumbing'
+        },
+        welding: {
+          path: '/welding'
+        },
+        designing: {
+          path: '/designing'
+        },
+        roads: {
+          path: '/roads'
+        },
+        gas: {
+          path: '/gas'
+        },
+        landscape: {
+          path: '/landscape'
+        },
+        beautification: {
+          path: '/beautification'
+        },
+        tools: {
+          path: '/tools'
+        },
+        stoves: {
+          path: '/stoves'
+        }
+      }
+    }
   }
 }
 </script>

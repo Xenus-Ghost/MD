@@ -1,5 +1,11 @@
 <template>
-  <button :type="type" :style="[measurableStyles, style]" :class="[classes]">
+  <button
+    :is="buttonTag"
+    :type="type"
+    :style="[measurableStyles, style]"
+    :class="[classes]"
+    :to="to"
+  >
     <div class="button__content">
       <slot>
         Button
@@ -31,7 +37,19 @@ export default {
     },
     outline: {
       type: Boolean,
-      default: false
+      default: true
+    },
+    borders: {
+      type: String,
+      default: 'neon'
+    },
+    tag: {
+      type: String,
+      default: 'button'
+    },
+    to: {
+      type: String,
+      default: null
     }
     // small: {
     //   type: Boolean,
@@ -55,6 +73,11 @@ export default {
     }
   },
   computed: {
+    buttonTag() {
+      let str = this.tag ? this.tag : 'button'
+      str = this.to ? 'nuxt-link' : str
+      return str
+    },
     style() {
       return {
         // 'height': (this.height + 'px').replace('pxpx', 'px').replace('%px', '%'),
@@ -66,15 +89,17 @@ export default {
       }
     },
     classes() {
-      return {
+      const arr = {
         button: true,
         button_shape_circle: this.shape === 'circle',
         button_shape_rounded: this.shape === 'rounded',
         button_size_small: this.size === 'small',
         button_size_big: this.size === 'big',
         button_size_large: this.size === 'large',
-        button_outline: this.outline
+        button_outline: this.borders === 'outline',
+        button_neon: this.borders === 'neon'
       }
+      return arr
     }
   }
 }

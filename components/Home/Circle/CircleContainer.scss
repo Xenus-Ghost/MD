@@ -1,7 +1,16 @@
 .circle__container {
-  @include on-circle($item-count: 13, $circle-size: 895px, $item-size: 140px, $rotate: -90);
-  margin: 5em auto 0;
-  border: solid 5px tomato;
+  @include on-circle($item-count: 13, $circle-size: 850px, $item-size: 140px, $rotate: -90) {
+    //content: '';
+    //display: block;
+    //width: 45px;
+    //height: 2px;
+    //background: #4caf50;
+  }
+  //top: -40px;
+  margin: 30px auto 0 auto;
+  //border: solid 2px white;
+  //$shadow-value:40px;
+  //box-shadow: 0 0 $shadow-value 6px #7BD7FF, 0 0 $shadow-value 6px #7BD7FF inset;
 
   img {
     display: block;
