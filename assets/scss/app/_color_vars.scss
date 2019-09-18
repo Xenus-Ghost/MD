@@ -29,10 +29,3 @@ $color--error: map_get($baseColors,red);
 $color--warning: map_get($baseColors,orange);
 $color--info: map_get($baseColors,cyan);
 
-:root{
-  --color-primary: #{$color--primary};
-  --color-success: #{$color--success};
-  --color-error: #{$color--error};
-  --color-warning: #{$color--warning};
-  --color-info: #{$color--info};
-}

@@ -11,7 +11,8 @@ export const Measurable = {
     maxWidth: [String, Number],
     minHeight: [String, Number],
     minWidth: [String, Number],
-    width: [String, Number]
+    width: [String, Number],
+    margin: [String, Number]
   },
   computed: {
     measurableStyles() {
@@ -22,12 +23,14 @@ export const Measurable = {
       const maxHeight = convertToUnit(this.maxHeight)
       const maxWidth = convertToUnit(this.maxWidth)
       const width = convertToUnit(this.width)
+      const margin = this.margin
       if (height) styles.height = height
       if (minHeight) styles.minHeight = minHeight
       if (minWidth) styles.minWidth = minWidth
       if (maxHeight) styles.maxHeight = maxHeight
       if (maxWidth) styles.maxWidth = maxWidth
       if (width) styles.width = width
+      if (margin) styles.margin = margin
       return styles
     }
   }

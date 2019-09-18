@@ -23,11 +23,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{ src: 'assets/scss/app/index.scss', lang: 'scss' }],
+  css: [{ src: 'assets/scss/app/_theme.scss', lang: 'scss' }],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~plugins/globalComponents.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -56,6 +56,9 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
-    postcss: [require('autoprefixer')()]
+    postcss: require('autoprefixer')(),
+    splitChunks: {
+      layouts: true
+    }
   }
 }

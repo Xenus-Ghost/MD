@@ -1,0 +1,107 @@
+.cat-widget{
+  position: fixed;
+  top: 150px;
+  bottom: 20%;
+  height: 70vh;
+  left: 0;
+  display: grid;
+  grid-template-columns: 445px 70px;
+  z-index: 200;
+  transform: translateX(calc( -100% + 70px));
+  will-change: transform;
+  transition: transform ease 0.3s;
+  &_active {
+    transform: translateX(0);
+  }
+}
+.cat-widget__list-wrapper {
+  height: 70vh;
+  background-color: rgba(14, 36, 62, 0.9);
+  display: flex;
+  flex-direction: column;
+  //transform: scaleX(0);
+  //transition: transform .55s ease;
+  //will-change: transform;
+  //&_show {
+  //  transform: scaleX(1);
+  //}
+}
+.cat-widget__list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: hidden;
+  list-style: none;
+  padding: 20px 65px 20px 30px;
+  margin: 0;
+  &:hover{
+    overflow-y: auto;
+    overflow-y: overlay;
+  }
+}
+.cat-widget__el{
+  border-bottom: 1px solid #747474;
+  padding: 0 10px;
+}
+.cat-widget__link{
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  //margin-bottom: 5px;
+  //padding: 20px 0 25px 0;
+}
+.cat-widget__button{
+  background: #E84C3D;
+  color: white;
+  width: 320px;
+  height: 70px;
+  top: 0;
+  transform-origin: left bottom;
+  transform: rotate(90deg) translateX(-70px);
+  transition: transform .2s ease;
+  font-size: 1.875rem;
+  font-weight: normal;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  box-shadow: none;
+}
+.cat-widget__button_home{
+  color: white;
+  width: 380px;
+  width: 23.75rem;
+  height: 4.375rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  box-shadow:  none;
+  will-change: text-shadow;
+  transition: text-shadow .3s ease;
+  &:hover {
+    box-shadow:  none;
+    @include text-neon(4);
+  }
+}
+
+/*
+.cat-widget-fade-enter-active {
+  transition: all .3s ease;
+}
+.cat-widget-fade-leave-active {
+  //transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all .1s ease;
+  transform: translateX(-100%);
+  width: 0;
+  display: none;
+}
+.cat-widget-fade-enter, .slide-fade-leave-to
+  !* .slide-fade-leave-active до версии 2.1.8 *! {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+*/

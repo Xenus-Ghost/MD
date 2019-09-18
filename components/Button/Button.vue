@@ -1,15 +1,21 @@
 <template>
   <button
     :is="buttonTag"
-    :type="type"
+    :type="buttonType"
     :style="[measurableStyles, style]"
     :class="[classes]"
     :to="to"
   >
+    <div v-if="hasLeftIcon" class="button__icon button__icon_left">
+      <slot name="icon_left"></slot>
+    </div>
     <div class="button__content">
-      <slot>
+      <slot name="default">
         Button
       </slot>
+    </div>
+    <div v-if="hasRightIcon" class="button__icon button__icon_right">
+      <slot name="icon_right"></slot>
     </div>
   </button>
 </template>
@@ -41,7 +47,7 @@ export default {
     },
     borders: {
       type: String,
-      default: 'neon'
+      default: ''
     },
     tag: {
       type: String,
@@ -78,6 +84,9 @@ export default {
       str = this.to ? 'nuxt-link' : str
       return str
     },
+    buttonType() {
+      return this.buttonTag !== 'button' ? '' : 'button'
+    },
     style() {
       return {
         // 'height': (this.height + 'px').replace('pxpx', 'px').replace('%px', '%'),
@@ -100,6 +109,12 @@ export default {
         button_neon: this.borders === 'neon'
       }
       return arr
+    },
+    hasLeftIcon() {
+      return !!this.$slots.icon_left
+    },
+    hasRightIcon() {
+      return !!this.$slots.icon_right
     }
   }
 }

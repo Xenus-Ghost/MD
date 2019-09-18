@@ -1,3 +1,12 @@
+@import "index";
+:root{
+  --color-primary: #{$color--primary};
+  --color-success: #{$color--success};
+  --color-error: #{$color--error};
+  --color-warning: #{$color--warning};
+  --color-info: #{$color--info};
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -7,4 +16,7 @@ body {
   //font-family: 'Lato', sans-serif;
   font-family: 'Lato';
   color: white;
+}
+a{
+  text-decoration: none;
 }

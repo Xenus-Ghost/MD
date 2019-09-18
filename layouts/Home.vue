@@ -1,22 +1,32 @@
 <template>
   <div>
     <Menu></Menu>
+    <CategoriesWidget></CategoriesWidget>
     <nuxt />
   </div>
 </template>
 
 <script>
 import Menu from './../components/Menu/Menu'
+import CategoriesWidget from './../components/Widgets/CategoriesWidget/CategoriesWidget'
 
 export default {
   components: {
-    Menu
+    Menu,
+    CategoriesWidget
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'background_home-page'
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss">
-body {
+/*body {
   $bg-opacity: 0.8;
   min-height: 100vh;
   height: 100%;
@@ -33,5 +43,5 @@ body {
     ),
     url('../assets/img/bg/1.jpg') center no-repeat / cover;
   background-attachment: fixed;
-}
+}*/
 </style>

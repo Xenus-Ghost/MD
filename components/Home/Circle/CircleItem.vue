@@ -1,7 +1,7 @@
 <template>
   <div class="circle__item">
     <!--    <nuxt-link to="">-->
-    <Button shape="circle" height="140px" width="140px" :to="to">
+    <Button shape="circle" borders="neon" height="100%" width="100%" :to="to">
       <slot></slot>
     </Button>
     <!--    </nuxt-link>-->
@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import Button from '@/components/Button/Button'
+// import Button from '@/components/Button/Button'
 export default {
   name: 'CircleItem',
   components: {
-    Button
+    // Button
   },
   props: {
     n: {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-export default {}
+export default { layout: 'Category' }
 </script>
 
 <style scoped></style>

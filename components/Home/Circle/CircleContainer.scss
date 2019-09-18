@@ -1,28 +1,76 @@
 .circle__container {
-  @include on-circle($item-count: 13, $circle-size: 850px, $item-size: 140px, $rotate: -90) {
-    //content: '';
-    //display: block;
-    //width: 45px;
-    //height: 2px;
-    //background: #4caf50;
+  z-index: 1;
+  //margin: 30px auto 0 auto;
+  top: calc( (3vh - 50px) / 2);
+  @include media_screen(desktop){
+    @include on-circle($item-count: 13, $circle-size: 410px, $item-size: 72px, $rotate: -90);
   }
-  //top: -40px;
-  margin: 30px auto 0 auto;
-  //border: solid 2px white;
-  //$shadow-value:40px;
-  //box-shadow: 0 0 $shadow-value 6px #7BD7FF, 0 0 $shadow-value 6px #7BD7FF inset;
+  @include media_screen(desktop-wide){
+    @include on-circle($item-count: 13, $circle-size: 542px, $item-size: 88px, $rotate: -90);
+    top: 0;
+  }
+  @include media_screen(desktop-fhd){
+    @include on-circle($item-count: 13, $circle-size: 630px, $item-size: 106px, $rotate: -90);
+  }
+  @media (aspect-ratio: 5/4) and (min-height: 910px) {
+    @include on-circle($item-count: 13, $circle-size: 680px, $item-size: 106px, $rotate: -90);
+  }
 
-  img {
+
+
+  /*img {
     display: block;
     max-width: 100%;
-    border-radius: 50%;
-    filter: grayscale(100%);
-    border: solid 5px tomato;
+    //border-radius: 50%;
+    //filter: grayscale(100%);
+    //border: solid 5px tomato;
     transition: 0.15s;
 
     &:hover,
     &:active {
       filter: grayscale(0);
     }
+  }*/
+}
+.circle__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.circle__center {
+  z-index: 2;
+  position: absolute;
+  //top: calc( ((320px - 25vh) - 75px) * 0.75);
+  top: calc(50% +  calc( (3vh - 50px) / 2));
+  margin-top: -160px;
+  width: 320px;
+  height: 320px;
+  //max-width: 22vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 15px 20px;
+  //border: 1px solid red;
+  @include media_screen(desktop-wide){
+    //top: 0;
+    //top: 10%;
+    top: 50%;
+    //bottom: 50%;
+    margin-top: -221px;
+    width: 442px;
+    height: 442px;
+    padding: 35px;
+  }
+  @include media_screen(desktop-fhd){
+    //top: 0;
+    top: 50%;
+    margin-top: -250px;
+    width: 500px;
+    height: 500px;
   }
 }
