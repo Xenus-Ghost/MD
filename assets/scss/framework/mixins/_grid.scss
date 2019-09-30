@@ -1,10 +1,15 @@
 @mixin grid_columns($number:1) {
+  display: grid;
   grid-template-columns: repeat($number, 1fr);
+}
+@mixin grid_rows($number:1) {
+  display: grid;
+  grid-template-rows: repeat($number, 1fr);
 }
 
 @mixin make-grid-column($grid-columns: 12, $screen-breakpoints:$screen-breakpoints) {
   @for $i from 1 through $grid-columns {
-    &--#{$i} {
+    &_#{$i} {
       @each $name, $width in $screen-breakpoints {
         @if ($name == 'phone') {
           grid-column: span $i;
@@ -18,4 +23,8 @@
       }
     }
   }
+}
+
+@mixin grid_resp($min: 200px, $fit: auto-fit, $max: 1fr) {
+  grid-template-columns: repeat($fit, minmax($min, $max));
 }

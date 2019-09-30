@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  @for $i from 1 through 12 {
+    &_cols_#{$i} {
+      display: grid;
+      @include grid_columns($i)
+    }
+  }
+  @for $i from 1 through 12 {
+    &_rows_#{$i} {
+      display: grid;
+      @include grid_rows($i)
+    }
+  }
+}
+.grid__column {
+  @include make-grid-column()
+}

@@ -6,14 +6,14 @@
     @include on-circle($item-count: 13, $circle-size: 410px, $item-size: 72px, $rotate: -90);
   }
   @include media_screen(desktop-wide){
-    @include on-circle($item-count: 13, $circle-size: 542px, $item-size: 88px, $rotate: -90);
+    @include on-circle($item-count: 13, $circle-size: 480px, $item-size: 88px, $rotate: -90);
     top: 0;
   }
   @include media_screen(desktop-fhd){
-    @include on-circle($item-count: 13, $circle-size: 630px, $item-size: 106px, $rotate: -90);
+    @include on-circle($item-count: 13, $circle-size: 590px, $item-size: 106px, $rotate: -90);
   }
-  @media (aspect-ratio: 5/4) and (min-height: 910px) {
-    @include on-circle($item-count: 13, $circle-size: 680px, $item-size: 106px, $rotate: -90);
+  @media (max-width: 1290px) and (min-height: 810px) {
+    @include on-circle($item-count: 13, $circle-size: 640px, $item-size: 116px, $rotate: -90);
   }
 
 
@@ -72,5 +72,11 @@
     margin-top: -250px;
     width: 500px;
     height: 500px;
+  }
+  @media (max-width: 1290px) and (min-height: 810px) {
+    top: 50%;
+    margin-top: -200px;
+    width: 400px;
+    height: 400px;
   }
 }

@@ -7,7 +7,7 @@
     <nav class="menu__list">
       <nuxt-link to="/" class="menu__item">О компании</nuxt-link>
       <nuxt-link to="/" class="menu__item">Контакты</nuxt-link>
-      <div>
+      <div style="font-size: 0.9rem">
         RU
         <img src="~assets/img/flags/ru.svg" alt="RU" />
       </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/scss/framework/index.scss';
+@import '~assets/scss/framework/index.scss';
 .menu {
   &__wrapper {
     display: grid;
@@ -49,10 +49,14 @@ export default {
     justify-content: space-between;
     align-self: center;
     justify-self: flex-end;
+    padding: 15px 15px 15px 25px;
   }
   &__item {
     color: white;
-    font-size: 1.25rem;
+    font-size: 0.9rem;
+    @include media_screen(desktop-wide) {
+      font-size: 1.25rem;
+    }
   }
 }
 .logo {

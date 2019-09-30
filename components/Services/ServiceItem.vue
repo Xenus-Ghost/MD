@@ -1,5 +1,5 @@
 <template>
-  <div class="service__item">
+  <div class="service__item" :class="[classes, gridClasses]">
     <div class="service__icon">
       <slot name="icon"></slot>
     </div>
@@ -102,11 +102,27 @@
 </template>
 
 <script>
+import { columns } from '@/assets/js/mixins/grid/index.js'
 export default {
-  name: 'ServiceItem'
+  name: 'ServiceItem',
+  mixins: [columns],
+  props: {
+    col: {
+      default: 'full',
+      type: String
+    }
+  },
+  computed: {
+    classes() {
+      const obj = {}
+      // if (this.col) obj.col = 'grid__column_' + this.col
+      return obj
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
 @import 'services';
 </style>

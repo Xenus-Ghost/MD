@@ -1,4 +1,6 @@
-@import "index";
+@import "color_vars";
+@import "variables";
+@import "../framework/index";
 :root{
   --color-primary: #{$color--primary};
   --color-success: #{$color--success};
@@ -16,7 +18,13 @@ body {
   //font-family: 'Lato', sans-serif;
   font-family: 'Lato';
   color: white;
+  font-size: 12px;
+  @include media_screen( desktop-wide) {
+    font-size: 16px;
+  }
 }
 a{
   text-decoration: none;
 }
+
+@import "components/index";

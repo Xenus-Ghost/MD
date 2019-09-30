@@ -31,6 +31,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../../assets/scss/app/index';
+@import '~assets/scss/app/index.scss';
 @import 'category_header';
 </style>

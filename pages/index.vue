@@ -343,9 +343,18 @@ export default {
 }
 .home-page__categories {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   grid-column: 1/-1;
   grid-row: -1;
+  grid-template-columns: 1fr;
+  @include media_screen(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media_screen(tablet-wide) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include media_screen(desktop) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 .home-page__category {
   padding: 10px;
@@ -362,18 +371,20 @@ export default {
   & > img {
     width: 100%;
     object-fit: contain;
-    height: 50px;
-    height: calc(32px + 1.28vw);
+    /*height: 50px;*/
+    height: 35px;
     /*margin-bottom: 0.25vw;*/
     @include media_screen(desktop-wide) {
       /*height: 60px;*/
       margin-bottom: 10px;
+      height: 50px;
     }
   }
   & > .button {
     font-size: 0.75rem;
     font-weight: normal;
     height: calc(5px + 1.5vw);
+    max-width: 150px;
     @include media_screen(desktop-wide) {
       font-size: 1rem;
       /*height: 35px;*/
@@ -384,7 +395,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
   width: 95%;
@@ -404,14 +415,22 @@ export default {
   /*flex-wrap: wrap;*/
 }
 .cat-button__image {
-  width: 35px;
-  height: 30px;
+  width: 60px;
+  height: 50px;
   object-fit: contain;
+  @include media_screen(notebook) {
+    width: 35px;
+    height: 30px;
+  }
 }
 .cat-button__title {
-  font-size: 0.45rem;
+  font-size: 0.8rem;
+  /*font-size: 0.6em;*/
   text-align: center;
   line-height: 1;
+  @include media_screen(notebook) {
+    font-size: 0.5rem;
+  }
   @include media_screen(desktop-wide) {
     font-size: 0.65rem;
   }

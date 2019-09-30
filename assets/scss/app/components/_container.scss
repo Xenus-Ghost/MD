@@ -5,8 +5,25 @@ $container-padding: 8px;
   padding-left: $container-padding;
   margin-right: auto;
   margin-left: auto;
-  &--full {
+  &_full {
     max-width: 100%;
+  }
+  &_wide {
+    width: 100%;
+    padding-right: $container-padding;
+    padding-left: $container-padding;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include media_screen(tablet) {
+      max-width: 700px;
+    }
+    @include media_screen(desktop) {
+      max-width: 1100px;
+    }
+    @include media_screen(desktop-wide) {
+      max-width: 1300px;
+    }
   }
 
   @each $name,$width in $container-max-widths {
