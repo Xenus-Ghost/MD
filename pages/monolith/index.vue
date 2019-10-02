@@ -521,7 +521,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 2fr 3fr;
-  @include media_screen(desktop-wide) {
+  max-height: 100%;
+  @include media_screen(desktop-fhd) {
     grid-template-rows: 2fr 2fr 1fr;
   }
 }

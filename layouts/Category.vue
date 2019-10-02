@@ -31,14 +31,14 @@ export default {
 .layout_category {
   /*max-height: 800px;*/
   @include media_screen(desktop) {
-    height: 100%;
+    height: calc(100% - #{$menu-height});
     max-height: 560px;
   }
   @include media_screen(desktop-wide) {
-    height: 740px;
+    max-height: 800px - $menu-height;
   }
   @include media_screen(desktop-fhd) {
-    height: 900px;
+    max-height: 960px - $menu-height;
   }
 }
 </style>

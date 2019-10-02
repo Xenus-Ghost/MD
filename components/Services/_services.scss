@@ -22,6 +22,11 @@
       box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
       @include media_screen(desktop-wide) {
         grid-gap: 30px;
+        padding: 2% 10% 2% 10%;
+        border-radius: 7.5rem;
+      }
+      @include media_screen(desktop-fhd) {
+        grid-gap: 30px;
         padding: 34px 75px 44px 75px;
         border-radius: 7.5rem;
       }

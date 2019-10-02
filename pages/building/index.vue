@@ -803,7 +803,7 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 2fr auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   @include media_screen(desktop-fhd) {
