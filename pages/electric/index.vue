@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_building">
+  <div class="grid-layout_electric">
     <CategoryHeader>
       Электрика
       <template v-slot:right_column>
@@ -757,7 +757,7 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
-.grid-layout_building {
+.grid-layout_electric {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -765,16 +765,16 @@ export default {
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr auto;
+    grid-template-rows: 2fr auto auto;
   }
 }
 /*.header_category {
   grid-column: 1/-1;
 }*/
 .services {
-  @include media_screen(desktop-fhd) {
+  /*@include media_screen(desktop-fhd) {
     grid-column: 1/13;
-  }
+  }*/
 }
 /*.services__list_grid {*/
 /*  grid-column: span 8;*/
