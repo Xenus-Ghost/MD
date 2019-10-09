@@ -631,13 +631,13 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="3" :col="'8'">
+    <ServicesGrid width="100%" :cols="3" :col="'9'">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
+          <img src="@/assets/img/icons/wire.svg" alt="" />
         </template>
         <template v-slot:default>
-          Кладочные работы
+          Кабели и проводка
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -645,10 +645,10 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/shovel.svg" alt="" />
+          <img src="@/assets/img/icons/idea.svg" alt="" />
         </template>
         <template v-slot:default>
-          Земляные работы
+          Свет и освещение
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -656,10 +656,10 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/worker.svg" alt="" />
+          <img src="@/assets/img/icons/electric-meter.svg" alt="" />
         </template>
         <template v-slot:default>
-          Бурение
+          Автоматы, счетчики
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -667,10 +667,10 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/plastering.svg" alt="" />
+          <img src="@/assets/img/icons/washing-machine.svg" alt="" />
         </template>
         <template v-slot:default>
-          Фасадные работы
+          Бытовая техника
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -678,10 +678,10 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/roof.svg" alt="" />
+          <img src="@/assets/img/icons/engineering.svg" alt="" />
         </template>
         <template v-slot:default>
-          Крофельные работы
+          Проектирование электроснабжения
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -689,42 +689,42 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/rope.svg" alt="" />
+          <img src="@/assets/img/icons/flash.svg" alt="" />
         </template>
         <template v-slot:default>
-          Высотные работы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-    </ServicesGrid>
-    <ServicesGrid width="100%" :cols="1" :col="'1'">
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Кладочные работы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/shovel.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Земляные работы
+          Заземление и молниезащита
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_3 grid__column_12-desktop-fhd selling">
-      <h2>Продажа</h2>
+    <ServicesGrid width="100%" :cols="1" :col="'3'">
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/wire_2.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Слаботочка
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/key.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Охранные системы и контроль доступа
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+    </ServicesGrid>
+    <div class="grid__column_12 selling">
+      <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
         <Button to="/" shape="rounded" borders="outline">Все частники</Button>
         <Button to="/" shape="rounded" borders="outline"
@@ -757,11 +757,12 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
+@import '~assets/scss/app/pages/_category.scss';
 .grid-layout_electric {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 2fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   @include media_screen(desktop-fhd) {
@@ -785,7 +786,8 @@ export default {
     /*height: 220px;*/
     max-height: 100%;
     grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));*/
+    grid-template-columns: repeat(4, 1fr);
     /*@include media_screen(desktop-fhd) {
       grid-template-columns: repeat(4, 1fr);
     }*/

@@ -700,7 +700,7 @@
       </ServiceItem>
     </ServicesGrid>
     <div class="grid__column_3 grid__column_12-desktop-fhd selling">
-      <h2>Продажа</h2>
+      <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
         <Button to="/" shape="rounded" borders="outline">Все частники</Button>
         <Button to="/" shape="rounded" borders="outline"
@@ -733,6 +733,7 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
+@import '~assets/scss/app/pages/_category.scss';
 .grid-layout_building {
   max-height: 100%;
   display: grid;

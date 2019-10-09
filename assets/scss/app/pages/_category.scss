@@ -1,0 +1,12 @@
+.selling {
+  &__buttons {
+    display: grid;
+    max-height: 100%;
+    grid-gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+  }
+  &__title {
+    text-align: center;
+  }
+}

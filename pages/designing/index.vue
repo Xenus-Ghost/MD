@@ -1,7 +1,7 @@
 <template>
   <div class="grid-layout_building">
     <CategoryHeader>
-      Ремонт
+      Проектирование
       <template v-slot:right_column>
         <svg
           width="479"
@@ -631,10 +631,10 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" max-width="1070px" :cols="5" :col="'9'">
+    <ServicesGrid width="100%" max-width="1070px" :cols="5" :col="'12'">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
+          <img src="@/assets/img/icons/lawyer.svg" alt="" />
         </template>
         <template v-slot:default>
           Юрист
@@ -645,7 +645,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/shovel.svg" alt="" />
+          <img src="@/assets/img/icons/approve-invoice.svg" alt="" />
         </template>
         <template v-slot:default>
           Сметы
@@ -656,7 +656,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/worker.svg" alt="" />
+          <img src="@/assets/img/icons/terrain.svg" alt="" />
         </template>
         <template v-slot:default>
           Геодезия
@@ -667,7 +667,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/plastering.svg" alt="" />
+          <img src="@/assets/img/icons/data.svg" alt="" />
         </template>
         <template v-slot:default>
           Экспертиза
@@ -678,7 +678,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/roof.svg" alt="" />
+          <img src="@/assets/img/icons/seeds.svg" alt="" />
         </template>
         <template v-slot:default>
           Изыскательные работы
@@ -707,16 +707,14 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
+@import '~assets/scss/app/pages/_category.scss';
 .grid-layout_building {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr auto;
-  }
 }
 /*.header_category {
   grid-column: 1/-1;

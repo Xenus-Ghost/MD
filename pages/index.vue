@@ -280,13 +280,14 @@ export default {
   align-self: center;
 }
 .site-title {
-  margin-top: 0;
+  /*margin-top: 0;*/
   font-size: 1.65rem;
   text-align: center;
   font-weight: 300;
-  margin-bottom: 0.5vw;
+  margin: 0 0 0.25vw 0 !important;
   @include media_screen(desktop-wide) {
     font-size: 2.4rem;
+    margin-bottom: 0.5vw;
   }
   @include media_screen(desktop-fhd) {
   }
@@ -295,9 +296,10 @@ export default {
   font-size: 1.625rem;
   font-weight: 900;
   text-align: center;
-  margin-bottom: 0.5vw;
+  margin-bottom: 0.25vw;
   @include media_screen(desktop-wide) {
     font-size: 2rem;
+    margin-bottom: 0.5vw;
   }
   @include media_screen(desktop-fhd) {
     font-size: 2.25rem;
@@ -307,9 +309,10 @@ export default {
   font-size: 1.375rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1vw;
+  margin-bottom: 0.5vw;
   @include media_screen(desktop-wide) {
     font-size: 1.625rem;
+    margin-bottom: 1vw;
   }
   @include media_screen(desktop-fhd) {
     font-size: 1.75rem;
