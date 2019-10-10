@@ -24,7 +24,9 @@
             <a class="text_neon site__link_mirror" href="//монтаждемонтаж.рф">
               монтаждемонтаж.рф</a
             >
-            <div style="display: flex; justify-content: space-between;">
+            <div
+              style="display: flex; justify-content: space-between; margin-bottom: 15px"
+            >
               <Button
                 borders="outline"
                 shape="rounded"
@@ -59,13 +61,15 @@
         style="grid-column: 1;grid-row: 1"
         shape="rounded"
         borders="neon"
+        class="button_aside"
         >Выставки</Button
       >
       <Button
         to="/"
-        style="grid-column: 3;grid-row: 1"
+        style="grid-column: 3;grid-row: 1;justify-self: right"
         shape="rounded"
         borders="neon"
+        class="button_aside"
         >Форумы</Button
       >
       <Button
@@ -73,6 +77,7 @@
         style="grid-column: 1;grid-row: 3"
         shape="rounded"
         borders="neon"
+        class="button_aside"
         >Доставка</Button
       >
       <Button
@@ -80,20 +85,23 @@
         style="grid-column: 1;grid-row: 4"
         shape="rounded"
         borders="neon"
+        class="button_aside"
         >Видео</Button
       >
       <Button
         to="/"
-        style="grid-column: 3;grid-row: 3"
+        style="grid-column: 3;grid-row: 3; justify-self: right"
         shape="rounded"
         borders="neon"
+        class="button_aside"
         >Мастер на час</Button
       >
       <Button
         to="/"
-        style="grid-column: 3;grid-row: 4"
+        style="grid-column: 3;grid-row: 4; justify-self: right"
         shape="rounded"
         borders="neon"
+        class="button_aside"
         >Клининг</Button
       >
       <div class="home-page__categories">
@@ -260,14 +268,22 @@ export default {
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 40px 2fr 40px 40px auto;
   grid-row-gap: 10px;
+  margin-top: 10px;
   /*height: 620px;*/
-  height: calc(100vh - 75px);
-  /*@include media_screen(desktop-wide) {
-    height: 780px;
+  height: calc(100vh - 85px);
+  @include media_screen(desktop-wide) {
+    grid-template-columns: 1fr 3fr 1fr;
   }
+  /*
   @include media_screen(desktop-fhd) {
     height: 900px;
   }*/
+  .button_aside {
+    width: 70%;
+    @include media_screen(desktop-wide) {
+      width: 100%;
+    }
+  }
 }
 .circle__wrapper {
   grid-column: 2;
@@ -288,8 +304,6 @@ export default {
   @include media_screen(desktop-wide) {
     font-size: 2.4rem;
     margin-bottom: 0.5vw;
-  }
-  @include media_screen(desktop-fhd) {
   }
 }
 .site__link {
@@ -319,9 +333,11 @@ export default {
   }
 }
 .home-page__button {
-  font-size: 0.875rem;
+  font-size: 0.875rem !important;
+  /*font-size: 0.7rem;*/
   height: 30px;
-  width: 130px;
+  width: 115px;
+  /*width: 130px;*/
   margin-bottom: 15px;
   @include media_screen(desktop-wide) {
     font-size: 1.125rem;
@@ -335,7 +351,9 @@ export default {
   }
 }
 .button_black-list {
-  width: 190px;
+  width: 150px;
+  /*margin-top: 15px;*/
+  /*width: 190px;*/
   @include media_screen(desktop-wide) {
     width: 215px;
   }
@@ -363,6 +381,12 @@ export default {
   padding: 10px;
   padding: 0.15vw 20px;
   position: relative;
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
   & > .divider {
     position: absolute;
     top: 0;
@@ -387,7 +411,7 @@ export default {
     font-size: 0.75rem;
     font-weight: normal;
     height: calc(5px + 1.5vw);
-    max-width: 150px;
+    /*max-width: 150px;*/
     @include media_screen(desktop-wide) {
       font-size: 1rem;
       /*height: 35px;*/

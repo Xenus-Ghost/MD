@@ -631,7 +631,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="12" :col="'9'">
+    <ServicesGrid width="100%" :cols="12" :col="'12'">
       <ServiceItem :col="'2'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/brick-wall.svg" alt="" />
@@ -765,7 +765,7 @@
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_3 grid__column_12-desktop-fhd selling">
+    <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
         <Button to="/" shape="rounded" borders="outline">Все частники</Button>
@@ -804,12 +804,9 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr auto;
+  grid-template-rows: 2fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr auto;
-  }
 }
 /*.header_category {
   grid-column: 1/-1;
@@ -822,16 +819,4 @@ export default {
 /*.services__list_grid {*/
 /*  grid-column: span 8;*/
 /*}*/
-.selling {
-  &__buttons {
-    display: grid;
-    /*height: 220px;*/
-    max-height: 100%;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    /*@include media_screen(desktop-fhd) {
-      grid-template-columns: repeat(4, 1fr);
-    }*/
-  }
-}
 </style>

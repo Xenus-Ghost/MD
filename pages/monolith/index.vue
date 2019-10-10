@@ -451,7 +451,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="703px" height="200px" :cols="3" :col="'8'">
+    <ServicesGrid width="703px" height="200px" :cols="3" :col="'12'">
       <ServiceItem>
         <template v-slot:icon>
           <img alt="" src="~assets/img/icons/cement-truck.svg" />
@@ -492,7 +492,7 @@
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_3 grid__column_12-desktop-fhd selling">
+    <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
         <Button to="/" shape="rounded" borders="outline">ЖБИ и заводы</Button>
@@ -521,11 +521,8 @@ export default {
 .grid-layout_monolith {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 2fr auto auto;
   max-height: 100%;
-  @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr 1fr;
-  }
 }
 .selling {
   &__buttons {
@@ -546,17 +543,6 @@ export default {
   }
   &::v-deep .services__list_grid {
     min-height: 200px;
-  }
-}
-.selling {
-  @include media_screen(desktop-fhd) {
-    grid-column: 1/-1;
-  }
-  & > h2 {
-    text-align: center;
-  }
-  &__buttons {
-    margin: 0 auto;
   }
 }
 </style>

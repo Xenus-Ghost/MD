@@ -16,6 +16,8 @@
     @include on-circle($item-count: 13, $circle-size: 640px, $item-size: 116px, $rotate: -90);
   }
 
+  box-shadow: 0 0 6px 1px rgba(123, 215, 255, 0.6), 0 0 6px 1px rgba(123, 215, 255, 0.6) inset;
+
 
 
   /*img {

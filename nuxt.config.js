@@ -15,7 +15,7 @@ export default {
       },
       {
         name: 'theme-color',
-        content: '2396FF'
+        content: '#2396FF'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -23,7 +23,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#2396FF' },
   /*
    ** Global CSS
    */
@@ -63,6 +63,7 @@ export default {
     postcss: require('autoprefixer')(),
     splitChunks: {
       layouts: true
-    }
+    },
+    extractCSS: true
   }
 }

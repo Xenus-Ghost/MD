@@ -2,6 +2,7 @@
   <div>
     <Menu></Menu>
     <CategoriesWidget></CategoriesWidget>
+    <ProfileWidget></ProfileWidget>
     <nuxt />
   </div>
 </template>
@@ -9,11 +10,13 @@
 <script>
 import Menu from './../components/Menu/Menu'
 import CategoriesWidget from './../components/Widgets/CategoriesWidget/CategoriesWidget'
+import ProfileWidget from './../components/Widgets/ProfileWidget/ProfileWidget'
 
 export default {
   components: {
     Menu,
-    CategoriesWidget
+    CategoriesWidget,
+    ProfileWidget
   },
   head() {
     return {
