@@ -102,6 +102,7 @@ export default {
         button: true,
         button_shape_circle: this.shape === 'circle',
         button_shape_rounded: this.shape === 'rounded',
+        button_shape_semi_rounded: this.shape === 'semi_rounded',
         button_size_small: this.size === 'small',
         button_size_big: this.size === 'big',
         button_size_large: this.size === 'large',

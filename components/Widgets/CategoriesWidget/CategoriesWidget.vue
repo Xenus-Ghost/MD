@@ -109,32 +109,32 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
+          <NuxtLink to="/доставка" class="cat-widget__link">
             Доставка
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
+          <NuxtLink to="/видео" class="cat-widget__link">
             Видео
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
+          <NuxtLink to="/мастер_на_час" class="cat-widget__link">
             Мастер на час
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
+          <NuxtLink to="/клининг" class="cat-widget__link">
             Клининг
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
+          <NuxtLink to="/выставки" class="cat-widget__link">
             Выставки
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
+          <NuxtLink to="/форумы" class="cat-widget__link">
             Форумы
           </NuxtLink>
         </li>

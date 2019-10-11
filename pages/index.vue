@@ -57,7 +57,7 @@
         </template>
       </CircleContainer>
       <Button
-        to="/"
+        to="/выставки"
         style="grid-column: 1;grid-row: 1"
         shape="rounded"
         borders="neon"
@@ -65,7 +65,7 @@
         >Выставки</Button
       >
       <Button
-        to="/"
+        to="/форумы"
         style="grid-column: 3;grid-row: 1;justify-self: right"
         shape="rounded"
         borders="neon"
@@ -73,7 +73,7 @@
         >Форумы</Button
       >
       <Button
-        to="/"
+        to="/доставка"
         style="grid-column: 1;grid-row: 3"
         shape="rounded"
         borders="neon"
@@ -81,7 +81,7 @@
         >Доставка</Button
       >
       <Button
-        to="/"
+        to="/видео"
         style="grid-column: 1;grid-row: 4"
         shape="rounded"
         borders="neon"
@@ -89,7 +89,7 @@
         >Видео</Button
       >
       <Button
-        to="/"
+        to="/мастер_на_час"
         style="grid-column: 3;grid-row: 3; justify-self: right"
         shape="rounded"
         borders="neon"
@@ -97,7 +97,7 @@
         >Мастер на час</Button
       >
       <Button
-        to="/"
+        to="/клининг"
         style="grid-column: 3;grid-row: 4; justify-self: right"
         shape="rounded"
         borders="neon"
@@ -108,7 +108,12 @@
         <div class="home-page__category">
           <img src="~assets/img/icons/house.svg" alt="" />
           <div class="home-page__category-title">Готовые дома, бани, дачи</div>
-          <Button to="/" width="100%" borders="outline" shape="rounded">
+          <Button
+            to="/дома-бани-дачи"
+            width="100%"
+            borders="outline"
+            shape="rounded"
+          >
             Подробнее</Button
           >
           <img class="divider" src="~assets/img/divider.svg" alt="" />
@@ -119,7 +124,7 @@
             Металлы. Дерево. <br />
             Стекло. Пластмасса.
           </div>
-          <Button to="/" width="100%" borders="outline" shape="rounded">
+          <Button to="/мдсп" width="100%" borders="outline" shape="rounded">
             Подробнее</Button
           >
           <img class="divider" src="~assets/img/divider.svg" alt="" />
@@ -127,7 +132,7 @@
         <div class="home-page__category">
           <img src="~assets/img/icons/mixer.svg" alt="" />
           <div class="home-page__category-title">ЖБИ и заводы</div>
-          <Button to="/" width="100%" borders="outline" shape="rounded">
+          <Button to="/жби" width="100%" borders="outline" shape="rounded">
             Подробнее</Button
           >
           <img class="divider" src="~assets/img/divider.svg" alt="" />

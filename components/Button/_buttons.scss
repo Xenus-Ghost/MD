@@ -80,6 +80,13 @@ $button-class: '.button';
     &_rounded{
       border-radius: 28px;
     }
+    &_semi_rounded {
+      border-radius: 6px;
+      min-height: 36px;
+      @include media_screen(desktop-wide) {
+        border-radius: 14px;
+      }
+    }
   }
 
   &_outline{
