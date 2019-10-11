@@ -88,17 +88,20 @@ $button-class: '.button';
     background: rgba(34, 55, 87, 0.6);
     box-shadow: 0 0 2px 1px white;
     &:hover{
-      box-shadow: none;
+      @include text-neon();
+      $shadow-value: 12px;
+      box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
     }
   }
   &_neon{
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.85);
-    background: rgba(14, 36, 62, 0.1);
+    background-color: rgba(14, 36, 62, 0.1);
     $shadow-value: 12px;
     box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
     &:hover{
       $shadow-value: 16px;
+      background-color: rgba(15, 98, 133, 0.1);
       box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
     }
   }

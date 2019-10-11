@@ -173,67 +173,67 @@ export default {
     return {
       categories: {
         monolith: {
-          path: '/monolith',
+          path: '/монолит',
           title: 'Монолит',
           icon_url: 'img/categories/1.svg'
         },
         building: {
-          path: '/building',
+          path: '/строительство',
           title: 'Строительство',
           icon_url: 'img/categories/2.svg'
         },
         renovation: {
-          path: '/renovation',
+          path: '/ремонт',
           title: 'Ремонт',
           icon_url: 'img/categories/3.svg'
         },
         electric: {
-          path: '/electric',
+          path: '/электрика',
           title: 'Электрика',
           icon_url: 'img/categories/4.svg'
         },
         plumbing: {
-          path: '/plumbing',
+          path: '/сантехника',
           title: 'Сантехника',
           icon_url: 'img/categories/5.svg'
         },
         welding: {
-          path: '/welding',
+          path: '/сварка',
           title: 'Сварка',
           icon_url: 'img/categories/6.svg'
         },
         designing: {
-          path: '/designing',
+          path: '/проектирование',
           title: 'Проектирование',
           icon_url: 'img/categories/8.svg'
         },
         roads: {
-          path: '/roads',
+          path: '/дороги',
           title: 'Дороги',
           icon_url: 'img/categories/9.svg'
         },
         gas: {
-          path: '/gas',
+          path: '/газификация',
           title: 'Газификация',
           icon_url: 'img/categories/10.svg'
         },
         landscape: {
-          path: '/landscape',
+          path: '/ландшафтный_дизайн',
           title: 'Ландшафтный дизайн',
           icon_url: 'img/categories/12.svg'
         },
         beautification: {
-          path: '/beautification',
+          path: '/благоустройство',
           title: 'Благоустройство',
           icon_url: 'img/categories/13.svg'
         },
         tools: {
-          path: '/tools',
+          path: '/инструменты',
           title: 'Инструменты и оборудование',
           icon_url: 'img/categories/14.svg'
         },
         stoves: {
-          path: '/stoves',
+          path: '/печи_и_камины',
           title: 'Печи и камины',
           icon_url: 'img/categories/15.svg'
         }

@@ -1,7 +1,7 @@
 <template>
-  <div class="grid-layout_building">
+  <div class="grid-layout_electric">
     <CategoryHeader>
-      Сантехника
+      Электрика
       <template v-slot:right_column>
         <svg
           width="479"
@@ -631,13 +631,13 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="700" :cols="3" :col="'9'">
+    <ServicesGrid width="100%" :cols="3" :col="'9'">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/radiator.svg" alt="" />
+          <img src="@/assets/img/icons/wire.svg" alt="" />
         </template>
         <template v-slot:default>
-          Отопление
+          Кабели и проводка
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -645,10 +645,10 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/valve.svg" alt="" />
+          <img src="@/assets/img/icons/idea.svg" alt="" />
         </template>
         <template v-slot:default>
-          Водоснабжение
+          Свет и освещение
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -656,17 +656,74 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/valve (1).svg" alt="" />
+          <img src="@/assets/img/icons/electric-meter.svg" alt="" />
         </template>
         <template v-slot:default>
-          Канализация
+          Автоматы, счетчики
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/washing-machine.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Бытовая техника
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/engineering.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Проектирование электроснабжения
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/flash.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Заземление и молниезащита
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_3 grid__column_12-desktop-fhd selling">
+    <ServicesGrid width="100%" :cols="1" :col="'3'">
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/wire_2.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Слаботочка
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/key.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Охранные системы и контроль доступа
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+    </ServicesGrid>
+    <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
         <Button to="/" shape="rounded" borders="outline">Все частники</Button>
@@ -701,23 +758,27 @@ export default {
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
 @import '~assets/scss/app/pages/_category.scss';
-.grid-layout_building {
+.grid-layout_electric {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 2fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr auto;
+    grid-template-rows: 2fr auto auto;
   }
 }
 /*.header_category {
   grid-column: 1/-1;
 }*/
 .services {
-  @include media_screen(desktop-fhd) {
+  /*@include media_screen(desktop-fhd) {
     grid-column: 1/13;
+  }*/
+  /deep/ .services__list_grid {
+    border-radius: 3.5rem;
+    padding: 10px 50px;
   }
 }
 /*.services__list_grid {*/
@@ -729,7 +790,8 @@ export default {
     /*height: 220px;*/
     max-height: 100%;
     grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));*/
+    grid-template-columns: repeat(4, 1fr);
     /*@include media_screen(desktop-fhd) {
       grid-template-columns: repeat(4, 1fr);
     }*/

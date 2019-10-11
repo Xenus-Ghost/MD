@@ -1,7 +1,7 @@
 <template>
   <div class="grid-layout_building">
     <CategoryHeader>
-      Строительство
+      Сантехника
       <template v-slot:right_column>
         <svg
           width="479"
@@ -631,134 +631,35 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="12" :col="'12'">
-      <ServiceItem :col="'2'">
+    <ServicesGrid width="700" :cols="3" :col="'12'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
+          <img src="@/assets/img/icons/radiator.svg" alt="" />
         </template>
         <template v-slot:default>
-          Кладочные работы
+          Отопление
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/shovel.svg" alt="" />
+          <img src="@/assets/img/icons/valve.svg" alt="" />
         </template>
         <template v-slot:default>
-          Земляные работы
+          Водоснабжение
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/worker.svg" alt="" />
+          <img src="@/assets/img/icons/valve (1).svg" alt="" />
         </template>
         <template v-slot:default>
-          Бурение
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/plastering.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Фасадные работы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/roof.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Крофельные работы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/rope.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Высотные работы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/pattern.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Тротуарная плитка
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/windows.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Окна и балконы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/doorway.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Двери и замки
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/garage.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Рольставни и секц. ворота
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/fan.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Вентиляция и кондиционеры
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/no-sound.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Гидро- и звукоизоляция
+          Канализация
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -804,9 +705,13 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr auto auto;
+  grid-template-rows: 1fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
+  height: 88vh;
+  @include media_screen(desktop-fhd) {
+    grid-template-rows: 2fr 2fr auto;
+  }
 }
 /*.header_category {
   grid-column: 1/-1;
@@ -816,7 +721,4 @@ export default {
     grid-column: 1/13;
   }
 }
-/*.services__list_grid {*/
-/*  grid-column: span 8;*/
-/*}*/
 </style>

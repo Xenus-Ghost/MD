@@ -263,9 +263,10 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 1fr 1fr;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
+  height: 88vh;
 }
 /*.header_category {
   grid-column: 1/-1;

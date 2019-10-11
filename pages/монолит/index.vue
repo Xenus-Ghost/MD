@@ -451,7 +451,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="703px" height="200px" :cols="3" :col="'12'">
+    <ServicesGrid width="703px" height="auto" :cols="3" :col="'12'">
       <ServiceItem>
         <template v-slot:icon>
           <img alt="" src="~assets/img/icons/cement-truck.svg" />
@@ -521,8 +521,9 @@ export default {
 .grid-layout_monolith {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr auto auto;
+  grid-template-rows: 1fr auto auto;
   max-height: 100%;
+  height: calc(100vh - 75px);
 }
 .selling {
   &__buttons {
@@ -542,7 +543,7 @@ export default {
     grid-column: 1/-1;
   }
   &::v-deep .services__list_grid {
-    min-height: 200px;
+    min-height: 150px;
   }
 }
 </style>

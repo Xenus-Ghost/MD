@@ -6,23 +6,39 @@
       </Button>
       <ul class="socials__list">
         <li class="socials__item">
-          <a href="https://vk.com/share.php?url=https://монтаждемонтаж.рф" target="_blank" title="Вконтакте">
-            <img src="~assets/img/social/vk.svg" alt="">
+          <a
+            href="https://vk.com/share.php?url=https://монтаждемонтаж.рф"
+            target="_blank"
+            title="Вконтакте"
+          >
+            <img src="~assets/img/social/vk.svg" alt="" />
           </a>
         </li>
         <li class="socials__item">
-          <a href="https://www.facebook.com/sharer.php?u=https://монтаждемонтаж.рф" target="_blank" title="Facebook">
-            <img src="~assets/img/social/fb.svg" alt="">
+          <a
+            href="https://www.facebook.com/sharer.php?u=https://монтаждемонтаж.рф"
+            target="_blank"
+            title="Facebook"
+          >
+            <img src="~assets/img/social/fb.svg" alt="" />
           </a>
         </li>
         <li class="socials__item">
-          <a href="https://connect.ok.ru/offer%E2%80%83%E2%80%83%E2%80%83?url=https://монтаждемонтаж.рф&title=https://монтаждемонтаж.рф" target="_blank" title="Одноклассники">
-            <img src="~assets/img/social/ok.svg" alt="">
+          <a
+            href="https://connect.ok.ru/offer?url=https://монтаждемонтаж.рф&title=https://монтаждемонтаж.рф"
+            target="_blank"
+            title="Одноклассники"
+          >
+            <img src="~assets/img/social/ok.svg" alt="" />
           </a>
         </li>
         <li class="socials__item">
-          <a href="https://twitter.com/share?url=https://монтаждемонтаж.рф&text=МонтажДемонтаж&via=[via]&hashtags=[hashtags]" target="_blank" title="Twitter">
-            <img src="~assets/img/social/tw.svg" alt="">
+          <a
+            href="https://twitter.com/share?url=https://монтаждемонтаж.рф&text=МонтажДемонтаж&via=[via]&hashtags=[hashtags]"
+            target="_blank"
+            title="Twitter"
+          >
+            <img src="~assets/img/social/tw.svg" alt="" />
           </a>
         </li>
       </ul>
@@ -35,7 +51,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import "~assets/scss/app/index.scss";
+@import '~assets/scss/app/index.scss';
 aside {
   --button-width: 40px;
   @include media_screen(desktop-wide) {
@@ -53,14 +69,13 @@ aside {
   }
 }
 .button_profile-enter {
-
   background: #4bae4f;
 
   width: 220px;
   height: var(--button-width);
   transform-origin: left top;
   transform: rotate(90deg) translateY(-100%);
-  transition: transform .2s ease;
+  transition: transform 0.2s ease;
   font-size: 1.2rem;
   color: white;
   font-weight: normal;

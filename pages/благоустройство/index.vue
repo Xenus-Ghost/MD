@@ -320,12 +320,10 @@ export default {
     grid-template-rows: 2fr 2fr auto;
   }
 }
-/*.header_category {
-  grid-column: 1/-1;
-}*/
 .services {
-  @include media_screen(desktop-fhd) {
-    grid-column: 1/13;
+  /deep/ .services__list_grid {
+    border-radius: 3.5rem;
+    /*padding: 10px 50px;*/
   }
 }
 </style>

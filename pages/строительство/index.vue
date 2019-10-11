@@ -1,7 +1,7 @@
 <template>
-  <div class="grid-layout_electric">
+  <div class="grid-layout_building">
     <CategoryHeader>
-      Электрика
+      Строительство
       <template v-slot:right_column>
         <svg
           width="479"
@@ -631,92 +631,134 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="3" :col="'9'">
-      <ServiceItem :col="'1'">
+    <ServicesGrid width="100%" :cols="12" :col="'12'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/wire.svg" alt="" />
+          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
         </template>
         <template v-slot:default>
-          Кабели и проводка
+          Кладочные работы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/idea.svg" alt="" />
+          <img src="@/assets/img/icons/shovel.svg" alt="" />
         </template>
         <template v-slot:default>
-          Свет и освещение
+          Земляные работы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/electric-meter.svg" alt="" />
+          <img src="@/assets/img/icons/worker.svg" alt="" />
         </template>
         <template v-slot:default>
-          Автоматы, счетчики
+          Бурение
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/washing-machine.svg" alt="" />
+          <img src="@/assets/img/icons/plastering.svg" alt="" />
         </template>
         <template v-slot:default>
-          Бытовая техника
+          Фасадные работы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/engineering.svg" alt="" />
+          <img src="@/assets/img/icons/roof.svg" alt="" />
         </template>
         <template v-slot:default>
-          Проектирование электроснабжения
+          Крофельные работы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/flash.svg" alt="" />
+          <img src="@/assets/img/icons/rope.svg" alt="" />
         </template>
         <template v-slot:default>
-          Заземление и молниезащита
+          Высотные работы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-    </ServicesGrid>
-    <ServicesGrid width="100%" :cols="1" :col="'3'">
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/wire_2.svg" alt="" />
+          <img src="@/assets/img/icons/pattern.svg" alt="" />
         </template>
         <template v-slot:default>
-          Слаботочка
+          Тротуарная плитка
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/key.svg" alt="" />
+          <img src="@/assets/img/icons/windows.svg" alt="" />
         </template>
         <template v-slot:default>
-          Охранные системы и контроль доступа
+          Окна и балконы
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/doorway.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Двери и замки
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/garage.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Рольставни и секц. ворота
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/fan.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Вентиляция и кондиционеры
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/no-sound.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Гидро- и звукоизоляция
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
@@ -758,39 +800,25 @@ export default {
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
 @import '~assets/scss/app/pages/_category.scss';
-.grid-layout_electric {
+.grid-layout_building {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 2fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr auto auto;
-  }
+  height: 88vh;
 }
 /*.header_category {
   grid-column: 1/-1;
 }*/
 .services {
-  /*@include media_screen(desktop-fhd) {
-    grid-column: 1/13;
-  }*/
+  /deep/ .services__list_grid {
+    border-radius: 3.5rem;
+    padding: 10px 50px;
+  }
 }
 /*.services__list_grid {*/
 /*  grid-column: span 8;*/
 /*}*/
-.selling {
-  &__buttons {
-    display: grid;
-    /*height: 220px;*/
-    max-height: 100%;
-    grid-gap: 30px;
-    /*grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));*/
-    grid-template-columns: repeat(4, 1fr);
-    /*@include media_screen(desktop-fhd) {
-      grid-template-columns: repeat(4, 1fr);
-    }*/
-  }
-}
 </style>

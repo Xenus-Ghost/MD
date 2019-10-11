@@ -765,9 +765,10 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr auto auto;
+  grid-template-rows: 1fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
+  height: 88vh;
 }
 .services {
   @include media_screen(desktop-fhd) {

@@ -18,15 +18,19 @@
 
 }
 .logo{
-  display: none;
-  font-size: 2rem;
+  //display: none;
+  //font-size: 2rem;
   text-align: center;
   //display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 4rem;
-  height: 4rem;
+  //width: 4rem;
+  //height: 4rem;
+  display: flex;
+  font-size: 1.75rem;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: rgba(14, 36, 62, 0.4);
   border: 2px solid #ffffff;
@@ -61,10 +65,9 @@
     justify-content: center;
   }
   &_right {
-
-    @include media_screen(desktop) {
+    /*@include media_screen(desktop) {
       padding: 5px;
-    }
+    }*/
     @include media_screen(desktop-wide) {
       padding: 20px;
     }
@@ -76,6 +79,10 @@
 }
 
 h1 {
-  font-size: 2.625rem;
+  font-size: 2rem;
   text-align: center;
+  margin: 10px 0;
+  @include media_screen(desktop-wide) {
+    font-size: 2.625rem;
+  }
 }

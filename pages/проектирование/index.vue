@@ -1,7 +1,7 @@
 <template>
   <div class="grid-layout_building">
     <CategoryHeader>
-      Ремонт
+      Проектирование
       <template v-slot:right_column>
         <svg
           width="479"
@@ -631,89 +631,63 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="12" :col="'9'">
-      <ServiceItem :col="'2'">
+    <ServicesGrid width="100%" max-width="1070px" :cols="5" :col="'12'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
+          <img src="@/assets/img/icons/lawyer.svg" alt="" />
         </template>
         <template v-slot:default>
-          Кладочные работы
+          Юрист
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/shovel.svg" alt="" />
+          <img src="@/assets/img/icons/approve-invoice.svg" alt="" />
         </template>
         <template v-slot:default>
-          Земляные работы
+          Сметы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/worker.svg" alt="" />
+          <img src="@/assets/img/icons/terrain.svg" alt="" />
         </template>
         <template v-slot:default>
-          Бурение
+          Геодезия
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/plastering.svg" alt="" />
+          <img src="@/assets/img/icons/data.svg" alt="" />
         </template>
         <template v-slot:default>
-          Фасадные работы
+          Экспертиза
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'">
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/roof.svg" alt="" />
+          <img src="@/assets/img/icons/seeds.svg" alt="" />
         </template>
         <template v-slot:default>
-          Крофельные работы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/rope.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Высотные работы
+          Изыскательные работы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_3 grid__column_12-desktop-fhd selling">
-      <h2 class="selling__title">Продажа</h2>
-      <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-        <Button to="/" shape="rounded" borders="outline"
-          >Все фирмы и магазины</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
-      </div>
-    </div>
   </div>
 </template>
 
@@ -738,12 +712,10 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 1fr 1fr;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  @include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr auto;
-  }
+  height: 88vh;
 }
 /*.header_category {
   grid-column: 1/-1;

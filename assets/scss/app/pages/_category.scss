@@ -9,10 +9,14 @@
       height: auto;
       border-radius: 20px;
       padding: 10px;
-      font-size: 1.25rem;
+      font-size: 0.9rem;
+      @include media_screen(desktop-wide) {
+        font-size: 1.25rem;
+      }
     }
   }
   &__title {
     text-align: center;
+    @include text-neon()
   }
 }

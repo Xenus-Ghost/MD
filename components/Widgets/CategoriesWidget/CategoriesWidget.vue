@@ -14,67 +14,67 @@
       </Button>
       <ul class="cat-widget__list">
         <li class="cat-widget__el">
-          <NuxtLink to="/building" class="cat-widget__link">
+          <NuxtLink to="/строительство" class="cat-widget__link">
             Строительство
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/renovation" class="cat-widget__link">
+          <NuxtLink to="/ремонт" class="cat-widget__link">
             Ремонт
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/electric" class="cat-widget__link">
+          <NuxtLink to="/электрика" class="cat-widget__link">
             Электрика
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/plumbing" class="cat-widget__link">
+          <NuxtLink to="/сантехника" class="cat-widget__link">
             Сантехника
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/welding" class="cat-widget__link">
+          <NuxtLink to="/сварка" class="cat-widget__link">
             Сварка
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/designing" class="cat-widget__link">
+          <NuxtLink to="/проектирование" class="cat-widget__link">
             Проектирование
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/roads" class="cat-widget__link">
+          <NuxtLink to="/дороги" class="cat-widget__link">
             Дороги
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/gas" class="cat-widget__link">
+          <NuxtLink to="/газификация" class="cat-widget__link">
             Газификация
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/landscape" class="cat-widget__link">
+          <NuxtLink to="/ландшафтный_дизайн" class="cat-widget__link">
             Ландшафтный дизайн
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/beautification" class="cat-widget__link">
+          <NuxtLink to="/благоустройство" class="cat-widget__link">
             Благоустройство
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/tools" class="cat-widget__link">
+          <NuxtLink to="/инструменты" class="cat-widget__link">
             Инструменты и оборудование
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/stoves" class="cat-widget__link">
+          <NuxtLink to="/печи_и_камины" class="cat-widget__link">
             Печи и камины
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/monolith" class="cat-widget__link">
+          <NuxtLink to="/монолит" class="cat-widget__link">
             Монолит
           </NuxtLink>
         </li>
@@ -126,6 +126,16 @@
         <li class="cat-widget__el">
           <NuxtLink to="/" class="cat-widget__link">
             Клининг
+          </NuxtLink>
+        </li>
+        <li class="cat-widget__el">
+          <NuxtLink to="/" class="cat-widget__link">
+            Выставки
+          </NuxtLink>
+        </li>
+        <li class="cat-widget__el">
+          <NuxtLink to="/" class="cat-widget__link">
+            Форумы
           </NuxtLink>
         </li>
       </ul>
