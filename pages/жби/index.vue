@@ -161,13 +161,37 @@
       </div>
       <div class="careers careers_mats">
         <h2>Все карьеры</h2>
-        <div class="careers__content grid_cols_2">
+        <div class="careers__content grid_cols_4 grid_rows_2">
           <div class="careers__item">
-            <span>Песок</span>
+            <span>Плиты, перекрытия</span>
             <Button shape="rounded" borders="outline">Подробнее</Button>
           </div>
           <div class="careers__item">
-            <span>Песок</span>
+            <span>Фундаментные блоки</span>
+            <Button shape="rounded" borders="outline">Подробнее</Button>
+          </div>
+          <div class="careers__item">
+            <span>Дорожные плиты</span>
+            <Button shape="rounded" borders="outline">Подробнее</Button>
+          </div>
+          <div class="careers__item">
+            <span>Сваи</span>
+            <Button shape="rounded" borders="outline">Подробнее</Button>
+          </div>
+          <div class="careers__item">
+            <span>Элементы лестниц</span>
+            <Button shape="rounded" borders="outline">Подробнее</Button>
+          </div>
+          <div class="careers__item">
+            <span>Ригели</span>
+            <Button shape="rounded" borders="outline">Подробнее</Button>
+          </div>
+          <div class="careers__item">
+            <span>Тротуарная плитка</span>
+            <Button shape="rounded" borders="outline">Подробнее</Button>
+          </div>
+          <div class="careers__item">
+            <span>Бордюры</span>
             <Button shape="rounded" borders="outline">Подробнее</Button>
           </div>
         </div>
@@ -188,6 +212,7 @@ export default {
 @import '~assets/scss/app/index.scss';
 .zhbi__buttons {
   grid-gap: 20px;
+  padding: 20px;
   align-items: center;
   grid-template-rows: auto auto auto;
   justify-content: center;
@@ -204,19 +229,21 @@ export default {
   height: 100%;
   grid-column: 4/10;
   grid-row: 2;
-  border: 2px solid white;
-  border-radius: 4rem;
+  padding: 20px 40px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 3rem;
   $shadow-value: 15px;
   box-shadow: 0 0 $shadow-value 1px #7bd7ff, 0 0 $shadow-value 1px #7bd7ff inset;
   h2 {
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   }
   span {
     text-align: center;
     width: 100%;
   }
   &_mats {
-    grid-column: 2/11;
+    grid-column: 2/12;
     grid-row: 3;
   }
 }
