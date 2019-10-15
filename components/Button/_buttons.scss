@@ -99,6 +99,11 @@ $button-class: '.button';
       $shadow-value: 12px;
       box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
     }
+    &:focus {
+      @include text-neon();
+      $shadow-value: 18px;
+      box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
+    }
   }
   &_neon{
     color: white;

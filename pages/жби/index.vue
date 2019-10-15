@@ -160,7 +160,7 @@
         </div>
       </div>
       <div class="careers careers_mats">
-        <h2>Все карьеры</h2>
+        <h2>ЖБИ материалы Б/У</h2>
         <div class="careers__content grid_cols_4 grid_rows_2">
           <div class="careers__item">
             <span>Плиты, перекрытия</span>
@@ -229,20 +229,55 @@ export default {
   height: 100%;
   grid-column: 4/10;
   grid-row: 2;
-  padding: 20px 40px;
+  padding: 0 20px;
   border: 2px solid rgba(255, 255, 255, 0.75);
-  border-radius: 3rem;
+  border-radius: 4rem;
   $shadow-value: 15px;
   box-shadow: 0 0 $shadow-value 1px #7bd7ff, 0 0 $shadow-value 1px #7bd7ff inset;
+  @include media_screen(desktop-wide) {
+    padding: 0 40px;
+  }
   h2 {
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    margin: 0 65px;
+    padding: 2%;
+    @include media_screen(desktop-wide, max) {
+      font-size: 0.95rem;
+      padding: 1.25%;
+    }
+  }
+  &__content {
+    grid-row-gap: 0.5vw;
+    padding: 10px 5%;
+    @include media_screen(desktop-wide) {
+      grid-row-gap: 30px;
+    }
+  }
+  &__item {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    max-width: 150px;
+    width: 100%;
+    justify-self: center;
+    /deep/ .button {
+      font-weight: normal;
+      @include media_screen(desktop-wide, max) {
+        font-size: 0.75rem;
+      }
+    }
   }
   span {
+    font-size: 0.85rem;
+    font-weight: bold;
     text-align: center;
     width: 100%;
+    @include media_screen(desktop-wide) {
+      font-size: 1.25rem;
+    }
   }
   &_mats {
+    border-radius: 6rem;
     grid-column: 2/12;
     grid-row: 3;
   }

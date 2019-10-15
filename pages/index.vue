@@ -49,7 +49,7 @@
               class="home-page__button button_black-list"
             >
               <template v-slot:icon_left>
-                <img src="~assets/img/icons/list.svg" alt="list" />
+                <img src="~/assets/img/icons/list.svg" alt="list" />
               </template>
               Чёрный список
             </Button>
@@ -140,7 +140,12 @@
         <div class="home-page__category">
           <img src="~assets/img/icons/digger.svg" alt="" />
           <div class="home-page__category-title">Механизация, спецтехника</div>
-          <Button to="/" width="100%" borders="outline" shape="rounded">
+          <Button
+            to="/механизация-спецтехника"
+            width="100%"
+            borders="outline"
+            shape="rounded"
+          >
             Подробнее</Button
           >
           <img class="divider" src="~assets/img/divider.svg" alt="" />
@@ -148,7 +153,12 @@
         <div class="home-page__category">
           <img src="~assets/img/icons/hook.svg" alt="" />
           <div class="home-page__category-title">Снос, демонтаж</div>
-          <Button to="/" width="100%" borders="outline" shape="rounded">
+          <Button
+            to="/снос-демонтаж"
+            width="100%"
+            borders="outline"
+            shape="rounded"
+          >
             Подробнее</Button
           >
           <img class="divider" src="~assets/img/divider.svg" alt="" />
@@ -156,7 +166,12 @@
         <div class="home-page__category">
           <img src="~assets/img/icons/builder.svg" alt="" />
           <div class="home-page__category-title">Фрилансеры</div>
-          <Button to="/" width="100%" borders="outline" shape="rounded">
+          <Button
+            to="/фрилансеры"
+            width="100%"
+            borders="outline"
+            shape="rounded"
+          >
             Подробнее</Button
           >
         </div>
