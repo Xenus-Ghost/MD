@@ -560,7 +560,7 @@
         borders="outline"
         class="grid__column_2"
         height="100%"
-        >Все_фирмы</Button
+        >Все фирмы</Button
       >
     </div>
   </div>

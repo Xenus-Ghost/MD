@@ -1,5 +1,5 @@
 <template>
-  <no-ssr>
+  <client-only>
     <aside>
       <Button class="button_profile-enter">
         Личный кабинет
@@ -43,7 +43,7 @@
         </li>
       </ul>
     </aside>
-  </no-ssr>
+  </client-only>
 </template>
 <script>
 export default {

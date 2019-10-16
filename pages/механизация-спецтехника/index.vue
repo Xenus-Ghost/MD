@@ -251,7 +251,7 @@ export default {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: auto auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   height: 88vh;
@@ -262,10 +262,10 @@ export default {
 .card {
   display: grid;
   grid-template-rows: 1fr auto;
-  grid-gap: 30px;
+  /*grid-gap: 30px;*/
   /*justify-items: center;*/
   padding: 0 20px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 4rem;
   $shadow-value: 15px;
   box-shadow: 0 0 $shadow-value 1px #7bd7ff, 0 0 $shadow-value 1px #7bd7ff inset;
@@ -274,17 +274,48 @@ export default {
   }
   h2 {
     text-align: center;
+    align-self: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    margin: 0 65px;
+    margin: 0 auto;
+    width: 80%;
     padding: 2%;
     @include media_screen(desktop-wide, max) {
       font-size: 0.95rem;
       padding: 1.25%;
     }
   }
+  &__content {
+    grid-column-gap: 30px;
+    grid-row-gap: 10px;
+    padding: 5px 30px;
+    width: 80%;
+    margin: 0 auto;
+    @include media_screen(desktop-wide) {
+      padding: 10px 30px;
+    }
+  }
   &__item {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: minmax(30px, 1fr) 1fr;
+    grid-row-gap: 5px;
+    @include media_screen(desktop-wide) {
+      grid-template-rows: minmax(50px, 1fr) 1fr;
+    }
+    span {
+      font-size: 1rem;
+      @include media_screen(desktop-wide) {
+        font-size: 20px;
+      }
+    }
+    /deep/ .button {
+      align-self: center;
+    }
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    align-self: center;
   }
 }
 </style>

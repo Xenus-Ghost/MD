@@ -25,6 +25,10 @@ body {
 }
 a{
   text-decoration: none;
+  color: white;
+  &:hover {
+    @include text-neon();
+  }
 }
 
 @import "components/index";

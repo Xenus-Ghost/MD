@@ -5,8 +5,12 @@
       <span class="logo__title">Монтаж Демонтаж</span>
     </nuxt-link>
     <nav class="menu__list">
-      <nuxt-link to="/" class="menu__item">О компании</nuxt-link>
-      <nuxt-link to="/" class="menu__item">Контакты</nuxt-link>
+      <span to="/" class="menu__item" @click.prevent="contactsModalOpen">
+        О компании
+      </span>
+      <span to="/" class="menu__item" @click.prevent="aboutModalOpen">
+        Контакты
+      </span>
       <div style="font-size: 0.9rem">
         RU
         <img src="~assets/img/flags/ru.svg" alt="RU" />
@@ -17,7 +21,15 @@
 
 <script>
 export default {
-  name: 'Menu'
+  name: 'Menu',
+  methods: {
+    contactsModalOpen() {
+      this.$emit('contactsModalOpen')
+    },
+    aboutModalOpen() {
+      this.$emit('aboutModalOpen')
+    }
+  }
 }
 </script>
 
@@ -54,8 +66,12 @@ export default {
   &__item {
     color: white;
     font-size: 0.9rem;
+    cursor: pointer;
     @include media_screen(desktop-wide) {
       font-size: 1.25rem;
+    }
+    &:hover {
+      @include text-neon();
     }
   }
 }
