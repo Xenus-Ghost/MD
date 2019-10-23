@@ -1,13 +1,23 @@
 .ad {
+  &__filter {
+
+  }
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 240px;
     grid-gap: 23px 30px;
+    margin-bottom: 70px;
+    @include media_screen(desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include media_screen(desktop-wide) {
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
   }
   &__item {
     display: grid;
-    grid-template-rows: minmax(3fr, 100px) 1fr 1fr 2fr;
+    grid-template-rows: 150px auto auto 25px;
     justify-items: center;
     align-items: center;
     padding: 15px 3px;
@@ -15,17 +25,60 @@
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     border-radius: 50px;
     &_pro {
-      border: 1px solid #7BD7FF;
-      box-shadow: 0 0 5px 0 #7BD7FF,0 0 5px 0 #7BD7FF inset;
+      border: 2px solid #FFF;
+      box-shadow: 0 0 6px 1px #7BD7FF,0 0 6px 1px #7BD7FF inset;
     }
     &_premium {
-      border: 1px solid #FFFFFF;
-      box-shadow: 0 0 5px 0 #FFFFFF, 0 0 5px 0 #FFFFFF;
+      border: 2px solid #FFF;
+      box-shadow: 0 0 6px 1px #FFB800, 0 0 6px 1px #FFB800 inset;
     }
   }
   &__logo {
     object-fit: contain;
     width: 100%;
-    max-height: 100px;
+    height: 100%;
+    padding: 10px;
+    //max-height: 100px;
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  &__caption {
+    font-size: 14px;
+  }
+}
+.ad-filter {
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 17px 80px;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-gap: 30px;
+  align-items: center;
+  @include media_screen(desktop) {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto 25px auto;
+  }
+  &__select {
+    background: rgba(14, 36, 62, 0.4);
+    border: 1.5px solid #FFFFFF;
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  &__option {
+    border: none;
+    //background: rgba(14, 36, 62, 0.4);
+    background: transparent;
+    color: white;
+    padding: 5px;
+    &:hover {
+      cursor: pointer;
+      background: transparent;
+    }
   }
 }

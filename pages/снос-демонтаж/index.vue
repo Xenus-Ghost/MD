@@ -160,7 +160,7 @@
       </template>
     </CategoryHeader>
     <Advertising></Advertising>
-    <h2>Все фирмы</h2>
+    <h2 class="text_center text_neon">Все фирмы</h2>
     <AdList></AdList>
   </div>
 </template>

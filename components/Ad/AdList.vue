@@ -1,8 +1,36 @@
 <template>
   <section class="ad">
-    <div class="ad__filter"></div>
+    <div class="ad__filter ad-filter">
+      <span><b>Сортировать по:</b></span>
+      <label for="">
+        <select name="" class="ad-filter__select">
+          <option value="none" class="ad-filter__option" selected disabled>
+            Адрес
+          </option>
+          <option value="none" class="ad-filter__option">
+            Адрес
+          </option>
+          <option value="none" class="ad-filter__option">
+            Адрес
+          </option>
+        </select>
+      </label>
+      <label for="">
+        <select name="" class="ad-filter__select">
+          <option value="none" class="ad-filter__option" selected disabled>
+            Метро
+          </option>
+          <option value="none" class="ad-filter__option">
+            Метро
+          </option>
+          <option value="none" class="ad-filter__option">
+            Метро
+          </option>
+        </select>
+      </label>
+    </div>
     <div class="ad__list">
-      <AdItem v-for="(ad, i) in ads" :key="i" :adData="ad"></AdItem>
+      <AdItem v-for="(ad, i) in ads" :key="i" :ad-data="ad"></AdItem>
     </div>
   </section>
 </template>
@@ -40,7 +68,19 @@ export default {
         3: {
           title: 'ООО “Альфа”',
           caption: 'Бурение',
-          img: '/img/advertising/3800412.png',
+          img: '/img/ads/riverbed-logo-og-image.png',
+          url: '/'
+        },
+        4: {
+          title: 'ООО “Альфа”',
+          caption: 'Бурение',
+          img: '/img/ads/riverbed-logo-og-image.png',
+          url: '/'
+        },
+        5: {
+          title: 'ООО “Альфа”',
+          caption: 'Бурение',
+          img: '/img/ads/riverbed-logo-og-image.png',
           url: '/'
         }
       }
@@ -52,5 +92,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
 @import 'ad';
 </style>

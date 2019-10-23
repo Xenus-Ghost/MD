@@ -1,6 +1,15 @@
-.text{
-  &_neon{
+.text {
+  &_neon {
     color: white;
-    text-shadow: 1px 1px 2px #7BD7FF, 0 0 1em #7BD7FF;
+    //text-shadow: 1px 1px 2px #7BD7FF, 0 0 1em #7BD7FF;
+    @include text-neon(1);
+    @for $i from 1 through 5 {
+      &_#{$i} {
+        @include text-neon($i)
+      }
+    }
+  }
+  &_center {
+    text-align: center;
   }
 }

@@ -42,4 +42,7 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
+@import 'ad';
+</style>
