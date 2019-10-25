@@ -90,6 +90,7 @@
         </div>
       </template>
     </Modal>
+    <LoginForm />
   </div>
 </template>
 
@@ -97,14 +98,14 @@
 import Menu from './../components/Menu/Menu'
 import CategoriesWidget from './../components/Widgets/CategoriesWidget/CategoriesWidget'
 import ProfileWidget from './../components/Widgets/ProfileWidget/ProfileWidget'
-import Modal from './../components/Modal/Modal'
+// import Modal from './../components/Modal/Modal'
 
 export default {
   components: {
     Menu,
     CategoriesWidget,
-    ProfileWidget,
-    Modal
+    ProfileWidget
+    // Modal
   },
   head() {
     return {

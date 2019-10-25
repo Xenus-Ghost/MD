@@ -1,7 +1,7 @@
 <template>
-  <div class="grid-layout_building">
+  <div class="grid-layout">
     <CategoryHeader>
-      Благоустройство
+      Фрилансеры
       <template v-slot:right_column>
         <svg
           width="479"
@@ -741,8 +741,19 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="6" :col="'12'">
-      <ServiceItem :col="'1'">
+    <ServicesGrid width="100%" :cols="12" :col="'12'">
+      <ServiceItem :col="'2'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/cabinet.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Интерьеры
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/museum.svg" alt="" />
         </template>
@@ -753,121 +764,84 @@
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/idea.svg" alt="" />
+          <img src="@/assets/img/icons/3d.svg" alt="" />
         </template>
         <template v-slot:default>
-          Освещение
+          Визуализация 3D
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/park.svg" alt="" />
+          <img src="@/assets/img/icons/tree.svg" alt="" />
         </template>
         <template v-slot:default>
-          Парки и скверы
+          Ландшафтный дизайн
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/garden.svg" alt="" />
+          <img src="@/assets/img/icons/engineering.svg" alt="" />
         </template>
         <template v-slot:default>
-          Озеленение
+          Инжиниринг, проектирование
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/monitor.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Макетирование
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'" style="grid-column: 4/6">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/graffiti.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Граффити
+        </template>
+        <template v-slot:footer>
+          <Button shape="rounded" borders="outline"> Подробнее</Button>
+        </template>
+      </ServiceItem>
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/billboard.svg" alt="" />
         </template>
         <template v-slot:default>
-          Рекламные конструкции
+          Макеты рекламы
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem :col="'2'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/playground.svg" alt="" />
+          <img src="@/assets/img/icons/paint-palette-and-brush.svg" alt="" />
         </template>
         <template v-slot:default>
-          Детские и спорт площадки
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'" style="grid-column: 2">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/dog.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Площадки для выгула собак
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/fence.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Ограждения и заборы
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/hangar.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Строительство ангаров
-        </template>
-        <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/growth.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Сад и огород
+          Художники
         </template>
         <template v-slot:footer>
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_12 selling">
-      <h2 class="selling__title">Продажа</h2>
-      <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-        <Button to="/" shape="rounded" borders="outline"
-          >Все фирмы и магазины</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
-      </div>
-    </div>
   </div>
 </template>
 
@@ -888,20 +862,20 @@ export default {
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
 @import '~assets/scss/app/pages/_category.scss';
-.grid-layout_building {
+.grid-layout {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr auto auto;
+  grid-template-rows: 2fr auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  @include media_screen(desktop-fhd) {
+  /*@include media_screen(desktop-fhd) {
     grid-template-rows: 2fr 2fr auto;
-  }
+  }*/
 }
 .services {
   /deep/ .services__list_grid {
-    border-radius: 3.5rem;
+    border-radius: 5rem;
     /*padding: 10px 50px;*/
   }
 }

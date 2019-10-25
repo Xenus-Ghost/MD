@@ -1,7 +1,10 @@
 import Vue from 'vue'
-import Button from '~/components/Button/Button'
+import Modal from './../components/Modal/Modal'
+import LoginForm from '~/components/Registration/LoginForm'
 
 Vue.component('Button', Button)
+Vue.component('Modal', Modal)
+Vue.component('LoginForm', LoginForm)
 
 Vue.directive('click-outside', {
   bind() {
