@@ -120,6 +120,11 @@ export default {
       contactsModalShow: false
     }
   },
+  // computed: {
+  //   loginFormShow() {
+  //     return this.$store.state.isAuthFormShow
+  //   }
+  // },
   methods: {
     contactsModalOpen() {
       this.aboutModalShow = true
@@ -127,6 +132,9 @@ export default {
     aboutModalOpen() {
       this.contactsModalShow = true
     }
+    // loginFormOpen() {
+    //   this.$store.commit('loginFormShow')
+    // }
   }
 }
 </script>

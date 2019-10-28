@@ -31,6 +31,7 @@
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
+                @click="authFormOpen"
               >
                 Регистрация
               </Button>
@@ -38,6 +39,7 @@
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
+                @click="$store.commit('authFormOpen')"
               >
                 Вход
               </Button>
@@ -181,6 +183,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import CircleContainer from '~/components/Home/Circle/CircleContainer'
 import CircleItem from '~/components/Home/Circle/CircleItem'
 export default {
@@ -259,6 +262,13 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    authFormOpen() {
+      // this.isAuthFormShow = false
+      this.$store.commit('authFormOpen')
+    },
+    ...mapMutations({})
   }
 }
 </script>
