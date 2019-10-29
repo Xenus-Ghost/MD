@@ -126,6 +126,10 @@ export default {
     },
     aboutModalOpen() {
       this.contactsModalShow = true
+    },
+    authFormOpen() {
+      // this.isAuthFormShow = false
+      this.$store.commit('authFormOpen')
     }
   }
 }

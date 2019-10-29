@@ -22,3 +22,5 @@ Vue.directive('click-outside', {
     event.stopPropagation()
   }
 })
+
+// this.$root.$emit('authFormOpen')

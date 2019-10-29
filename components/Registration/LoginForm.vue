@@ -5,45 +5,49 @@
       <div v-if="formType === 'reg'" class="login-form__title">Регистрация</div>
     </template>
     <template v-slot:body>
-      <div v-if="formType === 'login'" class="login-form">
-        <form action="">
-          <label for="">
-            <input type="email" placeholder="Электронная почта" />
-          </label>
-          <label for="">
-            <input type="password" placeholder="Пароль" />
-            <span>Забыли пароль?</span>
-          </label>
-          <Button shape="rounded" borders="neon">Войти</Button>
-          <nuxt-link to="/" @click.prevent="formType = 'reg'">
-            Зарегистрироваться
-          </nuxt-link>
-        </form>
-      </div>
-      <div v-if="formType === 'reg'" class="login-form">
-        <form action="">
-          <label for="">
-            <input type="text" placeholder="Имя" />
-          </label>
-          <label for="">
-            <input type="text" placeholder="Фамилия" />
-          </label>
-          <label for="">
-            <input type="tel" placeholder="Телефон" />
-          </label>
-          <label for="">
-            <input type="email" placeholder="Электронная почта" />
-          </label>
-          <label for="">
-            <input type="password" placeholder="Пароль" />
-          </label>
-          <label for="">
-            <input type="radio" />
-            Согласен с политикой обработки персональных данных
-          </label>
-          <Button shape="rounded" borders="neon">Зарегистрироваться</Button>
-        </form>
-      </div>
+      <form v-if="formType === 'login'" action="" class="login-form">
+        <label for="" class="grid__column_2">
+          <input type="email" placeholder="Электронная почта" />
+        </label>
+        <label for="" class="grid__column_2">
+          <input type="password" placeholder="Пароль" />
+          <span class="login-form__pass-forgot">Забыли пароль?</span>
+        </label>
+        <Button shape="rounded" borders="neon" class="grid__column_2"
+          >Войти</Button
+        >
+        <nuxt-link
+          to="/"
+          class="login-form__link_reg"
+          @click.native="formToggle('reg')"
+        >
+          Зарегистрироваться
+        </nuxt-link>
+      </form>
+      <form v-if="formType === 'reg'" action="" class="login-form">
+        <label for="" class="grid__column_2">
+          <input type="text" placeholder="Имя" />
+        </label>
+        <label for="" class="grid__column_2">
+          <input type="text" placeholder="Фамилия" />
+        </label>
+        <label for="" class="grid__column_4">
+          <input type="tel" placeholder="Телефон" />
+        </label>
+        <label for="" class="grid__column_2">
+          <input type="email" placeholder="Электронная почта" />
+        </label>
+        <label for="" class="grid__column_2">
+          <input type="password" placeholder="Пароль" />
+        </label>
+        <label for="" class="login-form__politics">
+          <input type="radio" class="login-form__radio" />
+          <span>Согласен с политикой обработки персональных данных</span>
+        </label>
+        <Button shape="rounded" borders="neon" class="grid__column_2"
+          >Зарегистрироваться</Button
+        >
+      </form>
     </template>
   </Modal>
 </template>
@@ -54,7 +58,6 @@ export default {
   data() {
     return {
       isLogged: false,
-      // isAuthFormShow: this.$store.state.isAuthFormShow,
       formType: 'login'
     }
   },
@@ -62,6 +65,11 @@ export default {
     isAuthFormShow() {
       return this.$store.state.isAuthFormShow
     }
+  },
+  mounted() {
+    this.$root.$on('authFormOpen', function() {
+      this.authFormShow()
+    })
   },
   methods: {
     authFormShow() {
@@ -72,9 +80,58 @@ export default {
     authFormClose() {
       // this.isAuthFormShow = false
       this.$store.commit('authFormClose')
+    },
+    formToggle(type = 'reg') {
+      console.log(type)
+      this.formType = type
     }
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.login-form {
+  /*padding: 30px;*/
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  /*flex-direction: column;*/
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  height: 100%;
+  grid-gap: 25px;
+  /deep/ .button {
+    grid-column: 2/4;
+  }
+  &__pass-forgot {
+    display: block;
+    text-align: right;
+    width: 100%;
+    text-decoration: underline dashed;
+    padding: 5px;
+  }
+  &__link_reg {
+    grid-column: 2/4;
+    text-align: center;
+  }
+  &__politics {
+    grid-column: 2/4;
+    display: flex;
+    span {
+      /*font-size: 14px;*/
+      text-align: center;
+    }
+  }
+  &__radio {
+    width: 15px;
+  }
+}
+input {
+  width: 100%;
+  background: rgba(14, 36, 62, 0.4);
+  border: 1.5px solid #ffffff;
+  border-radius: 10px;
+  padding: 8px 15px;
+  color: white;
+}
+</style>

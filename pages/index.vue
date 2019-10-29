@@ -31,7 +31,7 @@
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
-                @click="authFormOpen"
+                @click.native="authFormOpen"
               >
                 Регистрация
               </Button>
@@ -39,7 +39,7 @@
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
-                @click="$store.commit('authFormOpen')"
+                @click.native="$store.commit('authFormOpen')"
               >
                 Вход
               </Button>
@@ -263,6 +263,9 @@ export default {
       }
     }
   },
+  /* mounted() {
+    this.$root.$on('authFormOpen', function (id) {})
+  }, */
   methods: {
     authFormOpen() {
       // this.isAuthFormShow = false

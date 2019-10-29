@@ -1,7 +1,7 @@
 <template>
   <client-only>
     <aside>
-      <Button class="button_profile-enter">
+      <Button class="button_profile-enter" @click.native="authFormOpen">
         Личный кабинет
       </Button>
       <ul class="socials__list">
@@ -47,7 +47,12 @@
 </template>
 <script>
 export default {
-  name: 'ProfileWidget'
+  name: 'ProfileWidget',
+  methods: {
+    authFormOpen() {
+      this.$store.commit('authFormOpen')
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
