@@ -31,7 +31,7 @@
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
-                @click.native="authFormOpen"
+                @click.native="$store.commit('authFormOpen', 'reg')"
               >
                 Регистрация
               </Button>
@@ -39,7 +39,7 @@
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
-                @click.native="$store.commit('authFormOpen')"
+                @click.native="$store.commit('authFormOpen', 'login')"
               >
                 Вход
               </Button>

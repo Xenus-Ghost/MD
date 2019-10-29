@@ -57,13 +57,16 @@ export default {
   name: 'LoginForm',
   data() {
     return {
-      isLogged: false,
-      formType: 'login'
+      isLogged: false
+      // formType: 'login'
     }
   },
   computed: {
     isAuthFormShow() {
       return this.$store.state.isAuthFormShow
+    },
+    formType() {
+      return this.$store.state.authFormType
     }
   },
   mounted() {
@@ -82,8 +85,9 @@ export default {
       this.$store.commit('authFormClose')
     },
     formToggle(type = 'reg') {
-      console.log(type)
-      this.formType = type
+      // console.log(type)
+      // this.formType = type
+      this.$store.commit('authFormOpen', type)
     }
   }
 }
@@ -97,7 +101,7 @@ export default {
   display: grid;
   /*flex-direction: column;*/
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
+  /*grid-auto-rows: 1fr;*/
   height: 100%;
   grid-gap: 25px;
   /deep/ .button {

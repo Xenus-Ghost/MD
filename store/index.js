@@ -1,13 +1,14 @@
 export const state = () => ({
-  isAuthFormShow: false
+  isAuthFormShow: false,
+  authFormType: 'login'
 })
 
 export const mutations = {
-  authFormOpen(state, isAuthFormShow) {
-    console.log('ddd')
+  authFormOpen(state, type = 'login') {
     state.isAuthFormShow = true
+    state.authFormType = type
   },
-  authFormClose(state, isAuthFormShow) {
+  authFormClose(state, type) {
     state.isAuthFormShow = false
   }
 }
