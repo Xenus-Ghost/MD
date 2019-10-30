@@ -49,6 +49,7 @@
               shape="rounded"
               style="align-self: center"
               class="home-page__button button_black-list"
+              @click.native="BlackListOpen"
             >
               <template v-slot:icon_left>
                 <img src="~/assets/img/icons/list.svg" alt="list" />
@@ -179,6 +180,12 @@
         </div>
       </div>
     </div>
+    <BlackList
+      v-if="isBlackListShow"
+      :is-show="isBlackListShow"
+      @close="isBlackListShow = false"
+    >
+    </BlackList>
   </div>
 </template>
 
@@ -186,11 +193,13 @@
 import { mapMutations } from 'vuex'
 import CircleContainer from '~/components/Home/Circle/CircleContainer'
 import CircleItem from '~/components/Home/Circle/CircleItem'
+import BlackList from '~/components/BlackList/BlackList'
 export default {
   layout: 'Home',
   components: {
     CircleContainer,
-    CircleItem
+    CircleItem,
+    BlackList
   },
   data() {
     return {
@@ -260,7 +269,8 @@ export default {
           title: 'Печи и камины',
           icon_url: 'img/categories/15.svg'
         }
-      }
+      },
+      isBlackListShow: false
     }
   },
   /* mounted() {
@@ -270,6 +280,9 @@ export default {
     authFormOpen() {
       // this.isAuthFormShow = false
       this.$store.commit('authFormOpen')
+    },
+    BlackListOpen() {
+      this.isBlackListShow = true
     },
     ...mapMutations({})
   }
