@@ -41,7 +41,7 @@
           <input type="password" placeholder="Пароль" />
         </label>
         <label for="" class="login-form__politics">
-          <input type="radio" class="login-form__radio" />
+          <input type="radio" class="login-form__radio" checked />
           <span>Согласен с политикой обработки персональных данных</span>
         </label>
         <Button shape="rounded" borders="neon" class="grid__column_2"
@@ -128,6 +128,8 @@ export default {
   }
   &__radio {
     width: 15px;
+    background: none;
+    border: 1px solid white;
   }
 }
 input {
