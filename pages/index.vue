@@ -164,6 +164,7 @@
             Подробнее</Button
           >
           <img class="divider" src="~assets/img/divider.svg" alt="" />
+          <img class="divider" src="~assets/img/divider.svg" alt="" />
         </div>
         <div class="home-page__category">
           <img src="~assets/img/icons/builder.svg" alt="" />
@@ -298,12 +299,14 @@ export default {
 }*/
 .home-wrapper {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 40px 2fr 40px 40px auto;
   grid-row-gap: 10px;
   margin-top: 10px;
   /*height: 620px;*/
   height: calc(100vh - 85px);
+  @include media_screen(desktop) {
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 40px 2fr 40px 40px auto;
+  }
   @include media_screen(desktop-wide) {
     grid-template-columns: 1fr 3fr 1fr;
   }
@@ -319,14 +322,19 @@ export default {
   }
 }
 .circle__wrapper {
-  grid-column: 2;
-  grid-row: 1/-2;
+  @include media_screen(desktop) {
+    grid-column: 2;
+    grid-row: 1/-2;
+  }
 }
 .site__logo {
   /*width: 7vw;*/
   width: 116px;
-  max-width: 6.5vw;
+  /*max-width: 6.5vw;*/
   align-self: center;
+  @include media_screen(desktop) {
+    max-width: 6.5vw;
+  }
 }
 .site-title {
   /*margin-top: 0;*/
@@ -398,7 +406,7 @@ export default {
 .home-page__categories {
   display: grid;
   grid-column: 1/-1;
-  grid-row: -1;
+  grid-row: 2;
   grid-template-columns: 1fr;
   @include media_screen(tablet) {
     grid-template-columns: repeat(2, 1fr);
@@ -407,26 +415,32 @@ export default {
     grid-template-columns: repeat(3, 1fr);
   }
   @include media_screen(desktop) {
+    grid-row: -1;
     grid-template-columns: repeat(6, 1fr);
   }
 }
 .home-page__category {
-  padding: 10px;
   padding: 0.15vw 20px;
   position: relative;
-  &:first-child {
-    padding-left: 0;
-  }
-  &:last-child {
-    padding-right: 0;
+  @include media_screen(desktop) {
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
   }
   & > .divider {
-    position: absolute;
-    top: 0;
-    right: -8px;
-    bottom: 0;
-    height: 100%;
-    width: 15px;
+    display: none;
+    @include media_screen(desktop) {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -8px;
+      bottom: 0;
+      height: 100%;
+      width: 15px;
+    }
   }
   & > img {
     width: 100%;
@@ -441,10 +455,13 @@ export default {
     }
   }
   & > .button {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: normal;
-    height: calc(5px + 1.5vw);
     /*max-width: 150px;*/
+    @include media_screen(desktop) {
+      font-size: 0.75rem;
+      height: calc(5px + 1.5vw);
+    }
     @include media_screen(desktop-wide) {
       font-size: 1rem;
       /*height: 35px;*/
@@ -455,12 +472,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   width: 95%;
   margin: 0 auto 0.25vw auto;
   height: calc(34px - 0.25vw);
+  @include media_screen(desktop) {
+    font-size: 0.8rem;
+  }
   @include media_screen(desktop-wide) {
     font-size: 1.15rem;
     height: 55px;
@@ -473,6 +493,9 @@ export default {
   justify-content: center;
   align-items: center;
   /*flex-wrap: wrap;*/
+  @include media_screen(desktop, max) {
+    transform: scale(0.85);
+  }
 }
 .cat-button__image {
   width: 60px;
@@ -499,6 +522,13 @@ export default {
   }
   &:hover {
     @include text-neon(2);
+  }
+}
+.button_aside {
+  @include media_screen(tablet, max) {
+    grid-column: 1 !important;
+    grid-row: unset !important;
+    justify-self: center !important;
   }
 }
 </style>

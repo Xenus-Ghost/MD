@@ -1,4 +1,12 @@
-.circle__item{
+.circle__item {
   border-radius: 50%;
   background: transparent;
+  width: 100px;
+  height: 100px;
+  &:after {
+    padding-bottom: 100%;
+  }
+  &:last-of-type {
+    grid-column: 1/-1;
+  }
 }
