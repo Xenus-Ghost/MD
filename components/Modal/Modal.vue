@@ -21,7 +21,7 @@
               />
             </svg>
           </button>
-          <div class="modal__header" v-if="!!this.$slots.header">
+          <div v-if="!!this.$slots.header" class="modal__header">
             <slot name="header">
               default header
             </slot>

@@ -8,12 +8,15 @@
   bottom: 20%;
   height: 70vh;
   left: 0;
-  display: grid;
+  display: none;
   grid-template-columns: 445px var(--button-width);
   z-index: 200;
   transform: translateX(calc(-100% + var(--button-width)));
   will-change: transform;
   transition: transform ease 0.3s;
+  @include media_screen(tablet) {
+    display: grid;
+  }
   &_active {
     transform: translateX(0);
   }

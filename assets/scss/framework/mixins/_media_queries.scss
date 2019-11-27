@@ -86,3 +86,21 @@
     @content
   }
 }
+
+@mixin on_mobile($type: max) {
+  @include media_screen(phone-large, $type){
+    @content
+  }
+}
+
+@mixin on_tablet($type: min) {
+  @include media_screen(tablet, $type){
+    @content
+  }
+}
+
+@mixin on_desktop($type: min) {
+  @include media_screen(desktop, $type){
+    @content
+  }
+}

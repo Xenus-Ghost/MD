@@ -10,26 +10,20 @@ $screen-breakpoints: (
         "phone": 0px,
         "phone-large": 576px,
         "tablet": 768px,
-        "tablet-wide": 1024px,
         "desktop": 1248px,
         "notebook": 1360px,
         "desktop-wide": 1440px,
-        "desktop-fhd": 1920px,
-        "desktop-qhd": 2560px,
-        "desktop-uhd": 3840px,
+        "desktop-fhd": 1920px
 ) !default;
 //max size of container at every breakpoint
 $container-max-widths: (
         "phone": 100%,
         "phone-large": 540px,
         "tablet": 720px,
-        "tablet-wide": 960px,
         "desktop": 1140px,
         "notebook": 1140px,
         "desktop-wide": 1140px,
-        "desktop-fhd": 1140px,
-        "desktop-qhd": 1140px,
-        "desktop-uhd": 1140px,
+        "desktop-fhd": 1140px
 ) !default;
 
 $grid-columns: 12 !default;

@@ -65,10 +65,13 @@ aside {
   position: fixed;
   top: 150px;
   right: 0;
-  display: grid;
+  display: none;
   grid-gap: 10px;
   grid-template-rows: minmax(220px, 1fr) minmax(180px, 1fr);
   width: var(--button-width);
+  @include media_screen(tablet) {
+    display: grid;
+  }
   @include media_screen(desktop-wide) {
     grid-template-rows: minmax(320px, 1fr) minmax(180px, 1fr);
   }

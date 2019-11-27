@@ -13,3 +13,7 @@
   will-change: filter, color;
   transition: text-shadow .2s ease;
 }
+
+@mixin neon_borders ($shadow-value: 1) {
+  box-shadow: 0 0 #{$shadow-value}px 1px #7BD7FF;
+}

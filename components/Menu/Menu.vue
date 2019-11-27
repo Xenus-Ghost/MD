@@ -4,7 +4,10 @@
       <div class="logo">MD</div>
       <span class="logo__title">Монтаж Демонтаж</span>
     </nuxt-link>
-    <nav class="menu__list">
+    <div class="menu__button_burger" @click="menuToggle">
+      <span class="menu__button_burger-line"></span>
+    </div>
+    <nav class="menu__list" :class="MenuClassList">
       <span to="/" class="menu__item" @click.prevent="contactsModalOpen">
         О компании
       </span>
@@ -21,13 +24,50 @@
 
 <script>
 export default {
-  name: 'Menu',
+  directives: {
+    clickoutside: {
+      bind(el, binding, vnode) {
+        el.clickOutsideEvent = function(event) {
+          // here I check that click was outside the el and his childrens
+          if (!(el === event.target || el.contains(event.target))) {
+            // and if it did, call method provided in attribute value
+            vnode.context[binding.expression](event)
+          }
+        }
+        document.body.addEventListener('click', el.clickOutsideEvent)
+        document.body.addEventListener('touchstart', el.clickOutsideEvent)
+      },
+      unbind(el) {
+        document.body.removeEventListener('click', el.clickOutsideEvent)
+        document.body.removeEventListener('touchstart', el.clickOutsideEvent)
+      },
+      stopProp(event) {
+        event.stopPropagation()
+      }
+    }
+  },
+  data() {
+    return {
+      isShow: false
+    }
+  },
+  computed: {
+    MenuClassList() {
+      const obj = []
+      if (this.isShow) obj.push('menu__list_show')
+      return obj
+    }
+  },
   methods: {
     contactsModalOpen() {
       this.$emit('contactsModalOpen')
     },
     aboutModalOpen() {
       this.$emit('aboutModalOpen')
+    },
+    menuToggle() {
+      // this.isSHow = !this.isSHow
+      this.isShow = !this.isShow
     }
   }
 }
@@ -35,69 +75,5 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/framework/index.scss';
-.menu {
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    grid-template-areas: 'logo . menu';
-    padding: 5px;
-    @include media_screen(desktop) {
-      grid-template-areas: 'logo . menu';
-      /*grid-template-columns: 365px auto 365px;*/
-      grid-template-columns: 1fr minmax(auto, 1fr) 1fr;
-    }
-  }
-  &__logo {
-    display: flex;
-    align-items: center;
-    grid-area: logo;
-    color: white;
-    text-decoration: none;
-  }
-  &__list {
-    width: 100%;
-    grid-area: menu;
-    display: flex;
-    justify-content: space-between;
-    align-self: center;
-    justify-self: flex-end;
-    padding: 15px 15px 15px 25px;
-  }
-  &__item {
-    color: white;
-    font-size: 0.9rem;
-    cursor: pointer;
-    @include media_screen(desktop-wide) {
-      font-size: 1.25rem;
-    }
-    &:hover {
-      @include text-neon();
-    }
-  }
-}
-.logo {
-  font-size: 1.375rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: rgba(14, 36, 62, 0.4);
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 4px 1px #7bd7ff, 0 0 4px 1px #7bd7ff inset;
-  /*filter: drop-shadow(0 0 2px white);*/
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.72),
-    0 0 1em rgba(255, 255, 255, 0.71);
-}
-.logo__title {
-  display: none;
-  font-size: 1.625rem;
-  font-weight: 300;
-  padding: 10px 15px;
-  @include media_screen(desktop) {
-    display: block;
-  }
-}
+@import 'Menu.scss';
 </style>
