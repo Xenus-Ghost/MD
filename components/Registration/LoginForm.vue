@@ -31,7 +31,7 @@
         <label for="" class="grid__column_2">
           <input type="text" placeholder="Фамилия" />
         </label>
-        <label for="" class="grid__column_4">
+        <label for="" class="grid__column_full">
           <input type="tel" placeholder="Телефон" />
         </label>
         <label for="" class="grid__column_2">
@@ -94,18 +94,24 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~assets/scss/framework/index.scss';
 .login-form {
   /*padding: 30px;*/
-  width: 80%;
   margin: 0 auto;
   display: grid;
   /*flex-direction: column;*/
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   /*grid-auto-rows: 1fr;*/
   height: 100%;
   grid-gap: 25px;
+  @include on_tablet() {
+    width: 80%;
+    grid-template-columns: repeat(4, 1fr);
+  }
   /deep/ .button {
-    grid-column: 2/4;
+    @include on_tablet() {
+      grid-column: 2/4;
+    }
   }
   &__pass-forgot {
     display: block;
@@ -115,7 +121,10 @@ export default {
     padding: 5px;
   }
   &__link_reg {
-    grid-column: 2/4;
+    grid-column: 1/-1;
+    @include on_tablet() {
+      grid-column: 2/4;
+    }
     text-align: center;
   }
   &__politics {
@@ -137,7 +146,10 @@ input {
   background: rgba(14, 36, 62, 0.4);
   border: 1.5px solid #ffffff;
   border-radius: 10px;
-  padding: 8px 15px;
+  padding: 12px 20px;
   color: white;
+  @include on_tablet() {
+    padding: 8px 15px;
+  }
 }
 </style>

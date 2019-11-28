@@ -14,5 +14,8 @@
   }
 }
 .grid__column {
-  @include make-grid-column()
+  @include make-grid-column();
+  &_full {
+    grid-column: 1/-1;
+  }
 }

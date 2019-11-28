@@ -20,7 +20,7 @@ $modal: '.modal';
 
   &__container {
     position: relative;
-    width: 740px;
+
     //min-height: 250px;
     margin: 0 auto;
     padding: 10px 5%;
@@ -28,7 +28,11 @@ $modal: '.modal';
     transition: all .3s ease;
     background: rgba(14, 36, 62, 0.7);
     border: 4px solid #7BD7FF;
-    border-radius: 50px;
+    border-radius: 30px;
+    @include on_tablet() {
+      border-radius: 50px;
+      width: 740px;
+    }
     @include media_screen(desktop-wide) {
       padding: 44px 5%;
       width: 970px;

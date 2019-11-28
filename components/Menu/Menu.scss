@@ -73,6 +73,9 @@
     align-self: center;
     justify-self: flex-end;
     padding: 15px 15px 15px 25px;
+    @include on_mobile(){
+      position: fixed;
+    }
     @include on_desktop() {
       //display: flex;
       visibility: visible;
@@ -82,7 +85,6 @@
         //display: flex;
         visibility: visible;
         flex-direction: column;
-        position: fixed;
         top: 65px;
         left: 0;
         width: 100%;
@@ -118,13 +120,16 @@
   /*filter: drop-shadow(0 0 2px white);*/
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.72),
   0 0 1em rgba(255, 255, 255, 0.71);
-}
-.logo__title {
-  display: none;
-  font-size: 1.625rem;
-  font-weight: 300;
-  padding: 10px 15px;
-  @include media_screen(desktop) {
-    display: block;
+  &__title {
+    //display: none;
+    font-size: 1.4rem;
+    font-weight: 300;
+    padding: 10px 15px;
+    /*@include media_screen(desktop) {
+      display: block;
+    }*/
+    @include on_tablet() {
+      font-size: 1.625rem;
+    }
   }
 }
