@@ -3,16 +3,26 @@
     display: grid;
     max-height: 100%;
     grid-gap: 30px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     margin: 0 auto;
+    width: 250px;
+    @include on_tablet() {
+      width: 100%;
+      grid-template-columns: repeat(4, 1fr);
+    }
     .button_shape_rounded {
       height: auto;
       border-radius: 20px;
       padding: 10px;
       font-size: 0.9rem;
+      width: 100%;
+      display: block;
       @include media_screen(desktop-wide) {
         font-size: 1.25rem;
       }
+    }
+    .button__content {
+      text-align: center;
     }
   }
   &__title {

@@ -7,12 +7,18 @@
     <div class="menu__button_burger" @click="menuToggle">
       <span class="menu__button_burger-line"></span>
     </div>
-    <nav class="menu__list" :class="MenuClassList">
+    <nav class="menu__list" :class="MenuClassList" @click="menuToggle">
+      <nuxt-link to="/" class="menu__item menu__item_mobile">
+        Главная
+      </nuxt-link>
       <span to="/" class="menu__item" @click.prevent="contactsModalOpen">
         О компании
       </span>
       <span to="/" class="menu__item" @click.prevent="aboutModalOpen">
         Контакты
+      </span>
+      <span class="menu__item menu__item_mobile" @click="authFormOpen">
+        Личный кабинет
       </span>
       <div style="font-size: 0.9rem">
         RU
@@ -68,6 +74,9 @@ export default {
     menuToggle() {
       // this.isSHow = !this.isSHow
       this.isShow = !this.isShow
+    },
+    authFormOpen() {
+      this.$store.commit('authFormOpen')
     }
   }
 }

@@ -17,5 +17,5 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/framework/index.scss';
-@import 'CircleContainer';
+@import 'Circle';
 </style>

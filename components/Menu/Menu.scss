@@ -75,6 +75,15 @@
     padding: 15px 15px 15px 25px;
     @include on_mobile(){
       position: fixed;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      width: 100%;
+      top: 65px;
+      left: 0;
+      min-height: 50vh;
+      transform: translateY(-100%);
+      background-color: #2161bcdd;
+      opacity: 0;
     }
     @include on_desktop() {
       //display: flex;
@@ -84,24 +93,32 @@
       @include on_mobile() {
         //display: flex;
         visibility: visible;
-        flex-direction: column;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        min-height: 50vh;
-        background-color: #2161bcdd;
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }
   &__item {
     color: white;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     cursor: pointer;
+    @include on_mobile() {
+      text-align: center;
+      @include text-neon();
+    }
+    @include on_tablet() {
+      font-size: 0.9rem;
+    }
     @include media_screen(desktop-wide) {
       font-size: 1.25rem;
     }
     &:hover {
       @include text-neon();
+    }
+    &_mobile {
+      @include on_tablet() {
+        display: none;
+      }
     }
   }
 }

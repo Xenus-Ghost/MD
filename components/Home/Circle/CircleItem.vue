@@ -57,5 +57,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'CircleItem';
+@import '~assets/scss/framework/index.scss';
+@import 'Circle';
 </style>

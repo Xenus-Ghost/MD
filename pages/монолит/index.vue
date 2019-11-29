@@ -532,10 +532,9 @@ export default {
     max-width: 700px;
     max-height: 100%;
     grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    /*@include media_screen(desktop-fhd) {
-      grid-template-columns: repeat(4, 1fr);
-    }*/
+    @include on_tablet() {
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    }
   }
 }
 .services {

@@ -292,24 +292,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/framework/basic';
-/*body {
-  $bg-opacity: 0.8;
-  min-height: 100vh;
-  height: 100%;
-  background: linear-gradient(
-      to bottom,
-      rgba(35, 150, 255, (0.12 * $bg-opacity)) 0%,
-      rgba(0, 55, 106, (0.8 * $bg-opacity)) 73.34%,
-      rgba(0, 0, 0, (0.8 * $bg-opacity)) 100%
-    ),
-    linear-gradient(
-      to top,
-      rgba(0, 110, 213, (0.8 * $bg-opacity)),
-      rgba(0, 110, 213, (0.8 * $bg-opacity))
-    ),
-    url('../assets/img/bg/1.jpg') center no-repeat / cover;
-  background-attachment: fixed;
-}*/
+
 .home-wrapper {
   display: grid;
   grid-row-gap: 10px;
@@ -323,10 +306,6 @@ export default {
   @include media_screen(desktop-wide) {
     grid-template-columns: 1fr 3fr 1fr;
   }
-  /*
-  @include media_screen(desktop-fhd) {
-    height: 900px;
-  }*/
   .button_aside {
     width: 70%;
     @include media_screen(desktop-wide) {
@@ -341,16 +320,13 @@ export default {
   }
 }
 .site__logo {
-  /*width: 7vw;*/
   width: 116px;
-  /*max-width: 6.5vw;*/
   align-self: center;
   @include media_screen(desktop) {
     max-width: 6.5vw;
   }
 }
 .site-title {
-  /*margin-top: 0;*/
   font-size: 1.65rem;
   text-align: center;
   font-weight: 300;
@@ -388,10 +364,8 @@ export default {
 }
 .home-page__button {
   font-size: 0.875rem !important;
-  /*font-size: 0.7rem;*/
   height: 30px;
   width: 115px;
-  /*width: 130px;*/
   margin-bottom: 15px;
   @include media_screen(desktop-wide) {
     font-size: 1.125rem;
@@ -406,8 +380,6 @@ export default {
 }
 .button_black-list {
   width: 150px;
-  /*margin-top: 15px;*/
-  /*width: 190px;*/
   @include media_screen(desktop-wide) {
     width: 215px;
   }
@@ -420,8 +392,9 @@ export default {
   display: grid;
   grid-column: 1/-1;
   grid-row: 2;
-  grid-template-columns: 1fr;
-  @include media_screen(tablet) {
+  /*grid-template-columns: 1fr;*/
+  grid-template-columns: repeat(2, 1fr);
+  @include on_tablet() {
     grid-template-columns: repeat(2, 1fr);
   }
   @include media_screen(tablet-wide) {
@@ -433,9 +406,12 @@ export default {
   }
 }
 .home-page__category {
-  padding: 0.15vw 20px;
+  padding: 5px 5px;
   position: relative;
-  @include media_screen(desktop) {
+  @include on_tablet() {
+    padding: 0.15vw 20px;
+  }
+  @include on_desktop() {
     &:first-child {
       padding-left: 0;
     }
@@ -458,26 +434,27 @@ export default {
   & > img {
     width: 100%;
     object-fit: contain;
-    /*height: 50px;*/
-    height: 35px;
-    /*margin-bottom: 0.25vw;*/
+    height: 45px;
+    @include on_tablet() {
+      height: 35px;
+    }
     @include media_screen(desktop-wide) {
-      /*height: 60px;*/
       margin-bottom: 10px;
       height: 50px;
     }
   }
   & > .button {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: normal;
-    /*max-width: 150px;*/
+    @include on_tablet() {
+      font-size: 0.9rem;
+    }
     @include media_screen(desktop) {
       font-size: 0.75rem;
       height: calc(5px + 1.5vw);
     }
     @include media_screen(desktop-wide) {
       font-size: 1rem;
-      /*height: 35px;*/
     }
   }
 }
@@ -485,12 +462,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: bold;
   text-align: center;
   width: 95%;
   margin: 0 auto 0.25vw auto;
   height: calc(34px - 0.25vw);
+  @include on_tablet() {
+    font-size: 1rem;
+    font-weight: normal;
+  }
   @include media_screen(desktop) {
     font-size: 0.8rem;
   }
@@ -505,10 +486,9 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*flex-wrap: wrap;*/
-  @include media_screen(desktop, max) {
+  /*@include media_screen(desktop, max) {
     transform: scale(0.85);
-  }
+  }*/
 }
 .cat-button__image {
   width: 60px;
@@ -521,7 +501,6 @@ export default {
 }
 .cat-button__title {
   font-size: 0.8rem;
-  /*font-size: 0.6em;*/
   text-align: center;
   line-height: 1;
   @include media_screen(notebook) {

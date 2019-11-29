@@ -1,12 +1,10 @@
 <template>
   <transition name="modal">
     <div class="modal__mask">
-      <div class="modal__wrapper" @click.self="$emit('close')">
+      <div class="modal__wrapper" @click.self="close">
         <div class="modal__container">
-          <button class="modal__button_close" @click="$emit('close')">
+          <button class="modal__button_close" @click="close">
             <svg
-              width="20"
-              height="20"
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -53,9 +51,12 @@ export default {
   methods: {
     show() {
       this.showModal = true
+      document.querySelector('body').classList.add('body-scroll_lock')
     },
     close() {
       this.showModal = false
+      this.$emit('close')
+      document.querySelector('body').classList.remove('body-scroll_lock')
     }
   }
 }

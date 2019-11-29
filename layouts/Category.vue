@@ -123,9 +123,11 @@ export default {
   methods: {
     contactsModalOpen() {
       this.aboutModalShow = true
+      document.querySelector('body').classList.add('body-scroll_lock')
     },
     aboutModalOpen() {
       this.contactsModalShow = true
+      document.querySelector('body').classList.add('body-scroll_lock')
     },
     authFormOpen() {
       // this.isAuthFormShow = false
