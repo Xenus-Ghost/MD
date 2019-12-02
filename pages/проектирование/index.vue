@@ -631,7 +631,12 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" max-width="1070px" :cols="5" :col="'12'">
+    <ServicesGrid
+      :cols="'5_tablet'"
+      :col="'12'"
+      width="100%"
+      max-width="1070px"
+    >
       <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/lawyer.svg" alt="" />

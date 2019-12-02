@@ -1,9 +1,9 @@
 <template>
   <transition name="modal">
     <div class="modal__mask">
-      <div class="modal__wrapper" @click.self="close">
+      <div @click.self="close" class="modal__wrapper">
         <div class="modal__container">
-          <button class="modal__button_close" @click="close">
+          <button @click="close" class="modal__button_close">
             <svg
               viewBox="0 0 20 20"
               fill="none"

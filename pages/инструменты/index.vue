@@ -170,7 +170,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="4" :col="'9'">
+    <ServicesGrid :cols="'4_tablet'" :col="'9'" width="100%">
       <template v-slot:title>
         Продажа
       </template>

@@ -741,7 +741,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="12" :col="'12'">
+    <ServicesGrid :cols="'12_tablet'" :col="'12'" width="100%">
       <ServiceItem :col="'2'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/cabinet.svg" alt="" />

@@ -71,6 +71,11 @@
     & > svg {
       max-width: 100%;
       max-height: 100%;
+      @include on_mobile() {
+        min-height: 200px;
+        width: 100%;
+        max-height: unset;
+      }
     }
   }
 }

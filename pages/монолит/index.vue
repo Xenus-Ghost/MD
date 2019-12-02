@@ -451,7 +451,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="703px" height="auto" :cols="3" :col="'12'">
+    <ServicesGrid :cols="'3_tablet'" :col="'12'" width="703px" height="auto">
       <ServiceItem>
         <template v-slot:icon>
           <img alt="" src="~assets/img/icons/cement-truck.svg" />

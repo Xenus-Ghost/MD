@@ -162,7 +162,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="6" :col="'12'">
+    <ServicesGrid :cols="'6_tablet'" :col="'12'" width="100%">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/museum.svg" alt="" />

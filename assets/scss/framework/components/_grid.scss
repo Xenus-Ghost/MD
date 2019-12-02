@@ -3,7 +3,18 @@
   @for $i from 1 through 12 {
     &_cols_#{$i} {
       display: grid;
-      @include grid_columns($i)
+      @include grid_columns($i);
+      @each $name, $width in $screen-breakpoints {
+        &_#{$name} {
+          $type: min;
+          @if $name == 'phone' {
+            $type: max;
+          }
+          @include media_screen($name,$type) {
+            @include grid_columns($i);
+          }
+        }
+      }
     }
   }
   @for $i from 1 through 12 {

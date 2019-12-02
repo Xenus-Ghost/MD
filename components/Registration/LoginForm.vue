@@ -17,9 +17,9 @@
           >Войти</Button
         >
         <nuxt-link
+          @click.native="formToggle('reg')"
           to="/"
           class="login-form__link_reg"
-          @click.native="formToggle('reg')"
         >
           Зарегистрироваться
         </nuxt-link>

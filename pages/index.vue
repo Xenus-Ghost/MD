@@ -28,28 +28,28 @@
               style="display: flex; justify-content: space-between; margin-bottom: 15px"
             >
               <Button
+                @click.native="$store.commit('authFormOpen', 'reg')"
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
-                @click.native="$store.commit('authFormOpen', 'reg')"
               >
                 Регистрация
               </Button>
               <Button
+                @click.native="$store.commit('authFormOpen', 'login')"
                 borders="outline"
                 shape="rounded"
                 class="home-page__button"
-                @click.native="$store.commit('authFormOpen', 'login')"
               >
                 Вход
               </Button>
             </div>
             <Button
+              @click.native="BlackListOpen"
               borders="outline"
               shape="rounded"
               style="align-self: center"
               class="home-page__button button_black-list"
-              @click.native="BlackListOpen"
             >
               <template v-slot:icon_left>
                 <img src="~/assets/img/icons/list.svg" alt="list" />

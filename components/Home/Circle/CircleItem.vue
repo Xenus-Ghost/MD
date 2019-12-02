@@ -1,16 +1,16 @@
 <template>
   <div class="circle__item">
     <!--    <nuxt-link to="">-->
-    <Button shape="circle" borders="neon" height="100%" width="100%" :to="to">
+    <Button :to="to" shape="circle" borders="neon" height="100%" width="100%">
       <slot></slot>
     </Button>
     <!--    </nuxt-link>-->
 
     <svg
+      :style="styles"
       width="50"
       height="150"
       xmlns="http://www.w3.org/2000/svg"
-      :style="styles"
     >
       <path d="M10 80 Q 95 10 180 80" stroke="white" fill="transparent" />
     </svg>

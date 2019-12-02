@@ -1,7 +1,7 @@
 <template>
   <client-only>
     <aside>
-      <Button class="button_profile-enter" @click.prevent.native="authFormOpen">
+      <Button @click.prevent.native="authFormOpen" class="button_profile-enter">
         Личный кабинет
       </Button>
       <ul class="socials__list">

@@ -1,5 +1,5 @@
 <template>
-  <div class="ad__item" :class="classList">
+  <div :class="classList" class="ad__item">
     <img :src="ad.img" alt="" class="ad__logo" />
     <span class="ad__title">{{ ad.title }}</span>
     <span class="ad__caption">{{ ad.caption }}</span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="service__item" :class="[classes, gridClasses]">
+  <div :class="[classes, gridClasses]" class="service__item">
     <div class="service__icon">
       <slot name="icon"></slot>
     </div>

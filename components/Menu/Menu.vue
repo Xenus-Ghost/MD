@@ -4,20 +4,20 @@
       <div class="logo">MD</div>
       <span class="logo__title">Монтаж Демонтаж</span>
     </nuxt-link>
-    <div class="menu__button_burger" @click="menuToggle">
+    <div @click="menuToggle" class="menu__button_burger">
       <span class="menu__button_burger-line"></span>
     </div>
-    <nav class="menu__list" :class="MenuClassList" @click="menuToggle">
+    <nav :class="MenuClassList" @click="menuToggle" class="menu__list">
       <nuxt-link to="/" class="menu__item menu__item_mobile">
         Главная
       </nuxt-link>
-      <span to="/" class="menu__item" @click.prevent="contactsModalOpen">
+      <span @click.prevent="contactsModalOpen" to="/" class="menu__item">
         О компании
       </span>
-      <span to="/" class="menu__item" @click.prevent="aboutModalOpen">
+      <span @click.prevent="aboutModalOpen" to="/" class="menu__item">
         Контакты
       </span>
-      <span class="menu__item menu__item_mobile" @click="authFormOpen">
+      <span @click="authFormOpen" class="menu__item menu__item_mobile">
         Личный кабинет
       </span>
       <div style="font-size: 0.9rem">

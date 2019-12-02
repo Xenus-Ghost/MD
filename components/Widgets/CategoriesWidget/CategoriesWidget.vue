@@ -1,8 +1,8 @@
 <template>
   <aside
     v-clickoutside="widgetClose"
-    class="cat-widget"
     :class="{ 'cat-widget_active': isShow }"
+    class="cat-widget"
   >
     <!--    <transition name=" cat-widget-fade">-->
     <div class="cat-widget__list-wrapper">
@@ -142,9 +142,9 @@
     </div>
     <!--    </transition>-->
     <Button
+      @click.prevent.native="widgetToggle"
       color="red"
       class="cat-widget__button"
-      @click.prevent.native="widgetToggle"
     >
       Категории фирм
     </Button>

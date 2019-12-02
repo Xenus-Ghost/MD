@@ -120,7 +120,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="970px" :cols="4" :col="'12'">
+    <ServicesGrid :cols="'4_tablet'" :col="'12'" width="970px">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/tree.svg" alt="" />

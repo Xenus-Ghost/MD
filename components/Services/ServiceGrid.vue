@@ -1,14 +1,14 @@
 <template>
-  <div class="services" :class="[classes]">
+  <div :class="[classes]" class="services">
     <h2 class="services__title">
       <slot name="title">
         Услуги
       </slot>
     </h2>
     <div
-      class="services__list_grid"
       :style="[measurableStyles, gridStyles]"
       :class="[gridClasses]"
+      class="services__list_grid"
     >
       <slot></slot>
     </div>

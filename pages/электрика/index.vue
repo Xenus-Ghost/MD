@@ -631,7 +631,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid width="100%" :cols="3" :col="'9'">
+    <ServicesGrid :cols="'3_tablet'" :col="'9'" width="100%">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/wire.svg" alt="" />
@@ -699,7 +699,7 @@
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <ServicesGrid width="100%" :cols="1" :col="'3'">
+    <ServicesGrid :cols="1" :col="'3'" width="100%">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/wire_2.svg" alt="" />
