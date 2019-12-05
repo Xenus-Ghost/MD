@@ -1,7 +1,7 @@
 <template>
   <aside
     v-clickoutside="widgetClose"
-    :class="{ 'cat-widget_active': isShow }"
+    :class="{ 'cat-widget_active': isCategoriesWidgetShow }"
     class="cat-widget"
   >
     <!--    <transition name=" cat-widget-fade">-->
@@ -139,6 +139,10 @@
           </NuxtLink>
         </li>
       </ul>
+      <Button
+        @click.prevent.native="widgetToggle"
+        class="cat-widget__button_close"
+      ></Button>
     </div>
     <!--    </transition>-->
     <Button
@@ -180,14 +184,32 @@ export default {
       isShow: false
     }
   },
+  computed: {
+    isCategoriesWidgetShow() {
+      return this.$store.state.isCategoriesWidgetShow
+    }
+  },
   methods: {
     widgetToggle() {
       this.isShow = !this.isShow
+      if (this.isCategoriesWidgetShow === false) {
+        this.$store.commit('categoriesWidgetOpen')
+        this.isShow = true
+      } else {
+        this.$store.commit('categoriesWidgetClose')
+        this.isShow = false
+      }
     },
     widgetClose() {
       if (this.isShow) {
         this.isShow = false
+        this.$store.commit('categoriesWidgetClose')
       }
+      /* if (this.isCategoriesWidgetShow === true) {
+        this.$store.commit('categoriesWidgetClose')
+      } else {
+        this.$store.commit('categoriesWidgetOpen')
+      } */
     }
   }
 }

@@ -342,7 +342,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <div class="grid__column_12 grid_cols_2" style="grid-gap: 3vw">
+    <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw">
       <div class="сustomers">
         <svg
           width="31"
@@ -490,15 +490,17 @@ export default {
   }
 }
 .сustomers {
-  background: rgba(14, 36, 62, 0.3);
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-  border-top-right-radius: 120px;
-  border-bottom-right-radius: 120px;
   align-self: center;
   padding: 5% 10%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @include on_tablet() {
+    background: rgba(14, 36, 62, 0.3);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    border-top-right-radius: 120px;
+    border-bottom-right-radius: 120px;
+  }
   &__buttons {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -512,14 +514,16 @@ export default {
   }
 }
 .performers {
-  background: rgba(14, 36, 62, 0.3);
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-  border-top-left-radius: 120px;
-  border-bottom-left-radius: 120px;
   align-self: center;
   padding: 5% 10%;
   display: flex;
   align-items: center;
+  @include on_tablet() {
+    background: rgba(14, 36, 62, 0.3);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 120px;
+    border-bottom-left-radius: 120px;
+  }
   &__buttons {
     display: grid;
     grid-template-columns: auto auto;
@@ -541,7 +545,7 @@ export default {
     display: grid;
     max-height: 100%;
     grid-gap: 30px;
-    grid-template-columns: minmax(290px, 1fr);
+    /*grid-template-columns: minmax(290px, 1fr);*/
     max-width: 570px;
   }
 }

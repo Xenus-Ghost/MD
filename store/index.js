@@ -1,6 +1,7 @@
 export const state = () => ({
   isAuthFormShow: false,
-  authFormType: 'login'
+  authFormType: 'login',
+  isCategoriesWidgetShow: false
 })
 
 export const mutations = {
@@ -12,5 +13,13 @@ export const mutations = {
   authFormClose(state, type) {
     state.isAuthFormShow = false
     document.querySelector('body').classList.remove('body-scroll_lock')
+  },
+  categoriesWidgetClose(state) {
+    state.isCategoriesWidgetShow = false
+    document.querySelector('body').classList.remove('body-scroll_lock_mobile')
+  },
+  categoriesWidgetOpen(state) {
+    state.isCategoriesWidgetShow = true
+    document.querySelector('body').classList.add('body-scroll_lock_mobile')
   }
 }

@@ -33,6 +33,11 @@ a{
 
 .body-scroll_lock {
   overflow: hidden;
+  &_mobile {
+    @include on_mobile() {
+      overflow: hidden;
+    }
+  }
 }
 #__layout {
   @include on_mobile() {

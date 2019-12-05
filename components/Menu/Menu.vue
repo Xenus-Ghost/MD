@@ -20,6 +20,9 @@
       <span @click="authFormOpen" class="menu__item menu__item_mobile">
         Личный кабинет
       </span>
+      <span @click="categoriesOpen" class="menu__item menu__item_mobile">
+        Категории
+      </span>
       <div style="font-size: 0.9rem">
         RU
         <img src="~assets/img/flags/ru.svg" alt="RU" />
@@ -77,6 +80,10 @@ export default {
     },
     authFormOpen() {
       this.$store.commit('authFormOpen')
+    },
+    categoriesOpen() {
+      // this.$emit('categoriesOpen')
+      this.$store.commit('categoriesWidgetOpen')
     }
   }
 }

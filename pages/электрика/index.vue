@@ -780,6 +780,9 @@ export default {
     border-radius: 3.5rem;
     padding: 10px 50px;
   }
+  @include on_mobile() {
+    grid-column: 1/-1;
+  }
 }
 /*.services__list_grid {*/
 /*  grid-column: span 8;*/
@@ -791,7 +794,7 @@ export default {
     max-height: 100%;
     grid-gap: 30px;
     /*grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));*/
-    grid-template-columns: repeat(4, 1fr);
+    /*grid-template-columns: repeat(4, 1fr);*/
     /*@include media_screen(desktop-fhd) {
       grid-template-columns: repeat(4, 1fr);
     }*/

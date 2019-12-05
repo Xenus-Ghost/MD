@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat($number, 1fr);
 }
+
 @mixin grid_rows($number:1) {
   display: grid;
   grid-template-rows: repeat($number, 1fr);
@@ -11,16 +12,20 @@
   @for $i from 1 through $grid-columns {
     &_#{$i} {
       @each $name, $width in $screen-breakpoints {
-        @if ($name == 'phone') {
+        /*@if ($name == 'phone') {
           grid-column: span $i;
-        } @else {
-          &-#{$name} {
-            @include media_screen($name) {
-              grid-column: span $i;
-            }
+        } @else {*/
+        &-#{$name} {
+          $type: min;
+          @if ($name == 'phone') {
+            $type: max;
+          }
+          @include media_screen($name, $type) {
+            grid-column: span $i;
           }
         }
       }
+      grid-column: span $i;
     }
   }
 }

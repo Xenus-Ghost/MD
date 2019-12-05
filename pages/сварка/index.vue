@@ -195,7 +195,10 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="3" :col="'12'" width="700">
-      <ServiceItem :col="'1'">
+      <ServiceItem
+        :col="'0'"
+        class="grid__column_1-tablet grid__column_3-phone"
+      >
         <template v-slot:icon>
           <img src="@/assets/img/icons/weld.svg" alt="" />
         </template>
@@ -206,7 +209,10 @@
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem
+        :col="'0'"
+        class=" grid__column_1-tablet grid__column_3-phone "
+      >
         <template v-slot:icon>
           <img src="@/assets/img/icons/pipe.svg" alt="" />
         </template>
@@ -217,7 +223,10 @@
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'">
+      <ServiceItem
+        :col="'0'"
+        class="grid__column_1-tablet grid__column_3-phone "
+      >
         <template v-slot:icon>
           <img src="@/assets/img/icons/ladder.svg" alt="" />
         </template>

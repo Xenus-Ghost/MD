@@ -10,9 +10,7 @@
       <slot name="icon_left"></slot>
     </div>
     <div class="button__content">
-      <slot name="default">
-        Button
-      </slot>
+      <slot name="default"></slot>
     </div>
     <div v-if="hasRightIcon" class="button__icon button__icon_right">
       <slot name="icon_right"></slot>
