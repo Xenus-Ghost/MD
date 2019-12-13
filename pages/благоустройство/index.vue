@@ -229,7 +229,7 @@
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'1'" style="grid-column: 2">
+      <ServiceItem :col="'1'" class="grid__column_offset-2_tablet">
         <template v-slot:icon>
           <img src="@/assets/img/icons/dog.svg" alt="" />
         </template>

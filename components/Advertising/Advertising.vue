@@ -44,10 +44,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
+.advertising {
+  /*overflow-x: hidden;*/
+  @include on_mobile() {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
 .advertising__slider {
   display: flex;
+  overflow-x: auto;
 }
 .advertising__slide {
   padding: 5px;
+  @include on_mobile() {
+    flex: 100%;
+    max-width: 100%;
+  }
 }
 </style>

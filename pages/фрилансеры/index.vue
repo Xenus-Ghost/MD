@@ -808,7 +808,7 @@
           <Button shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-      <ServiceItem :col="'2'" style="grid-column: 4/6">
+      <ServiceItem :col="'2'" class="grid__column_offset-4_tablet">
         <template v-slot:icon>
           <img src="@/assets/img/icons/graffiti.svg" alt="" />
         </template>

@@ -160,7 +160,9 @@
         </svg>
       </template>
     </CategoryHeader>
-    <div class="container grid__column_12 grid_cols_6 buttons_grid">
+    <div
+      class="container grid__column_12 grid_cols_2 grid_cols_4_tablet grid_cols_6_desktop buttons_grid"
+    >
       <Button
         v-for="(cat, i) in categories"
         :key="i"

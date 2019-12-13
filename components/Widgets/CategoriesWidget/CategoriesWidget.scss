@@ -8,14 +8,15 @@
   bottom: 0;
   height: 100vh;
   left: 0;
-  display: grid;
-  grid-template-columns: 1fr;
+  //display: grid;
+  //grid-template-columns: 1fr;
   z-index: 200;
-  transform: translateX(calc(-102%));
+  transform: translateX(calc(-100vw));
   will-change: transform;
   transition: transform ease 0.3s;
   @include on_mobile() {
-    width: 100%;
+    width: 100vw;
+    //display: block;
   }
   @include media_screen(tablet) {
     top: 150px;
@@ -102,8 +103,7 @@ display: none}
 }
 .cat-widget__button_home{
   color: white;
-  width: 380px;
-  width: 23.75rem;
+  width: 280px;
   height: 4.375rem;
   background: rgba(0, 0, 0, 0.3);
   font-size: 1.25rem;
@@ -114,6 +114,10 @@ display: none}
   box-shadow:  none;
   will-change: text-shadow;
   transition: text-shadow .3s ease;
+  @include on_tablet() {
+    width: 380px;
+    width: 23.75rem;
+  }
   &:hover {
     box-shadow:  none;
     @include text-neon(4);

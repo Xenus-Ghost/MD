@@ -407,14 +407,18 @@ export default {
 .grid-layout_mdsp {
   max-height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   height: calc(100vh - 65px);
-  padding-bottom: 0.5vw;
+  padding-bottom: 30px;
+  @include on_tablet() {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding-bottom: 0.5vw;
+  }
 }
 
 .category__header_mdsp {

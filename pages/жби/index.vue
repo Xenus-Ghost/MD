@@ -120,7 +120,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <div class="grid_cols_12 zhbi__buttons">
+    <div class="zhbi__buttons">
       <Button to="/" shape="semi_rounded" borders="outline" class="zhbi__button"
         >Все ЖБИ заводы</Button
       >
@@ -134,16 +134,14 @@
         to="/"
         shape="semi_rounded"
         borders="outline"
-        class="zhbi__button"
-        style="grid-column: span 3"
+        class="zhbi__button_left "
         >Цемент, песчатные смеси</Button
       >
       <Button
         to="/"
         shape="semi_rounded"
         borders="outline"
-        class="zhbi__button"
-        style="grid-column: span 3"
+        class="zhbi__button_right "
         >Кирпич, плитка, бордюры</Button
       >
       <div class="careers">
@@ -161,7 +159,9 @@
       </div>
       <div class="careers careers_mats">
         <h2>ЖБИ материалы Б/У</h2>
-        <div class="careers__content grid_cols_4 grid_rows_2">
+        <div
+          class="careers__content grid_cols_2 grid_cols_4_tablet grid_rows_2"
+        >
           <div class="careers__item">
             <span>Плиты, перекрытия</span>
             <Button shape="rounded" borders="outline">Подробнее</Button>
@@ -211,6 +211,7 @@ export default {
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
 .zhbi__buttons {
+  display: grid;
   grid-gap: 20px;
   padding: 20px;
   align-items: center;
@@ -219,21 +220,43 @@ export default {
   justify-items: center;
   justify-self: center;
   align-self: center;
+  grid-template-columns: repeat(4, 1fr);
+  @include on_tablet() {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 .zhbi__button {
   grid-column: span 4;
   width: 100%;
+  &_left {
+    grid-column: span 4;
+    width: 100%;
+    @include on_tablet() {
+      grid-column: 1/4;
+    }
+  }
+  &_right {
+    grid-column: span 4;
+    width: 100%;
+    @include on_tablet() {
+      grid-column: 10/13;
+    }
+  }
 }
 .careers {
   width: 100%;
   height: 100%;
-  grid-column: 4/10;
-  grid-row: 2;
+  grid-column: 1/-1;
   padding: 0 20px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
-  border-radius: 4rem;
   $shadow-value: 15px;
-  box-shadow: 0 0 $shadow-value 1px #7bd7ff, 0 0 $shadow-value 1px #7bd7ff inset;
+  @include on_tablet() {
+    grid-column: 4/10;
+    grid-row: 2;
+    border-radius: 4rem;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 $shadow-value 1px #7bd7ff,
+      0 0 $shadow-value 1px #7bd7ff inset;
+  }
   @include media_screen(desktop-wide) {
     padding: 0 40px;
   }
@@ -248,8 +271,11 @@ export default {
     }
   }
   &__content {
-    grid-row-gap: 0.5vw;
+    grid-gap: 10px;
     padding: 10px 5%;
+    @include on_tablet() {
+      grid-gap: 0 0.5vw;
+    }
     @include media_screen(desktop-wide) {
       grid-row-gap: 30px;
     }
@@ -277,9 +303,12 @@ export default {
     }
   }
   &_mats {
-    border-radius: 6rem;
-    grid-column: 2/12;
-    grid-row: 3;
+    grid-column: 1/-1;
+    @include on_tablet() {
+      border-radius: 6rem;
+      grid-column: 2/12;
+      grid-row: 3;
+    }
   }
 }
 </style>

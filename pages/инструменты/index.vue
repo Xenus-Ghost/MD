@@ -170,7 +170,11 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'4_tablet'" :col="'9'" width="100%">
+    <ServicesGrid
+      :cols="'4_tablet'"
+      class="grid__column_12 grid__column_9-tablet"
+      width="100%"
+    >
       <template v-slot:title>
         Продажа
       </template>
@@ -219,7 +223,7 @@
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_3 selling">
+    <div class="grid__column_12 grid__column_3-tablet selling">
       <h2 class="selling__title">Услуга</h2>
       <div class="selling__buttons">
         <Button to="/" shape="rounded" borders="neon" class="selling__button">

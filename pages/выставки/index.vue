@@ -130,10 +130,10 @@
     </CategoryHeader>
     <div class="container grid__column_12 grid_cols_6 buttons_grid">
       <Button
-        style="grid-column: 2/6"
         shape="semi_rounded"
         height="100%"
         borders="outline"
+        class="button-wide"
       >
         Строительные достижения Москвы и МО
       </Button>
@@ -255,9 +255,22 @@ export default {
 .buttons_grid {
   grid-gap: 15px;
   grid-auto-rows: 42px;
+  grid-template-columns: repeat(2, 1fr);
+  @include on_tablet() {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include on_desktop() {
+    grid-template-columns: repeat(6, 1fr);
+  }
   @include media_screen(desktop-wide) {
     grid-auto-rows: 90px;
     grid-gap: 30px;
+  }
+}
+.button-wide {
+  grid-column: 1/-1;
+  @include on_desktop() {
+    grid-column: 2/ 6;
   }
 }
 </style>

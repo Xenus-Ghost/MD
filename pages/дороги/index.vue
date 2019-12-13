@@ -350,6 +350,7 @@
           viewBox="0 0 31 150"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          class="сustomers__lines"
         >
           <line
             opacity="0.1"
@@ -428,6 +429,7 @@
           viewBox="0 0 31 150"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          class="performers__lines"
         >
           <line
             opacity="0.1"
@@ -494,12 +496,17 @@ export default {
   padding: 5% 10%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   @include on_tablet() {
+    justify-content: flex-end;
     background: rgba(14, 36, 62, 0.3);
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     border-top-right-radius: 120px;
     border-bottom-right-radius: 120px;
+  }
+  &__lines {
+    @include on_mobile() {
+      display: none;
+    }
   }
   &__buttons {
     display: grid;
@@ -523,6 +530,11 @@ export default {
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 120px;
     border-bottom-left-radius: 120px;
+  }
+  &__lines {
+    @include on_mobile() {
+      display: none;
+    }
   }
   &__buttons {
     display: grid;

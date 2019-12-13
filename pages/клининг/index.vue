@@ -9,7 +9,7 @@
         </div>
       </template>
     </CategoryHeader>
-    <div class="container grid_cols_4 buttons_grid">
+    <div class="container grid_cols_2 grid_cols_4_tablet buttons_grid">
       <Button
         to="все_частники"
         shape="semi_rounded"
@@ -59,14 +59,17 @@ export default {
 }
 .icons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /*grid-template-columns: 1fr 1fr;*/
   align-content: center;
   align-items: center;
   justify-items: center;
-  max-height: 260px;
   /*@include media_screen(desktop-wide) {
     max-height: 300px;
   }*/
+  @include on_tablet() {
+    max-height: 260px;
+    grid-template-columns: 1fr 1fr;
+  }
   img {
     max-width: 400px;
     object-fit: contain;
