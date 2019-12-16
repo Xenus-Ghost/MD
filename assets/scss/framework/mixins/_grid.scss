@@ -11,10 +11,16 @@
 @mixin make-grid-column($grid-columns: 12, $screen-breakpoints:$screen-breakpoints) {
   @for $i from 1 through $grid-columns {
     &_#{$i} {
+      grid-column: span $i;
+    }
+  }
+  @for $i from 1 through $grid-columns {
+    &_#{$i} {
+
       @each $name, $width in $screen-breakpoints {
-        /*@if ($name == 'phone') {
-          grid-column: span $i;
-        } @else {*/
+        //@if ($name == 'phone') {
+        //  grid-column: span $i;
+        //} @else {
         &-#{$name} {
           $type: min;
           @if ($name == 'phone') {
@@ -25,7 +31,10 @@
           }
         }
       }
-      grid-column: span $i;
+      //@include media_screen(phone) {
+
+      //}
+
     }
   }
 }

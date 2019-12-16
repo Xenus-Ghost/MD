@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~assets/scss/framework/index.scss';
+@import '~assets/scss/framework/basic.scss';
 .login-form {
   /*padding: 30px;*/
   margin: 0 auto;

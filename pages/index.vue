@@ -291,7 +291,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/framework/basic';
+@import '~assets/scss/app/index';
 
 .home-wrapper {
   display: grid;

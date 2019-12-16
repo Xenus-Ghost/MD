@@ -168,7 +168,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <div class="card grid__column_6">
+    <div class="card grid__column_12 grid__column_6-tablet">
       <h2>Все фирмы</h2>
       <div class="card__content grid_cols_2">
         <div class="card__item">
@@ -189,7 +189,7 @@
         </div>
       </div>
     </div>
-    <div class="card grid__column_6">
+    <div class="card grid__column_6-tablet grid__column_12">
       <h2>Все частники</h2>
       <div class="card__content grid_cols_2">
         <div class="card__item">
@@ -212,7 +212,7 @@
     </div>
     <div class="card grid__column_12">
       <h2>Продажа строительной техники</h2>
-      <div class="card__content grid_cols_4">
+      <div class="card__content grid_cols_2 grid_cols_4_tablet">
         <div class="card__item">
           <span class="card__title">Строительная техника</span>
           <Button shape="rounded" borders="outline">Подробнее</Button>
@@ -252,9 +252,12 @@ export default {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto auto auto;
-  grid-row-gap: 10px;
+  grid-row-gap: 30px;
   grid-column-gap: 20px;
-  height: 88vh;
+  @include on_tablet() {
+    grid-row-gap: 10px;
+    height: 88vh;
+  }
   @include media_screen(desktop-fhd) {
     grid-template-rows: 2fr 2fr auto;
   }
@@ -265,10 +268,13 @@ export default {
   /*grid-gap: 30px;*/
   /*justify-items: center;*/
   padding: 0 20px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 4rem;
   $shadow-value: 15px;
-  box-shadow: 0 0 $shadow-value 1px #7bd7ff, 0 0 $shadow-value 1px #7bd7ff inset;
+  @include on_tablet() {
+    border-radius: 4rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 $shadow-value 1px #7bd7ff,
+      0 0 $shadow-value 1px #7bd7ff inset;
+  }
   @include media_screen(desktop-wide) {
     padding: 0 40px;
   }
@@ -277,19 +283,30 @@ export default {
     align-self: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     padding: 2%;
+    @include on_tablet() {
+      width: 80%;
+    }
     @include media_screen(desktop-wide, max) {
       font-size: 0.95rem;
       padding: 1.25%;
     }
+    @include on_mobile() {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
   }
   &__content {
-    grid-column-gap: 30px;
+    grid-column-gap: 10px;
     grid-row-gap: 10px;
-    padding: 5px 30px;
-    width: 80%;
+    padding: 5px 10px;
     margin: 0 auto;
+    @include on_tablet() {
+      grid-column-gap: 30px;
+      padding: 5px 30px;
+      width: 80%;
+    }
     @include media_screen(desktop-wide) {
       padding: 10px 30px;
     }

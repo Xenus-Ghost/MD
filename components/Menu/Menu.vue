@@ -90,6 +90,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~assets/scss/framework/index.scss';
+@import '~assets/scss/framework/basic.scss';
 @import 'Menu.scss';
 </style>
