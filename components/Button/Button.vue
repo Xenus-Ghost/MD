@@ -1,7 +1,7 @@
 <template>
   <button
     :is="buttonTag"
-    :type="buttonType"
+    :type="type"
     :style="[measurableStyles, style]"
     :class="[classes]"
     :to="to"

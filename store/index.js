@@ -1,14 +1,20 @@
+// import axios from 'axios'
+
 export const state = () => ({
   isAuthFormShow: false,
   authFormType: 'login',
-  isCategoriesWidgetShow: false
+  isCategoriesWidgetShow: false,
+  redirectTo: ''
+  // user: {}
 })
 
 export const mutations = {
   authFormOpen(state, type = 'login') {
     state.isAuthFormShow = true
     state.authFormType = type
-    document.querySelector('body').classList.add('body-scroll_lock')
+    if (typeof document !== 'undefined') {
+      document.querySelector('body').classList.add('body-scroll_lock')
+    }
   },
   authFormClose(state, type) {
     state.isAuthFormShow = false
@@ -21,5 +27,33 @@ export const mutations = {
   categoriesWidgetOpen(state) {
     state.isCategoriesWidgetShow = true
     document.querySelector('body').classList.add('body-scroll_lock_mobile')
+  },
+  authSaveToken(state, user) {
+    state.user = user
+  },
+  redirectAdd(state, link) {
+    state.redirectTo = link
   }
+  /* SET_USER(state, user) {
+    state.authUser = user
+  } */
+}
+
+export const actions = {
+  /* nuxtServerInit({ commit }, { req }) {
+    if (req.session && req.session.authUser) {
+      commit('SET_USER', req.session.authUser)
+    }
+  },
+  async login({ commit }, { username, password }) {
+    try {
+      const { data } = await axios.post('/api/login', { username, password })
+      commit('SET_USER', data)
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('Bad credentials')
+      }
+      throw error
+    }
+  } */
 }

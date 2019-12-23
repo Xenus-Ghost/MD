@@ -7,13 +7,27 @@
     <template v-slot:body>
       <form v-if="formType === 'login'" action="" class="login-form">
         <label for="" class="grid__column_2">
-          <input type="email" placeholder="Электронная почта" />
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Электронная почта"
+            autocomplete="current-username"
+          />
         </label>
         <label for="" class="grid__column_2">
-          <input type="password" placeholder="Пароль" />
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Пароль"
+            autocomplete="current-password"
+          />
           <span class="login-form__pass-forgot">Забыли пароль?</span>
         </label>
-        <Button shape="rounded" borders="neon" class="grid__column_2"
+        <Button
+          @click.native="login"
+          shape="rounded"
+          borders="neon"
+          class="grid__column_2"
           >Войти</Button
         >
         <nuxt-link
@@ -24,27 +38,46 @@
           Зарегистрироваться
         </nuxt-link>
       </form>
-      <form v-if="formType === 'reg'" action="" class="login-form">
+      <form
+        @submit.prevent="registrationSubmit"
+        v-if="formType === 'reg'"
+        action=""
+        class="login-form"
+      >
         <label for="" class="grid__column_2">
-          <input type="text" placeholder="Имя" />
+          <input v-model="firstName" type="text" placeholder="Имя" />
         </label>
         <label for="" class="grid__column_2">
-          <input type="text" placeholder="Фамилия" />
+          <input v-model="lastName" type="text" placeholder="Фамилия" />
         </label>
         <label for="" class="grid__column_full">
-          <input type="tel" placeholder="Телефон" />
+          <input v-model="phone" type="tel" placeholder="Телефон" />
         </label>
         <label for="" class="grid__column_2">
-          <input type="email" placeholder="Электронная почта" />
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Электронная почта"
+            autocomplete="new-username"
+          />
         </label>
         <label for="" class="grid__column_2">
-          <input type="password" placeholder="Пароль" />
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Пароль"
+            autocomplete="new-password"
+          />
         </label>
         <label for="" class="login-form__politics">
           <input type="radio" class="login-form__radio" checked />
           <span>Согласен с политикой обработки персональных данных</span>
         </label>
-        <Button shape="rounded" borders="neon" class="grid__column_2"
+        <Button
+          type="submit"
+          shape="rounded"
+          borders="neon"
+          class="grid__column_2"
           >Зарегистрироваться</Button
         >
       </form>
@@ -54,10 +87,17 @@
 
 <script>
 export default {
+  middleware: ['auth'],
   name: 'LoginForm',
   data() {
     return {
-      isLogged: false
+      isLogged: false,
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      error: null
       // formType: 'login'
     }
   },
@@ -88,6 +128,55 @@ export default {
       // console.log(type)
       // this.formType = type
       this.$store.commit('authFormOpen', type)
+    },
+    async login() {
+      /* const formData = {
+        email: this.email,
+        password: this.password,
+        crossDomain: true
+      }
+      const { user } = await this.$axios.$post(
+        'https://admin.монтаждемонтаж.рф/api/auth/login',
+        JSON.stringify(formData),
+        {
+          crossDomain: true
+        }
+      )
+      this.$store.commit('authSaveToken', user) */
+      await this.$auth
+        .loginWith('local', {
+          data: {
+            email: this.email,
+            password: this.password
+          }
+        })
+        .then((e) => {
+          this.email = ''
+          this.password = ''
+          this.authFormClose()
+          if (this.$store.state.redirectTo !== '') {
+            this.$router.push(this.$store.state.redirectTo)
+          }
+        })
+        .catch((e) => {
+          this.error = e + ''
+        })
+    },
+    async registrationSubmit() {
+      const formData = {
+        email: this.email,
+        password: this.password,
+        name: this.firstName,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        phone: this.phone
+      }
+      await this.$axios
+        .$post(
+          'https://admin.монтаждемонтаж.рф/api/auth/registration',
+          formData
+        )
+        .then(this.formToggle('login'))
     }
   }
 }

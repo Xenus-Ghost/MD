@@ -45,16 +45,44 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    crossDomain: true
+  },
   /*
    ** Build configuration
    */
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/login',
+            method: 'post',
+            propertyName: 'access_token'
+          },
+          logout: {
+            url:
+              'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/logout',
+            method: 'post'
+          },
+          user: {
+            url: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/me',
+            method: 'post',
+            propertyName: false
+          }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    }
+  },
   build: {
     /*
      ** You can extend webpack config here

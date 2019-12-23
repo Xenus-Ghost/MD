@@ -25,6 +25,7 @@
               монтаждемонтаж.рф</a
             >
             <div
+              v-if="!isLogged"
               style="display: flex; justify-content: space-between; margin-bottom: 15px"
             >
               <Button
@@ -272,6 +273,11 @@ export default {
         }
       },
       isBlackListShow: false
+    }
+  },
+  computed: {
+    isLogged() {
+      return this.$store.state.auth.loggedIn
     }
   },
   /* mounted() {
