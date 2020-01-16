@@ -807,7 +807,9 @@ export default {
   grid-template-rows: 2fr auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  height: 88vh;
+  @include on_tablet() {
+    height: 88vh;
+  }
 }
 /*.header_category {
   grid-column: 1/-1;

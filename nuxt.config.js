@@ -75,7 +75,7 @@ export default {
           user: {
             url: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/me',
             method: 'post',
-            propertyName: false
+            propertyName: 'data'
           }
         }
         // tokenRequired: true,

@@ -50,7 +50,9 @@ export default {
   grid-template-rows: auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  height: calc(100vh - 65px);
+  @include on_tablet() {
+    height: calc(100vh - 65px);
+  }
   padding-bottom: 0.5vw;
   /deep/ .header_category {
     grid-template-rows: minmax(200px, 1fr) auto;

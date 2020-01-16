@@ -4,7 +4,9 @@ export const state = () => ({
   isAuthFormShow: false,
   authFormType: 'login',
   isCategoriesWidgetShow: false,
-  redirectTo: ''
+  redirectTo: '',
+  adCategoriesList: {},
+  evCategoriesList: {}
   // user: {}
 })
 
@@ -33,10 +35,13 @@ export const mutations = {
   },
   redirectAdd(state, link) {
     state.redirectTo = link
+  },
+  getAdCategories(state, data) {
+    state.adCategoriesList = data
+  },
+  getEventsCategories(state, data) {
+    state.evCategoriesList = data
   }
-  /* SET_USER(state, user) {
-    state.authUser = user
-  } */
 }
 
 export const actions = {
@@ -56,4 +61,20 @@ export const actions = {
       throw error
     }
   } */
+  getAdCategories({ commit }) {
+    this.$axios
+      .get('https://admin.монтаждемонтаж.рф/api/advertisement-categories')
+      .then((response) => {
+        // console.log(response.data, this)
+        commit('getAdCategories', response.data.data)
+      })
+  },
+  getEventsCategories({ commit }) {
+    this.$axios
+      .get('https://admin.монтаждемонтаж.рф/api/event-categories')
+      .then((response) => {
+        // console.log(response.data, this)
+        commit('getEventsCategories', response.data.data)
+      })
+  }
 }

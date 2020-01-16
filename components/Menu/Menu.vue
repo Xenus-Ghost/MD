@@ -4,23 +4,32 @@
       <div class="logo">MD</div>
       <span class="logo__title">Монтаж Демонтаж</span>
     </nuxt-link>
-    <div @click="menuToggle" class="menu__button_burger">
+    <div class="menu__button_burger" @click="menuToggle">
       <span class="menu__button_burger-line"></span>
     </div>
-    <nav :class="MenuClassList" @click="menuToggle" class="menu__list">
+    <nav :class="MenuClassList" class="menu__list" @click="menuToggle">
       <nuxt-link to="/" class="menu__item menu__item_mobile">
         Главная
       </nuxt-link>
-      <span @click.prevent="contactsModalOpen" to="/" class="menu__item">
+      <span to="/" class="menu__item" @click.prevent="contactsModalOpen">
         О компании
       </span>
-      <span @click.prevent="aboutModalOpen" to="/" class="menu__item">
+      <span to="/" class="menu__item" @click.prevent="aboutModalOpen">
         Контакты
       </span>
-      <span @click="authFormOpen" class="menu__item menu__item_mobile">
+      <div v-if="this.$auth.loggedIn">
+        <nuxt-link to="/lk">
+          {{ this.$auth.user.name }}
+        </nuxt-link>
+        <span> / </span>
+        <span @click="logout">
+          Выйти
+        </span>
+      </div>
+      <span class="menu__item menu__item_mobile" @click="authFormOpen">
         Личный кабинет
       </span>
-      <span @click="categoriesOpen" class="menu__item menu__item_mobile">
+      <span class="menu__item menu__item_mobile" @click="categoriesOpen">
         Категории
       </span>
       <div style="font-size: 0.9rem">
@@ -84,6 +93,9 @@ export default {
     categoriesOpen() {
       // this.$emit('categoriesOpen')
       this.$store.commit('categoriesWidgetOpen')
+    },
+    async logout() {
+      await this.$auth.logout()
     }
   }
 }

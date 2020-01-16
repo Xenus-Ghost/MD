@@ -24,25 +24,25 @@
           <span class="login-form__pass-forgot">Забыли пароль?</span>
         </label>
         <Button
-          @click.native="login"
           shape="rounded"
           borders="neon"
           class="grid__column_2"
+          @click.native="login"
           >Войти</Button
         >
         <nuxt-link
-          @click.native="formToggle('reg')"
           to="/"
           class="login-form__link_reg"
+          @click.native="formToggle('reg')"
         >
           Зарегистрироваться
         </nuxt-link>
       </form>
       <form
-        @submit.prevent="registrationSubmit"
         v-if="formType === 'reg'"
         action=""
         class="login-form"
+        @submit.prevent="registrationSubmit"
       >
         <label for="" class="grid__column_2">
           <input v-model="firstName" type="text" placeholder="Имя" />
@@ -50,10 +50,13 @@
         <label for="" class="grid__column_2">
           <input v-model="lastName" type="text" placeholder="Фамилия" />
         </label>
-        <label for="" class="grid__column_full">
+        <label for="" class="grid__column_2">
           <input v-model="phone" type="tel" placeholder="Телефон" />
         </label>
         <label for="" class="grid__column_2">
+          <input v-model="name" type="text" placeholder="Имя пользователя" />
+        </label>
+        <label for="" class="grid__column_full">
           <input
             v-model="email"
             type="email"
@@ -66,6 +69,14 @@
             v-model="password"
             type="password"
             placeholder="Пароль"
+            autocomplete="new-password"
+          />
+        </label>
+        <label for="" class="grid__column_2">
+          <input
+            v-model="password_confirmation"
+            type="password"
+            placeholder="Повторите пароль"
             autocomplete="new-password"
           />
         </label>
@@ -93,7 +104,9 @@ export default {
     return {
       isLogged: false,
       email: '',
+      name: '',
       password: '',
+      password_confirmation: '',
       firstName: '',
       lastName: '',
       phone: '',
@@ -129,7 +142,7 @@ export default {
       // this.formType = type
       this.$store.commit('authFormOpen', type)
     },
-    async login() {
+    login() {
       /* const formData = {
         email: this.email,
         password: this.password,
@@ -143,7 +156,7 @@ export default {
         }
       )
       this.$store.commit('authSaveToken', user) */
-      await this.$auth
+      this.$auth
         .loginWith('local', {
           data: {
             email: this.email,
@@ -166,9 +179,10 @@ export default {
       const formData = {
         email: this.email,
         password: this.password,
-        name: this.firstName,
-        firstName: this.firstName,
-        lastName: this.lastName,
+        password_confirmation: this.password_confirmation,
+        name: this.name,
+        first_name: this.firstName,
+        last_name: this.lastName,
         phone: this.phone
       }
       await this.$axios
@@ -228,17 +242,6 @@ export default {
     width: 15px;
     background: none;
     border: 1px solid white;
-  }
-}
-input {
-  width: 100%;
-  background: rgba(14, 36, 62, 0.4);
-  border: 1.5px solid #ffffff;
-  border-radius: 10px;
-  padding: 12px 20px;
-  color: white;
-  @include on_tablet() {
-    padding: 8px 15px;
   }
 }
 </style>

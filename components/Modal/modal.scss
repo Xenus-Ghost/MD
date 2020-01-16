@@ -63,6 +63,8 @@ $modal: '.modal';
   &__body {
     margin: 10px 0;
     font-size: 0.8rem;
+    max-height: 80vh;
+    overflow-y: auto;
     @include on_mobile() {
       text-align: justify;
     }

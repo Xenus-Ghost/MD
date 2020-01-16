@@ -1,11 +1,11 @@
 <template>
-  <Modal v-if="isShow" @close="$emit('close')" class="black-list">
+  <Modal v-if="isShow" class="black-list" @close="$emit('close')">
     <template v-slot:header>
       <Button
-        @click.native="isFormShow = true"
         shape="rounded"
         borders="outline"
         class="black-list__button_show"
+        @click.native="isFormShow = true"
       >
         Пожаловаться
       </Button>
@@ -45,8 +45,8 @@
       </div>
       <Modal
         v-if="isFormShow"
-        @close="isFormShow = false"
         class="black-list__form-modal"
+        @close="isFormShow = false"
       >
         <template v-slot:body>
           <form action="" class="black-list__form">

@@ -223,8 +223,10 @@ export default {
   grid-template-rows: auto auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  height: calc(100vh - 65px);
   padding-bottom: 0.5vw;
+  @include on_tablet() {
+    height: calc(100vh - 65px);
+  }
 }
 .buttons_grid {
   grid-gap: 15px;

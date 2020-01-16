@@ -9,9 +9,9 @@ export default {
     LoginForm
   },
   created() {
+    this.$store.commit('redirectAdd', '/lk')
     this.$router.push('/')
     this.$store.commit('authFormOpen')
-    this.$store.commit('redirectAdd', '/lk')
   }
 }
 </script>

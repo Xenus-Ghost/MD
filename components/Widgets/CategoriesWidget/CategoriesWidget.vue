@@ -140,15 +140,15 @@
         </li>
       </ul>
       <Button
-        @click.prevent.native="widgetToggle"
         class="cat-widget__button_close"
+        @click.prevent.native="widgetToggle"
       ></Button>
     </div>
     <!--    </transition>-->
     <Button
-      @click.prevent.native="widgetToggle"
       color="red"
       class="cat-widget__button"
+      @click.prevent.native="widgetToggle"
     >
       Категории фирм
     </Button>

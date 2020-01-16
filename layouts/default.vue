@@ -102,13 +102,6 @@ export default {
     CategoriesWidget,
     ProfileWidget
   },
-  head() {
-    return {
-      bodyAttrs: {
-        class: 'background_1'
-      }
-    }
-  },
   data() {
     return {
       aboutModalShow: false,
@@ -121,6 +114,13 @@ export default {
     },
     aboutModalOpen() {
       this.contactsModalShow = true
+    }
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'background_1'
+      }
     }
   }
 }

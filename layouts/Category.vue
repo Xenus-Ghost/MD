@@ -107,13 +107,6 @@ export default {
     CategoriesWidget,
     ProfileWidget
   },
-  head() {
-    return {
-      bodyAttrs: {
-        class: 'background_1'
-      }
-    }
-  },
   data() {
     return {
       aboutModalShow: false,
@@ -133,6 +126,13 @@ export default {
       // this.isAuthFormShow = false
       this.$store.commit('authFormOpen')
     }
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'background_1'
+      }
+    }
   }
 }
 </script>
@@ -140,6 +140,9 @@ export default {
 @import '~assets/scss/app/index.scss';
 .layout_category {
   /*max-height: 800px;*/
+  @include on_mobile() {
+    padding-bottom: 15px;
+  }
   @include media_screen(desktop) {
     height: calc(100% - #{$menu-height});
     max-height: 560px;

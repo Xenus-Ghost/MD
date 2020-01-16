@@ -104,13 +104,6 @@ export default {
     CategoriesWidget
     // Modal
   },
-  head() {
-    return {
-      bodyAttrs: {
-        class: 'background_home-page'
-      }
-    }
-  },
   data() {
     return {
       aboutModalShow: false,
@@ -134,6 +127,13 @@ export default {
     // loginFormOpen() {
     //   this.$store.commit('loginFormShow')
     // }
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'background_home-page'
+      }
+    }
   }
 }
 </script>

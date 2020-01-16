@@ -523,7 +523,9 @@ export default {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr auto auto;
   max-height: 100%;
-  height: calc(100vh - 75px);
+  @include on_tablet() {
+    height: calc(100vh - 75px);
+  }
 }
 .selling {
   &__buttons {

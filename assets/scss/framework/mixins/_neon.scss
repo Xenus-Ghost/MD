@@ -1,19 +1,24 @@
-@mixin text-neon($value: 1, $color: #7BD7FF) {
+@mixin text-neon($value: 1, $color: #7bd7ff) {
   //text-shadow: #{$value}px #{$value}px #{$value*2}px $color, 0 0 #{$value}em $color;
   color: white;
   --color1: azure;
   --color2: aqua;
   --color3: dodgerblue;
   --color4: blue;
-  text-shadow:
-    0 0 ( $value * 3px) var(--color1),
-    0 0 ( $value * 6px) var(--color2),
-    0 0 ( $value * 8px) var(--color3),
-    0 0 ( $value * 10px) var(--color4);
+  text-shadow: 0 0 ($value * 3px) var(--color1),
+  0 0 ($value * 6px) var(--color2),
+  0 0 ($value * 8px) var(--color3),
+  0 0 ($value * 10px) var(--color4);
   will-change: filter, color;
   transition: text-shadow .2s ease;
 }
 
-@mixin neon_borders ($shadow-value: 1) {
-  box-shadow: 0 0 #{$shadow-value}px 1px #7BD7FF;
+@mixin neon_borders($shadow-value: 1, $inset: true) {
+  $values: 0 0 #{$shadow-value}px 1px #7bd7ff;
+  @if ($inset == true) {
+    box-shadow: $values, $values inset;
+  }
+  @else {
+    box-shadow: $values;
+  }
 }

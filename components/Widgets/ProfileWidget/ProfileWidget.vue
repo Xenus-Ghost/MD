@@ -1,7 +1,10 @@
 <template>
   <client-only>
     <aside>
-      <Button @click.prevent.native="authFormOpen" class="button_profile-enter">
+      <Button
+        class="button_profile-enter"
+        @click.prevent.native="profileButtonClick"
+      >
         Личный кабинет
       </Button>
       <ul class="socials__list">
@@ -51,6 +54,13 @@ export default {
   methods: {
     authFormOpen() {
       this.$store.commit('authFormOpen')
+    },
+    profileButtonClick() {
+      if (this.$store.state.auth.loggedIn) {
+        this.$router.push('/lk')
+      } else {
+        this.authFormOpen()
+      }
     }
   }
 }

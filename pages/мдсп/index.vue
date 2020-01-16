@@ -412,8 +412,10 @@ export default {
   align-items: center;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  height: calc(100vh - 65px);
   padding-bottom: 30px;
+  @include on_tablet() {
+    height: calc(100vh - 65px);
+  }
   @include on_tablet() {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
