@@ -68,9 +68,7 @@
         >
       </div>
     </div>
-    <Modal v-if="showAdList">
-
-    </Modal>
+    <Modal v-if="showAdList"> </Modal>
   </div>
 </template>
 

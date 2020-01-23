@@ -121,10 +121,6 @@ export default {
     aboutModalOpen() {
       this.contactsModalShow = true
       document.querySelector('body').classList.add('body-scroll_lock')
-    },
-    authFormOpen() {
-      // this.isAuthFormShow = false
-      this.$store.commit('authFormOpen')
     }
   },
   head() {

@@ -1,7 +1,7 @@
 <template>
   <div class="grid-layout_building">
     <CategoryHeader>
-      Печи и камины
+      {{ pageTitle }}
       <template v-slot:right_column>
         <svg
           width="395"
@@ -210,7 +210,9 @@
         </svg>
         <div class="сustomers__buttons">
           <span>Заказчики</span>
-          <Button shape="rounded" borders="outline">Открть список</Button>
+          <Button to="заказчики" shape="rounded" borders="outline">
+            Открть список
+          </Button>
         </div>
       </div>
       <div class="performers">
@@ -236,8 +238,10 @@
         </svg>
         <div class="performers__buttons">
           <span>Исполнители</span>
-          <Button shape="rounded" borders="outline">Частники</Button>
-          <Button shape="rounded" borders="outline">Фирмы</Button>
+          <Button to="частники" shape="rounded" borders="outline">
+            Частники
+          </Button>
+          <Button to="фирмы" shape="rounded" borders="outline">Фирмы</Button>
         </div>
         <svg
           width="31"
@@ -277,27 +281,34 @@
     <div class="container grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
+        <Button to="частники" shape="rounded" borders="outline">
+          Все частники
+        </Button>
+        <Button to="все-фирмы-и-магазины" shape="rounded" borders="outline"
+          >Все фирмы и магазины
+        </Button>
         <Button to="/" shape="rounded" borders="outline"
-          >Все фирмы и магазины</Button
-        >
+          >Все торговые центры
+        </Button>
         <Button to="/" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
+          >Интернет магазины
+        </Button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 export default {
   layout: 'CategoryAlt',
   components: {
     CategoryHeader
+  },
+  computed: {
+    pageTitle() {
+      return this.$route.params.subCategory
+    }
   }
 }
 </script>
@@ -328,6 +339,9 @@ export default {
     border-top-right-radius: 120px;
     border-bottom-right-radius: 120px;
   }
+  @include on_desktop() {
+    grid-column: 1 span;
+  }
   &__lines {
     @include on_mobile() {
       display: none;
@@ -355,6 +369,9 @@ export default {
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 120px;
     border-bottom-left-radius: 120px;
+  }
+  @include on_desktop() {
+    grid-column: 1 span;
   }
   &__lines {
     @include on_mobile() {

@@ -5,6 +5,7 @@
     :style="[measurableStyles, style]"
     :class="[classes]"
     :to="to"
+    :append="append"
   >
     <div v-if="hasLeftIcon" class="button__icon button__icon_left">
       <slot name="icon_left"></slot>
@@ -81,6 +82,9 @@ export default {
       let str = this.tag ? this.tag : 'button'
       str = this.to ? 'nuxt-link' : str
       return str
+    },
+    append() {
+      return !!(this.to && this.to[0] !== '/')
     },
     buttonType() {
       return this.buttonTag !== 'button' ? '' : 'button'

@@ -72,7 +72,8 @@
     justify-content: space-between;
     align-self: center;
     justify-self: flex-end;
-    padding: 15px 15px 15px 25px;
+    //padding: 15px 15px 15px 25px;
+    padding: 15px 5px 15px 5px;
     @include on_mobile(){
       position: fixed;
       flex-direction: column;
@@ -109,9 +110,9 @@
     @include on_tablet() {
       font-size: 0.9rem;
     }
-    @include media_screen(desktop-wide) {
+    /*@include media_screen(desktop-wide) {
       font-size: 1.25rem;
-    }
+    }*/
     &:hover {
       @include text-neon();
     }
@@ -120,6 +121,22 @@
         display: none;
       }
     }
+    &-user {
+      display: flex;
+      flex-direction: column;
+    }
+    &-logout {
+      font-size: .8rem;
+      //color: $color--primary;
+      cursor: pointer;
+      align-self: flex-end;
+      &:hover {
+        @include text-neon()
+      }
+    }
+  }
+  &__username {
+    flex-basis: 60%;
   }
 }
 .logo {

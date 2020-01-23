@@ -72,18 +72,21 @@
     </div>
     <Modal v-if="showModalAdd" @close="modalAddClose">
       <template v-slot:header>
-        <span v-if="ad.paying_type === 1" class="modal__title">
+        <span v-if="ad.account_type_id === 1" class="modal__title">
           Бесплатная публикация
         </span>
-        <span v-if="ad.paying_type === 2" class="modal__title">
+        <span v-if="ad.account_type_id === 2" class="modal__title">
           PRO публикация
         </span>
-        <span v-if="ad.paying_type === 3" class="modal__title">
+        <span v-if="ad.account_type_id === 3" class="modal__title">
           Премиум публикация
         </span>
       </template>
       <template v-slot:body>
-        <form class="advert-form" @submit.prevent="adSubmit">
+        <div v-if="success" class="advert-form__message_success">
+          <h2>Объявление добавлено!</h2>
+        </div>
+        <form v-if="!success" class="advert-form" @submit.prevent="adSubmit">
           <label for="title" class="label grid__column_6">
             <input
               id="title"
@@ -91,15 +94,35 @@
               class="input"
               type="text"
               placeholder="Заголовок"
+              required
             />
           </label>
-          <label for="name" class="label grid__column_6">
+          <label
+            v-if="ad.author_type_id === 2"
+            for="name2"
+            class="label grid__column_6"
+          >
+            <input
+              id="name2"
+              v-model="ad.name"
+              class="input"
+              type="text"
+              placeholder="Название фирмы"
+              required
+            />
+          </label>
+          <label
+            v-if="ad.author_type_id === 1"
+            for="name"
+            class="label grid__column_6"
+          >
             <input
               id="name"
               v-model="ad.name"
               class="input"
               type="text"
-              placeholder="Название фирмы"
+              placeholder="Имя"
+              required
             />
           </label>
           <label for="rootCategory" class="label grid__column_6">
@@ -108,6 +131,7 @@
               v-model="ad.rootCategory"
               name=""
               class="input_select"
+              required
               @change="changeCategory"
             >
               <option selected disabled value="0" class="input_option"
@@ -128,6 +152,7 @@
               v-model="ad.category"
               class="input_select"
               name=""
+              required
             >
               <option selected disabled value="0" class="input_option"
                 >Выберите подкатегорию</option
@@ -148,6 +173,7 @@
               name=""
               rows="10"
               class="input_textarea"
+              required
             >
             Описание  объявления
           </textarea
@@ -160,8 +186,13 @@
               class="input"
               type="tel"
               placeholder="Телефон"
+              required
           /></label>
-          <label for="phone2" class="label grid__column_6">
+          <label
+            v-if="ad.account_type_id === 3"
+            for="phone2"
+            class="label grid__column_6"
+          >
             <input
               id="phone2"
               v-model="ad.phone.second"
@@ -169,7 +200,11 @@
               type="tel"
               placeholder="Телефон"
           /></label>
-          <label for="phone3" class="label grid__column_6">
+          <label
+            v-if="ad.account_type_id === 3"
+            for="phone3"
+            class="label grid__column_6"
+          >
             <input
               id="phone3"
               v-model="ad.phone.third"
@@ -178,7 +213,7 @@
               placeholder="Телефон"
           /></label>
           <label
-            v-if="ad.paying_type === 3"
+            v-if="ad.account_type_id === 3"
             for="website"
             class="label grid__column_3"
           >
@@ -190,7 +225,11 @@
               placeholder="Ссылка на вебсайт"
             />
           </label>
-          <label for="vk" class="label grid__column_3">
+          <label
+            v-if="ad.account_type_id === 3"
+            for="vk"
+            class="label grid__column_3"
+          >
             <input
               id="vk"
               v-model="ad.socials.vk"
@@ -199,7 +238,11 @@
               placeholder="ссылка на сообщество VK"
             />
           </label>
-          <label for="ok" class="label grid__column_3">
+          <label
+            v-if="ad.account_type_id === 3"
+            for="ok"
+            class="label grid__column_3"
+          >
             <input
               id="ok"
               v-model="ad.socials.ok"
@@ -208,7 +251,11 @@
               placeholder="ссылка на сообщество OK"
             />
           </label>
-          <label for="ig" class="label grid__column_3">
+          <label
+            v-if="ad.account_type_id === 3"
+            for="ig"
+            class="label grid__column_3"
+          >
             <input
               id="ig"
               v-model="ad.socials.ig"
@@ -217,7 +264,11 @@
               placeholder="ссылка на Instagram"
             />
           </label>
-          <label for="fb" class="label grid__column_3">
+          <label
+            v-if="ad.account_type_id === 3"
+            for="fb"
+            class="label grid__column_3"
+          >
             <input
               id="fb"
               v-model="ad.socials.fb"
@@ -226,13 +277,19 @@
               placeholder="ссылка на сообщество FB"
             />
           </label>
-          <label for="address" class="label grid__column_3"
-            ><input
+          <client-only placeholder="Loading...">
+            <div v-if="1 === 0" class="grid__column_3">
+              <FileUploader></FileUploader>
+            </div>
+          </client-only>
+          <label for="address" class="label grid__column_3">
+            <input
               id="address"
               v-model="ad.address"
               class="input"
               type="tel"
               placeholder="Адрес"
+              required
           /></label>
           <label for="metro" class="label grid__column_3"
             ><input
@@ -241,6 +298,7 @@
               class="input"
               type="tel"
               placeholder="Метро"
+              required
           /></label>
           <label for="start_time" class="label grid__column_3">
             <input
@@ -261,7 +319,7 @@
             />
           </label>
           <label
-            v-show="ad.paying_type === 3"
+            v-show="ad.account_type_id === 3"
             for="period"
             class="label grid__column_3"
           >
@@ -280,6 +338,20 @@
           <Button type="submit">
             Опубликовать
           </Button>
+          <div v-if="errors" class="grid__column_3 advert-form__messages">
+            <span class="advert-form__messages-title">
+              Ошибка
+            </span>
+            <ul class="messages-list">
+              <li
+                v-for="(item, j) in errors"
+                :key="j"
+                class="messages-list__element_error"
+              >
+                {{ item[0] }}
+              </li>
+            </ul>
+          </div>
         </form>
       </template>
       <template v-slot:footer></template>
@@ -288,27 +360,31 @@
 </template>
 
 <script>
-import CategoryHeader from '@/components/Category/Header/CategoryHeader'
-import Card from '@/components/Card/Card'
-
+// import UploadImage from 'vue-upload-image'
+import CategoryHeader from '@/components/Category'
+import Card from '@/components/Card'
+import FileUploader from '@/components/FileUploader'
 export default {
   middleware: ['auth'],
   name: 'Index',
   layout: 'Cabinet',
   components: {
     CategoryHeader,
-    Card
+    Card,
+    FileUploader
   },
   data() {
     return {
       showModalAdd: false,
       data: this.$auth,
-      user: this.$auth.user,
+      user: this.$auth.$state.user,
+      errors: null,
+      success: null,
       ad: {
-        author_id: this.$auth.user.id,
+        author_id: this.$auth.$state.user.id,
         type_id: 1,
-        name: '',
-        title: '',
+        name: null,
+        title: null,
         rootCategory: 0,
         category: 0,
         // subcat: 0,
@@ -322,11 +398,11 @@ export default {
         start_time: new Date().toISOString().substr(0, 10),
         end_time: this.endTime,
         period: 1,
-        website: '',
-        ticker: '',
+        website: null,
+        ticker: null,
         status_id: 1,
         author_type_id: 1,
-        paying_type: 1
+        account_type_id: 1
       },
       adSubCategories: []
       // adCategoriesList: []
@@ -354,28 +430,41 @@ export default {
     } */
   },
   created() {
-    this.$store.dispatch('getAdCategories')
+    console.log(this.$axios)
+    this.$http = this.$axios
   },
+  /* created() {
+    this.$store.dispatch('getAdCategories')
+  }, */
   methods: {
     modalAddOpen(type, ownership) {
-      this.ad.paying_type = type
+      this.ad.account_type_id = type
       this.ad.author_type_id = ownership
       this.showModalAdd = true
     },
     modalAddClose() {
       this.showModalAdd = false
     },
-    adSubmit() {
+    async adSubmit() {
       const formData = this.ad
-      if (formData.paying_type === 1) {
+      if (formData.account_type_id === 1) {
         // delete formData.end_time
         delete formData.website
         // delete formData.phone
       }
-      this.$axios.$post(
-        'https://admin.монтаждемонтаж.рф/api/advertisements',
-        formData
-      )
+      await this.$axios
+        .$post(
+          'https://admin.монтаждемонтаж.рф/api/admin/advertisements',
+          formData
+        )
+        .then((response) => {
+          this.success = true
+          // setTimeout(this.modalAddClose(), 2500)
+        })
+        .catch((error) => {
+          // console.error(error.response)
+          this.errors = error.response.data.errors
+        })
     },
     changeCategory() {
       const resultSubcat = []
@@ -396,6 +485,30 @@ export default {
       const endDate = date.toISOString().split('T')[0]
       this.ad.end_time = endDate
     }
+    /* uploadImageSuccess(result) {
+      // result[0] // FormData
+      // result[1] // response
+      console.log(result)
+    },
+    uploadImageLoaded(image) {
+      // image.name || image.file
+      console.log(image)
+    },
+    uploadImageClicked(image) {
+      // image.name || image.file
+      console.log(image)
+    },
+    uploadImageRemoved(image) {
+      // image.name || image.file
+      console.log(image)
+    },
+    uploadImageSubmit(images) {},
+    uploadImageAttempt(image) {
+      console.log(image)
+    },
+    uploadImageFailure(image) {
+      console.log(image)
+    } */
   }
 }
 </script>
@@ -484,6 +597,21 @@ export default {
   &:after {
     display: block;
     content: ' мес.';
+  }
+}
+.advert-form__messages-title {
+  color: orangered;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.messages-list {
+  list-style: none;
+  &__element_error {
+    padding: 5px;
+    color: orangered;
+    &:before {
+      display: none;
+    }
   }
 }
 </style>

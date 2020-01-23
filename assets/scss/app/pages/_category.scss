@@ -30,3 +30,15 @@
     @include text-neon()
   }
 }
+
+.grid-layout_ads {
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 20px;
+  /*@include on_tablet() {
+    height: 88vh;
+  }*/
+}

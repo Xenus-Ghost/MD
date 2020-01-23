@@ -5,8 +5,35 @@ export const state = () => ({
   authFormType: 'login',
   isCategoriesWidgetShow: false,
   redirectTo: '',
-  adCategoriesList: {},
-  evCategoriesList: {}
+  adCategoriesList: [
+    {
+      parent_id: null,
+      service_title: 'Строительство',
+      id: 1
+    },
+    {
+      id: 2,
+      service_title: 'Кладочные работы',
+      parent_id: 1
+    },
+    {
+      id: 3,
+      service_title: 'Земляные работы',
+      parent_id: 1
+    }
+  ],
+  evCategoriesList: {},
+  isAdModalOpen: false,
+  adModalData: {},
+  navigation: {
+    links: {
+      current: null,
+      first: null,
+      prev: null,
+      next: null,
+      last: null
+    }
+  }
   // user: {}
 })
 
@@ -41,26 +68,19 @@ export const mutations = {
   },
   getEventsCategories(state, data) {
     state.evCategoriesList = data
+  },
+  adModalOpen(state, data) {
+    state.isAdModalOpen = true
+  },
+  adModalClose(state) {
+    state.isAdModalOpen = false
+  },
+  adDataAdd(state, data) {
+    state.adModalData = data
   }
 }
 
 export const actions = {
-  /* nuxtServerInit({ commit }, { req }) {
-    if (req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
-    }
-  },
-  async login({ commit }, { username, password }) {
-    try {
-      const { data } = await axios.post('/api/login', { username, password })
-      commit('SET_USER', data)
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        throw new Error('Bad credentials')
-      }
-      throw error
-    }
-  } */
   getAdCategories({ commit }) {
     this.$axios
       .get('https://admin.монтаждемонтаж.рф/api/advertisement-categories')
@@ -76,5 +96,12 @@ export const actions = {
         // console.log(response.data, this)
         commit('getEventsCategories', response.data.data)
       })
+  },
+  adModalOpen({ commit }, data) {
+    commit('adModalOpen')
+    commit('adDataAdd', data)
+  },
+  adModalClose({ commit }) {
+    commit('adModalClose')
   }
 }

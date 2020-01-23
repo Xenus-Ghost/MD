@@ -1,10 +1,8 @@
 @mixin grid_columns($number:1) {
-  display: grid;
   grid-template-columns: repeat($number, 1fr);
 }
 
 @mixin grid_rows($number:1) {
-  display: grid;
   grid-template-rows: repeat($number, 1fr);
 }
 

@@ -3,6 +3,9 @@
     <template v-slot:header>
       <div v-if="formType === 'login'" class="login-form__title">Вход</div>
       <div v-if="formType === 'reg'" class="login-form__title">Регистрация</div>
+      <div v-if="formType === 'email-verify'" class="login-form__title">
+        Успешно!
+      </div>
     </template>
     <template v-slot:body>
       <form v-if="formType === 'login'" action="" class="login-form">
@@ -37,6 +40,7 @@
         >
           Зарегистрироваться
         </nuxt-link>
+        <div v-if="error" class="login-form__message_error">{{ error }}</div>
       </form>
       <form
         v-if="formType === 'reg'"
@@ -53,10 +57,10 @@
         <label for="" class="grid__column_2">
           <input v-model="phone" type="tel" placeholder="Телефон" />
         </label>
-        <label for="" class="grid__column_2">
+        <!--<label for="" class="grid__column_2">
           <input v-model="name" type="text" placeholder="Имя пользователя" />
-        </label>
-        <label for="" class="grid__column_full">
+        </label>-->
+        <label for="" class="grid__column_2">
           <input
             v-model="email"
             type="email"
@@ -91,7 +95,12 @@
           class="grid__column_2"
           >Зарегистрироваться</Button
         >
+        <div v-if="error" class="login-form__message_error">{{ error }}</div>
       </form>
+      <div v-if="formType === 'email-verify'">
+        <p>Благодарим за регистрацию!</p>
+        <p>На ваш email отправлено письмо с подтверждением</p>
+      </div>
     </template>
   </Modal>
 </template>
@@ -104,7 +113,7 @@ export default {
     return {
       isLogged: false,
       email: '',
-      name: '',
+      // name: '',
       password: '',
       password_confirmation: '',
       firstName: '',
@@ -142,7 +151,7 @@ export default {
       // this.formType = type
       this.$store.commit('authFormOpen', type)
     },
-    login() {
+    login(autoClose = true, sendverificationEmail = false) {
       /* const formData = {
         email: this.email,
         password: this.password,
@@ -166,13 +175,19 @@ export default {
         .then((e) => {
           this.email = ''
           this.password = ''
-          this.authFormClose()
+          if (autoClose) {
+            setTimeout(this.authFormClose(), 100)
+          }
           if (this.$store.state.redirectTo !== '') {
             this.$router.push(this.$store.state.redirectTo)
           }
+          if (sendverificationEmail) {
+            this.send()
+          }
         })
         .catch((e) => {
-          this.error = e + ''
+          // this.error = e + ''
+          this.error = 'Введены неверные данные'
         })
     },
     async registrationSubmit() {
@@ -190,7 +205,33 @@ export default {
           'https://admin.монтаждемонтаж.рф/api/auth/registration',
           formData
         )
-        .then(this.formToggle('login'))
+        .then((e) => {
+          this.login(false, true)
+          this.formToggle('email-verify')
+          setTimeout(this.authFormClose(), 450)
+          setTimeout(this.$router.push('/lk'), 500)
+          // console.log(this.$auth.loggedIn)
+          // this.send()
+          console.debug(e)
+        })
+        .catch((e) => {
+          console.debug(e.response)
+          // this.error = e.response.data.message
+          this.error = 'Введены неверные данные'
+        })
+    },
+    async send() {
+      await this.$axios
+        .$post(
+          'https://admin.монтаждемонтаж.рф/api/auth/email-verification/send',
+          {
+            handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify'
+          }
+        )
+        .then((e) => {
+          this.result = ''
+          this.error = ''
+        })
     }
   }
 }
@@ -242,6 +283,13 @@ export default {
     width: 15px;
     background: none;
     border: 1px solid white;
+  }
+  &__message_error {
+    grid-column: 1/-1;
+    color: #f32;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
   }
 }
 </style>

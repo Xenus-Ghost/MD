@@ -17,6 +17,13 @@
     @include media_screen(desktop-wide) {
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
+
+    &_private {
+      grid-auto-rows: 140px;
+      @include on_desktop() {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   }
   &__item {
     display: grid;
@@ -34,6 +41,23 @@
     &_premium {
       border: 2px solid #FFF;
       box-shadow: 0 0 6px 1px #FFB800, 0 0 6px 1px #FFB800 inset;
+    }
+
+    &_private {
+      height: 140px;
+      padding-left: 26px;
+      grid-template-columns: 70px 1fr;
+      grid-template-rows: 38px 17px auto;
+      grid-gap: 10px 20px;
+      justify-items: left;
+      box-shadow: 0 0 8px 6px rgba(14, 36, 62, 0.3);
+      .ad__title {
+        font-size: 1rem;
+        text-align: left;
+      }
+      .ad__logo {
+        grid-row: 1/-1;
+      }
     }
   }
   &__logo {
@@ -86,5 +110,33 @@
       cursor: pointer;
       background: transparent;
     }
+  }
+}
+.ad-modal {
+  &__id {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    &_muted {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      color: #5F5F5F;
+    }
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  &__name {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  &__description-header {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  &__description {
+    font-weight: normal;
   }
 }

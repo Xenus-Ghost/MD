@@ -17,12 +17,16 @@
       <span to="/" class="menu__item" @click.prevent="aboutModalOpen">
         Контакты
       </span>
-      <div v-if="this.$auth.loggedIn">
-        <nuxt-link to="/lk">
-          {{ this.$auth.user.name }}
+      <div v-if="isLogged" class="menu__item-user">
+        <nuxt-link to="/lk" class="menu__username">
+          {{
+            this.$store.state.auth.user.first_name
+              ? this.$store.state.auth.user.first_name
+              : this.$store.state.auth.user.email
+          }}
         </nuxt-link>
-        <span> / </span>
-        <span @click="logout">
+        <!--        <span> / </span>-->
+        <span class="menu__item-logout" title="Выйти" @click="logout">
           Выйти
         </span>
       </div>
@@ -74,6 +78,9 @@ export default {
       const obj = []
       if (this.isShow) obj.push('menu__list_show')
       return obj
+    },
+    isLogged() {
+      return this.$auth.loggedIn
     }
   },
   methods: {

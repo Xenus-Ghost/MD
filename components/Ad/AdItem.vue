@@ -1,9 +1,16 @@
 <template>
   <div :class="classList" class="ad__item">
     <img :src="ad.img" alt="" class="ad__logo" />
+    <span v-if="ad.name" class="ad__name">{{ ad.name }}</span>
     <span class="ad__title">{{ ad.title }}</span>
-    <span class="ad__caption">{{ ad.caption }}</span>
-    <Button :to="ad.url" shape="rounded" borders="outline">Открыть</Button>
+    <span v-if="ad.caption" class="ad__caption">{{ ad.caption }}</span>
+    <Button
+      :to="ad.url"
+      shape="rounded"
+      borders="outline"
+      @click.native="adOpen"
+      >Открыть</Button
+    >
   </div>
 </template>
 
@@ -16,6 +23,9 @@ export default {
       default: () => {
         return {}
       }
+    },
+    privateAd: {
+      type: Boolean
     }
   },
   computed: {
@@ -27,8 +37,16 @@ export default {
         obj.img = ''
       }
       obj.ad_type = this.adData.ad_type ? this.adData.ad_type : ''
+      if (this.adData.id) obj.id = this.adData.id
       if (this.adData.title) obj.title = this.adData.title
+      if (this.adData.name) obj.name = this.adData.name
       if (this.adData.caption) obj.caption = this.adData.caption
+      if (this.adData.description) obj.description = this.adData.description
+      if (this.adData.address) obj.address = this.adData.address
+      if (this.adData.website) obj.website = this.adData.website
+      if (this.adData.phone && this.adData.phone.length > 0) {
+        obj.phone = this.adData.phone
+      }
       if (this.adData.url) obj.url = this.adData.url
       return obj
     },
@@ -36,7 +54,13 @@ export default {
       const arr = []
       if (this.ad.ad_type === 'pro' || this.ad.ad_type === 'premium')
         arr.push('ad__item_' + this.ad.ad_type)
+      if (this.privateAd) arr.push('ad__item_private')
       return arr
+    }
+  },
+  methods: {
+    adOpen() {
+      this.$store.dispatch('adModalOpen', this.ad)
     }
   }
 }

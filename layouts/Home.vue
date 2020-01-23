@@ -98,14 +98,12 @@
 import Menu from './../components/Menu/Menu'
 import CategoriesWidget from './../components/Widgets/CategoriesWidget/CategoriesWidget'
 import ProfileWidget from './../components/Widgets/ProfileWidget/ProfileWidget'
-// import Modal from './../components/Modal/Modal'
 
 export default {
   components: {
     Menu,
     CategoriesWidget,
     ProfileWidget
-    // Modal
   },
   data() {
     return {
@@ -127,9 +125,6 @@ export default {
       this.contactsModalShow = true
       document.querySelector('body').classList.add('body-scroll_lock')
     }
-    // loginFormOpen() {
-    //   this.$store.commit('loginFormShow')
-    // }
   },
   head() {
     return {

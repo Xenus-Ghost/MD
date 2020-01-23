@@ -1,7 +1,7 @@
 <template>
-  <div class="grid-layout">
+  <div class="grid-layout_ads">
     <CategoryHeader>
-      Снос и демонтаж
+      Частники
       <template v-slot:right_column>
         <svg
           width="395"
@@ -161,12 +161,12 @@
     </CategoryHeader>
     <Advertising></Advertising>
     <h2 class="text_center text_neon">Все фирмы</h2>
-    <AdList></AdList>
+    <AdList private-ad></AdList>
   </div>
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising/Advertising'
 import AdList from '@/components/Ad/AdList'
 export default {

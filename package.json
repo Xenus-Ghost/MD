@@ -16,10 +16,12 @@
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.9.2",
     "@nuxtjs/pwa": "^3.0.0-beta.19",
+    "aammui-uploader": "^0.2.0",
     "autoprefixer": "^9.6.5",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.11.0",
-    "postcss-cli": "^7.1.0"
+    "postcss-cli": "^7.1.0",
+    "vue-upload-image": "^1.1.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
@@ -30,7 +32,7 @@
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.16.4",
     "sass-loader": "^8.0.0"
   }

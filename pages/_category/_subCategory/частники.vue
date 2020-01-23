@@ -1,7 +1,7 @@
 <template>
-  <div class="grid-layout">
+  <div class="grid-layout_ads">
     <CategoryHeader>
-      Снос и демонтаж
+      Частники
       <template v-slot:right_column>
         <svg
           width="395"
@@ -161,12 +161,12 @@
     </CategoryHeader>
     <Advertising></Advertising>
     <h2 class="text_center text_neon">Все фирмы</h2>
-    <AdList></AdList>
+    <AdList private-ad :ads-prop="ads"></AdList>
   </div>
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising/Advertising'
 import AdList from '@/components/Ad/AdList'
 export default {
@@ -175,6 +175,17 @@ export default {
     CategoryHeader,
     Advertising,
     AdList
+  },
+  async asyncData({ $axios }) {
+    const { data } = await $axios.get(
+      'https://admin.монтаждемонтаж.рф/api/advertisements?per_page=12'
+    )
+    return { ads: data.data }
+  },
+  data() {
+    return {
+      ads: []
+    }
   }
 }
 </script>
@@ -182,15 +193,4 @@ export default {
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
 @import '~assets/scss/app/pages/_category.scss';
-.grid-layout {
-  max-height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto auto;
-  grid-row-gap: 10px;
-  grid-column-gap: 20px;
-  @include on_tablet() {
-    height: 88vh;
-  }
-}
 </style>

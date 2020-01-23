@@ -452,7 +452,7 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="'3_tablet'" :col="'12'" width="703px" height="auto">
-      <ServiceItem>
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img alt="" src="~assets/img/icons/cement-truck.svg" />
         </template>
@@ -465,7 +465,7 @@
           >
         </template>
       </ServiceItem>
-      <ServiceItem>
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/grid.svg" alt="" />
         </template>
@@ -478,7 +478,7 @@
           >
         </template>
       </ServiceItem>
-      <ServiceItem>
+      <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="@/assets/img/icons/fence.svg" alt="" />
         </template>

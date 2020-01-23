@@ -11,6 +11,7 @@
             $type: max;
           }
           @include media_screen($name,$type) {
+            display: grid;
             @include grid_columns($i);
           }
         }
