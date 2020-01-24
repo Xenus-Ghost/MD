@@ -39,7 +39,7 @@
     </div>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
       <template v-slot:body>
-        <span class="ad-modal__id_muted">{{ adModalData.id }}</span>
+        <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
         <h2 class="ad-modal__title">{{ adModalData.title }}</h2>
         <div>
           <h3>Категории работ:</h3>
@@ -48,7 +48,7 @@
         <div class="grid_cols_2">
           <div class="grid__column_1">
             <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
-            <div class="ad-modal__id">{{ adModalData.id }}</div>
+            <div class="ad-modal__id">ID: {{ adModalData.author_id }}</div>
             <div v-for="(item, j) in adModalData.phone" :key="j">
               {{ adModalData.phone }}
             </div>
@@ -101,46 +101,6 @@ export default {
   },
   data() {
     return {
-      // ads: {
-      //   0: {
-      //     title: 'ООО “Прогресс”',
-      //     caption: 'Бурение',
-      //     img: '/img/ads/11.png',
-      //     url: '/',
-      //     ad_type: 'premium'
-      //   },
-      //   1: {
-      //     title: 'ООО “Энергосбыт”',
-      //     caption: 'Тротуарная плитка',
-      //     img: '/img/ads/l3.png',
-      //     url: '/',
-      //     ad_type: 'pro'
-      //   },
-      //   2: {
-      //     title: 'ООО “Сапсан”',
-      //     caption: 'Вентиляция и кондиционеры',
-      //     img: '/img/ads/riverbed-logo-og-image.png',
-      //     url: '/'
-      //   },
-      //   3: {
-      //     title: 'ООО “Альфа”',
-      //     caption: 'Бурение',
-      //     img: '/img/ads/riverbed-logo-og-image.png',
-      //     url: '/'
-      //   },
-      //   4: {
-      //     title: 'ООО “Альфа”',
-      //     caption: 'Бурение',
-      //     img: '/img/ads/riverbed-logo-og-image.png',
-      //     url: '/'
-      //   },
-      //   5: {
-      //     title: 'ООО “Альфа”',
-      //     caption: 'Бурение',
-      //     img: '/img/ads/riverbed-logo-og-image.png',
-      //     url: '/'
-      //   }
-      // },
       ads: {},
       meta: {
         current_page: 1,

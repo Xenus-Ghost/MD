@@ -17,10 +17,11 @@
     "@nuxtjs/axios": "^5.9.2",
     "@nuxtjs/pwa": "^3.0.0-beta.19",
     "aammui-uploader": "^0.2.0",
-    "autoprefixer": "^9.6.5",
+    "autoprefixer": "^9.7.4",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.11.0",
     "postcss-cli": "^7.1.0",
+    "vue-rokka-uploader": "github:rokka-io/vue-rokka-uploader",
     "vue-upload-image": "^1.1.5"
   },
   "devDependencies": {
@@ -30,10 +31,10 @@
     "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-nuxt": "^0.5.0",
     "eslint-plugin-prettier": "^3.1.2",
     "node-sass": "^4.13.1",
-    "prettier": "^1.16.4",
-    "sass-loader": "^8.0.0"
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2"
   }
 }

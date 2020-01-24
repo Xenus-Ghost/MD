@@ -454,7 +454,7 @@ export default {
       }
       await this.$axios
         .$post(
-          'https://admin.монтаждемонтаж.рф/api/admin/advertisements',
+          'https://admin.монтаждемонтаж.рф/api/me/advertisements',
           formData
         )
         .then((response) => {

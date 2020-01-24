@@ -38,6 +38,8 @@ export default {
       }
       obj.ad_type = this.adData.ad_type ? this.adData.ad_type : ''
       if (this.adData.id) obj.id = this.adData.id
+      if (this.adData.author_id) obj.author_id = this.adData.author_id
+      // console.log(this.adData.author_id)
       if (this.adData.title) obj.title = this.adData.title
       if (this.adData.name) obj.name = this.adData.name
       if (this.adData.caption) obj.caption = this.adData.caption
@@ -48,6 +50,7 @@ export default {
         obj.phone = this.adData.phone
       }
       if (this.adData.url) obj.url = this.adData.url
+      // console.log(obj)
       return obj
     },
     classList() {

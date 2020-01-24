@@ -20,7 +20,6 @@
           заново
         </span>
         <Button
-          v-if="error"
           shape="semi-rounded"
           borders="outline"
           @click.native="send"
