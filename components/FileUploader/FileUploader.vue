@@ -16,6 +16,7 @@
     @upload-image-clicked="uploadImageClicked"
     @upload-image-removed="uploadImageRemoved"
   ></upload-image>-->
+  <div class="uploader"></div>
 </template>
 
 <script>
