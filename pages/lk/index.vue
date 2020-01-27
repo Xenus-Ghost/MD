@@ -4,25 +4,27 @@
       Личный кабинет
       <template v-slot:right_column>
         <div class="profile__card">
-          <div class="profile__header">
-            <img
-              :src="user.avatar"
-              alt=""
-              class="profile__photo"
-              @click="avatarUploadOpen"
-            />
-            <div class="profile__title">
-              <span v-if="user.phone && user.lastName" class="profile__name">
-                {{ user.phone }} {{ user.lastName }}
-              </span>
-              <span v-else-if="user.email" class="profile__name">
-                {{ user.email }}
-              </span>
-              <span v-if="user.phone" class="profile__phone">
-                {{ user.phone }}
-              </span>
+          <client-only>
+            <div class="profile__header">
+              <img
+                :src="avatar"
+                alt=""
+                class="profile__photo"
+                @click="avatarUploadOpen"
+              />
+              <div class="profile__title">
+                <span v-if="user.phone && user.lastName" class="profile__name">
+                  {{ user.phone }} {{ user.lastName }}
+                </span>
+                <span v-else-if="user.email" class="profile__name">
+                  {{ user.email }}
+                </span>
+                <span v-if="user.phone" class="profile__phone">
+                  {{ user.phone }}
+                </span>
+              </div>
             </div>
-          </div>
+          </client-only>
           <div class="profile__prop-table">
             <span class="profile__prop-name">Логин</span>
             <span class="profile__prop-value">{{ user.name }}</span>
@@ -69,8 +71,8 @@
         >
       </div>
     </div>
-    <Modal v-if="showAdList"> </Modal>
-    <Modal v-if="isAvatarUploadForm">
+    <Modal v-if="showAdList"></Modal>
+    <Modal v-if="isAvatarUploadForm" @close="isAvatarUploadForm = false">
       <template #body>
         <AvatarUploader></AvatarUploader>
       </template>
@@ -98,9 +100,11 @@ export default {
     }
   },
   computed: {
-    avatar: this.user.avatar
-      ? this.user.avatar
-      : '/static/img/icons/user_no_avatar.jpg'
+    avatar() {
+      return this.$auth.user.avatar
+        ? this.$auth.user.avatar
+        : '/static/img/icons/user_no_avatar.jpg'
+    }
   },
   methods: {
     getAdList() {},
