@@ -6,9 +6,10 @@
         <div class="profile__card">
           <div class="profile__header">
             <img
-              src="../../assets/img/icons/user_no_avatar.jpg"
+              :src="user.avatar"
               alt=""
               class="profile__photo"
+              @click="avatarUploadOpen"
             />
             <div class="profile__title">
               <span v-if="user.phone && user.lastName" class="profile__name">
@@ -69,27 +70,43 @@
       </div>
     </div>
     <Modal v-if="showAdList"> </Modal>
+    <Modal v-if="isAvatarUploadForm">
+      <template #body>
+        <AvatarUploader></AvatarUploader>
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
+import AvatarUploader from '@/components/lk/AvatarUploader'
 export default {
   middleware: ['auth'],
   name: 'Index',
   layout: 'Cabinet',
   components: {
-    CategoryHeader
+    CategoryHeader,
+    AvatarUploader
   },
   data() {
     return {
       data: this.$auth,
       user: this.$auth.user,
-      showAdList: false
+      showAdList: false,
+      isAvatarUploadForm: false
     }
   },
+  computed: {
+    avatar: this.user.avatar
+      ? this.user.avatar
+      : '/static/img/icons/user_no_avatar.jpg'
+  },
   methods: {
-    getAdList() {}
+    getAdList() {},
+    avatarUploadOpen() {
+      this.isAvatarUploadForm = true
+    }
   }
 }
 </script>

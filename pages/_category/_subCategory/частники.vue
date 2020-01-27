@@ -176,16 +176,16 @@ export default {
     Advertising,
     AdList
   },
-  data() {
-    return {
-      ads: []
-    }
-  },
   async asyncData({ $axios }) {
     const { data } = await $axios.get(
       'https://admin.монтаждемонтаж.рф/api/advertisements?per_page=12'
     )
     return { ads: data.data }
+  },
+  data() {
+    return {
+      ads: []
+    }
   }
 }
 </script>

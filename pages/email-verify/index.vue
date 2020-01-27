@@ -19,11 +19,7 @@
           Возможно, срок действия токена истек, попробуйте подтвердить почту
           заново
         </span>
-        <Button
-          shape="semi-rounded"
-          borders="outline"
-          @click.native="send"
-        >
+        <Button shape="semi-rounded" borders="outline" @click.native="send">
           Выслать повторно
         </Button>
       </div>

@@ -1,0 +1,52 @@
+@import '~assets/scss/framework/basic.scss';
+.uploader {
+  &__input {
+    display: none;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    grid-auto-rows: 60px;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  &__file {
+    display: block;
+    background-color: #3f51b5;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include neon_borders()
+  }
+  &__button_remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    z-index: 10;
+    cursor: pointer;
+  }
+}
+.uploader__image_loaded {
+  //width: 60px;
+  //height: 60px;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.uploader__error-list {
+  display: flex;
+  flex-direction: column;
+}
+.uploader__error {
+  color: red
+}

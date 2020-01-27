@@ -41,6 +41,34 @@
       <template v-slot:body>
         <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
         <h2 class="ad-modal__title">{{ adModalData.title }}</h2>
+        <div v-show="adModalData.photos" class="ad-modal__photos">
+          <a
+            v-for="(p, photo) in adModalData.photos"
+            :key="p"
+            :href="photo"
+            class="ad-modal__photo-link"
+            target="_blank"
+            :title="photo + '' + p"
+          >
+            <img :src="photo" alt="photo" class="ad-modal__photo" />
+          </a>
+        </div>
+        <!--<div class="ad-modal__photos">
+          <a
+            v-for="p in 12"
+            :key="p"
+            href="https://via.placeholder.com/95/09f/fff.jpg"
+            class="ad-modal__photo-link"
+            target="_blank"
+            :title="'https://via.placeholder.com/95/09f/fff.jpg ' + p"
+          >
+            <img
+              src="https://via.placeholder.com/95/09f/fff.jpg"
+              alt="photo"
+              class="ad-modal__photo"
+            />
+          </a>
+        </div>-->
         <div>
           <h3>Категории работ:</h3>
         </div>

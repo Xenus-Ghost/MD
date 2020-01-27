@@ -100,8 +100,14 @@ export const actions = {
   adModalOpen({ commit }, data) {
     commit('adModalOpen')
     commit('adDataAdd', data)
+    if (typeof document !== 'undefined') {
+      document.querySelector('body').classList.add('body-scroll_lock')
+    }
   },
   adModalClose({ commit }) {
     commit('adModalClose')
+    if (typeof document !== 'undefined') {
+      document.querySelector('body').classList.remove('body-scroll_lock')
+    }
   }
 }

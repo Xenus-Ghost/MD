@@ -46,6 +46,10 @@ export default {
       if (this.adData.description) obj.description = this.adData.description
       if (this.adData.address) obj.address = this.adData.address
       if (this.adData.website) obj.website = this.adData.website
+      if (this.adData.photos && this.adData.photos.length > 0)
+        obj.photos = this.adData.photos
+      if (this.adData.video && this.adData.video.length > 0)
+        obj.video = this.adData.video
       if (this.adData.phone && this.adData.phone.length > 0) {
         obj.phone = this.adData.phone
       }
@@ -64,6 +68,9 @@ export default {
   methods: {
     adOpen() {
       this.$store.dispatch('adModalOpen', this.ad)
+      this.$route.query.id = this.ad.id
+      console.log(this.$route.params)
+      console.log(this.$route.query)
     }
   }
 }

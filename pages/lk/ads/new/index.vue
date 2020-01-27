@@ -277,11 +277,15 @@
               placeholder="ссылка на сообщество FB"
             />
           </label>
-          <client-only placeholder="Loading...">
-            <div v-if="1 === 0" class="grid__column_3">
-              <FileUploader></FileUploader>
-            </div>
-          </client-only>
+          <div class="grid__column_full">
+            <FileUploader
+              v-model="ad.photo"
+              multiple
+              auto-upload
+              preview
+              file-type="photo"
+            ></FileUploader>
+          </div>
           <label for="address" class="label grid__column_3">
             <input
               id="address"
@@ -360,7 +364,6 @@
 </template>
 
 <script>
-// import UploadImage from 'vue-upload-image'
 import CategoryHeader from '@/components/Category'
 import Card from '@/components/Card'
 import FileUploader from '@/components/FileUploader'
@@ -402,7 +405,8 @@ export default {
         ticker: null,
         status_id: 1,
         author_type_id: 1,
-        account_type_id: 1
+        account_type_id: 1,
+        photo: []
       },
       adSubCategories: []
       // adCategoriesList: []
@@ -420,22 +424,17 @@ export default {
         })
       }
       return result
+    },
+    category_ids() {
+      const cats = []
+      cats.push(this.ad.rootCategory)
+      cats.push(this.ad.category)
+      return cats
     }
-    /* endTime() {
-      const date = new Date()
-      date.setDate(date.getDate() + this.ad.period * 30)
-      const endDate = date.toISOString().split('T')[0]
-      this.ad.end_time = endDate
-      return endDate
-    } */
   },
   created() {
-    console.log(this.$axios)
-    this.$http = this.$axios
+    // this.$store.dispatch('getAdCategories')
   },
-  /* created() {
-    this.$store.dispatch('getAdCategories')
-  }, */
   methods: {
     modalAddOpen(type, ownership) {
       this.ad.account_type_id = type
@@ -452,6 +451,7 @@ export default {
         delete formData.website
         // delete formData.phone
       }
+      formData.category_ids = this.category_ids
       await this.$axios
         .$post(
           'https://admin.монтаждемонтаж.рф/api/me/advertisements',

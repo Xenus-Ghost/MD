@@ -1,7 +1,7 @@
 {
   "name": "MD",
   "version": "1.0.0",
-  "description": "My scrumtrulescent Nuxt.js project",
+  "description": "Монтаж Демонтаж",
   "author": "Sergey",
   "private": true,
   "scripts": {
@@ -14,15 +14,13 @@
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.8.5",
-    "@nuxtjs/axios": "^5.9.2",
+    "@nuxtjs/axios": "^5.9.3",
     "@nuxtjs/pwa": "^3.0.0-beta.19",
-    "aammui-uploader": "^0.2.0",
     "autoprefixer": "^9.7.4",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.11.0",
     "postcss-cli": "^7.1.0",
-    "vue-rokka-uploader": "github:rokka-io/vue-rokka-uploader",
-    "vue-upload-image": "^1.1.5"
+    "vue-advanced-cropper": "^0.16.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
