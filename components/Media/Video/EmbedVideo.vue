@@ -4,8 +4,9 @@
       <iframe
         id="ytplayer"
         type="text/html"
-        width="640"
-        height="360"
+        :width="width"
+        height="auto"
+        class="embed__iframe"
         :src="
           'https://www.youtube.com/embed/' +
             videoId +
@@ -26,6 +27,10 @@ export default {
     videoId: {
       type: String,
       required: true
+    },
+    width: {
+      type: String || Number,
+      default: '100%'
     }
   },
   data() {
@@ -34,9 +39,16 @@ export default {
     }
   },
   created() {
-    console.log(this.$router.path)
+    if (process.client) {
+      // eslint-disable-next-line nuxt/no-globals-in-created
+      this.origin_url = window.location.href
+    }
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.embed__iframe {
+  min-height: 400px;
+}
+</style>

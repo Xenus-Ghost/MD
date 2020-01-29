@@ -213,7 +213,7 @@
               placeholder="Телефон"
           /></label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="website"
             class="label grid__column_3"
           >
@@ -226,7 +226,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="vk"
             class="label grid__column_3"
           >
@@ -239,7 +239,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="ok"
             class="label grid__column_3"
           >
@@ -252,7 +252,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="ig"
             class="label grid__column_3"
           >
@@ -265,7 +265,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="fb"
             class="label grid__column_3"
           >

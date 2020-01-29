@@ -78,7 +78,7 @@
             <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
             <div class="ad-modal__id">ID: {{ adModalData.author_id }}</div>
             <div v-for="(item, j) in adModalData.phone" :key="j">
-              {{ adModalData.phone }}
+              {{ item }}
             </div>
             <div class="ad-modal__address">{{ adModalData.address }}</div>
             <div class="ad-modal__address">{{ adModalData.metro }}</div>
@@ -89,6 +89,7 @@
               Добавить в избранное
             </Button>
             <Button
+              v-if="adModalData.video"
               shape="rounded"
               borders="outline"
               @click.native="showEmbedVideos"
