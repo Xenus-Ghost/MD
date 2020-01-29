@@ -83,6 +83,7 @@
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import AvatarUploader from '@/components/lk/AvatarUploader'
+import { getFileUrl } from '@/assets/js/util/helpers'
 export default {
   middleware: ['auth'],
   name: 'Index',
@@ -101,15 +102,18 @@ export default {
   },
   computed: {
     avatar() {
-      return this.$auth.user.avatar
-        ? this.$auth.user.avatar
-        : '/static/img/icons/user_no_avatar.jpg'
+      return this.$auth.user.avatar && this.$auth.user.avatar.length > 0
+        ? getFileUrl(this.$auth.user.avatar)
+        : '/img/icons/user_no_avatar.jpg'
     }
   },
   methods: {
     getAdList() {},
     avatarUploadOpen() {
       this.isAvatarUploadForm = true
+    },
+    getFileUrl(path) {
+      return getFileUrl(path)
     }
   }
 }

@@ -14,7 +14,7 @@
       <div v-if="preview" class="uploader__list">
         <div v-for="(file, j) in uploaded" :key="j" class="uploader__file">
           <img
-            :src="file.url"
+            :src="getFileUrl(file.path)"
             class="uploader__image_loaded"
             :alt="j"
             title="Загружено"
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-// import UploadImage from 'vue-upload-image'
+import { BACKEND_API_URL } from '@/constants'
+import { getFileUrl } from '@/assets/js/util/helpers'
 export default {
   name: 'FileUploader',
   components: {
@@ -87,7 +88,7 @@ export default {
     return {
       files: {},
       image: null,
-      url: 'https://admin.монтаждемонтаж.рф/api/files',
+      url: BACKEND_API_URL + 'files',
       response: {},
       uploaded: [],
       errors: []
@@ -157,13 +158,16 @@ export default {
       } else {
         const data = []
         this.uploaded.forEach((image) => {
-          if (image && image.url) {
-            data.push(image.url)
+          if (image && image.path) {
+            data.push(image.path)
           }
         })
         this.$emit('change', data)
         // console.log('update', data)
       }
+    },
+    getFileUrl(path) {
+      return getFileUrl(path)
     }
   }
 }

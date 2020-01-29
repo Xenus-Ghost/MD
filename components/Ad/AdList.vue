@@ -41,16 +41,16 @@
       <template v-slot:body>
         <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
         <h2 class="ad-modal__title">{{ adModalData.title }}</h2>
-        <div v-show="adModalData.photos" class="ad-modal__photos">
+        <div v-show="adModalData.photo" class="ad-modal__photos">
           <a
-            v-for="(p, photo) in adModalData.photos"
+            v-for="(item, p) in adModalData.photo"
             :key="p"
-            :href="photo"
+            :href="getFileUrl(item)"
             class="ad-modal__photo-link"
             target="_blank"
-            :title="photo + '' + p"
+            :title="item + '' + p"
           >
-            <img :src="photo" alt="photo" class="ad-modal__photo" />
+            <img :src="getFileUrl(item)" alt="photo" class="ad-modal__photo" />
           </a>
         </div>
         <!--<div class="ad-modal__photos">
@@ -88,9 +88,22 @@
             <Button shape="rounded" borders="outline">
               Добавить в избранное
             </Button>
-            <Button shape="rounded" borders="outline">
+            <Button
+              shape="rounded"
+              borders="outline"
+              @click.native="showEmbedVideos"
+            >
               Показать видео
             </Button>
+            <Modal v-if="videoShow" @close="closeEmbedVideos">
+              <template #body>
+                <EmbedVideo
+                  v-for="(video, v) in adModalData.video"
+                  :key="v"
+                  :video-id="video"
+                ></EmbedVideo>
+              </template>
+            </Modal>
           </div>
         </div>
         <div class="ad-modal__description-header">
@@ -106,13 +119,15 @@
 
 <script>
 // import axios from 'axios'
+import { getUrl, getFileUrl } from '@/assets/js/util/helpers'
 import AdItem from '@/components/Ad/AdItem'
-
+import { EmbedVideo } from '@/components/Media'
 // let axios = this.$axios
 export default {
   name: 'AdList',
   components: {
-    AdItem
+    AdItem,
+    EmbedVideo
   },
   props: {
     category: {
@@ -141,7 +156,8 @@ export default {
         last: null,
         next: null,
         prev: null
-      }
+      },
+      videoShow: false
     }
   },
   computed: {
@@ -163,8 +179,9 @@ export default {
   methods: {
     async getAds() {
       if (this.adsProp.length > 0) this.ads = this.adsProp
+      const url = getUrl('advertisements?category_id=1&per_page=99')
       await this.$axios
-        .get('https://admin.монтаждемонтаж.рф/api/advertisements?per_page=99')
+        .get(url)
         .then((e) => {
           this.ads = e.data.data
           this.meta = e.data.meta
@@ -179,6 +196,15 @@ export default {
     },
     adClose() {
       this.$store.dispatch('adModalClose')
+    },
+    getFileUrl(path) {
+      return getFileUrl(path)
+    },
+    showEmbedVideos() {
+      this.videoShow = true
+    },
+    closeEmbedVideos() {
+      this.videoShow = false
     }
   }
 }
