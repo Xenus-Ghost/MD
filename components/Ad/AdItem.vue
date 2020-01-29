@@ -9,8 +9,9 @@
       shape="rounded"
       borders="outline"
       @click.native="adOpen"
-      >Открыть</Button
     >
+      Открыть
+    </Button>
   </div>
 </template>
 
@@ -31,14 +32,18 @@ export default {
   computed: {
     ad() {
       const obj = {}
-      if (this.adData.img) {
+      /* if (this.adData.img) {
         obj.img = this.adData.img
       } else {
         obj.img = ''
-      }
+      } */
+      obj.img = this.adData.img ? this.adData.img : ''
       obj.ad_type = this.adData.ad_type ? this.adData.ad_type : ''
-      if (this.adData.id) obj.id = this.adData.id
-      if (this.adData.author_id) obj.author_id = this.adData.author_id
+      obj.id = this.adData.id
+      obj.author_id = this.adData.author_id ? this.adData.author_id : null
+      obj.account_type_id = this.adData.account_type_id
+        ? this.adData.account_type_id
+        : null
       if (this.adData.title) obj.title = this.adData.title
       if (this.adData.name) obj.name = this.adData.name
       if (this.adData.caption) obj.caption = this.adData.caption
@@ -58,8 +63,12 @@ export default {
     },
     classList() {
       const arr = []
-      if (this.ad.ad_type === 'pro' || this.ad.ad_type === 'premium')
-        arr.push('ad__item_' + this.ad.ad_type)
+      if (this.ad.account_type_id === 2) {
+        arr.push('ad__item_pro')
+      }
+      if (this.ad.account_type_id === 3) {
+        arr.push('ad__item_premium')
+      }
       if (this.privateAd) arr.push('ad__item_private')
       return arr
     }
@@ -68,8 +77,6 @@ export default {
     adOpen() {
       this.$store.dispatch('adModalOpen', this.ad)
       this.$route.query.id = this.ad.id
-      console.log(this.$route.params)
-      console.log(this.$route.query)
     }
   }
 }
