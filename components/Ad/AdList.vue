@@ -169,8 +169,8 @@ export default {
       return this.$store.state.adModalData
     },
     classList() {
-      const arr = []
-      if (this.privateAd) arr.push('ad__list_private')
+      const arr = [];
+      if (this.privateAd) arr.push('ad__list_private');
       return arr
     }
   },
@@ -179,13 +179,13 @@ export default {
   },
   methods: {
     async getAds() {
-      if (this.adsProp.length > 0) this.ads = this.adsProp
-      const url = getUrl('advertisements?category_id=1&per_page=99')
+      if (this.adsProp.length > 0) this.ads = this.adsProp;
+      const url = getUrl('advertisements?category_id=1&per_page=99');
       await this.$axios
         .get(url)
         .then((e) => {
-          this.ads = e.data.data
-          this.meta = e.data.meta
+          this.ads = e.data.data;
+          this.meta = e.data.meta;
           this.links = e.data.links
         })
         .catch((e) => {

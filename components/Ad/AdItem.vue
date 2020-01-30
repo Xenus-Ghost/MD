@@ -32,56 +32,56 @@ export default {
   },
   computed: {
     ad() {
-      const obj = {};
+      const obj = {}
       /* if (this.adData.img) {
         obj.img = this.adData.img
       } else {
         obj.img = ''
       } */
 
-      obj.ad_type = this.adData.ad_type ? this.adData.ad_type : '';
-      obj.id = this.adData.id;
-      obj.author_id = this.adData.author_id ? this.adData.author_id : null;
+      obj.ad_type = this.adData.ad_type ? this.adData.ad_type : ''
+      obj.id = this.adData.id
+      obj.author_id = this.adData.author_id ? this.adData.author_id : null
       obj.account_type_id = this.adData.account_type_id
         ? this.adData.account_type_id
-        : null;
-      if (this.adData.title) obj.title = this.adData.title;
-      if (this.adData.name) obj.name = this.adData.name;
-      if (this.adData.caption) obj.caption = this.adData.caption;
-      if (this.adData.description) obj.description = this.adData.description;
-      if (this.adData.address) obj.address = this.adData.address;
-      if (this.adData.website) obj.website = this.adData.website;
+        : null
+      if (this.adData.title) obj.title = this.adData.title
+      if (this.adData.name) obj.name = this.adData.name
+      if (this.adData.caption) obj.caption = this.adData.caption
+      if (this.adData.description) obj.description = this.adData.description
+      if (this.adData.address) obj.address = this.adData.address
+      if (this.adData.website) obj.website = this.adData.website
       if (this.adData.photo && this.adData.photo.length > 0)
-        obj.photo = this.adData.photo;
+        obj.photo = this.adData.photo
       obj.img = this.adData.img
         ? this.adData.img
         : obj.photo
         ? getFileUrl(obj.photo[0])
-        : '';
+        : ''
       if (this.adData.video && this.adData.video.length > 0)
-        obj.video = this.adData.video;
+        obj.video = this.adData.video
       if (this.adData.phone && this.adData.phone.length > 0) {
         obj.phone = this.adData.phone
       }
-      if (this.adData.url) obj.url = this.adData.url;
+      if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj
     },
     classList() {
-      const arr = [];
+      const arr = []
       if (this.ad.account_type_id === 2) {
         arr.push('ad__item_pro')
       }
       if (this.ad.account_type_id === 3) {
         arr.push('ad__item_premium')
       }
-      if (this.privateAd) arr.push('ad__item_private');
+      if (this.privateAd) arr.push('ad__item_private')
       return arr
     }
   },
   methods: {
     adOpen() {
-      this.$store.dispatch('adModalOpen', this.ad);
+      this.$store.dispatch('adModalOpen', this.ad)
       this.$route.query.id = this.ad.id
     }
   }

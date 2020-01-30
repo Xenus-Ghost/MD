@@ -424,7 +424,7 @@ export default {
       return this.$store.state.adCategoriesList
     },
     adRootCategories() {
-      const result = []
+      const result = [];
       if (this.adCategoriesList.length > 0) {
         this.adCategoriesList.forEach(function(item) {
           if (!item.parent_id) result.push(item)
@@ -433,27 +433,27 @@ export default {
       return result
     },
     category_ids() {
-      const cats = []
-      cats.push(this.ad.rootCategory)
-      cats.push(this.ad.category)
+      const cats = [];
+      cats.push(this.ad.rootCategory);
+      cats.push(this.ad.category);
       return cats
     }
   },
   methods: {
     modalAddOpen(type, ownership) {
-      this.ad.account_type_id = type
-      this.ad.author_type_id = ownership
+      this.ad.account_type_id = type;
+      this.ad.author_type_id = ownership;
       this.showModalAdd = true
     },
     modalAddClose() {
       this.showModalAdd = false
     },
     async adSubmit() {
-      const formData = this.ad
+      const formData = this.ad;
       if (formData.account_type_id === 1) {
         delete formData.website
       }
-      formData.category_ids = this.category_ids
+      formData.category_ids = this.category_ids;
       await this.$axios
         .$post(BACKEND_API_URL + 'me/advertisements', formData)
         .then((response) => {
@@ -464,10 +464,10 @@ export default {
         })
     },
     changeCategory() {
-      const resultSubcat = []
+      const resultSubcat = [];
       if (this.adCategoriesList.length > 0) {
         for (let i = 0; i < this.adCategoriesList.length; i++) {
-          console.log(this.adCategoriesList[i])
+          console.log(this.adCategoriesList[i]);
           if (this.adCategoriesList[i].parent_id === this.ad.rootCategory) {
             resultSubcat.push(this.adCategoriesList[i])
           }
@@ -476,9 +476,9 @@ export default {
       this.adSubCategories = resultSubcat
     },
     changePeriod() {
-      const date = new Date()
-      date.setMonth(date.getMonth() + this.ad.period)
-      const endDate = date.toISOString().split('T')[0]
+      const date = new Date();
+      date.setMonth(date.getMonth() + this.ad.period);
+      const endDate = date.toISOString().split('T')[0];
       this.ad.end_time = endDate
     }
   }
