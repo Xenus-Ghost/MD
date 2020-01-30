@@ -1,13 +1,14 @@
 <template>
   <div :class="classList" class="ad__item">
     <img :src="ad.img" alt="" class="ad__logo" />
-    <span v-if="ad.name" class="ad__name">{{ ad.name }}</span>
-    <span class="ad__title">{{ ad.title }}</span>
+    <span v-if="ad.name" class="ad__title ad__name">{{ ad.name }}</span>
+    <span class="ad__sub-title">{{ ad.title }}</span>
     <span v-if="ad.caption" class="ad__caption">{{ ad.caption }}</span>
     <Button
       :to="ad.url"
-      shape="rounded"
       borders="outline"
+      shape="rounded"
+      class="ad__button"
       @click.native="adOpen"
     >
       Открыть
@@ -88,7 +89,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '~assets/scss/app/index.scss';
 @import 'ad';
 </style>

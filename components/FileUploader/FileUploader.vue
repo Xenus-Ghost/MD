@@ -101,37 +101,37 @@ export default {
   },
   methods: {
     fileSelected(event) {
-      const files = document.getElementById('files').files;
-      this.files = files;
+      const files = document.getElementById('files').files
+      this.files = files
       if (this.autoUpload) {
         this.upload()
       }
       if (this.base64) {
-        const reader = new FileReader();
+        const reader = new FileReader()
         reader.onloadend = (e) => {
-          this.image = e.target.result;
-          console.log('onloadend', this.image);
+          this.image = e.target.result
+          console.log('onloadend', this.image)
           this.update()
-        };
+        }
         reader.readAsDataURL(files[0])
       }
-      this.update();
+      this.update()
       this.$emit('onFilesSelected')
     },
     async upload() {
-      let formData = new FormData();
+      let formData = new FormData()
       for (let i = 0; i < this.files.length; i++) {
-        const file = this.files[i];
+        const file = this.files[i]
         // console.log(file)
-        formData.append('files[' + i + ']', file);
+        formData.append('files[' + i + ']', file)
         await this.$axios
           .post(this.url, formData)
           .then((response) => {
-            this.uploaded.push(response.data.data[0]);
+            this.uploaded.push(response.data.data[0])
             formData = new FormData()
           })
           .catch((error) => {
-            console.log(error.response);
+            console.log(error.response)
             this.errors.push({
               fileName: file.name,
               size: file.size,
@@ -139,7 +139,7 @@ export default {
             })
           })
       }
-      this.update();
+      this.update()
       this.$emit('onFilesUpload', this.uploaded)
       // console.debug('uploaded')
     },
@@ -147,8 +147,8 @@ export default {
       this.$refs.fileInput.click()
     },
     removeFile(id) {
-      this.uploaded.splice(id, 1);
-      this.update();
+      this.uploaded.splice(id, 1)
+      this.update()
       this.$emit('onFileRemove')
     },
     update() {
@@ -156,12 +156,12 @@ export default {
       if (this.base64) {
         this.$emit('change', this.image)
       } else {
-        const data = [];
+        const data = []
         this.uploaded.forEach((image) => {
           if (image && image.path) {
             data.push(image.path)
           }
-        });
+        })
         this.$emit('change', data)
         // console.log('update', data)
       }
