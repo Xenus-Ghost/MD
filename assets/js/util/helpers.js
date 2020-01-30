@@ -35,7 +35,7 @@ export const keyCodes = Object.freeze({
   insert: 45,
   pageup: 33,
   pagedown: 34
-})
+});
 
 export function getUrl(path) {
   return BACKEND_API_URL + path
@@ -46,8 +46,8 @@ export function getFileUrl(path) {
 }
 
 export function convertYoutubeLink(url, agressive = false) {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
-  const match = url.match(regExp)
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
 
   return match && match[2].length === 11 ? match[2] : !agressive ? url : null
 }

@@ -59,27 +59,27 @@ export default {
   },
   methods: {
     change({ coordinates, canvas }) {
-      console.log(coordinates, canvas)
+      console.log(coordinates, canvas);
       this.canvas = canvas
     },
     onFilesUpload(e) {
-      this.images = e
+      this.images = e;
       this.setAvatar()
     },
     async setAvatar() {
-      const data = {}
-      data.avatar = this.images[0].path
-      const userId = this.$store.state.auth.user.id
-      const url = getUrl(`admin/users/${userId}`)
+      const data = {};
+      data.avatar = this.images[0].path;
+      const userId = this.$store.state.auth.user.id;
+      const url = getUrl(`admin/users/${userId}`);
       await this.$axios
         .put(url, data)
         .then((e) => {
-          console.log(e.response)
+          console.log(e.response);
           this.result = 'success'
         })
         .catch((e) => {
-          console.log(e)
-          console.log(e.response)
+          console.log(e);
+          console.log(e.response);
           this.errors = e.response
         })
     }

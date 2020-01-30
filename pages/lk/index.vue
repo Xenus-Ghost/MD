@@ -12,7 +12,7 @@
                 class="profile__photo"
                 @click="avatarUploadOpen"
               />
-              <div class="profile__title">
+              <div class="profile__title grid_rows_2">
                 <span v-if="user.phone && user.lastName" class="profile__name">
                   {{ user.phone }} {{ user.lastName }}
                 </span>
@@ -27,9 +27,9 @@
           </client-only>
           <div class="profile__prop-table">
             <span class="profile__prop-name">Имя</span>
-            <span class="profile__prop-value">{{ user.firstName }}</span>
+            <span class="profile__prop-value">{{ user.first_name }}</span>
             <span class="profile__prop-name">Фамилия</span>
-            <span class="profile__prop-value">{{ user.lastName }}</span>
+            <span class="profile__prop-value">{{ user.last_name }}</span>
             <span class="profile__prop-name">Дата регистрации:</span>
             <span class="profile__prop-value">{{ user.created_at }}</span>
             <span class="profile__prop-name">ID-номер:</span>
@@ -157,6 +157,7 @@ export default {
       background: url('~assets/img/icons/phone-call.svg') center no-repeat;
       background-size: contain;
       padding: 8px;
+      margin-right: 4px;
     }
   }
   &__prop-table {
