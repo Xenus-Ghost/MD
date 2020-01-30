@@ -37,7 +37,7 @@ $modal: '.modal';
       box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     }
     @include media_screen(desktop-wide) {
-      padding: 44px 5%;
+      //padding: 44px 5%;
       width: 970px;
       min-height: 470px;
     }
@@ -55,8 +55,8 @@ $modal: '.modal';
       padding: 10px;
     }
     @include media_screen(desktop-wide) {
-      font-size: 1.875rem;
-      padding: 2.25rem;
+      font-size: 1.75rem;
+      padding: 2rem;
     }
   }
 

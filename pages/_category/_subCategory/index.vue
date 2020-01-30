@@ -393,14 +393,4 @@ export default {
     }
   }
 }
-/*.selling {
-  justify-self: center;
-  &__buttons {
-    display: grid;
-    max-height: 100%;
-    grid-gap: 30px;
-    grid-template-columns: minmax(290px, 1fr);
-    max-width: 570px;
-  }
-}*/
 </style>

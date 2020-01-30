@@ -213,7 +213,7 @@
               placeholder="Телефон"
           /></label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="website"
             class="label grid__column_3"
           >
@@ -226,7 +226,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="vk"
             class="label grid__column_3"
           >
@@ -239,7 +239,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="ok"
             class="label grid__column_3"
           >
@@ -252,7 +252,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="ig"
             class="label grid__column_3"
           >
@@ -265,7 +265,7 @@
             />
           </label>
           <label
-            v-if="ad.account_type_id === 3"
+            v-if="ad.account_type_id !== 1"
             for="fb"
             class="label grid__column_3"
           >
@@ -277,14 +277,19 @@
               placeholder="ссылка на сообщество FB"
             />
           </label>
-          <div class="grid__column_full">
-            <FileUploader
-              v-model="ad.photo"
-              multiple
-              auto-upload
-              preview
-              file-type="photo"
-            ></FileUploader>
+          <div class="grid__column_full grid_cols_2">
+            <div class="">
+              <FileUploader
+                v-model="ad.photo"
+                multiple
+                auto-upload
+                preview
+                file-type="photo"
+              ></FileUploader>
+            </div>
+            <div v-if="ad.account_type_id !== 1" class="">
+              <VideoUploader v-model="ad.video"></VideoUploader>
+            </div>
           </div>
           <label for="address" class="label grid__column_3">
             <input
@@ -364,6 +369,8 @@
 </template>
 
 <script>
+import VideoUploader from '@/components/lk/VideoUploader/VideoUploader'
+import { BACKEND_API_URL } from '@/constants'
 import CategoryHeader from '@/components/Category'
 import Card from '@/components/Card'
 import FileUploader from '@/components/FileUploader'
@@ -374,7 +381,8 @@ export default {
   components: {
     CategoryHeader,
     Card,
-    FileUploader
+    FileUploader,
+    VideoUploader
   },
   data() {
     return {
@@ -390,7 +398,6 @@ export default {
         title: null,
         rootCategory: 0,
         category: 0,
-        // subcat: 0,
         description: '',
         phone: {
           main: ''
@@ -432,9 +439,6 @@ export default {
       return cats
     }
   },
-  created() {
-    // this.$store.dispatch('getAdCategories')
-  },
   methods: {
     modalAddOpen(type, ownership) {
       this.ad.account_type_id = type
@@ -447,22 +451,15 @@ export default {
     async adSubmit() {
       const formData = this.ad
       if (formData.account_type_id === 1) {
-        // delete formData.end_time
         delete formData.website
-        // delete formData.phone
       }
       formData.category_ids = this.category_ids
       await this.$axios
-        .$post(
-          'https://admin.монтаждемонтаж.рф/api/me/advertisements',
-          formData
-        )
+        .$post(BACKEND_API_URL + 'me/advertisements', formData)
         .then((response) => {
           this.success = true
-          // setTimeout(this.modalAddClose(), 2500)
         })
         .catch((error) => {
-          // console.error(error.response)
           this.errors = error.response.data.errors
         })
     },
@@ -480,35 +477,10 @@ export default {
     },
     changePeriod() {
       const date = new Date()
-      // date.setDate(date.getDate() + this.ad.period * 30)
       date.setMonth(date.getMonth() + this.ad.period)
       const endDate = date.toISOString().split('T')[0]
       this.ad.end_time = endDate
     }
-    /* uploadImageSuccess(result) {
-      // result[0] // FormData
-      // result[1] // response
-      console.log(result)
-    },
-    uploadImageLoaded(image) {
-      // image.name || image.file
-      console.log(image)
-    },
-    uploadImageClicked(image) {
-      // image.name || image.file
-      console.log(image)
-    },
-    uploadImageRemoved(image) {
-      // image.name || image.file
-      console.log(image)
-    },
-    uploadImageSubmit(images) {},
-    uploadImageAttempt(image) {
-      console.log(image)
-    },
-    uploadImageFailure(image) {
-      console.log(image)
-    } */
   }
 }
 </script>
@@ -575,20 +547,12 @@ export default {
 .advert-form {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-gap: 20px;
+  grid-gap: 5px;
+  @include on_desktop() {
+    grid-gap: 15px;
+  }
 }
 
-/*input {
-  width: 100%;
-  background: rgba(14, 36, 62, 0.4);
-  border: 1.5px solid #ffffff;
-  border-radius: 10px;
-  padding: 12px 20px;
-  color: white;
-  @include on_tablet() {
-    padding: 8px 15px;
-  }
-}*/
 #period {
   &:before {
     display: block;

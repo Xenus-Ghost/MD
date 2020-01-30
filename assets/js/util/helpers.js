@@ -1,27 +1,4 @@
-// import Vue from 'vue'
-// import { VNode, VNodeDirective, FunctionalComponentOptions } from 'vue/types'
-
-// export function createSimpleFunctional(
-//   c: string,
-//   el = 'div',
-//   name?: string
-// ) {
-//   return Vue.extend({
-//     name: name || c.replace(/__/g, '-'),
-//
-//     functional: true,
-//
-//     render(h, { data, children }): VNode {
-//       data.staticClass = (`${c} ${data.staticClass || ''}`).trim()
-//
-//       return h(el, data, children)
-//     }
-//   })
-// }
-
-// export function escapeHTML(str) {
-//   return str.replace(/[&<>]/g, tag => tagsToReplace[tag] || tag)
-// }
+import { BACKEND_URL, BACKEND_API_URL } from '@/constants'
 
 export function convertToUnit(str, unit = 'px') {
   if (str == null || str === '') {
@@ -59,3 +36,18 @@ export const keyCodes = Object.freeze({
   pageup: 33,
   pagedown: 34
 })
+
+export function getUrl(path) {
+  return BACKEND_API_URL + path
+}
+
+export function getFileUrl(path) {
+  return BACKEND_URL + 'storage/' + path
+}
+
+export function convertYoutubeLink(url, agressive = false) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+  const match = url.match(regExp)
+
+  return match && match[2].length === 11 ? match[2] : !agressive ? url : null
+}

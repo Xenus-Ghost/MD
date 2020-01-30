@@ -1,11 +1,5 @@
 <template>
   <div class="my-stencil" :style="style">
-    <FileUploader
-      v-model="img"
-      base64
-      :load-button="true"
-      @onFilesUpload="onFilesUpload"
-    ></FileUploader>
     <cropper
       ref="cropper"
       stencil-component="circle-stencil"
@@ -20,13 +14,26 @@
     >
       <CircleStencil></CircleStencil>
     </cropper>
-    <CircleStencil v-if="1 === 0"></CircleStencil>
+    <FileUploader
+      v-model="img"
+      base64
+      :load-button="true"
+      @onFilesUpload="onFilesUpload"
+    ></FileUploader>
+    <ul v-if="errors" class="errors">
+      <li v-for="(error, i) in errors" :key="i">{{ error }}</li>
+    </ul>
+    <div v-if="result === 'success'" class="success">
+      Изображение успешно заменено
+    </div>
   </div>
 </template>
 
 <script>
 import { Cropper, CircleStencil } from 'vue-advanced-cropper'
+import { getUrl } from '@/assets/js/util/helpers'
 import FileUploader from '@/components/FileUploader'
+
 export default {
   name: 'AvatarUploader',
   components: {
@@ -45,7 +52,9 @@ export default {
       },
       image: null,
       canvas: null,
-      images: []
+      images: [],
+      errors: null,
+      result: null
     }
   },
   methods: {
@@ -59,19 +68,19 @@ export default {
     },
     async setAvatar() {
       const data = {}
-      data.avatar = this.images[0].url
+      data.avatar = this.images[0].path
       const userId = this.$store.state.auth.user.id
+      const url = getUrl(`admin/users/${userId}`)
       await this.$axios
-        .put(
-          `https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/admin/users/${userId}`,
-          data
-        )
+        .put(url, data)
         .then((e) => {
           console.log(e.response)
+          this.result = 'success'
         })
         .catch((e) => {
           console.log(e)
           console.log(e.response)
+          this.errors = e.response
         })
     }
   }
