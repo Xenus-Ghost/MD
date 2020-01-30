@@ -26,8 +26,10 @@
             </div>
           </client-only>
           <div class="profile__prop-table">
-            <span class="profile__prop-name">Логин</span>
-            <span class="profile__prop-value">{{ user.name }}</span>
+            <span class="profile__prop-name">Имя</span>
+            <span class="profile__prop-value">{{ user.firstName }}</span>
+            <span class="profile__prop-name">Фамилия</span>
+            <span class="profile__prop-value">{{ user.lastName }}</span>
             <span class="profile__prop-name">Дата регистрации:</span>
             <span class="profile__prop-value">{{ user.created_at }}</span>
             <span class="profile__prop-name">ID-номер:</span>
@@ -83,6 +85,7 @@
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import AvatarUploader from '@/components/lk/AvatarUploader'
+import { getFileUrl } from '@/assets/js/util/helpers'
 export default {
   middleware: ['auth'],
   name: 'Index',
@@ -101,15 +104,18 @@ export default {
   },
   computed: {
     avatar() {
-      return this.$auth.user.avatar
-        ? this.$auth.user.avatar
-        : '/static/img/icons/user_no_avatar.jpg'
+      return this.$auth.user.avatar && this.$auth.user.avatar.length > 0
+        ? getFileUrl(this.$auth.user.avatar)
+        : '/img/icons/user_no_avatar.jpg'
     }
   },
   methods: {
     getAdList() {},
     avatarUploadOpen() {
       this.isAvatarUploadForm = true
+    },
+    getFileUrl(path) {
+      return getFileUrl(path)
     }
   }
 }
