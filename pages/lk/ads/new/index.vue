@@ -69,6 +69,17 @@
           </div>
         </Card>
       </div>
+      <div class="grid__column_1"></div>
+      <div class="grid__column_1">
+        <Button
+          shape="semi_rounded"
+          borders="neon"
+          @click.native="modalAddOpen(1, 1)"
+        >
+          Заказчик - бесплатно
+        </Button>
+      </div>
+      <div class="grid__column_1"></div>
     </div>
     <Modal v-if="showModalAdd" @close="modalAddClose">
       <template v-slot:header>
