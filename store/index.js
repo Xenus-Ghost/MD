@@ -24,7 +24,9 @@ export const state = () => ({
   ],
   evCategoriesList: {},
   isAdModalOpen: false,
-  adModalData: {},
+  adModalData: {
+    photo: []
+  },
   navigation: {
     links: {
       current: null,

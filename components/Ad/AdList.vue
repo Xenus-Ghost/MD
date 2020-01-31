@@ -39,6 +39,14 @@
         :customer-ad="customerAd === true"
       ></AdItem>
     </div>
+    <client-only>
+      <CoolLightBox
+        :items="adModalData.photo"
+        :index="index"
+        loop
+        @close="index = null"
+      ></CoolLightBox>
+    </client-only>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
       <template v-slot:body>
         <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
@@ -49,12 +57,13 @@
           <a
             v-for="(item, p) in adModalData.photo"
             :key="p"
-            :href="getFileUrl(item)"
+            :href="item"
             class="ad-modal__photo-link"
             target="_blank"
             :title="item + '' + p"
+            @click.prevent="setIndex(p)"
           >
-            <img :src="getFileUrl(item)" alt="photo" class="ad-modal__photo" />
+            <img :src="item" alt="photo" class="ad-modal__photo" />
           </a>
         </div>
         <div v-if="!customerAd">
@@ -129,11 +138,14 @@
 import { getUrl, getFileUrl, jsonToParams } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
+
 export default {
   name: 'AdList',
   components: {
     AdItem,
-    EmbedVideo
+    EmbedVideo,
+    CoolLightBox: process.client ? () => import('vue-cool-lightbox') : null
+    // CoolLightBox: () => import('vue-cool-lightbox')
   },
   props: {
     category: {
@@ -173,7 +185,8 @@ export default {
         next: null,
         prev: null
       },
-      videoShow: false
+      videoShow: false,
+      index: null
     }
   },
   computed: {
@@ -181,7 +194,11 @@ export default {
       return this.$store.state.isAdModalOpen
     },
     adModalData() {
-      return this.$store.state.adModalData
+      const modalData = this.$store.state.adModalData
+      for (let i = 0; i < modalData.photo.length; i++) {
+        modalData.photo[i] = getFileUrl(modalData.photo[i])
+      }
+      return modalData
     },
     classList() {
       const arr = []
@@ -228,6 +245,9 @@ export default {
     },
     closeEmbedVideos() {
       this.videoShow = false
+    },
+    setIndex(index) {
+      this.index = index
     }
   }
 }
