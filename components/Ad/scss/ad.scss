@@ -28,6 +28,11 @@
         grid-template-columns: repeat(3, 1fr);
       }
     }
+    &_customer {
+      @include on_desktop() {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   }
 
 

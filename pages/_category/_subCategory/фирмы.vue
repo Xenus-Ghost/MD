@@ -192,6 +192,11 @@ export default {
     const url = getUrl('advertisements' + params)
     const { data } = await $axios.get(url)
     return { ads: data.data }
+  },
+  data() {
+    return {
+      ads: []
+    }
   }
 }
 </script>

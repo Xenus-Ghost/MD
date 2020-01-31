@@ -3,7 +3,7 @@
     <img v-if="ad.logo" :src="ad.logo" :alt="ad.title" class="ad__logo" />
     <img :src="ad.img" :alt="ad.title" class="ad__photo" />
     <span v-if="ad.name" class="ad__title ad__name">{{ ad.name }}</span>
-    <span class="ad__sub-title">{{ ad.title }}</span>
+    <span v-if="!customerAd" class="ad__sub-title">{{ ad.title }}</span>
     <span v-if="ad.caption" class="ad__caption">{{ ad.caption }}</span>
     <Button
       :to="ad.url"
@@ -33,6 +33,9 @@ export default {
     },
     companyAd: {
       type: Boolean
+    },
+    customerAd: {
+      type: Boolean
     }
   },
   computed: {
@@ -51,13 +54,14 @@ export default {
       if (this.adData.description) obj.description = this.adData.description
       if (this.adData.address) obj.address = this.adData.address
       if (this.adData.website) obj.website = this.adData.website
-      if (this.adData.photo && this.adData.photo.length > 0)
+      if (!this.customerAd && this.adData.photo && this.adData.photo.length > 0)
         obj.photo = this.adData.photo
       obj.img = this.adData.img
         ? this.adData.img
         : obj.photo
         ? getFileUrl(obj.photo[0])
         : ''
+      if (this.customerAd) obj.img = '/img/icons/employee.png'
       obj.logo = this.adData.logo ? getFileUrl(this.adData.logo) : null
       if (this.adData.video && this.adData.video.length > 0)
         obj.video = this.adData.video
@@ -78,6 +82,7 @@ export default {
       }
       if (this.privateAd) arr.push('ad__item_private')
       if (this.companyAd) arr.push('ad__item_company')
+      if (this.customerAd) arr.push('ad__item_customer')
       return arr
     }
   },

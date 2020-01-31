@@ -36,12 +36,15 @@
         :ad-data="ad"
         :private-ad="privateAd === true"
         :company-ad="companyAd === true"
+        :customer-ad="customerAd === true"
       ></AdItem>
     </div>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
       <template v-slot:body>
         <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
-        <h2 class="ad-modal__title">{{ adModalData.title }}</h2>
+        <h2 v-if="!customerAd" class="ad-modal__title">
+          {{ adModalData.title }}
+        </h2>
         <div v-show="adModalData.photo" class="ad-modal__photos">
           <a
             v-for="(item, p) in adModalData.photo"
@@ -54,12 +57,27 @@
             <img :src="getFileUrl(item)" alt="photo" class="ad-modal__photo" />
           </a>
         </div>
-        <div>
+        <div v-if="!customerAd">
           <h3>Категории работ:</h3>
         </div>
-        <div class="line_horizontal"></div>
-        <div class="grid_cols_2">
-          <div class="grid__column_1">
+        <div v-if="!customerAd" class="line_horizontal"></div>
+        <div :class="{ grid_cols_2: !customerAd, grid_cols_12: customerAd }">
+          <div v-if="customerAd" class="grid__column_2">
+            <img
+              v-if="customerAd"
+              style="    width: 100%;
+    height: 100%;
+    object-fit: contain;"
+              src="/img/icons/employee.png"
+              alt="Заказчик"
+            />
+          </div>
+          <div
+            :class="{
+              grid__column_1: !customerAd,
+              grid__column_10: customerAd
+            }"
+          >
             <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
             <div class="ad-modal__id">ID: {{ adModalData.author_id }}</div>
             <div v-for="(item, j) in adModalData.phone" :key="j">
@@ -69,7 +87,7 @@
             <div class="ad-modal__address">{{ adModalData.metro }}</div>
             <div class="ad-modal__socials"></div>
           </div>
-          <div class="grid__column_1 grid_rows_2">
+          <div v-if="!customerAd" :class="['grid__column_1', 'grid_rows_2']">
             <Button shape="rounded" borders="outline">
               Добавить в избранное
             </Button>
@@ -92,8 +110,12 @@
             </Modal>
           </div>
         </div>
-        <div class="ad-modal__description-header">
+        <div v-if="customerAd" class="line_horizontal"></div>
+        <div v-if="!customerAd" class="ad-modal__description-header">
           Описание специалиста:
+        </div>
+        <div v-if="customerAd" class="ad-modal__description-header">
+          Описание Задачи:
         </div>
         <div class="ad-modal__description">
           {{ adModalData.description }}
@@ -128,6 +150,9 @@ export default {
     companyAd: {
       type: Boolean
     },
+    customerAd: {
+      type: Boolean
+    },
     authorTypeId: {
       type: Number,
       default: 1
@@ -139,7 +164,7 @@ export default {
       meta: {
         current_page: 1,
         last_page: 1,
-        per_page: 12,
+        per_page: 99,
         total: 0
       },
       links: {
@@ -161,6 +186,8 @@ export default {
     classList() {
       const arr = []
       if (this.privateAd) arr.push('ad__list_private')
+      if (this.companyAd) arr.push('ad__list_company')
+      if (this.customerAd) arr.push('ad__list_customer')
       return arr
     }
   },

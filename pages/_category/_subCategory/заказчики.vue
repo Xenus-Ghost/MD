@@ -161,7 +161,12 @@
     </CategoryHeader>
     <Advertising></Advertising>
     <h2 class="text_center text_neon">Все фирмы</h2>
-    <AdList private-ad></AdList>
+    <AdList
+      customer-ad
+      :ads-prop="ads"
+      :category="1"
+      :author-type-id="1"
+    ></AdList>
   </div>
 </template>
 
@@ -169,12 +174,29 @@
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising/Advertising'
 import AdList from '@/components/Ad/AdList'
+import { getUrl, jsonToParams } from '@/assets/js/util'
+
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     Advertising,
     AdList
+  },
+  async asyncData({ $axios }) {
+    const params = jsonToParams({
+      category_id: 1,
+      per_page: 12,
+      author_type_id: 1
+    })
+    const url = getUrl('advertisements' + params)
+    const { data } = await $axios.get(url)
+    return { ads: data.data }
+  },
+  data() {
+    return {
+      ads: []
+    }
   }
 }
 </script>

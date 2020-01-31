@@ -74,7 +74,7 @@
         <Button
           shape="semi_rounded"
           borders="neon"
-          @click.native="modalAddOpen(1, 1)"
+          @click.native="modalAddOpen(1, 3)"
         >
           Заказчик - бесплатно
         </Button>
@@ -109,6 +109,20 @@
             />
           </label>
           <label
+            v-if="ad.author_type_id === 1 && ad.author_type_id === 3"
+            for="name"
+            class="label grid__column_6"
+          >
+            <input
+              id="name"
+              v-model="ad.name"
+              class="input"
+              type="text"
+              placeholder="Фамилия Имя Отчество"
+              required
+            />
+          </label>
+          <label
             v-if="ad.author_type_id === 2"
             for="name2"
             class="label grid__column_6"
@@ -119,20 +133,6 @@
               class="input"
               type="text"
               placeholder="Название фирмы"
-              required
-            />
-          </label>
-          <label
-            v-if="ad.author_type_id === 1"
-            for="name"
-            class="label grid__column_6"
-          >
-            <input
-              id="name"
-              v-model="ad.name"
-              class="input"
-              type="text"
-              placeholder="Фамилия Имя Отчество"
               required
             />
           </label>
