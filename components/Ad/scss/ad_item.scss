@@ -1,0 +1,109 @@
+.ad__item {
+  display: grid;
+  grid-template-rows: 150px auto auto 35px;
+  justify-items: center;
+  align-items: center;
+  padding: 15px 3px;
+  background: rgba(14, 36, 62, 0.3);
+  //box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 8px 6px rgba(14, 36, 62, 0.3), 0 10px 10px rgba(0, 0, 0, 0.1);
+
+  &_pro {
+    border: 2px solid #fff;
+    box-shadow: 0 0 6px 1px #7bd7ff, 0 0 6px 1px #7bd7ff inset;
+  }
+
+  &_premium {
+    border: 2px solid #fff;
+    box-shadow: 0 0 6px 1px #ffb800, 0 0 6px 1px #ffb800 inset;
+  }
+
+  &_company {
+    padding: 0;
+  }
+
+  &_private {
+    height: 140px;
+    padding-left: 26px;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 38px 17px auto;
+    grid-gap: 10px 20px;
+    justify-items: left;
+
+    .ad__title {
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .ad__logo {
+      grid-row: 1/-1;
+    }
+  }
+}
+
+.ad {
+  &__photo {
+    object-fit: cover;
+    width: 100%;
+    height: 152px;
+
+
+    align-self: start;
+    justify-self: center;
+  }
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  &__sub-title {
+    font-size: 14px;
+  }
+
+  &__caption {
+    font-size: 14px;
+  }
+
+  &__button {
+    height: 25px;
+    font-size: 14px;
+    max-width: 150px;
+    width: 100%;
+    //grid-row: -1
+  }
+}
+
+.ad__item_private {
+  .ad__photo {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    grid-row: 1/-1;
+  }
+  .ad__title {
+    font-size: 16px;
+  }
+  .ad__sub-title {
+    font-size: 16px;
+  }
+}
+.ad__item_company {
+  .ad__photo {
+    background-color: #0E243E;
+    opacity: 0.5;
+    filter: blur(0.5px);
+  }
+}

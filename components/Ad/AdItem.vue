@@ -1,6 +1,7 @@
 <template>
   <div :class="classList" class="ad__item">
-    <img :src="ad.img" alt="" class="ad__logo" />
+    <img v-if="ad.logo" :src="ad.logo" :alt="ad.title" class="ad__logo" />
+    <img :src="ad.img" :alt="ad.title" class="ad__photo" />
     <span v-if="ad.name" class="ad__title ad__name">{{ ad.name }}</span>
     <span class="ad__sub-title">{{ ad.title }}</span>
     <span v-if="ad.caption" class="ad__caption">{{ ad.caption }}</span>
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import { getFileUrl } from '@/assets/js/util/helpers'
+import { getFileUrl } from '@/assets/js/util'
 export default {
   name: 'AdItem',
   props: {
@@ -29,16 +30,14 @@ export default {
     },
     privateAd: {
       type: Boolean
+    },
+    companyAd: {
+      type: Boolean
     }
   },
   computed: {
     ad() {
       const obj = {}
-      /* if (this.adData.img) {
-        obj.img = this.adData.img
-      } else {
-        obj.img = ''
-      } */
 
       obj.ad_type = this.adData.ad_type ? this.adData.ad_type : ''
       obj.id = this.adData.id
@@ -59,6 +58,7 @@ export default {
         : obj.photo
         ? getFileUrl(obj.photo[0])
         : ''
+      obj.logo = this.adData.logo ? getFileUrl(this.adData.logo) : null
       if (this.adData.video && this.adData.video.length > 0)
         obj.video = this.adData.video
       if (this.adData.phone && this.adData.phone.length > 0) {
@@ -77,6 +77,7 @@ export default {
         arr.push('ad__item_premium')
       }
       if (this.privateAd) arr.push('ad__item_private')
+      if (this.companyAd) arr.push('ad__item_company')
       return arr
     }
   },
@@ -89,7 +90,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
-@import 'ad';
+@import 'scss/ad_item';
 </style>

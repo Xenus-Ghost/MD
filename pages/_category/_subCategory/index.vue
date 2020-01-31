@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_building">
+  <div class="grid-layout_sub-category">
     <CategoryHeader>
       {{ pageTitle }}
       <template v-slot:right_column>
@@ -313,10 +313,10 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
 @import '~assets/scss/app/pages/_category.scss';
-.grid-layout_building {
+.grid-layout_sub-category {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);

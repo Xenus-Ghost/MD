@@ -31,7 +31,7 @@
 
 <script>
 import { Cropper, CircleStencil } from 'vue-advanced-cropper'
-import { getUrl } from '@/assets/js/util/helpers'
+import { getUrl } from '@/assets/js/util'
 import FileUploader from '@/components/FileUploader'
 
 export default {

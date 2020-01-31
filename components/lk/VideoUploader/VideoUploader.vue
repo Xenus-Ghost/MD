@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { convertYoutubeLink } from '@/assets/js/util/helpers'
+import { convertYoutubeLink } from '@/assets/js/util'
 export default {
   name: 'VideoUploader',
   model: {
@@ -62,23 +62,9 @@ export default {
       this.modalVideoShow = false
     },
     update(e) {
-      // console.log(e.target)
-      // console.log(e.target.value)
-      /* this.videoURL.forEach((url) => {
-        this.url = convertYoutubeLink(url)
-        console.log(this.url)
-      }) */
-      // const output = []
-      // for (const url of this.videoURL) {
-      //   const newItem = convertYoutubeLink(url)
-      //   output.push(newItem)
-      // }
       for (let i = 0; i < this.videoURL.length; i++) {
         this.videoURL[i] = convertYoutubeLink(this.videoURL[i])
       }
-      // console.log(convertYoutubeLink('sd'))
-      // this.videoURL = output
-      // console.log(output)
       this.$emit('change', this.videoURL)
     }
   }

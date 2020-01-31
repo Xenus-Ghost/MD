@@ -85,7 +85,7 @@
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import AvatarUploader from '@/components/lk/AvatarUploader'
-import { getFileUrl } from '@/assets/js/util/helpers'
+import { getFileUrl } from '@/assets/js/util'
 export default {
   middleware: ['auth'],
   name: 'Index',

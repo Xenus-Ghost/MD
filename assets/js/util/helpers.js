@@ -1,5 +1,3 @@
-import { BACKEND_URL, BACKEND_API_URL } from '@/constants'
-
 export function convertToUnit(str, unit = 'px') {
   if (str == null || str === '') {
     return undefined
@@ -37,17 +35,11 @@ export const keyCodes = Object.freeze({
   pagedown: 34
 })
 
-export function getUrl(path) {
-  return BACKEND_API_URL + path
-}
-
-export function getFileUrl(path) {
-  return BACKEND_URL + 'storage/' + path
-}
-
-export function convertYoutubeLink(url, agressive = false) {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
-  const match = url.match(regExp)
-
-  return match && match[2].length === 11 ? match[2] : !agressive ? url : null
+export function generateString(number = 7) {
+  let text = ''
+  const possible = 'abcdefghijklmnopqrstuvwxyz'
+  for (let i = 0; i < number; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return text
 }

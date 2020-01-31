@@ -291,6 +291,19 @@
               <VideoUploader v-model="ad.video"></VideoUploader>
             </div>
           </div>
+          <div
+            v-if="ad.account_type_id !== 1 && ad.author_type_id === 2"
+            class="grid__column_full"
+          >
+            <FileUploader
+              v-model="ad.logo"
+              auto-upload
+              preview
+              file-type="photo"
+            >
+              Загрузить логотип
+            </FileUploader>
+          </div>
           <label for="address" class="label grid__column_3">
             <input
               id="address"
@@ -413,7 +426,8 @@ export default {
         status_id: 1,
         author_type_id: 1,
         account_type_id: 1,
-        photo: []
+        photo: [],
+        logo: null
       },
       adSubCategories: []
       // adCategoriesList: []

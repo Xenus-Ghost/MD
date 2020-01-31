@@ -2,14 +2,16 @@
   <client-only>
     <div class="uploader">
       <input
-        id="files"
+        :id="'files_' + selectorId"
         ref="fileInput"
         type="file"
         class="uploader__input"
         :multiple="multiple"
         @change="fileSelected($event)"
       />
-      <Button @click.native="onPickFile">выбрать файлы</Button>
+      <Button @click.native="onPickFile">
+        <slot>выбрать файлы</slot>
+      </Button>
       <Button v-if="loadButton" @click.native="upload()">Загрузить</Button>
       <div v-if="preview" class="uploader__list">
         <div v-for="(file, j) in uploaded" :key="j" class="uploader__file">
@@ -40,7 +42,8 @@
 
 <script>
 import { BACKEND_API_URL } from '@/constants'
-import { getFileUrl } from '@/assets/js/util/helpers'
+import { getFileUrl, generateString } from '@/assets/js/util'
+
 export default {
   name: 'FileUploader',
   components: {
@@ -97,11 +100,14 @@ export default {
   computed: {
     uploadedFiles() {
       return this.uploadedFiles
+    },
+    selectorId() {
+      return generateString()
     }
   },
   methods: {
     fileSelected(event) {
-      const files = document.getElementById('files').files
+      const files = document.getElementById('files_' + this.selectorId).files
       this.files = files
       if (this.autoUpload) {
         this.upload()
@@ -156,10 +162,14 @@ export default {
       if (this.base64) {
         this.$emit('change', this.image)
       } else {
-        const data = []
+        let data = []
         this.uploaded.forEach((image) => {
           if (image && image.path) {
-            data.push(image.path)
+            if (this.uploaded.length > 1) {
+              data.push(image.path)
+            } else {
+              data = image.path
+            }
           }
         })
         this.$emit('change', data)

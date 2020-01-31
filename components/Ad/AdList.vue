@@ -1,7 +1,7 @@
 <template>
   <section class="ad">
     <div class="ad__filter ad-filter">
-      <span><b>Сортировать по:</b></span>
+      <span class="ad-filter__title"><b>Фильтр:</b></span>
       <label for="">
         <select name="" class="ad-filter__select">
           <option value="none" class="ad-filter__option" selected disabled>
@@ -35,6 +35,7 @@
         :key="i"
         :ad-data="ad"
         :private-ad="privateAd === true"
+        :company-ad="companyAd === true"
       ></AdItem>
     </div>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
@@ -53,22 +54,6 @@
             <img :src="getFileUrl(item)" alt="photo" class="ad-modal__photo" />
           </a>
         </div>
-        <!--<div class="ad-modal__photos">
-          <a
-            v-for="p in 12"
-            :key="p"
-            href="https://via.placeholder.com/95/09f/fff.jpg"
-            class="ad-modal__photo-link"
-            target="_blank"
-            :title="'https://via.placeholder.com/95/09f/fff.jpg ' + p"
-          >
-            <img
-              src="https://via.placeholder.com/95/09f/fff.jpg"
-              alt="photo"
-              class="ad-modal__photo"
-            />
-          </a>
-        </div>-->
         <div>
           <h3>Категории работ:</h3>
         </div>
@@ -119,11 +104,9 @@
 </template>
 
 <script>
-// import axios from 'axios'
-import { getUrl, getFileUrl } from '@/assets/js/util/helpers'
+import { getUrl, getFileUrl, jsonToParams } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
-// let axios = this.$axios
 export default {
   name: 'AdList',
   components: {
@@ -141,6 +124,13 @@ export default {
     adsProp: {
       type: Array,
       default: null
+    },
+    companyAd: {
+      type: Boolean
+    },
+    authorTypeId: {
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -180,7 +170,12 @@ export default {
   methods: {
     async getAds() {
       if (this.adsProp.length > 0) this.ads = this.adsProp
-      const url = getUrl('advertisements?category_id=1&per_page=99')
+      const params = jsonToParams({
+        category_id: this.category,
+        per_page: 12,
+        author_type_id: this.authorTypeId
+      })
+      const url = getUrl('advertisements' + params)
       await this.$axios
         .get(url)
         .then((e) => {
@@ -211,7 +206,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
-@import 'ad';
+@import 'scss/ad';
 </style>

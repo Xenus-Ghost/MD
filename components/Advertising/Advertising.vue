@@ -3,7 +3,7 @@
     <div class="advertising__slider">
       <div v-for="(ad, i) in ads" :key="i" class="advertising__slide">
         <NuxtLink :to="ad.url">
-          <img :src="ad.img" alt="" />
+          <img class="advertising__image" :src="ad.img" alt="" />
         </NuxtLink>
       </div>
     </div>
@@ -53,14 +53,21 @@ export default {
   }
 }
 .advertising__slider {
-  display: flex;
+  /*display: flex;*/
   overflow-x: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
 }
 .advertising__slide {
   padding: 5px;
-  @include on_mobile() {
+  /*  @include on_mobile() {
     flex: 100%;
     max-width: 100%;
-  }
+  }*/
+}
+.advertising__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
