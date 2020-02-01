@@ -18,12 +18,8 @@
 </template>
 
 <script>
-// import Button from '@/components/Button/Button'
 export default {
   name: 'CircleItem',
-  components: {
-    // Button
-  },
   props: {
     n: {
       default: 1,
@@ -56,7 +52,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/framework/basic.scss';
 @import 'Circle';
 </style>

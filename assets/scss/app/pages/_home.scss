@@ -1,0 +1,200 @@
+.home-wrapper {
+  display: grid;
+  grid-row-gap: 10px;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  @include media_screen(desktop) {
+    height: calc(100vh - 85px);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 40px 2fr 40px 40px auto;
+  }
+  @include media_screen(desktop-wide) {
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+  .button_aside {
+    width: 70%;
+    @include media_screen(desktop-wide) {
+      width: 100%;
+    }
+  }
+}
+.circle__wrapper {
+  @include media_screen(desktop) {
+    grid-column: 2;
+    grid-row: 1/-2;
+  }
+}
+.site__logo {
+  width: 116px;
+  align-self: center;
+  @include media_screen(desktop) {
+    max-width: 6.5vw;
+  }
+}
+.site-title {
+  font-size: 1.65rem;
+  text-align: center;
+  font-weight: 300;
+  margin: 0 0 0.25vw 0 !important;
+  @include media_screen(desktop-wide) {
+    font-size: 2.4rem;
+    margin-bottom: 0.5vw;
+  }
+}
+.site__link {
+  font-size: 1.625rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 0.25vw;
+  @include media_screen(desktop-wide) {
+    font-size: 2rem;
+    margin-bottom: 0.5vw;
+  }
+  @include media_screen(desktop-fhd) {
+    font-size: 2.25rem;
+  }
+}
+.site__link_mirror {
+  font-size: 1.375rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5vw;
+  @include media_screen(desktop-wide) {
+    font-size: 1.625rem;
+    margin-bottom: 1vw;
+  }
+  @include media_screen(desktop-fhd) {
+    font-size: 1.75rem;
+  }
+}
+.home-page__categories {
+  display: grid;
+  grid-column: 1/-1;
+  grid-row: 2;
+  grid-template-columns: repeat(2, 1fr);
+  @include on_tablet() {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media_screen(tablet-wide) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include media_screen(desktop) {
+    grid-row: -1;
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.home-page__category {
+  padding: 5px 5px;
+  position: relative;
+  @include on_tablet() {
+    padding: 0.15vw 20px;
+  }
+  @include on_desktop() {
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  & > .divider {
+    display: none;
+    @include media_screen(desktop) {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -8px;
+      bottom: 0;
+      height: 100%;
+      width: 15px;
+    }
+  }
+  & > img {
+    width: 100%;
+    object-fit: contain;
+    height: 45px;
+    @include on_tablet() {
+      height: 35px;
+    }
+    @include media_screen(desktop-wide) {
+      margin-bottom: 10px;
+      height: 50px;
+    }
+  }
+  & > .button {
+    font-size: 0.75rem;
+    font-weight: normal;
+    @include on_tablet() {
+      font-size: 0.9rem;
+    }
+    @include media_screen(desktop) {
+      font-size: 0.75rem;
+      height: calc(5px + 1.5vw);
+    }
+    @include media_screen(desktop-wide) {
+      font-size: 1rem;
+    }
+  }
+}
+.home-page__category-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  width: 95%;
+  margin: 0 auto 0.25vw auto;
+  height: calc(34px - 0.25vw);
+  @include on_tablet() {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  @include media_screen(desktop) {
+    font-size: 0.8rem;
+  }
+  @include media_screen(desktop-wide) {
+    font-size: 1.15rem;
+    height: 55px;
+  }
+}
+
+.circle__item .button__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cat-button__image {
+  width: 60px;
+  height: 50px;
+  object-fit: contain;
+  @include media_screen(notebook) {
+    width: 35px;
+    height: 30px;
+  }
+}
+.cat-button__title {
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1;
+  @include media_screen(notebook) {
+    font-size: 0.5rem;
+  }
+  @include media_screen(desktop-wide) {
+    font-size: 0.65rem;
+  }
+  @include media_screen(desktop-fhd) {
+    font-size: 0.8rem;
+  }
+  &:hover {
+    @include text-neon(2);
+  }
+}
+.button_aside {
+  @include media_screen(tablet, max) {
+    grid-column: 1 !important;
+    grid-row: unset !important;
+    justify-self: center !important;
+  }
+}

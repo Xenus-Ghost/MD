@@ -1,8 +1,8 @@
 <template>
   <div class="container menu__wrapper">
     <nuxt-link to="/" class="menu__logo">
-      <div class="logo">MD</div>
-      <span class="logo__title">Монтаж Демонтаж</span>
+      <div class="menu-logo">MD</div>
+      <span class="menu-logo__title">Монтаж Демонтаж</span>
     </nuxt-link>
     <div class="menu__button_burger" @click="menuToggle">
       <span class="menu__button_burger-line"></span>
@@ -50,9 +50,7 @@ export default {
     clickoutside: {
       bind(el, binding, vnode) {
         el.clickOutsideEvent = function(event) {
-          // here I check that click was outside the el and his childrens
           if (!(el === event.target || el.contains(event.target))) {
-            // and if it did, call method provided in attribute value
             vnode.context[binding.expression](event)
           }
         }
@@ -91,14 +89,12 @@ export default {
       this.$emit('aboutModalOpen')
     },
     menuToggle() {
-      // this.isSHow = !this.isSHow
       this.isShow = !this.isShow
     },
     authFormOpen() {
       this.$store.commit('authFormOpen')
     },
     categoriesOpen() {
-      // this.$emit('categoriesOpen')
       this.$store.commit('categoriesWidgetOpen')
     },
     async logout() {
@@ -108,7 +104,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/framework/basic.scss';
 @import 'Menu.scss';
 </style>

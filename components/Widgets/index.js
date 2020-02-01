@@ -1,4 +1,4 @@
-import CategoriesWidget from './CategoriesWidget/CategoriesWidget'
-import ProfileWidget from './ProfileWidget/ProfileWidget'
+import CategoriesWidget from './CategoriesWidget'
+import ProfileWidget from './ProfileWidget'
 
 export { CategoriesWidget, ProfileWidget }

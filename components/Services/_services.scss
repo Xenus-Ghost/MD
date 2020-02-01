@@ -12,16 +12,12 @@
       align-items: center;
       min-height: 100px;
       max-width: 100%;
-      //grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
-      //grid-template-columns: repeat(3,1fr);
       grid-gap: 15px;
       padding: 1% 5%;
       margin-left: auto;
       margin-right: auto;
       border-radius: 3rem;
-      //border: 1px solid white;
       $shadow-value:7px;
-      //box-shadow: 0 0 $shadow-value 0 #7BD7FF, 0 0 $shadow-value 0 #7BD7FF inset;
       @include on_tablet() {
         background: rgba(0, 0, 0, 0.2);
         border: 1px solid white;
@@ -40,14 +36,10 @@
         padding: 34px 75px 44px 75px;
         border-radius: 7.5rem;
       }
-      //&_8 {
-      //  grid-column: span 8;
-      //}
       &_2_cols {
         padding: 2% 5%;
         border-radius: 4rem;
         @include media_screen(desktop-fhd) {
-
         }
       }
     }
@@ -63,16 +55,6 @@
     position: absolute;
     right: -25px;
   }
-  //&_8 {
-  //  grid-column: span 8;
-  //}
-  //& > .service__footer >>> .button {
-  //  font-size: .7rem;
-  //  @include media_screen(tablet-wide) {
-  //    font-size: 1rem;
-  //  }
-  //}
-
 }
 
 .service__icon {

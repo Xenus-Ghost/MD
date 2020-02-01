@@ -195,8 +195,10 @@ export default {
     },
     adModalData() {
       const modalData = this.$store.state.adModalData
-      for (let i = 0; i < modalData.photo.length; i++) {
-        modalData.photo[i] = getFileUrl(modalData.photo[i])
+      if (modalData.photo) {
+        for (let i = 0; i < modalData.photo.length; i++) {
+          modalData.photo[i] = getFileUrl(modalData.photo[i])
+        }
       }
       return modalData
     },

@@ -9,13 +9,12 @@
         <slot>Монолит</slot>
       </h1>
       <Button
-        to="/"
+        :to="backURL"
         shape="rounded"
         borders="neon"
-        width="430px"
-        margin="0 auto"
+        class="header_category__button_back"
       >
-        Вернуться на главную
+        Назад
       </Button>
     </div>
     <div class="header__col_right">
@@ -26,11 +25,17 @@
 
 <script>
 export default {
-  name: 'CategoryHeader'
+  name: 'CategoryHeader',
+  props: {
+    backURL: {
+      type: String,
+      default: '/'
+    }
+  }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
 @import 'category_header';
 </style>

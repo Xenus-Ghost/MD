@@ -31,10 +31,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    '~plugins/globalComponents.js'
-    // { src: '~/plugins/VueCoolLightBox.client' }
-  ],
+  plugins: ['~plugins/globalComponents.js'],
   /*
    ** Nuxt.js dev-modules
    */
