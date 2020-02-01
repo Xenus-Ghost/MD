@@ -39,13 +39,21 @@
         :customer-ad="customerAd === true"
       ></AdItem>
     </div>
-    <client-only>
+    <!--<client-only>
       <CoolLightBox
         :items="adModalData.photo"
         :index="index"
         loop
         @close="index = null"
       ></CoolLightBox>
+    </client-only>-->
+    <client-only>
+      <LightBox
+        :items="adModalData.photo"
+        :index="index"
+        loop
+        @close="index = null"
+      ></LightBox>
     </client-only>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
       <template v-slot:body>
@@ -138,13 +146,15 @@
 import { getUrl, getFileUrl, jsonToParams } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
+// import LightBox from '@/components/Modal'
 
 export default {
   name: 'AdList',
   components: {
     AdItem,
     EmbedVideo,
-    CoolLightBox: process.client ? () => import('vue-cool-lightbox') : null
+    LightBox: () => import('@/components/Modal/LightBox')
+    // CoolLightBox: process.client ? () => import('vue-cool-lightbox') : null
     // CoolLightBox: () => import('vue-cool-lightbox')
   },
   props: {

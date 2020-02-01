@@ -15,7 +15,7 @@ export default {
       },
       {
         name: 'theme-color',
-        content: '#2396FF'
+        content: '#2161bc'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -23,7 +23,8 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#2396FF' },
+  // loading: { color: '#2396FF' },
+  loading: false,
   /*
    ** Global CSS
    */
