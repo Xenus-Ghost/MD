@@ -6,9 +6,7 @@
     ></Menu>
     <CategoriesWidget></CategoriesWidget>
     <ProfileWidget></ProfileWidget>
-    <article class="container_wide layout_category">
-      <nuxt />
-    </article>
+    <nuxt />
     <Modal v-show="aboutModalShow" @close="aboutModalShow = false">
       <template v-slot:header>
         О компании
@@ -132,7 +130,7 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
 .layout_category {
   /*max-height: 800px;*/

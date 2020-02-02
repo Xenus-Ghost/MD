@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_building">
+  <div class="container_full layout_category grid-layout_building">
     <CategoryHeader>
       Дороги
       <template v-slot:right_column>
@@ -470,7 +470,6 @@
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 export default {
-  layout: 'CategoryAlt',
   components: {
     CategoryHeader
   }

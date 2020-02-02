@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_electric">
+  <div class="container_wide layout_category grid-layout_electric">
     <CategoryHeader>
       Электрика
       <template v-slot:right_column>

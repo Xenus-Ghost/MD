@@ -1,4 +1,5 @@
 // import axios from 'axios'
+import { getFileUrl } from '@/assets/js/util'
 
 export const state = () => ({
   isAuthFormShow: false,
@@ -101,6 +102,11 @@ export const actions = {
   },
   adModalOpen({ commit }, data) {
     commit('adModalOpen')
+    if (data.photo && data.photo.length > 0) {
+      data.photo = data.photo.map((name) => {
+        return getFileUrl(name)
+      })
+    }
     commit('adDataAdd', data)
     if (typeof document !== 'undefined') {
       document.querySelector('body').classList.add('body-scroll_lock')

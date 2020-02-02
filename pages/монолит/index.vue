@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_monolith">
+  <div class="container_wide layout_category grid-layout_monolith">
     <CategoryHeader>
       Монолит
       <template v-slot:right_column>

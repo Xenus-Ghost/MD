@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_mdsp">
+  <div class="container_wide layout_category grid-layout_mdsp">
     <CategoryHeader class="category__header_mdsp">
       Металлы. Дерево. Стекло. Пластмасса.
       <template v-slot:right_column style="display: none"></template>

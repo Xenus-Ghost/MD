@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_building">
+  <div class="container_wide layout_category grid-layout_building">
     <CategoryHeader>
       Сантехника
       <template v-slot:right_column>

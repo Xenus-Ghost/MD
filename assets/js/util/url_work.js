@@ -5,7 +5,11 @@ export function getUrl(path) {
 }
 
 export function getFileUrl(path) {
-  return BACKEND_URL + 'storage/' + path
+  if (!path.includes(BACKEND_URL) && !path.includes('://')) {
+    return BACKEND_URL + 'storage/' + path
+  } else {
+    return path
+  }
 }
 
 export function convertYoutubeLink(url, agressive = false) {
@@ -16,7 +20,6 @@ export function convertYoutubeLink(url, agressive = false) {
 }
 
 export function jsonToParams(params) {
-  // const result = new URLSearchParams(params).toString()
   const result = Object.entries(params)
     .map((e) => e.join('='))
     .join('&')

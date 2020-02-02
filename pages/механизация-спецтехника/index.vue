@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout">
+  <div class="container_wide layout_category grid-layout">
     <CategoryHeader>
       Механизация, спецтехника
       <template v-slot:right_column>

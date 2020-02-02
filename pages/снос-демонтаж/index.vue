@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout">
+  <div class="container_wide layout_category grid-layout">
     <CategoryHeader>
       Снос и демонтаж
       <template v-slot:right_column>

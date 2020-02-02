@@ -147,13 +147,24 @@ import { getUrl, getFileUrl, jsonToParams } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
 // import LightBox from '@/components/Modal'
+// if (process.client) {
+/* const LightBox = () => ({
+  component: import('@/components/Modal/LightBox'),
+  // The error component will be displayed if a timeout is
+  // provided and exceeded. Default: Infinity.
+  timeout: 3000
+}) */
+// }
 
 export default {
   name: 'AdList',
   components: {
     AdItem,
     EmbedVideo,
-    LightBox: () => import('@/components/Modal/LightBox')
+    // LightBox
+    LightBox: process.client
+      ? () => import(/* webpackPrefetch: true */ '@/components/Modal/LightBox')
+      : null
     // CoolLightBox: process.client ? () => import('vue-cool-lightbox') : null
     // CoolLightBox: () => import('vue-cool-lightbox')
   },
@@ -205,11 +216,6 @@ export default {
     },
     adModalData() {
       const modalData = this.$store.state.adModalData
-      if (modalData.photo) {
-        for (let i = 0; i < modalData.photo.length; i++) {
-          modalData.photo[i] = getFileUrl(modalData.photo[i])
-        }
-      }
       return modalData
     },
     classList() {
