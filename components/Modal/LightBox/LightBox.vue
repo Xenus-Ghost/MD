@@ -12,7 +12,7 @@
 <script>
 import CoolLightBox from 'vue-cool-lightbox'
 export default {
-  name: 'Lightbox',
+  name: 'LightBox',
   components: {
     CoolLightBox
   },

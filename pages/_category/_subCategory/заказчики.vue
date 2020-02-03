@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout_ads">
+  <div class="container_wide layout_category grid-layout_ads">
     <CategoryHeader>
       Частники
       <template v-slot:right_column>
