@@ -90,9 +90,9 @@ export default {
      */
     extend(config, ctx) {},
     postcss: require('autoprefixer')(),
-    splitChunks: {
-      layouts: true
-    },
+    // splitChunks: {
+    //   layouts: true
+    // },
     extractCSS: true
   }
 }

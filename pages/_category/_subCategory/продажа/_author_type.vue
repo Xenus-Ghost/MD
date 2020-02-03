@@ -1,7 +1,7 @@
 <template>
-  <div class="container_wide layout_category grid-layout">
+  <div class="container_wide grid-layout_ads">
     <CategoryHeader>
-      Снос и демонтаж
+      Частники
       <template v-slot:right_column>
         <svg
           width="395"
@@ -161,20 +161,63 @@
     </CategoryHeader>
     <Advertising></Advertising>
     <h2 class="text_center text_neon">Все фирмы</h2>
-    <AdList></AdList>
+    <AdList
+      private-ad
+      :ads-prop="ads"
+      :category="1"
+      :author-type-id="authorTypeId"
+      :type-id="2"
+    ></AdList>
   </div>
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising/Advertising'
 import AdList from '@/components/Ad/AdList'
+import { getUrl, jsonToParams } from '@/assets/js/util'
+
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     Advertising,
     AdList
+  },
+  async asyncData(context) {
+    let authorTypeId = 1
+    if (context.params.author_type === 'частники') authorTypeId = 1
+    if (context.params.author_type === 'все-фирмы-и-магазины') authorTypeId = 3
+    if (context.params.author_type === 'торговые-центры') authorTypeId = 5
+    if (context.params.author_type === 'интернет-магазины') authorTypeId = 4
+    const params = jsonToParams({
+      type_id: 2,
+      category_id: 1,
+      per_page: 12,
+      author_type_id: authorTypeId
+    })
+    const url = getUrl('advertisements' + params)
+    const { data } = await context.$axios.get(url)
+    console.log(authorTypeId)
+    return { ads: data.data, authorTypeId }
+  },
+  data() {
+    return {
+      ads: [],
+      authorTypeId: 1
+    }
+  },
+  created() {
+    this.authorTypeId = 1
+    if (this.$route.params.author_type === 'частники') {
+      this.authorTypeId = 1
+    } else if (this.$route.params.author_type === 'все-фирмы-и-магазины') {
+      this.authorTypeId = 3
+    } else if (this.$route.params.author_type === 'торговые-центры') {
+      this.authorTypeId = 5
+    } else if (this.$route.params.author_type === 'интернет-магазины') {
+      this.authorTypeId = 4
+    }
   }
 }
 </script>

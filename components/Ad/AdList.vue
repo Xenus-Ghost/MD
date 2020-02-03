@@ -189,6 +189,10 @@ export default {
     authorTypeId: {
       type: Number,
       default: 1
+    },
+    typeId: {
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -235,7 +239,8 @@ export default {
       const params = jsonToParams({
         category_id: this.category,
         per_page: 12,
-        author_type_id: this.authorTypeId
+        author_type_id: this.authorTypeId,
+        type_id: this.typeId
       })
       const url = getUrl('advertisements' + params)
       await this.$axios

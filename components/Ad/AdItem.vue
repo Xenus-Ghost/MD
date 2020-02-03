@@ -1,7 +1,13 @@
 <template>
   <div :class="classList" class="ad__item">
-    <img v-if="ad.logo" :src="ad.logo" :alt="ad.title" class="ad__logo" />
-    <img :src="ad.img" :alt="ad.title" class="ad__photo" />
+    <img
+      v-if="ad.logo"
+      :src="ad.logo"
+      :alt="ad.title"
+      class="ad__logo"
+      @click="adOpen"
+    />
+    <img :src="ad.img" :alt="ad.title" class="ad__photo" @click="adOpen" />
     <span v-if="ad.name" class="ad__title ad__name">{{ ad.name }}</span>
     <span v-if="!customerAd" class="ad__sub-title">{{ ad.title }}</span>
     <span v-if="ad.caption" class="ad__caption">{{ ad.caption }}</span>
