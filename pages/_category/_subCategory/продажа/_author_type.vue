@@ -1,5 +1,5 @@
 <template>
-  <div class="container_wide layout_category grid-layout_ads">
+  <div class="container_wide grid-layout_ads">
     <CategoryHeader>
       Частники
       <template v-slot:right_column>
@@ -162,10 +162,11 @@
     <Advertising></Advertising>
     <h2 class="text_center text_neon">Все фирмы</h2>
     <AdList
-      customer-ad
+      private-ad
       :ads-prop="ads"
       :category="1"
-      :author-type-id="1"
+      :author-type-id="authorTypeId"
+      :type-id="2"
     ></AdList>
   </div>
 </template>
@@ -183,19 +184,39 @@ export default {
     Advertising,
     AdList
   },
-  async asyncData({ $axios }) {
+  async asyncData(context) {
+    let authorTypeId = 1
+    if (context.params.author_type === 'частники') authorTypeId = 1
+    if (context.params.author_type === 'все-фирмы-и-магазины') authorTypeId = 3
+    if (context.params.author_type === 'торговые-центры') authorTypeId = 5
+    if (context.params.author_type === 'интернет-магазины') authorTypeId = 4
     const params = jsonToParams({
+      type_id: 2,
       category_id: 1,
       per_page: 12,
-      author_type_id: 1
+      author_type_id: authorTypeId
     })
     const url = getUrl('advertisements' + params)
-    const { data } = await $axios.get(url)
-    return { ads: data.data }
+    const { data } = await context.$axios.get(url)
+    console.log(authorTypeId)
+    return { ads: data.data, authorTypeId }
   },
   data() {
     return {
-      ads: []
+      ads: [],
+      authorTypeId: 1
+    }
+  },
+  created() {
+    this.authorTypeId = 1
+    if (this.$route.params.author_type === 'частники') {
+      this.authorTypeId = 1
+    } else if (this.$route.params.author_type === 'все-фирмы-и-магазины') {
+      this.authorTypeId = 3
+    } else if (this.$route.params.author_type === 'торговые-центры') {
+      this.authorTypeId = 5
+    } else if (this.$route.params.author_type === 'интернет-магазины') {
+      this.authorTypeId = 4
     }
   }
 }

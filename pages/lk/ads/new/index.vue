@@ -69,12 +69,73 @@
           </div>
         </Card>
       </div>
-      <div class="grid__column_1"></div>
+      <div class="grid__column_1">
+        <h2>Продажа</h2>
+        <Card>
+          <div class="grid_cols_2">
+            <div class="grid__column_1 grid_rows_3">
+              <h3>
+                Частник
+              </h3>
+              <Button
+                shape="semi_rounded"
+                borders="neon"
+                @click.native="modalAddOpen(1, 1, 2)"
+              >
+                Бесплатно
+              </Button>
+              <Button
+                shape="semi_rounded"
+                borders="neon"
+                @click.native="modalAddOpen(2, 1, 2)"
+              >
+                PRO-аккаунт
+              </Button>
+              <Button
+                shape="semi_rounded"
+                borders="neon"
+                @click.native="modalAddOpen(3, 1, 2)"
+              >
+                Премиум-аккаунт
+              </Button>
+            </div>
+            <div class="grid__column_1 grid_rows_3">
+              <h3>
+                Фирма
+              </h3>
+              <Button
+                shape="semi_rounded"
+                borders="neon"
+                @click.native="modalAddOpen(1, 2, 2)"
+              >
+                Бесплатно
+              </Button>
+              <Button
+                shape="semi_rounded"
+                borders="neon"
+                @click.native="modalAddOpen(2, 2, 2)"
+              >
+                PRO-аккаунт
+              </Button>
+              <Button
+                shape="semi_rounded"
+                borders="neon"
+                @click.native="modalAddOpen(3, 2, 2)"
+              >
+                Премиум-аккаунт
+              </Button>
+            </div>
+            <Button shape="semi_rounded" borders="neon" class="grid__column_2">
+              Тарифы
+            </Button>
+          </div>
+        </Card>
+      </div>
       <div class="grid__column_1">
         <Button
           shape="semi_rounded"
           borders="neon"
-          @click.native="modalAddOpen(1, 3)"
+          @click.native="modalAddOpen(1, 1, 3)"
         >
           Заказчик - бесплатно
         </Button>
@@ -98,6 +159,39 @@
           <h2>Объявление добавлено!</h2>
         </div>
         <form v-if="!success" class="advert-form" @submit.prevent="adSubmit">
+          <div
+            v-if="ad.type_id === 2 && ad.author_type_id >= 2"
+            class="grid_cols_4"
+          >
+            <Button
+              shape="semi_rounded"
+              borders="neon"
+              @click.native="ad.author_type_id = 2"
+            >
+              Фирма
+            </Button>
+            <Button
+              shape="semi_rounded"
+              borders="neon"
+              @click.native="ad.author_type_id = 3"
+            >
+              Магазин
+            </Button>
+            <Button
+              shape="semi_rounded"
+              borders="neon"
+              @click.native="ad.author_type_id = 5"
+            >
+              Торговый центр
+            </Button>
+            <Button
+              shape="semi_rounded"
+              borders="neon"
+              @click.native="ad.author_type_id = 6"
+            >
+              Завод
+            </Button>
+          </div>
           <label for="title" class="label grid__column_6">
             <input
               id="title"
@@ -109,7 +203,7 @@
             />
           </label>
           <label
-            v-if="ad.author_type_id === 1 && ad.author_type_id === 3"
+            v-if="ad.author_type_id === 1 || ad.type_id === 3"
             for="name"
             class="label grid__column_6"
           >
@@ -123,7 +217,7 @@
             />
           </label>
           <label
-            v-if="ad.author_type_id === 2"
+            v-if="ad.author_type_id >= 2"
             for="name2"
             class="label grid__column_6"
           >
@@ -132,7 +226,7 @@
               v-model="ad.name"
               class="input"
               type="text"
-              placeholder="Название фирмы"
+              placeholder="Название фирмы/компании"
               required
             />
           </label>
@@ -288,7 +382,7 @@
               placeholder="ссылка на сообщество FB"
             />
           </label>
-          <div class="grid__column_full grid_cols_2">
+          <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
             <div class="">
               <FileUploader
                 v-model="ad.photo"
@@ -303,7 +397,11 @@
             </div>
           </div>
           <div
-            v-if="ad.account_type_id !== 1 && ad.author_type_id === 2"
+            v-if="
+              ad.account_type_id !== 1 &&
+                ad.author_type_id >= 2 &&
+                ad.type_id !== 3
+            "
             class="grid__column_full"
           >
             <FileUploader
@@ -437,8 +535,7 @@ export default {
         status_id: 1,
         author_type_id: 1,
         account_type_id: 1,
-        photo: [],
-        logo: null
+        photo: []
       },
       adSubCategories: []
       // adCategoriesList: []
@@ -465,9 +562,10 @@ export default {
     }
   },
   methods: {
-    modalAddOpen(type, ownership) {
+    modalAddOpen(type, ownership, adType) {
       this.ad.account_type_id = type
       this.ad.author_type_id = ownership
+      this.ad.type_id = adType || 1
       this.showModalAdd = true
     },
     modalAddClose() {

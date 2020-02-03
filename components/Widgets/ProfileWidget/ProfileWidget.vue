@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <aside>
+    <aside class="profile-widget">
       <Button
         class="button_profile-enter"
         @click.prevent.native="profileButtonClick"
@@ -67,7 +67,7 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
-aside {
+.profile-widget {
   --button-width: 40px;
   @include media_screen(desktop-wide) {
     --button-width: 70px;

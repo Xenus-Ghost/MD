@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/framework/basic';
 @import 'buttons';
 </style>
