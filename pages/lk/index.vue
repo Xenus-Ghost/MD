@@ -63,7 +63,11 @@
           class="profile__button"
           >Подать объявление</Button
         >
-        <Button borders="neon" shape="semi_rounded" class="profile__button"
+        <Button
+          borders="neon"
+          shape="semi_rounded"
+          class="profile__button"
+          @click="openExhibitionForm"
           >Выставки</Button
         >
         <Button
@@ -73,7 +77,11 @@
           @click="openAdBannerForm"
           >Баннерная реклама</Button
         >
-        <Button borders="neon" shape="semi_rounded" class="profile__button"
+        <Button
+          borders="neon"
+          shape="semi_rounded"
+          class="profile__button"
+          @click="openVideoAddForm"
           >Видео</Button
         >
         <Button borders="neon" shape="semi_rounded" class="profile__button"
@@ -91,15 +99,29 @@
       v-if="isShowAdBannerForm"
       @close="closeAdBannerForm"
     ></AdBannerForm>
+    <ExhibitionForm
+      v-if="isShowExhibitionForm"
+      @close="closeExhibitionForm"
+    ></ExhibitionForm>
+    <VideoAddForm
+      v-if="isShowVideoAddForm"
+      @close="closeVideoAddForm"
+    ></VideoAddForm>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
-import AvatarUploader from '@/components/lk/AvatarUploader'
-import MyAds from '@/components/lk/Me/MyAds'
-import AdBannerForm from '@/components/lk/AdBannerForm'
+import {
+  AvatarUploader,
+  MyAds,
+  AdBannerForm,
+  ExhibitionForm,
+  VideoAddForm
+} from '@/components/lk'
+
 import { getFileUrl } from '@/assets/js/util'
+
 export default {
   middleware: ['auth'],
   name: 'Index',
@@ -108,7 +130,9 @@ export default {
     CategoryHeader,
     AvatarUploader,
     MyAds,
-    AdBannerForm
+    AdBannerForm,
+    ExhibitionForm,
+    VideoAddForm
   },
   data() {
     return {
@@ -116,7 +140,9 @@ export default {
       user: this.$auth.$state.user,
       isShowAdList: false,
       isAvatarUploadForm: false,
-      isShowAdBannerForm: false
+      isShowAdBannerForm: false,
+      isShowExhibitionForm: false,
+      isShowVideoAddForm: false
     }
   },
   computed: {
@@ -145,6 +171,18 @@ export default {
     },
     closeAdBannerForm() {
       this.isShowAdBannerForm = false
+    },
+    openExhibitionForm() {
+      this.isShowExhibitionForm = true
+    },
+    closeExhibitionForm() {
+      this.isShowExhibitionForm = false
+    },
+    openVideoAddForm() {
+      this.isShowVideoAddForm = true
+    },
+    closeVideoAddForm() {
+      this.isShowVideoAddForm = false
     }
   }
 }

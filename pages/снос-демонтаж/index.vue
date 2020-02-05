@@ -167,7 +167,7 @@
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
-import Advertising from '@/components/Advertising/Advertising'
+import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
 export default {
   layout: 'Category',

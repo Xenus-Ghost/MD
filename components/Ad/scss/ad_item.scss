@@ -66,6 +66,7 @@
     height: 140px;
     object-fit: contain;
     cursor: pointer;
+    z-index: 1;
     &:hover {
       @include neon_borders()
     }
