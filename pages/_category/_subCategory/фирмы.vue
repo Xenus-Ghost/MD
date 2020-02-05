@@ -203,5 +203,4 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/app/index.scss';
-@import '~assets/scss/app/pages/_category.scss';
 </style>

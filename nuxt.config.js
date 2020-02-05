@@ -38,7 +38,13 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    [
+      '@nuxtjs/router',
+      {
+        /* module options */
+      }
+    ]
   ],
   /*
    ** Nuxt.js modules
@@ -47,13 +53,25 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'nuxt-vuex-router-sync',
+    '@nuxtjs/localtunnel',
+    [
+      'nuxt-imagemin',
+      {
+        optipng: { optimizationLevel: 5 },
+        gifsicle: { optimizationLevel: 2 },
+        svgo: { optimizationLevel: 2 },
+        jpegtran: { progressive: true }
+      }
+    ]
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
+    baseURL: `https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/`,
     crossDomain: true
   },
   /*

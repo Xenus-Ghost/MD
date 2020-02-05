@@ -298,7 +298,6 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/app/index';
-@import '~assets/scss/app/pages/_home';
 </style>
 <style lang="scss" scoped>
 @import '~assets/scss/app/index';

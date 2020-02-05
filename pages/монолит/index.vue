@@ -517,7 +517,6 @@ export default {
 
 <style scoped lang="scss">
 @import '~assets/scss/app/index.scss';
-@import '~assets/scss/app/pages/_category.scss';
 .grid-layout_monolith {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

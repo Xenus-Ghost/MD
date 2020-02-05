@@ -16,7 +16,7 @@
         Мы настоятельно не рекомендуем доверять следующим организациям
       </span>
     </template>
-    <template v-slot:body>
+    <template>
       <div class="black-list__content">
         <table class="black-list__table">
           <div class="black-list__header">
@@ -48,7 +48,7 @@
         class="black-list__form-modal"
         @close="isFormShow = false"
       >
-        <template v-slot:body>
+        <template>
           <form action="" class="black-list__form">
             <label for="">
               <input

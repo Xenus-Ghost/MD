@@ -1,8 +1,9 @@
 $container-padding: 8px;
 .container {
+  --padding: 8px;
   width: 100%;
-  padding-right: $container-padding;
-  padding-left: $container-padding;
+  padding-right: var(--padding);
+  padding-left: var(--padding);
   margin-right: auto;
   margin-left: auto;
   &_full {
@@ -10,8 +11,8 @@ $container-padding: 8px;
   }
   &_wide {
     width: 100%;
-    padding-right: $container-padding;
-    padding-left: $container-padding;
+    padding-right: var(--padding);
+    padding-left: var(--padding);
     margin-right: auto;
     margin-left: auto;
 

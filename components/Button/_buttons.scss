@@ -1,7 +1,7 @@
-//@import "../../assets/scss/mountain_ex/functions/";
-
 $button-class: '.button';
 #{$button-class}{
+  --button-primary-color: var(--color-primary);
+  --button-text-color: var(--color-primary);
   font-size: 1rem;
   cursor: pointer;
   display: inline-flex;
@@ -28,8 +28,12 @@ $button-class: '.button';
     box-shadow: bottom-shadow(4), top-shadow(2);
   }
   &:focus{
-     box-shadow: bottom-shadow(5), top-shadow(3);
+     box-shadow: bottom-shadow(5, var(--button-primary-color)), top-shadow(5, var(--button-primary-color));
    }
+  &_active {
+    box-shadow: bottom-shadow(5, var(--button-primary-color)), top-shadow(3, var(--button-primary-color));
+    @include text-neon()
+  }
 
   //size
   &_size{
@@ -62,11 +66,6 @@ $button-class: '.button';
           width: 40px;
           height: 40px;
         }
-
-        //&#{$button-class}--small{
-        //  width: 40px;
-        //  height: 40px;
-        //}
        &_big {
           width: 72px;
           height: 72px;
@@ -91,7 +90,6 @@ $button-class: '.button';
 
   &_outline{
     color: white;
-    //border: 1px solid currentColor;
     background: rgba(34, 55, 87, 0.6);
     box-shadow: 0 0 2px 1px white;
     &:hover{
@@ -116,14 +114,16 @@ $button-class: '.button';
       background-color: rgba(15, 98, 133, 0.1);
       box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
     }
+    &:focus {
+      $shadow-value: 16px;
+      background-color: rgba(15, 98, 133, 0.4);
+      box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
+      @include text-neon()
+    }
   }
 
   &__content{
     vertical-align: middle;
-    //line-height: 1.4;
-    //@include media_screen(desktop-wide) {
-    //  line-height: 1.75;
-    //}
   }
 }
 .button__icon{

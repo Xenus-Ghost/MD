@@ -56,7 +56,7 @@
       ></LightBox>
     </client-only>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
-      <template v-slot:body>
+      <template>
         <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
         <h2 v-if="!customerAd" class="ad-modal__title">
           {{ adModalData.title }}
@@ -117,7 +117,7 @@
               Показать видео
             </Button>
             <Modal v-if="videoShow" @close="closeEmbedVideos">
-              <template #body>
+              <template>
                 <EmbedVideo
                   v-for="(video, v) in adModalData.video"
                   :key="v"

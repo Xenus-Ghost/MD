@@ -3,7 +3,7 @@
     <CategoryHeader>
       Подать объявление
       <template v-slot:right_column>
-        <img src="../../../../assets/img/icons/ad_new.svg" alt="" />
+        <img src="~/assets/img/icons/ad_new.svg" alt="" />
       </template>
     </CategoryHeader>
     <div class="container grid_cols_2">
@@ -140,7 +140,15 @@
           Заказчик - бесплатно
         </Button>
       </div>
-      <div class="grid__column_1"></div>
+      <div class="grid__column_1">
+        <Button
+          shape="semi_rounded"
+          borders="neon"
+          @click.native="modalAddOpen(1, 4, 2)"
+        >
+          Интернет-магазин
+        </Button>
+      </div>
     </div>
     <Modal v-if="showModalAdd" @close="modalAddClose">
       <template v-slot:header>
@@ -154,32 +162,35 @@
           Премиум публикация
         </span>
       </template>
-      <template v-slot:body>
+      <template>
         <div v-if="success" class="advert-form__message_success">
           <h2>Объявление добавлено!</h2>
         </div>
         <form v-if="!success" class="advert-form" @submit.prevent="adSubmit">
           <div
             v-if="ad.type_id === 2 && ad.author_type_id >= 2"
-            class="grid_cols_4"
+            class="grid_cols_4 grid__column_full"
           >
             <Button
               shape="semi_rounded"
               borders="neon"
+              :class="ad.author_type_id === 2 ? 'button_active' : ''"
               @click.native="ad.author_type_id = 2"
             >
-              Фирма
+              Фирмы и магазины
             </Button>
             <Button
               shape="semi_rounded"
               borders="neon"
-              @click.native="ad.author_type_id = 3"
+              :class="ad.author_type_id === 4 ? 'button_active' : ''"
+              @click.native="ad.author_type_id = 4"
             >
-              Магазин
+              Интернет-магазины
             </Button>
             <Button
               shape="semi_rounded"
               borders="neon"
+              :class="ad.author_type_id === 5 ? 'button_active' : ''"
               @click.native="ad.author_type_id = 5"
             >
               Торговый центр
@@ -187,6 +198,7 @@
             <Button
               shape="semi_rounded"
               borders="neon"
+              :class="ad.author_type_id === 6 ? 'button_active' : ''"
               @click.native="ad.author_type_id = 6"
             >
               Завод
@@ -226,7 +238,11 @@
               v-model="ad.name"
               class="input"
               type="text"
-              placeholder="Название фирмы/компании"
+              :placeholder="
+                ad.author_type_id === 4
+                  ? 'Название интернет-магазина'
+                  : 'Название фирмы/компании'
+              "
               required
             />
           </label>
@@ -280,7 +296,7 @@
               class="input_textarea"
               required
             >
-            Описание  объявления
+            Описание
           </textarea
             >
           </label>
@@ -327,7 +343,7 @@
               v-model="ad.website"
               type="text"
               class="input"
-              placeholder="Ссылка на вебсайт"
+              placeholder="Ссылка на сайт"
             />
           </label>
           <label
@@ -390,7 +406,9 @@
                 auto-upload
                 preview
                 file-type="photo"
-              ></FileUploader>
+              >
+                Загрузить фотографии
+              </FileUploader>
             </div>
             <div v-if="ad.account_type_id !== 1" class="">
               <VideoUploader v-model="ad.video"></VideoUploader>
@@ -411,6 +429,16 @@
               file-type="photo"
             >
               Загрузить логотип
+            </FileUploader>
+          </div>
+          <div v-if="ad.account_type_id !== 1" class="grid__column_full">
+            <FileUploader
+              v-model="ad.priceList"
+              auto-upload
+              preview
+              file-type="photo"
+            >
+              Загрузить Прайс
             </FileUploader>
           </div>
           <label for="address" class="label grid__column_3">
@@ -515,12 +543,12 @@ export default {
       success: null,
       ad: {
         author_id: this.$auth.$state.user.id,
+        author_type_id: 1,
         type_id: 1,
-        name: null,
-        title: null,
         rootCategory: 0,
         category: 0,
-        description: '',
+        description:
+          this.author_type_id === 4 ? 'Описание магазина' : 'Описание',
         phone: {
           main: ''
         },
@@ -533,7 +561,6 @@ export default {
         website: null,
         ticker: null,
         status_id: 1,
-        author_type_id: 1,
         account_type_id: 1,
         photo: []
       },
@@ -543,7 +570,7 @@ export default {
   },
   computed: {
     adCategoriesList() {
-      return this.$store.state.adCategoriesList
+      return this.$store.state.categories.adCategoriesList
     },
     adRootCategories() {
       const result = []

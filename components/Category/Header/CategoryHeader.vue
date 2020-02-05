@@ -9,7 +9,7 @@
         <slot>Монолит</slot>
       </h1>
       <Button
-        :to="backURL"
+        :to="retutnBackUrl"
         shape="rounded"
         borders="neon"
         class="header_category__button_back"
@@ -29,7 +29,19 @@ export default {
   props: {
     backURL: {
       type: String,
-      default: '/'
+      default: null
+    }
+  },
+  data() {
+    return {
+      back: this.$store.state.route.from.fullPath
+        ? this.$store.state.route.from.fullPath
+        : ''
+    }
+  },
+  computed: {
+    retutnBackUrl() {
+      return this.backURL ? this.backURL : this.$store.state.route.from.fullPath
     }
   }
 }

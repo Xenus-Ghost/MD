@@ -297,7 +297,7 @@
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import ServicesGrid from '@/components/Services/ServiceGrid'
 export default {
   layout: 'Category',
   components: {
@@ -309,8 +309,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~assets/scss/app/index.scss';
-@import '~assets/scss/app/pages/_category.scss';
+@import '~~assets/scss/app/index.scss';
+@import '~~assets/scss/app/pages/_category.scss';
 .grid-layout_building {
   max-height: 100%;
   display: grid;

@@ -26,7 +26,7 @@
           </div>
 
           <div class="modal__body">
-            <slot name="body">
+            <slot>
               default body
             </slot>
           </div>

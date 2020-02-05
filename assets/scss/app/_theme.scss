@@ -2,11 +2,22 @@
 @import "variables";
 @import "../framework/index";
 :root{
+  --color-red: #{map_get($baseColors, red)};
+  --color-blue: #{map_get($baseColors, blue)};
+  --color-white: #{map_get($baseColors, white)};
+  --color-black: #{map_get($baseColors, black)};
+
+
   --color-primary: #{$color--primary};
   --color-success: #{$color--success};
   --color-error: #{$color--error};
   --color-warning: #{$color--warning};
   --color-info: #{$color--info};
+
+  --primary-text-color: var(--color-white);
+
+  --main-font-size: 1rem;
+  --main-font-size_mobile: 12px;
 }
 
 html {
@@ -16,16 +27,16 @@ html {
 }
 body {
   //font-family: 'Lato', sans-serif;
-  font-family: 'Lato';
-  color: white;
-  font-size: 12px;
-  @include media_screen( desktop-wide) {
-    font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: var(--primary-text-color);
+  font-size: var(--main-font-size_mobile);
+  @include media_screen(desktop-wide) {
+    font-size: var(--main-font-size)
   }
 }
 a{
   text-decoration: none;
-  color: white;
+  color: var(--primary-text-color);
   &:hover {
     @include text-neon();
   }
@@ -45,3 +56,4 @@ a{
   }
 }
 @import "components/index";
+@import "pages/index";

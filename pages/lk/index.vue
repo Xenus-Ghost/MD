@@ -49,7 +49,11 @@
         <Button borders="neon" shape="semi_rounded" class="profile__button">
           Избранное
         </Button>
-        <Button borders="neon" shape="semi_rounded" class="profile__button"
+        <Button
+          borders="neon"
+          shape="semi_rounded"
+          class="profile__button"
+          @click.native="showAdList"
           >Мои объявления</Button
         >
         <Button
@@ -62,7 +66,11 @@
         <Button borders="neon" shape="semi_rounded" class="profile__button"
           >Выставки</Button
         >
-        <Button borders="neon" shape="semi_rounded" class="profile__button"
+        <Button
+          borders="neon"
+          shape="semi_rounded"
+          class="profile__button"
+          @click="openAdBannerForm"
           >Баннерная реклама</Button
         >
         <Button borders="neon" shape="semi_rounded" class="profile__button"
@@ -73,18 +81,24 @@
         >
       </div>
     </div>
-    <Modal v-if="showAdList"></Modal>
     <Modal v-if="isAvatarUploadForm" @close="isAvatarUploadForm = false">
-      <template #body>
+      <template>
         <AvatarUploader></AvatarUploader>
       </template>
     </Modal>
+    <MyAds v-if="isShowAdList" @close="closeAdList"></MyAds>
+    <AdBannerForm
+      v-if="isShowAdBannerForm"
+      @close="closeAdBannerForm"
+    ></AdBannerForm>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import AvatarUploader from '@/components/lk/AvatarUploader'
+import MyAds from '@/components/lk/Me/MyAds'
+import AdBannerForm from '@/components/lk/AdBannerForm'
 import { getFileUrl } from '@/assets/js/util'
 export default {
   middleware: ['auth'],
@@ -92,30 +106,45 @@ export default {
   layout: 'Cabinet',
   components: {
     CategoryHeader,
-    AvatarUploader
+    AvatarUploader,
+    MyAds,
+    AdBannerForm
   },
   data() {
     return {
       data: this.$auth,
-      user: this.$auth.user,
-      showAdList: false,
-      isAvatarUploadForm: false
+      user: this.$auth.$state.user,
+      isShowAdList: false,
+      isAvatarUploadForm: false,
+      isShowAdBannerForm: false
     }
   },
   computed: {
     avatar() {
-      return this.$auth.user.avatar && this.$auth.user.avatar.length > 0
-        ? getFileUrl(this.$auth.user.avatar)
+      return this.$auth.$state.user.avatar &&
+        this.$auth.$state.user.avatar.length > 0
+        ? getFileUrl(this.$auth.$state.user.avatar)
         : '/img/icons/user_no_avatar.jpg'
     }
   },
   methods: {
-    getAdList() {},
+    showAdList() {
+      this.isShowAdList = true
+    },
+    closeAdList() {
+      this.isShowAdList = false
+    },
     avatarUploadOpen() {
       this.isAvatarUploadForm = true
     },
     getFileUrl(path) {
       return getFileUrl(path)
+    },
+    openAdBannerForm() {
+      this.isShowAdBannerForm = true
+    },
+    closeAdBannerForm() {
+      this.isShowAdBannerForm = false
     }
   }
 }

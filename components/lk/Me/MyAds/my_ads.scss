@@ -1,0 +1,46 @@
+.my-ads {
+  &__modal {
+
+  }
+  &__section {
+    min-height: 400px;
+    max-height: 80vh;
+  }
+  &__cat-name {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    width: 100%;
+    border-bottom: 1px solid white;
+    margin-bottom: 21px;
+  }
+  &__table {
+    display: grid;
+    grid-auto-rows: 21px;
+    grid-gap: 21px;
+  }
+  &__th, &__row {
+    display: grid;
+    grid-template-columns: 4fr 100px 100px 2fr 50px;
+    grid-gap: 21px;
+  }
+  &__th {
+    font-weight: 300;
+    font-size: var(--main-font-size);
+    margin-bottom: 21px;
+  }
+  &__row {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+.my-ad {
+  &__status_active {
+    color: var(--color-success)
+  }
+
+  &__button_edit {
+    margin-right: 10px;
+  }
+}

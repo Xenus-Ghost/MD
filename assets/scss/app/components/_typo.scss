@@ -1,7 +1,7 @@
 .text {
   &_neon {
-    color: white;
-    //text-shadow: 1px 1px 2px #7BD7FF, 0 0 1em #7BD7FF;
+    --neon-text-color: var(--primary-text-color);
+    color: var(--neon-text-color);
     @include text-neon(1);
     @for $i from 1 through 5 {
       &_#{$i} {

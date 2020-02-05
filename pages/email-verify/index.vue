@@ -3,7 +3,7 @@
     <template v-slot:header>
       Подтверждение E-Mail
     </template>
-    <template v-slot:body>
+    <template>
       <div style="display: flex; flex-direction: column; align-items: center">
         <!--<Button
           v-if="result === ''"

@@ -640,7 +640,7 @@
           Кладочные работы
         </template>
         <template v-slot:footer>
-          <Button to="кладочные_работы" shape="rounded" borders="outline">
+          <Button to="кладочные-работы" shape="rounded" borders="outline">
             Подробнее
           </Button>
         </template>
@@ -796,16 +796,19 @@
     <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
-        <Button to="частники" shape="rounded" borders="outline"
+        <Button to="продажа/частники" shape="rounded" borders="outline"
           >Все частники</Button
         >
-        <Button to="все-фирмы-и-магазины" shape="rounded" borders="outline"
+        <Button
+          to="продажа/все-фирмы-и-магазины"
+          shape="rounded"
+          borders="outline"
           >Все фирмы и магазины</Button
         >
-        <Button to="торговые-центры" shape="rounded" borders="outline"
+        <Button to="продажа/торговые-центры" shape="rounded" borders="outline"
           >Все торговые центры</Button
         >
-        <Button to="интерне-магазины" shape="rounded" borders="outline"
+        <Button to="продажа/интерне-магазины" shape="rounded" borders="outline"
           >Интернет магазины</Button
         >
       </div>
@@ -827,9 +830,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
-@import '~assets/scss/app/pages/_category.scss';
 .grid-layout_building {
   max-height: 100%;
   display: grid;
@@ -841,16 +843,13 @@ export default {
     height: 88vh;
   }
 }
-/*.header_category {
-  grid-column: 1/-1;
-}*/
+</style>
+
+<style scoped lang="scss">
 .services {
   /deep/ .services__list_grid {
     border-radius: 3.5rem;
     padding: 10px 50px;
   }
 }
-/*.services__list_grid {*/
-/*  grid-column: span 8;*/
-/*}*/
 </style>

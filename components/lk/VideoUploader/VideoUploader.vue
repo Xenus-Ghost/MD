@@ -3,36 +3,17 @@
     <div class="video-uploader">
       <Button @click.native="modalVideoOpen">Добавить видео</Button>
       <Modal v-if="modalVideoShow" @close="modalVideoClose">
-        <template #body>
+        <template>
           <h1>Введите ссылки или ID видео на Youtube</h1>
-          <label for="video-1">#1</label>
-          <input
-            id="video-1"
-            v-model="videoURL[0]"
-            type="text"
-            @input="update"
-          />
-          <label for="video-2">#2</label>
-          <input
-            id="video-2"
-            v-model="videoURL[1]"
-            type="text"
-            @input="update"
-          />
-          <label for="video-3">#3</label>
-          <input
-            id="video-3"
-            v-model="videoURL[2]"
-            type="text"
-            @input="update"
-          />
-          <label for="video-4">#4</label>
-          <input
-            id="video-4"
-            v-model="videoURL[3]"
-            type="text"
-            @input="update"
-          />
+          <label v-for="i in max" :key="i" :for="`video-${i}`"
+            >#{{ i }}
+            <input
+              id="video-1"
+              v-model="videoURL[0]"
+              type="text"
+              @input="update"
+            />
+          </label>
           <Button @click.native="modalVideoClose">Сохранить</Button>
         </template>
       </Modal>
@@ -47,6 +28,12 @@ export default {
   model: {
     prop: 'modelValue',
     event: 'change'
+  },
+  props: {
+    max: {
+      type: Number,
+      default: 1
+    }
   },
   data() {
     return {

@@ -10,7 +10,7 @@
       <template v-slot:header>
         О компании
       </template>
-      <template v-slot:body>
+      <template>
         <strong>
           «СОТКА» — Справочник мебельных компаний. Все мебельные фабрики для
           Вашего розничного бизнеса. Ежедневная публикация новинок и регистрация
@@ -60,7 +60,7 @@
       <template v-slot:header>
         Контактная информация
       </template>
-      <template v-slot:body>
+      <template>
         <div class="grid_cols_2" style="grid-gap: 30px">
           <div>
             <strong>Адрес офиса</strong>

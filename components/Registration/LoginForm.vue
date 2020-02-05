@@ -7,7 +7,7 @@
         Успешно!
       </div>
     </template>
-    <template v-slot:body>
+    <template>
       <form v-if="formType === 'login'" action="" class="login-form">
         <label for="" class="grid__column_2">
           <input

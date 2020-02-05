@@ -43,3 +43,12 @@ export function generateString(number = 7) {
   }
   return text
 }
+
+export function dateTimeParse(string) {
+  // const dateString = string
+  // const reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/
+  // const [, year, month, day] = reggie.exec(dateString)
+  // return new Date(year, month - 1, day)
+  const date = new Date(string)
+  return date.getDay() + '-' + date.getMonth() + '-' + date.getFullYear()
+}

@@ -329,7 +329,6 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/app/index.scss';
-@import '~assets/scss/app/pages/_category.scss';
 .grid-layout_sub-category {
   max-height: 100%;
   display: grid;

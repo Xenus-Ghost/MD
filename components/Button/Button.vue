@@ -6,6 +6,7 @@
     :class="[classes]"
     :to="to"
     :append="append"
+    @click="$emit('click', $event)"
   >
     <div v-if="hasLeftIcon" class="button__icon button__icon_left">
       <slot name="icon_left"></slot>
