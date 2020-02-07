@@ -6,6 +6,7 @@
     :class="[classes]"
     :to="to"
     :append="append"
+    :href="href"
     @click="$emit('click', $event)"
   >
     <div v-if="hasLeftIcon" class="button__icon button__icon_left">
@@ -81,11 +82,23 @@ export default {
   computed: {
     buttonTag() {
       let str = this.tag ? this.tag : 'button'
-      str = this.to ? 'nuxt-link' : str
+      str = this.to && !this.tag ? 'nuxt-link' : str
       return str
     },
     append() {
-      return !!(this.to && this.to[0] !== '/')
+      return !!(
+        this.to &&
+        this.to[0] !== '/' &&
+        this.to.includes('http://') &&
+        this.to.includes('https://')
+      )
+    },
+    href() {
+      if (this.tag === 'a' && this.to) {
+        return this.to
+      } else {
+        return null
+      }
     },
     buttonType() {
       return this.buttonTag !== 'button' ? '' : 'button'

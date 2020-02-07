@@ -4,6 +4,7 @@ import ExhibitionForm from './ExhibitionForm'
 import AdBannerForm from './AdBannerForm'
 import MyAds from './Me/MyAds'
 import VideoAddForm from './VideoAddForm'
+import CategorySelect from './CategorySelect'
 
 export {
   AvatarUploader,
@@ -11,5 +12,6 @@ export {
   ExhibitionForm,
   AdBannerForm,
   MyAds,
-  VideoAddForm
+  VideoAddForm,
+  CategorySelect
 }

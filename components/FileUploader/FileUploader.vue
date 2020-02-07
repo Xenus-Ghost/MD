@@ -13,13 +13,21 @@
         <slot>выбрать файлы</slot>
       </Button>
       <Button v-if="loadButton" @click.native="upload()">Загрузить</Button>
-      <div v-if="preview" class="uploader__list">
+      <div v-if="preview || autoUpload" class="uploader__list">
         <div v-for="(file, j) in uploaded" :key="j" class="uploader__file">
           <img
+            v-if="fileType === 'image'"
             :src="getFileUrl(file.path)"
             class="uploader__image_loaded"
             :alt="j"
             title="Загружено"
+          />
+          <img
+            v-if="fileType === 'document'"
+            src="@/assets/img/icons/doc.svg"
+            class="uploader__document_loaded"
+            :alt="j"
+            :title="getFileUrl(file.path)"
           />
           <div
             class="uploader__button_remove"
@@ -85,6 +93,10 @@ export default {
     dataURL: {
       type: String,
       default: null
+    },
+    max: {
+      type: Number,
+      default: 5
     }
   },
   data() {
@@ -112,11 +124,10 @@ export default {
       if (this.autoUpload) {
         this.upload()
       }
-      if (this.base64) {
+      if (this.base64 && this.fileType === 'image') {
         const reader = new FileReader()
         reader.onloadend = (e) => {
           this.image = e.target.result
-          console.log('onloadend', this.image)
           this.update()
         }
         reader.readAsDataURL(files[0])
@@ -165,7 +176,7 @@ export default {
         let data = []
         this.uploaded.forEach((image) => {
           if (image && image.path) {
-            if (this.uploaded.length > 1) {
+            if (this.multiple) {
               data.push(image.path)
             } else {
               data = image.path
@@ -178,6 +189,12 @@ export default {
     },
     getFileUrl(path) {
       return getFileUrl(path)
+    },
+    makeError(fileName, message = '') {
+      this.errors.push({
+        fileName,
+        status: message
+      })
     }
   }
 }

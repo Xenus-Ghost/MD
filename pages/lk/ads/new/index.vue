@@ -398,6 +398,16 @@
               placeholder="ссылка на сообщество FB"
             />
           </label>
+          <label for="price" class="label grid__column_3">
+            <input
+              id="price"
+              v-model="ad.price"
+              type="number"
+              step="any"
+              class="input"
+              placeholder="Стоимость"
+            />
+          </label>
           <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
             <div class="">
               <FileUploader
@@ -405,7 +415,7 @@
                 multiple
                 auto-upload
                 preview
-                file-type="photo"
+                file-type="image"
               >
                 Загрузить фотографии
               </FileUploader>
@@ -426,20 +436,32 @@
               v-model="ad.logo"
               auto-upload
               preview
-              file-type="photo"
+              file-type="image"
             >
               Загрузить логотип
             </FileUploader>
           </div>
-          <div v-if="ad.account_type_id !== 1" class="grid__column_full">
-            <FileUploader
-              v-model="ad.priceList"
-              auto-upload
-              preview
-              file-type="photo"
-            >
-              Загрузить Прайс
-            </FileUploader>
+          <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
+            <div class="">
+              <FileUploader
+                v-model="ad.price_list"
+                auto-upload
+                file-type="document"
+                :max="1"
+              >
+                Загрузить Прайс-лист
+              </FileUploader>
+            </div>
+            <div class="">
+              <FileUploader
+                v-model="ad.presentation"
+                auto-upload
+                file-type="document"
+                :max="1"
+              >
+                Загрузить Презентацию
+              </FileUploader>
+            </div>
           </div>
           <label for="address" class="label grid__column_3">
             <input
@@ -562,7 +584,10 @@ export default {
         ticker: null,
         status_id: 1,
         account_type_id: 1,
-        photo: []
+        photo: [],
+        price: null,
+        presentation: null,
+        price_list: null
       },
       adSubCategories: []
       // adCategoriesList: []

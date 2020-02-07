@@ -60,6 +60,11 @@ export default {
       if (this.adData.description) obj.description = this.adData.description
       if (this.adData.address) obj.address = this.adData.address
       if (this.adData.website) obj.website = this.adData.website
+      if (this.adData.presentation)
+        obj.presentation = getFileUrl(this.adData.presentation)
+      if (this.adData.price_list)
+        obj.price_list = getFileUrl(this.adData.price_list)
+      if (this.adData.price) obj.price = this.adData.price
       if (!this.customerAd && this.adData.photo && this.adData.photo.length > 0)
         obj.photo = this.adData.photo
       obj.img = this.adData.img

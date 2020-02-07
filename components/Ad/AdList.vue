@@ -116,6 +116,24 @@
             >
               Показать видео
             </Button>
+            <Button
+              v-if="adModalData.price_list"
+              tag="a"
+              :to="adModalData.price_list"
+              shape="rounded"
+              borders="outline"
+            >
+              Скачать Прайс-лист
+            </Button>
+            <Button
+              v-if="adModalData.presentation"
+              tag="a"
+              :to="adModalData.presentation"
+              shape="rounded"
+              borders="outline"
+            >
+              Скачать презентацию
+            </Button>
             <Modal v-if="videoShow" @close="closeEmbedVideos">
               <template>
                 <EmbedVideo

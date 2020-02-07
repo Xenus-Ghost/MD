@@ -26,47 +26,10 @@
           :class="ad.author_type_id === 5 ? 'button_active' : ''"
           >Торговый центр</Button
         >
-        <label for="rootCategory" class="label grid__column_6">
-          <select
-            id="rootCategory"
-            v-model="ad.rootCategory"
-            name=""
-            class="input_select"
-            required
-            @change="changeCategory"
-          >
-            <option selected disabled value="0" class="input_option"
-              >Выберите категорию</option
-            >
-            <option
-              v-for="(item, j) in adRootCategories"
-              :key="j"
-              :value="item.id"
-              class="input_option"
-              >{{ item.service_title }}</option
-            >
-          </select>
-        </label>
-        <label for="category" class="label grid__column_6">
-          <select
-            id="category"
-            v-model="ad.category"
-            class="input_select"
-            name=""
-            required
-          >
-            <option selected disabled value="0" class="input_option"
-              >Выберите подкатегорию</option
-            >
-            <option
-              v-for="(item, j) in adSubCategories"
-              :key="j"
-              :value="item.id"
-              class="input_option"
-              >{{ item.service_title }}</option
-            >
-          </select>
-        </label>
+        <CategorySelect
+          v-model="ad.category"
+          class="grid__column_full"
+        ></CategorySelect>
         <label for="website" class="label grid__column_full">
           <input
             id="website"
@@ -98,11 +61,13 @@
 <script>
 import VideoUploader from '@/components/lk/VideoUploader'
 import FileUploader from '@/components/FileUploader'
+import CategorySelect from '@/components/lk/CategorySelect'
 export default {
   name: 'AdBannerCreate',
   components: {
     VideoUploader,
-    FileUploader
+    FileUploader,
+    CategorySelect
   },
   data() {
     return {

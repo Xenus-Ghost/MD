@@ -18,13 +18,19 @@ export default {
         content: '#2161BC'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'preconnect',
+        href: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
    */
-  // loading: { color: '#2396FF' },
-  loading: false,
+  loading: { color: '#2396FF' },
+  // loading: false,
   /*
    ** Global CSS
    */
