@@ -353,7 +353,7 @@
           >
             <input
               id="vk"
-              v-model="ad.socials.vk"
+              v-model="social.vk"
               type="text"
               class="input"
               placeholder="ссылка на сообщество VK"
@@ -366,7 +366,7 @@
           >
             <input
               id="ok"
-              v-model="ad.socials.ok"
+              v-model="social.ok"
               type="text"
               class="input"
               placeholder="ссылка на сообщество OK"
@@ -379,7 +379,7 @@
           >
             <input
               id="ig"
-              v-model="ad.socials.ig"
+              v-model="social.ig"
               type="text"
               class="input"
               placeholder="ссылка на Instagram"
@@ -392,7 +392,7 @@
           >
             <input
               id="fb"
-              v-model="ad.socials.fb"
+              v-model="social.fb"
               type="text"
               class="input"
               placeholder="ссылка на сообщество FB"
@@ -542,7 +542,7 @@
 
 <script>
 import VideoUploader from '@/components/lk/VideoUploader/VideoUploader'
-import { BACKEND_API_URL } from '@/constants'
+import { getUrl } from '@/assets/js/util'
 import CategoryHeader from '@/components/Category'
 import Card from '@/components/Card'
 import FileUploader from '@/components/FileUploader'
@@ -574,7 +574,7 @@ export default {
         phone: {
           main: ''
         },
-        socials: {},
+        social: [],
         address: '',
         metro: '',
         start_time: new Date().toISOString().substr(0, 10),
@@ -585,11 +585,15 @@ export default {
         status_id: 1,
         account_type_id: 1,
         photo: [],
-        price: null,
-        presentation: null,
-        price_list: null
+        price: null
       },
-      adSubCategories: []
+      adSubCategories: [],
+      social: {
+        vk: null,
+        ig: null,
+        ok: null,
+        fb: null
+      }
       // adCategoriesList: []
     }
   },
@@ -629,8 +633,14 @@ export default {
         delete formData.website
       }
       formData.category_ids = this.category_ids
+
+      if (this.social.fb) formData.social = this.social.fb
+      if (this.social.ok) formData.social = this.social.ok
+      if (this.social.ig) formData.social = this.social.ig
+      if (this.social.vk) formData.social = this.social.vk
+
       await this.$axios
-        .$post(BACKEND_API_URL + 'me/advertisements', formData)
+        .$post(getUrl('me/advertisements'), formData)
         .then((response) => {
           this.success = true
         })

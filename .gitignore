@@ -92,3 +92,5 @@ sw.*
 
 webpack.config.js
 /package-lock.json
+
+.gitattributes

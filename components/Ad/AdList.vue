@@ -39,14 +39,6 @@
         :customer-ad="customerAd === true"
       ></AdItem>
     </div>
-    <!--<client-only>
-      <CoolLightBox
-        :items="adModalData.photo"
-        :index="index"
-        loop
-        @close="index = null"
-      ></CoolLightBox>
-    </client-only>-->
     <client-only>
       <LightBox
         :items="adModalData.photo"
@@ -78,7 +70,7 @@
           <h3>Категории работ:</h3>
         </div>
         <div v-if="!customerAd" class="line_horizontal"></div>
-        <div :class="{ grid_cols_2: !customerAd, grid_cols_12: customerAd }">
+        <div :class="{ grid_cols_3: !customerAd, grid_cols_12: customerAd }">
           <div v-if="customerAd" class="grid__column_2">
             <img
               v-if="customerAd"
@@ -91,7 +83,7 @@
           </div>
           <div
             :class="{
-              grid__column_1: !customerAd,
+              grid__column_2: !customerAd,
               grid__column_10: customerAd
             }"
           >
@@ -102,9 +94,13 @@
             </div>
             <div class="ad-modal__address">{{ adModalData.address }}</div>
             <div class="ad-modal__address">{{ adModalData.metro }}</div>
-            <div class="ad-modal__socials"></div>
+            <div class="ad-modal__socials">
+              <a v-for="(i, j) in adModalData.social" :key="j" :href="i.value">
+                <img :src="`/img/icons/social/${i.name}.png`" :alt="i.value" />
+              </a>
+            </div>
           </div>
-          <div v-if="!customerAd" :class="['grid__column_1', 'grid_rows_2']">
+          <div v-if="!customerAd" :class="['grid__column_1', 'grid_rows_4']">
             <Button shape="rounded" borders="outline">
               Добавить в избранное
             </Button>
@@ -119,20 +115,26 @@
             <Button
               v-if="adModalData.price_list"
               tag="a"
-              :to="adModalData.price_list"
+              :to="
+                'https://docs.google.com/viewer?url=' + adModalData.price_list
+              "
               shape="rounded"
               borders="outline"
+              target="_blank"
             >
-              Скачать Прайс-лист
+              Открыть прайс-лист
             </Button>
             <Button
               v-if="adModalData.presentation"
               tag="a"
-              :to="adModalData.presentation"
+              :to="
+                'https://docs.google.com/viewer?url=' + adModalData.presentation
+              "
               shape="rounded"
               borders="outline"
+              target="_blank"
             >
-              Скачать презентацию
+              Открыть презентацию
             </Button>
             <Modal v-if="videoShow" @close="closeEmbedVideos">
               <template>
@@ -161,30 +163,18 @@
 </template>
 
 <script>
-import { getUrl, getFileUrl, jsonToParams } from '@/assets/js/util'
+import { getFileUrl, getUrl, jsonToParams } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
-// import LightBox from '@/components/Modal'
-// if (process.client) {
-/* const LightBox = () => ({
-  component: import('@/components/Modal/LightBox'),
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
-  timeout: 3000
-}) */
-// }
 
 export default {
   name: 'AdList',
   components: {
     AdItem,
     EmbedVideo,
-    // LightBox
     LightBox: process.client
       ? () => import(/* webpackPrefetch: true */ '@/components/Modal/LightBox')
       : null
-    // CoolLightBox: process.client ? () => import('vue-cool-lightbox') : null
-    // CoolLightBox: () => import('vue-cool-lightbox')
   },
   props: {
     category: {
@@ -207,6 +197,10 @@ export default {
     authorTypeId: {
       type: Number,
       default: 1
+    },
+    accountTypeId: {
+      type: Number,
+      default: null
     },
     typeId: {
       type: Number,
@@ -234,17 +228,20 @@ export default {
   },
   computed: {
     isAdOpen() {
-      return this.$store.state.isAdModalOpen
+      return this.$store.state.advert.isAdModalOpen
     },
     adModalData() {
-      const modalData = this.$store.state.adModalData
-      return modalData
+      return this.$store.state.advert.adModalData
     },
     classList() {
       const arr = []
-      if (this.privateAd) arr.push('ad__list_private')
-      if (this.companyAd) arr.push('ad__list_company')
-      if (this.customerAd) arr.push('ad__list_customer')
+      if (this.privateAd) {
+        arr.push('ad__list_private')
+      } else if (this.companyAd) {
+        arr.push('ad__list_company')
+      } else if (this.customerAd) {
+        arr.push('ad__list_customer')
+      }
       return arr
     }
   },
@@ -276,7 +273,7 @@ export default {
       return false
     },
     adClose() {
-      this.$store.dispatch('adModalClose')
+      this.$store.dispatch('advert/adModalClose')
     },
     getFileUrl(path) {
       return getFileUrl(path)

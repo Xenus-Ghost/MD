@@ -166,6 +166,7 @@
       :ads-prop="ads"
       :category="1"
       :author-type-id="1"
+      :type-id="3"
     ></AdList>
   </div>
 </template>
@@ -187,7 +188,8 @@ export default {
     const params = jsonToParams({
       category_id: 1,
       per_page: 12,
-      author_type_id: 1
+      author_type_id: 1,
+      type_id: 3
     })
     const url = getUrl('advertisements' + params)
     const { data } = await $axios.get(url)

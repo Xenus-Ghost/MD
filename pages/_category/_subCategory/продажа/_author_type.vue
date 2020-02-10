@@ -196,7 +196,7 @@ export default {
   async asyncData(context) {
     let authorTypeId = 1
     if (context.params.author_type === 'частники') authorTypeId = 1
-    if (context.params.author_type === 'все-фирмы-и-магазины') authorTypeId = 3
+    if (context.params.author_type === 'все-фирмы-и-магазины') authorTypeId = 2
     if (context.params.author_type === 'торговые-центры') authorTypeId = 5
     if (context.params.author_type === 'интернет-магазины') authorTypeId = 4
     const params = jsonToParams({

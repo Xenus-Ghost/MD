@@ -1,16 +1,10 @@
 // import axios from 'axios'
-import { getFileUrl } from '@/assets/js/util'
 
 export const state = () => ({
   isAuthFormShow: false,
   authFormType: 'login',
   isCategoriesWidgetShow: false,
   redirectTo: '',
-
-  isAdModalOpen: false,
-  adModalData: {
-    photo: []
-  },
   navigation: {
     links: {
       current: null,
@@ -48,35 +42,7 @@ export const mutations = {
   },
   redirectAdd(state, link) {
     state.redirectTo = link
-  },
-  adModalOpen(state, data) {
-    state.isAdModalOpen = true
-  },
-  adModalClose(state) {
-    state.isAdModalOpen = false
-  },
-  adDataAdd(state, data) {
-    state.adModalData = data
   }
 }
 
-export const actions = {
-  adModalOpen({ commit }, data) {
-    commit('adModalOpen')
-    if (data.photo && data.photo.length > 0) {
-      data.photo = data.photo.map((name) => {
-        return getFileUrl(name)
-      })
-    }
-    commit('adDataAdd', data)
-    if (typeof document !== 'undefined') {
-      document.querySelector('body').classList.add('body-scroll_lock')
-    }
-  },
-  adModalClose({ commit }) {
-    commit('adModalClose')
-    if (typeof document !== 'undefined') {
-      document.querySelector('body').classList.remove('body-scroll_lock')
-    }
-  }
-}
+export const actions = {}

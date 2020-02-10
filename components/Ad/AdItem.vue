@@ -10,7 +10,7 @@
     <img :src="ad.img" :alt="ad.title" class="ad__photo" @click="adOpen" />
     <span v-if="ad.name" class="ad__title ad__name">{{ ad.name }}</span>
     <span v-if="!customerAd" class="ad__sub-title">{{ ad.title }}</span>
-    <span v-if="ad.caption" class="ad__caption">{{ ad.caption }}</span>
+    <span class="ad__price">{{ ad.price ? ad.price + 'руб' : '' }}</span>
     <Button
       :to="ad.url"
       borders="outline"
@@ -56,8 +56,8 @@ export default {
         : null
       if (this.adData.title) obj.title = this.adData.title
       if (this.adData.name) obj.name = this.adData.name
-      if (this.adData.caption) obj.caption = this.adData.caption
-      if (this.adData.description) obj.description = this.adData.description
+      // if (this.adData.caption) obj.caption = this.adData.caption
+      obj.description = this.adData.description
       if (this.adData.address) obj.address = this.adData.address
       if (this.adData.website) obj.website = this.adData.website
       if (this.adData.presentation)
@@ -79,7 +79,11 @@ export default {
       if (this.adData.phone && this.adData.phone.length > 0) {
         obj.phone = this.adData.phone
       }
-      if (this.adData.url) obj.url = this.adData.url
+      obj.social =
+        this.adData.social && this.adData.social.length > 0
+          ? this.adData.social
+          : null
+      // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj
     },
@@ -87,19 +91,22 @@ export default {
       const arr = []
       if (this.ad.account_type_id === 2) {
         arr.push('ad__item_pro')
-      }
-      if (this.ad.account_type_id === 3) {
+      } else if (this.ad.account_type_id === 3) {
         arr.push('ad__item_premium')
       }
-      if (this.privateAd) arr.push('ad__item_private')
-      if (this.companyAd) arr.push('ad__item_company')
-      if (this.customerAd) arr.push('ad__item_customer')
+      if (this.privateAd) {
+        arr.push('ad__item_private')
+      } else if (this.companyAd) {
+        arr.push('ad__item_company')
+      } else if (this.customerAd) {
+        arr.push('ad__item_customer')
+      }
       return arr
     }
   },
   methods: {
     adOpen() {
-      this.$store.dispatch('adModalOpen', this.ad)
+      this.$store.dispatch('advert/adModalOpen', this.ad)
       this.$route.query.id = this.ad.id
     }
   }

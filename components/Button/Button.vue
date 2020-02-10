@@ -82,15 +82,15 @@ export default {
   computed: {
     buttonTag() {
       let str = this.tag ? this.tag : 'button'
-      str = this.to && !this.tag ? 'nuxt-link' : str
+      str = this.to && this.tag !== 'a' ? 'nuxt-link' : str
       return str
     },
     append() {
       return !!(
         this.to &&
         this.to[0] !== '/' &&
-        this.to.includes('http://') &&
-        this.to.includes('https://')
+        !this.to.includes('http://') &&
+        !this.to.includes('https://')
       )
     },
     href() {

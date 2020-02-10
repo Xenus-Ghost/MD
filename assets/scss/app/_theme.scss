@@ -44,6 +44,7 @@ a{
 
 .body-scroll_lock {
   overflow: hidden;
+  margin-right: 18px;
   &_mobile {
     @include on_mobile() {
       overflow: hidden;
