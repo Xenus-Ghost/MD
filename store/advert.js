@@ -13,6 +13,7 @@ export const mutations = {
   },
   adModalClose(state) {
     state.isAdModalOpen = false
+    state.adModalData = { photo: [] }
   },
   adDataAdd(state, data) {
     state.adModalData = data
@@ -29,33 +30,27 @@ export const actions = {
     data.socials = []
     // console.log(data.social)
     // console.log(Object.keys(data.social))
-    if (data.social && data.social.length > 0) {
-      data.social.forEach((item) => {
-        if (item.includes('vk.com')) {
-          data.socials.push({ name: 'vk', value: item })
-        } else if (item.includes('ok.ru')) {
-          data.socials.push({ name: 'ok', value: item })
-        } else if (item.includes('facebook.com')) {
-          data.socials.push({ name: 'fb', value: item })
-        } else if (item.includes('instagram.com')) {
-          data.socials.push({ name: 'ig', value: item })
-        }
-      })
-      // data.socials.vk = data.social.filter((e) => {
-      //   return e.includes('vk.com')
-      // })
-      // data.socials.ok = data.social.filter((e) => {
-      //   return e.includes('ok.ru')
-      // })
-      // data.socials.fb = data.social.filter((e) => {
-      //   return e.includes('facebook.com')
-      // })
-      // data.socials.ig = data.social.filter((e) => {
-      //   return e.includes('instagram.com')
-      // })
+    try {
+      if (data.social && data.social.length > 0) {
+        data.social.forEach((item) => {
+          if (typeof item === 'string') {
+            if (item.includes('vk.com')) {
+              data.socials.push({ name: 'vk', value: item })
+            } else if (item.includes('ok.ru')) {
+              data.socials.push({ name: 'ok', value: item })
+            } else if (item.includes('facebook.com')) {
+              data.socials.push({ name: 'fb', value: item })
+            } else if (item.includes('instagram.com')) {
+              data.socials.push({ name: 'ig', value: item })
+            }
+          }
+        })
+      }
+    } catch {
+      console.debug(data.social)
+      console.debug(data.socials)
     }
-    data.social = data.socials
-    // console.log(data.social)
+    if (data.socials && data.socials.length > 0) data.social = data.socials
     commit('adDataAdd', data)
     commit('adModalOpen')
     if (typeof document !== 'undefined') {

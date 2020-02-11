@@ -79,10 +79,8 @@ export default {
       if (this.adData.phone && this.adData.phone.length > 0) {
         obj.phone = this.adData.phone
       }
-      obj.social =
-        this.adData.social && this.adData.social.length > 0
-          ? this.adData.social
-          : null
+      obj.social = this.adData.social
+      obj.metro = this.adData.metro
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj

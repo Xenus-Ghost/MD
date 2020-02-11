@@ -463,6 +463,21 @@
               </FileUploader>
             </div>
           </div>
+          <label for="city" class="label grid__column_3">
+            <select id="city" v-model="ad.city" class="input_select" required>
+              <option value="Москва" selected disabled class="input_option">
+                Москва
+              </option>
+              <option
+                v-for="(city, i) in citiesList"
+                :id="`city_${i}`"
+                :key="i"
+                :value="city"
+                class="input_option"
+                >{{ city }}</option
+              >
+            </select>
+          </label>
           <label for="address" class="label grid__column_3">
             <input
               id="address"
@@ -472,7 +487,7 @@
               placeholder="Адрес"
               required
           /></label>
-          <label for="metro" class="label grid__column_3"
+          <!--<label for="metro" class="label grid__column_3"
             ><input
               id="metro"
               v-model="ad.metro"
@@ -480,7 +495,26 @@
               type="tel"
               placeholder="Метро"
               required
-          /></label>
+          /></label>-->
+          <label
+            v-if="ad.city === 'Москва'"
+            for="metro"
+            class="label grid__column_3"
+          >
+            <select id="metro" v-model="ad.metro" class="input_select">
+              <option value="" selected disabled class="input_option">
+                Метро
+              </option>
+              <option
+                v-for="(metro, i) in metroList"
+                :id="`metro_${i}`"
+                :key="i"
+                :value="metro"
+                class="input_option"
+                >{{ metro }}</option
+              >
+            </select>
+          </label>
           <label for="start_time" class="label grid__column_3">
             <input
               id="start_time"
@@ -569,6 +603,7 @@ export default {
         type_id: 1,
         rootCategory: 0,
         category: 0,
+        city: '',
         description:
           this.author_type_id === 4 ? 'Описание магазина' : 'Описание',
         phone: {
@@ -615,6 +650,12 @@ export default {
       cats.push(this.ad.rootCategory)
       cats.push(this.ad.category)
       return cats
+    },
+    citiesList() {
+      return this.$store.state.address.citiesList
+    },
+    metroList() {
+      return this.$store.state.address.metroList
     }
   },
   methods: {

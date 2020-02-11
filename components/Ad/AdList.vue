@@ -2,31 +2,57 @@
   <section class="ad">
     <div class="ad__filter ad-filter">
       <span class="ad-filter__title"><b>Фильтр:</b></span>
-      <label for="">
-        <select name="" class="ad-filter__select">
-          <option value="none" class="ad-filter__option" selected disabled>
-            Адрес
+      <label for="city" class="label">
+        <select
+          id="city"
+          v-model="filter.city"
+          class="input_select ad-filter__select"
+          required
+        >
+          <option
+            value="Москва"
+            selected
+            disabled
+            class="input_option ad-filter__option"
+          >
+            Москва
           </option>
-          <option value="none" class="ad-filter__option">
-            Адрес
-          </option>
-          <option value="none" class="ad-filter__option">
-            Адрес
-          </option>
+          <option
+            v-for="(city, i) in citiesList"
+            :id="`city_${i}`"
+            :key="i"
+            :value="city"
+            class="input_option ad-filter__option"
+            >{{ city }}</option
+          >
         </select>
       </label>
-      <label for="">
-        <select name="" class="ad-filter__select">
-          <option value="none" class="ad-filter__option" selected disabled>
+      <label v-if="filter.city === 'Москва'" for="metro" class="label">
+        <select
+          id="metro"
+          v-model="filter.metro"
+          class="input_select ad-filter__select"
+        >
+          <option
+            value=""
+            selected
+            disabled
+            class="input_option ad-filter__option"
+          >
             Метро
           </option>
-          <option value="none" class="ad-filter__option">
-            Метро
-          </option>
-          <option value="none" class="ad-filter__option">
-            Метро
-          </option>
+          <option
+            v-for="(metro, i) in metroList"
+            :id="`metro_${i}`"
+            :key="i"
+            :value="metro"
+            class="input_option ad-filter__option"
+            >{{ metro }}</option
+          >
         </select>
+      </label>
+      <label v-if="filter.city !== 'Москва'" for="address">
+        <input id="address" type="text" class="input" placeholder="Улица" />
       </label>
     </div>
     <div class="ad__list" :class="classList">
@@ -60,7 +86,6 @@
             :href="item"
             class="ad-modal__photo-link"
             target="_blank"
-            :title="item + '' + p"
             @click.prevent="setIndex(p)"
           >
             <img :src="item" alt="photo" class="ad-modal__photo" />
@@ -82,20 +107,59 @@
             />
           </div>
           <div
-            :class="{
-              grid__column_2: !customerAd,
-              grid__column_10: customerAd
-            }"
+            :class="[
+              {
+                grid__column_2: !customerAd,
+                grid__column_10: customerAd
+              },
+              'grid',
+              'grid-row-gap_4'
+            ]"
           >
             <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
             <div class="ad-modal__id">ID: {{ adModalData.author_id }}</div>
-            <div v-for="(item, j) in adModalData.phone" :key="j">
+            <div
+              v-for="(item, j) in adModalData.phone"
+              :key="j"
+              class="ad-modal__phone"
+            >
               {{ item }}
             </div>
             <div class="ad-modal__address">{{ adModalData.address }}</div>
-            <div class="ad-modal__address">{{ adModalData.metro }}</div>
-            <div class="ad-modal__socials">
-              <a v-for="(i, j) in adModalData.social" :key="j" :href="i.value">
+            <div v-if="adModalData.metro" class="ad-modal__address_metro">
+              <svg
+                class="icon-svg_metro"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#icon-svg_metro)">
+                  <path
+                    d="M16.0715 0H1.92859C0.865115 0 0 0.865115 0 1.92859V16.0715C0 17.1349 0.865115 18 1.92859 18H16.0715C17.1349 18 18 17.1349 18 16.0715V1.92859C18 0.865115 17.1349 0 16.0715 0V0ZM16.7143 16.0715C16.7143 16.4261 16.4261 16.7143 16.0715 16.7143H1.92859C1.5739 16.7143 1.28574 16.4261 1.28574 16.0715V1.92859C1.28574 1.5739 1.5739 1.28574 1.92859 1.28574H16.0715C16.4261 1.28574 16.7143 1.5739 16.7143 1.92859V16.0715Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M13.7464 3.90695C13.506 3.80651 13.2297 3.86173 13.0458 4.0463L9.00029 8.0918L4.9548 4.0463C4.7715 3.863 4.49461 3.80775 4.25418 3.90695C4.01375 4.00615 3.85742 4.24092 3.85742 4.50083V14.1419H5.14312V6.05278L8.54572 9.45538C8.79682 9.70649 9.20362 9.70649 9.45478 9.45538L12.8574 6.05278V14.1419H14.1431V4.50088C14.1432 4.24097 13.9868 4.00615 13.7464 3.90695Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="icon-svg_metro">
+                    <rect width="18" height="18" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              {{ adModalData.metro }}
+            </div>
+            <div v-if="adModalData.social" class="ad-modal__socials">
+              <a
+                v-for="(i, j) in adModalData.social"
+                :key="j"
+                :href="i.value"
+                target="_blank"
+              >
                 <img :src="`/img/icons/social/${i.name}.png`" :alt="i.value" />
               </a>
             </div>
@@ -163,9 +227,10 @@
 </template>
 
 <script>
-import { getFileUrl, getUrl, jsonToParams } from '@/assets/js/util'
+import { getFileUrl, getUrl } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
+const qs = require('qs')
 
 export default {
   name: 'AdList',
@@ -223,7 +288,12 @@ export default {
         prev: null
       },
       videoShow: false,
-      index: null
+      index: null,
+      filter: {
+        city: 'Москва',
+        metro: '',
+        address: ''
+      }
     }
   },
   computed: {
@@ -243,6 +313,12 @@ export default {
         arr.push('ad__list_customer')
       }
       return arr
+    },
+    citiesList() {
+      return this.$store.state.address.citiesList
+    },
+    metroList() {
+      return this.$store.state.address.metroList
     }
   },
   created() {
@@ -251,14 +327,25 @@ export default {
   methods: {
     async getAds() {
       if (this.adsProp.length > 0) this.ads = this.adsProp
-      const params = jsonToParams({
+      const params = {
         category_id: this.category,
         per_page: 12,
         author_type_id: this.authorTypeId,
-        type_id: this.typeId
-      })
-      const url = getUrl('advertisements' + params)
+        type_id: this.typeId,
+        order_by: [{ column: '' }]
+      }
+      if (this.filter.city === 'Москва') params.order_by[0].column = 'metro'
+      // params.order_by = qs.stringify(params.order_by)
+      // if (this.filter.city === 'Москва') params.order_by[1] = 'Авиазаводская'
+      // if (this.filter.city === 'Москва') params.order_by[1] = 'ASC'
+      // const url = getUrl(`advertisements${jsonToParams(params)}`)
+      // params.order_by = JSON.parse(params.order_by)
+      // params = qs.stringify(params)
+      const url = getUrl(`advertisements?${qs.stringify(params)}`)
+      // const urlParams = new URLSearchParams()
+      // urlParams.append(params)
       await this.$axios
+        // .get(url, { params })
         .get(url)
         .then((e) => {
           this.ads = e.data.data

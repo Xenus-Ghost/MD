@@ -67,6 +67,23 @@
     font-weight: normal;
   }
 
+  &__phone {
+    &:before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 16px;
+      background: url("~assets/img/icons/phone-call.svg") no-repeat center;
+      background-size: contain;
+      float: left;
+
+    }
+  }
+
+  &__address_metro {
+    &:before {}
+  }
+
   &__socials {
     display: flex;
   }
