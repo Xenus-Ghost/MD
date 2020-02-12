@@ -2,10 +2,10 @@
   <section class="ad">
     <div class="ad__filter ad-filter">
       <span class="ad-filter__title"><b>Фильтр:</b></span>
-      <label for="city" class="label">
+      <label for="region" class="label">
         <select
-          id="city"
-          v-model="filter.city"
+          id="region"
+          v-model="filter.region"
           class="input_select ad-filter__select"
           required
         >
@@ -15,19 +15,20 @@
             disabled
             class="input_option ad-filter__option"
           >
-            Выберите город
+            Выберите...
+          </option>
+          <option value="Москва" class="input_option ad-filter__option">
+            Москва
           </option>
           <option
-            v-for="(city, i) in citiesList"
-            :id="`city_${i}`"
-            :key="i"
-            :value="city"
+            value="Московская область"
             class="input_option ad-filter__option"
-            >{{ city }}</option
           >
+            Московская область
+          </option>
         </select>
       </label>
-      <label v-if="filter.city === 'Москва'" for="metro" class="label">
+      <label v-if="filter.region === 'Москва'" for="metro" class="label">
         <select
           id="metro"
           v-model="filter.metro"
@@ -52,10 +53,33 @@
         </select>
       </label>
       <label
-        v-if="filter.city !== 'Москва' && filter.city !== ''"
-        for="address"
+        v-if="filter.region === 'Московская область'"
+        for="city"
+        class="label"
       >
-        <input id="address" type="text" class="input" placeholder="Улица" />
+        <select
+          id="city"
+          v-model="filter.region"
+          class="input_select ad-filter__select"
+          required
+        >
+          <option
+            value=""
+            selected
+            disabled
+            class="input_option ad-filter__option"
+          >
+            Выберите...
+          </option>
+          <option
+            v-for="(city, i) in citiesList"
+            :id="`city_${i}`"
+            :key="i"
+            :value="city"
+            class="input_option ad-filter__option"
+            >{{ city }}</option
+          >
+        </select>
       </label>
     </div>
     <div class="ad__list" :class="classList">
@@ -309,7 +333,8 @@ export default {
       filter: {
         city: '',
         metro: '',
-        address: ''
+        address: '',
+        region: ''
       }
     }
   },
@@ -349,9 +374,11 @@ export default {
         per_page: 12,
         author_type_id: this.authorTypeId,
         type_id: this.typeId,
-        order_by: [{ column: '' }]
+        metro: this.filter.metro ? this.filter.metro : null,
+        city: this.filter.city ? this.filter.city : null
+        // order_by: [{ column: '' }]
       }
-      if (this.filter.city === 'Москва') params.order_by[0].column = 'metro'
+      // if (this.filter.city === 'Москва') params.order_by[0].column = 'metro'
       // params.order_by = qs.stringify(params.order_by)
       // if (this.filter.city === 'Москва') params.order_by[1] = 'Авиазаводская'
       // if (this.filter.city === 'Москва') params.order_by[1] = 'ASC'

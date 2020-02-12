@@ -3,7 +3,6 @@ import { getUrl } from '@/assets/js/util'
 export const state = () => ({
   addressList: [],
   citiesList: [
-    'Москва',
     'Апрелевка',
     'Балашиха',
     'Бронницы',
