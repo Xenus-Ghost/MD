@@ -208,7 +208,7 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
 .zhbi__buttons {
   display: grid;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container_wide layout_category grid-layout_building">
+  <div class="container_wide layout_category grid-layout_gas">
     <CategoryHeader>
       Газификация
       <template v-slot:right_column>
@@ -758,9 +758,9 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
-.grid-layout_building {
+.grid-layout_gas {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -771,6 +771,9 @@ export default {
     height: 88vh;
   }
 }
+</style>
+<style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
 .services {
   @include media_screen(desktop-fhd) {
     grid-column: 1/13;

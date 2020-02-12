@@ -868,14 +868,10 @@ export default {
   grid-template-rows: 2fr auto;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  /*@include media_screen(desktop-fhd) {
-    grid-template-rows: 2fr 2fr auto;
-  }*/
 }
 .services {
   /deep/ .services__list_grid {
     border-radius: 5rem;
-    /*padding: 10px 50px;*/
   }
 }
 </style>

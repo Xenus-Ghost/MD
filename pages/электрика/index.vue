@@ -755,7 +755,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
 .grid-layout_electric {
   max-height: 100%;
@@ -768,13 +768,10 @@ export default {
     grid-template-rows: 2fr auto auto;
   }
 }
-/*.header_category {
-  grid-column: 1/-1;
-}*/
+</style>
+<style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
 .services {
-  /*@include media_screen(desktop-fhd) {
-    grid-column: 1/13;
-  }*/
   /deep/ .services__list_grid {
     border-radius: 3.5rem;
     padding: 10px 50px;
@@ -783,20 +780,11 @@ export default {
     grid-column: 1/-1;
   }
 }
-/*.services__list_grid {*/
-/*  grid-column: span 8;*/
-/*}*/
 .selling {
   &__buttons {
     display: grid;
-    /*height: 220px;*/
     max-height: 100%;
     grid-gap: 30px;
-    /*grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));*/
-    /*grid-template-columns: repeat(4, 1fr);*/
-    /*@include media_screen(desktop-fhd) {
-      grid-template-columns: repeat(4, 1fr);
-    }*/
   }
 }
 </style>

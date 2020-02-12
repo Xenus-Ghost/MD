@@ -1,6 +1,6 @@
 <template>
   <article class="container_wide layout_category">
-    <div class="grid-layout_building">
+    <div class="grid-layout_beautification">
       <CategoryHeader>
         Благоустройство
         <template v-slot:right_column>
@@ -308,10 +308,10 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~~assets/scss/app/index.scss';
 @import '~~assets/scss/app/pages/_category.scss';
-.grid-layout_building {
+.grid-layout_beautification {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -322,6 +322,8 @@ export default {
     grid-template-rows: 2fr 2fr auto;
   }
 }
+</style>
+<style lang="scss" scoped>
 .services {
   /deep/ .services__list_grid {
     border-radius: 3.5rem;

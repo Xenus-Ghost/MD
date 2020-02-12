@@ -1,5 +1,5 @@
 <template>
-  <div class="container_wide layout_category grid-layout_building">
+  <div class="container_wide layout_category grid-layout_landscape">
     <CategoryHeader>
       Ландшафтный дизайн
       <template v-slot:right_column>
@@ -198,9 +198,9 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
-.grid-layout_building {
+.grid-layout_landscape {
   max-height: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -214,30 +214,20 @@ export default {
     grid-template-rows: 2fr 2fr auto;
   }
 }
-/*.header_category {
-  grid-column: 1/-1;
-}*/
+</style>
+<style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
 .services {
   @include media_screen(desktop-fhd) {
     grid-column: 1/13;
   }
 }
-/*.services__list_grid {*/
-/*  grid-column: span 8;*/
-/*}*/
+
 .selling {
   &__buttons {
     display: grid;
-    /*height: 220px;*/
     max-height: 100%;
     grid-gap: 30px;
-    /*@include on_tablet() {
-      grid-template-columns: repeat(4, 1fr);
-    }*/
-    /*grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));*/
-    /*@include media_screen(desktop-fhd) {
-      grid-template-columns: repeat(4, 1fr);
-    }*/
   }
 }
 </style>

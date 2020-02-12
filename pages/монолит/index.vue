@@ -515,7 +515,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '~assets/scss/app/index.scss';
 .grid-layout_monolith {
   display: grid;
@@ -526,6 +526,9 @@ export default {
     height: calc(100vh - 75px);
   }
 }
+</style>
+<style scoped lang="scss">
+@import '~assets/scss/app/index.scss';
 .selling {
   &__buttons {
     display: grid;
