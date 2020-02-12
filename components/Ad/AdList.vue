@@ -365,6 +365,10 @@ export default {
   },
   created() {
     this.getAds()
+    if (this.$route.query && this.$route.query.id) {
+      this.getAd(this.$route.query.id)
+      console.log(this.$route.query.id)
+    }
   },
   methods: {
     async getAds() {
@@ -395,6 +399,18 @@ export default {
           this.ads = e.data.data
           this.meta = e.data.meta
           this.links = e.data.links
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+    async getAd(id = 0) {
+      const url = getUrl(`advertisements/${id}`)
+      await this.$axios
+        .get(url)
+        .then((e) => {
+          // this.ad = e.data.data
+          this.$store.dispatch('advert/adModalOpen', e.data.data)
         })
         .catch((e) => {
           console.log(e)
