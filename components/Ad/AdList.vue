@@ -10,12 +10,12 @@
           required
         >
           <option
-            value="Москва"
+            value=""
             selected
             disabled
             class="input_option ad-filter__option"
           >
-            Москва
+            Выберите город
           </option>
           <option
             v-for="(city, i) in citiesList"
@@ -51,7 +51,10 @@
           >
         </select>
       </label>
-      <label v-if="filter.city !== 'Москва'" for="address">
+      <label
+        v-if="filter.city !== 'Москва' && filter.city !== ''"
+        for="address"
+      >
         <input id="address" type="text" class="input" placeholder="Улица" />
       </label>
     </div>
@@ -304,7 +307,7 @@ export default {
       videoShow: false,
       index: null,
       filter: {
-        city: 'Москва',
+        city: '',
         metro: '',
         address: ''
       }
