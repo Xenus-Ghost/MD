@@ -436,7 +436,7 @@ export default {
     }
   }
 }
-</script>
+  <img src="../../../../AppData/Local/Temp/banner.png"/></script>
 
 <style lang="scss">
 @import '~assets/scss/app/index.scss';
