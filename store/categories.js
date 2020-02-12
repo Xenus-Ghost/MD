@@ -19,16 +19,16 @@ export const state = () => ({
   evCategoriesList: {}
 })
 
-export const mutations = () => ({
+export const mutations = {
   getAdCategories(state, data) {
     state.adCategoriesList = data
   },
   getEventsCategories(state, data) {
     state.evCategoriesList = data
   }
-})
+}
 
-export const actions = () => ({
+export const actions = {
   getAdCategories({ commit }) {
     this.$axios
       .get('https://admin.монтаждемонтаж.рф/api/advertisement-categories')
@@ -45,4 +45,4 @@ export const actions = () => ({
         commit('getEventsCategories', response.data.data)
       })
   }
-})
+}

@@ -1,4 +1,4 @@
-import { getFileUrl } from '@/assets/js/util'
+import { getFileUrl, getUrl } from '@/assets/js/util'
 
 export const state = () => ({
   isAdModalOpen: false,
@@ -17,6 +17,9 @@ export const mutations = {
   },
   adDataAdd(state, data) {
     state.adModalData = data
+  },
+  adModalDataAddView(state, data) {
+    state.adModalData.views++
   }
 }
 
@@ -51,7 +54,11 @@ export const actions = {
       console.debug(data.socials)
     }
     if (data.socials && data.socials.length > 0) data.social = data.socials
+
     commit('adDataAdd', data)
+    this.$axios
+      .post(getUrl(`advertisements/${data.id}/views/increment`))
+      .then((e) => commit('adModalDataAddView', data))
     commit('adModalOpen')
     if (typeof document !== 'undefined') {
       document.querySelector('body').classList.add('body-scroll_lock')

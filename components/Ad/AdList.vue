@@ -75,7 +75,21 @@
     </client-only>
     <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
       <template>
-        <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
+        <div class="grid grid_cols_2">
+          <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
+          <div
+            class="views ad-modal__views"
+            :title="`Просмотров: ${adModalData.views}`"
+            style="justify-self: end"
+          >
+            <img
+              src="~assets/img/icons/eye.svg"
+              :alt="`Просмотров: ${adModalData.views}`"
+              class="views__icon"
+            />
+            <span class="views__value">{{ adModalData.views }}</span>
+          </div>
+        </div>
         <h2 v-if="!customerAd" class="ad-modal__title">
           {{ adModalData.title }}
         </h2>

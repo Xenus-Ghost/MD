@@ -47,6 +47,14 @@
 }
 
 .ad {
+
+  &__views {
+    position: absolute;
+    padding: 10px;
+    background-color: rgba(14, 36, 62, 0.27);
+    border-radius: 15px;
+  }
+
   &__photo {
     object-fit: cover;
     width: 100%;
@@ -98,6 +106,10 @@
 }
 
 .ad__item_private {
+  .ad__views {
+    left: 5%;
+    top: 10%;
+  }
   .ad__photo {
     width: 105px;
     height: 105px;
@@ -115,6 +127,10 @@
 }
 
 .ad__item_company {
+  .ad__views {
+    left: 10%;
+    top: 5%;
+  }
   .ad__photo {
     background-color: #0e243e;
     opacity: 0.5;
@@ -130,6 +146,11 @@
   grid-gap: 10px 20px;
   justify-items: left;
 
+  .ad__views {
+    left: 5%;
+    top: 10%;
+  }
+
   .ad__title {
     font-size: 1rem;
     text-align: left;
@@ -143,7 +164,7 @@
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    grid-row: 1/-1;
+    grid-row: 1/4;
   }
 
   .ad__title {
@@ -152,5 +173,22 @@
 
   .ad__sub-title {
     font-size: 16px;
+  }
+}
+
+.views {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: 45px;
+  z-index: 2;
+  &__icon {
+    float: left;
+    height: 15px;
+    width: 18px;
+  }
+  &__value {
+    min-width: 20px;
+    padding-left: 3px;
   }
 }

@@ -1,5 +1,13 @@
 <template>
   <div :class="classList" class="ad__item">
+    <div class="views ad__views" :title="`Просмотров: ${ad.views}`">
+      <img
+        src="~assets/img/icons/eye.svg"
+        :alt="`Просмотров: ${ad.views}`"
+        class="views__icon"
+      />
+      <span class="views__value">{{ ad.views }}</span>
+    </div>
     <img
       v-if="ad.logo"
       :src="ad.logo"
@@ -81,6 +89,7 @@ export default {
       }
       obj.social = this.adData.social
       obj.metro = this.adData.metro
+      obj.views = this.adData.views
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj
@@ -106,6 +115,7 @@ export default {
     adOpen() {
       this.$store.dispatch('advert/adModalOpen', this.ad)
       this.$route.query.id = this.ad.id
+      this.adData.views++
     }
   }
 }
