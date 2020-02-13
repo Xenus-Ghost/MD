@@ -114,7 +114,13 @@ export default {
   methods: {
     adOpen() {
       this.$store.dispatch('advert/adModalOpen', this.ad)
-      this.$route.query.id = this.ad.id
+      // this.$route.query.id = this.ad.id
+      // this.$route.push({ path: '', query: { id: this.ad.id } })
+
+      // this.$set(this.$route.query, 'id', this.ad.id)
+
+      this.$router.push({ query: { id: this.ad.id } })
+
       this.adData.views++
     }
   }

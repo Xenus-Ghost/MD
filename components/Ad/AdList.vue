@@ -374,6 +374,7 @@ export default {
       return false
     },
     adClose() {
+      this.$router.replace({ query: { id: '' } })
       this.$store.dispatch('advert/adModalClose')
     },
     getFileUrl(path) {
