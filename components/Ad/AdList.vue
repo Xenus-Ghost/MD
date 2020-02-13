@@ -262,6 +262,9 @@
         <div class="ad-modal__description">
           {{ adModalData.description }}
         </div>
+        <client-only>
+          <Share open />
+        </client-only>
       </template>
     </Modal>
   </section>
@@ -271,6 +274,7 @@
 import { getFileUrl, getUrl } from '@/assets/js/util'
 import AdItem from '@/components/Ad/AdItem'
 import { EmbedVideo } from '@/components/Media'
+import { Share } from '@/components/Widgets'
 const qs = require('qs')
 
 export default {
@@ -278,6 +282,7 @@ export default {
   components: {
     AdItem,
     EmbedVideo,
+    Share,
     LightBox: process.client
       ? () => import(/* webpackPrefetch: true */ '@/components/Modal/LightBox')
       : null
@@ -420,7 +425,7 @@ export default {
       return false
     },
     adClose() {
-      this.$router.replace({ query: { id: '' } })
+      this.$router.replace({ query: {} })
       this.$store.dispatch('advert/adModalClose')
     },
     getFileUrl(path) {
@@ -437,7 +442,7 @@ export default {
     }
   }
 }
-  <img src="../../../../AppData/Local/Temp/banner.png"/></script>
+</script>
 
 <style lang="scss">
 @import '~assets/scss/app/index.scss';
