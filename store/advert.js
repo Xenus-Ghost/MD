@@ -4,7 +4,34 @@ export const state = () => ({
   isAdModalOpen: false,
   adModalData: {
     photo: []
-  }
+  },
+  authorType: [
+    {
+      id: 1,
+      name: 'Частники'
+    },
+    {
+      id: 2,
+      name: 'Фирмы и магазины'
+    },
+    {
+      id: 3,
+      name: 'Частники'
+    },
+    {
+      id: 4,
+      name: 'Интернет-магазины'
+    },
+    {
+      id: 5,
+      name: 'Торговые центры'
+    }
+  ],
+  adType: [
+    { id: 1, name: 'Услуги' },
+    { id: 2, name: 'Продажи' },
+    { id: 3, name: 'Заказчики' }
+  ]
 })
 
 export const mutations = {

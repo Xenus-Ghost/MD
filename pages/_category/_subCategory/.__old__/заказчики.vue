@@ -1,7 +1,7 @@
 <template>
   <div class="container_wide layout_category grid-layout_ads">
     <CategoryHeader>
-      Фирмы
+      Частники
       <template v-slot:right_column>
         <svg
           width="395"
@@ -162,17 +162,18 @@
     <Advertising></Advertising>
     <h2 class="text_center text_neon">Все фирмы</h2>
     <AdList
-      company-ad
+      customer-ad
       :ads-prop="ads"
       :category="1"
-      :author-type-id="2"
+      :author-type-id="1"
+      :type-id="3"
     ></AdList>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
-import Advertising from '@/components/Advertising/'
+import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
 import { getUrl, jsonToParams } from '@/assets/js/util'
 
@@ -187,7 +188,8 @@ export default {
     const params = jsonToParams({
       category_id: 1,
       per_page: 12,
-      author_type_id: 2
+      author_type_id: 1,
+      type_id: 3
     })
     const url = getUrl('advertisements' + params)
     const { data } = await $axios.get(url)
@@ -202,5 +204,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/app/index.scss';
+@import '~~assets/scss/app/index.scss';
 </style>

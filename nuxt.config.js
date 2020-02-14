@@ -44,13 +44,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    [
-      '@nuxtjs/router',
-      {
-        /* module options */
-      }
-    ]
+    '@nuxtjs/eslint-module'
   ],
   /*
    ** Nuxt.js modules
@@ -118,5 +112,6 @@ export default {
     //   layouts: true
     // },
     extractCSS: true
-  }
+  },
+  cache: true
 }

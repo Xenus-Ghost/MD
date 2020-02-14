@@ -18,6 +18,7 @@ export default {
   },
   props: {
     items: {
+      type: Array || Object,
       default: null
     },
     index: {

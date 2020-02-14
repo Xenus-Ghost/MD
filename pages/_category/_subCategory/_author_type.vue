@@ -1,7 +1,7 @@
 <template>
   <div class="container_wide layout_category grid-layout_ads">
     <CategoryHeader>
-      Частники
+      {{ body.title }}
       <template v-slot:right_column>
         <svg
           width="395"
@@ -160,13 +160,8 @@
       </template>
     </CategoryHeader>
     <Advertising></Advertising>
-    <h2 class="text_center text_neon">Все фирмы</h2>
-    <AdList
-      private-ad
-      :ads-prop="ads"
-      :category="1"
-      :author-type-id="1"
-    ></AdList>
+    <h2 class="text_center text_neon">{{ body.title }}</h2>
+    <AdList v-bind="props"></AdList>
   </div>
 </template>
 
@@ -174,7 +169,12 @@
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
-import { getUrl, jsonToParams } from '@/assets/js/util'
+// import { getUrl, jsonToParams } from '@/assets/js/util'
+import {
+  getCategoryIDByUrl,
+  apiGetAds,
+  getCategoryMeta
+} from '@/assets/js/mixins'
 
 export default {
   layout: 'Category',
@@ -183,19 +183,27 @@ export default {
     Advertising,
     AdList
   },
-  async asyncData({ $axios }) {
-    const params = jsonToParams({
-      category_id: 1,
-      per_page: 12,
-      author_type_id: 1
-    })
-    const url = getUrl('advertisements' + params)
-    const { data } = await $axios.get(url)
-    return { ads: data.data }
-  },
+  mixins: [getCategoryIDByUrl, apiGetAds, getCategoryMeta],
   data() {
     return {
-      ads: []
+      ads: [],
+      authorTypeId: null,
+      typeID: null
+    }
+  },
+  computed: {
+    props() {
+      const obj = []
+      if (this.authorTypeId) {
+        obj.push({ authorTypeId: this.authorTypeId })
+        if (this.authorTypeId === 1) obj.push({ privateAd: true })
+        if (this.authorTypeId === 2) obj.push({ companyAd: true })
+        if (this.authorTypeId === 3) obj.push({ customerAd: true })
+      }
+      if (this.category.id) obj.push({ category: this.category.id })
+      if (this.ads) obj.push({ adsProp: this.ads })
+      if (this.typeID === 3) obj.push({ customerAd: true })
+      return obj
     }
   }
 }

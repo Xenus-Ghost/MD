@@ -463,10 +463,32 @@
               </FileUploader>
             </div>
           </div>
-          <label for="city" class="label grid__column_3">
-            <select id="city" v-model="ad.city" class="input_select" required>
-              <option value="Москва" selected disabled class="input_option">
+          <label for="region" class="label grid__column_3">
+            <select
+              id="region"
+              v-model="ad.region"
+              class="input_select"
+              required
+            >
+              <option value="" selected disabled class="input_option">
+                Выберите...
+              </option>
+              <option value="Москва" class="input_option">
                 Москва
+              </option>
+              <option value="Мосовская область" class="input_option">
+                Мосовская область
+              </option>
+            </select>
+          </label>
+          <label
+            v-if="ad.region && ad.region !== 'Москва'"
+            for="city"
+            class="label grid__column_3"
+          >
+            <select id="city" v-model="ad.city" class="input_select" required>
+              <option value="" selected disabled class="input_option">
+                Выберите город
               </option>
               <option
                 v-for="(city, i) in citiesList"
@@ -478,26 +500,8 @@
               >
             </select>
           </label>
-          <label for="address" class="label grid__column_3">
-            <input
-              id="address"
-              v-model="ad.address"
-              class="input"
-              type="tel"
-              placeholder="Адрес"
-              required
-          /></label>
-          <!--<label for="metro" class="label grid__column_3"
-            ><input
-              id="metro"
-              v-model="ad.metro"
-              class="input"
-              type="tel"
-              placeholder="Метро"
-              required
-          /></label>-->
           <label
-            v-if="ad.city === 'Москва'"
+            v-if="ad.region === 'Москва'"
             for="metro"
             class="label grid__column_3"
           >

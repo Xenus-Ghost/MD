@@ -1,7 +1,7 @@
 <template>
-  <div class="container_wide layout_category grid-layout_ads">
+  <div class="container_wide grid-layout_ads">
     <CategoryHeader>
-      {{ body.title }}
+      Частники
       <template v-slot:right_column>
         <svg
           width="395"
@@ -160,8 +160,14 @@
       </template>
     </CategoryHeader>
     <Advertising></Advertising>
-    <h2 class="text_center text_neon">{{ body.title }}</h2>
-    <AdList v-bind="props"></AdList>
+    <h2 class="text_center text_neon">Все фирмы</h2>
+    <AdList
+      private-ad
+      :ads-prop="ads"
+      :category="1"
+      :author-type-id="authorTypeId"
+      :type-id="2"
+    ></AdList>
   </div>
 </template>
 
@@ -170,11 +176,7 @@ import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
 // import { getUrl, jsonToParams } from '@/assets/js/util'
-import {
-  getCategoryIDByUrl,
-  apiGetAds,
-  getCategoryMeta
-} from '@/assets/js/mixins'
+import { getCategoryIDByUrl, apiGetAds } from '@/assets/js/mixins'
 
 export default {
   validate({ params }) {
@@ -192,27 +194,41 @@ export default {
     Advertising,
     AdList
   },
-  mixins: [getCategoryIDByUrl, apiGetAds, getCategoryMeta],
+  mixins: [getCategoryIDByUrl, apiGetAds],
+  /* async asyncData(context) {
+    let authorTypeId = 1
+    if (context.params.author_type === 'частники') authorTypeId = 1
+    if (context.params.author_type === 'фирмы') authorTypeId = 2
+    if (context.params.author_type === 'все-фирмы-и-магазины') authorTypeId = 2
+    if (context.params.author_type === 'торговые-центры') authorTypeId = 5
+    if (context.params.author_type === 'интернет-магазины') authorTypeId = 4
+    const params = jsonToParams({
+      type_id: 2,
+      category_id: 1,
+      per_page: 12,
+      author_type_id: authorTypeId
+    })
+    const url = getUrl('advertisements' + params)
+    const { data } = await context.$axios.get(url)
+    console.log(authorTypeId)
+    return { ads: data.data, authorTypeId }
+  }, */
   data() {
     return {
       ads: [],
-      authorTypeId: null,
-      typeID: null
+      authorTypeId: 1
     }
   },
-  computed: {
-    props() {
-      const obj = []
-      if (this.authorTypeId) {
-        obj.push({ authorTypeId: this.authorTypeId })
-        if (this.authorTypeId === 1) obj.push({ privateAd: true })
-        if (this.authorTypeId === 2) obj.push({ companyAd: true })
-        if (this.authorTypeId === 3) obj.push({ customerAd: true })
-      }
-      if (this.category.id) obj.push({ category: this.category.id })
-      if (this.ads) obj.push({ adsProp: this.ads })
-      if (this.typeID === 3) obj.push({ customerAd: true })
-      return obj
+  created() {
+    this.authorTypeId = 1
+    if (this.$route.params.author_type === 'частники') {
+      this.authorTypeId = 1
+    } else if (this.$route.params.author_type === 'все-фирмы-и-магазины') {
+      this.authorTypeId = 3
+    } else if (this.$route.params.author_type === 'торговые-центры') {
+      this.authorTypeId = 5
+    } else if (this.$route.params.author_type === 'интернет-магазины') {
+      this.authorTypeId = 4
     }
   }
 }

@@ -653,7 +653,7 @@
           Земляные работы
         </template>
         <template v-slot:footer>
-          <Button to="земляные_работы" shape="rounded" borders="outline">
+          <Button to="земляные-работы" shape="rounded" borders="outline">
             Подробнее
           </Button>
         </template>
@@ -820,13 +820,16 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
+import { getCategoryIDByUrl } from '@/assets/js/mixins'
+
 export default {
-  layout: 'Category',
   components: {
     CategoryHeader,
     ServicesGrid,
     ServiceItem
-  }
+  },
+  mixins: [getCategoryIDByUrl],
+  layout: 'Category'
 }
 </script>
 

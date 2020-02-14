@@ -55,7 +55,7 @@ export default {
     services: {
       type: String,
       default:
-        'telegram, vkontakte, odnoklassniki, facebook, viber, whatsapp, yandexCollections, skype'
+        'telegram, vkontakte, odnoklassniki, facebook, viber, whatsapp, skype'
     },
     float: {
       type: String,

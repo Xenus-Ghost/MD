@@ -1,7 +1,7 @@
 <template>
   <div class="container_wide layout_category grid-layout_ads">
     <CategoryHeader>
-      {{ body.title }}
+      Фирмы
       <template v-slot:right_column>
         <svg
           width="395"
@@ -160,64 +160,47 @@
       </template>
     </CategoryHeader>
     <Advertising></Advertising>
-    <h2 class="text_center text_neon">{{ body.title }}</h2>
-    <AdList v-bind="props"></AdList>
+    <h2 class="text_center text_neon">Все фирмы</h2>
+    <AdList
+      company-ad
+      :ads-prop="ads"
+      :category="1"
+      :author-type-id="2"
+    ></AdList>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
-import Advertising from '@/components/Advertising'
+import Advertising from '@/components/Advertising/'
 import AdList from '@/components/Ad/AdList'
-// import { getUrl, jsonToParams } from '@/assets/js/util'
-import {
-  getCategoryIDByUrl,
-  apiGetAds,
-  getCategoryMeta
-} from '@/assets/js/mixins'
+import { getUrl, jsonToParams } from '@/assets/js/util'
 
 export default {
-  validate({ params }) {
-    // Must be a number
-    return (
-      params.author_type === 'частники' ||
-      params.author_type === 'все-фирмы-и-магазины' ||
-      params.author_type === 'торговые-центры' ||
-      params.author_type === 'интернет-магазины'
-    )
-  },
   layout: 'Category',
   components: {
     CategoryHeader,
     Advertising,
     AdList
   },
-  mixins: [getCategoryIDByUrl, apiGetAds, getCategoryMeta],
+  async asyncData({ $axios }) {
+    const params = jsonToParams({
+      category_id: 1,
+      per_page: 12,
+      author_type_id: 2
+    })
+    const url = getUrl('advertisements' + params)
+    const { data } = await $axios.get(url)
+    return { ads: data.data }
+  },
   data() {
     return {
-      ads: [],
-      authorTypeId: null,
-      typeID: null
-    }
-  },
-  computed: {
-    props() {
-      const obj = []
-      if (this.authorTypeId) {
-        obj.push({ authorTypeId: this.authorTypeId })
-        if (this.authorTypeId === 1) obj.push({ privateAd: true })
-        if (this.authorTypeId === 2) obj.push({ companyAd: true })
-        if (this.authorTypeId === 3) obj.push({ customerAd: true })
-      }
-      if (this.category.id) obj.push({ category: this.category.id })
-      if (this.ads) obj.push({ adsProp: this.ads })
-      if (this.typeID === 3) obj.push({ customerAd: true })
-      return obj
+      ads: []
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import '~assets/scss/app/index.scss';
+@import '~~assets/scss/app/index.scss';
 </style>

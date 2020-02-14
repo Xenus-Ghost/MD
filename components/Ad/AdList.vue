@@ -320,7 +320,7 @@ export default {
   },
   data() {
     return {
-      ads: {},
+      ads: this.adsProp,
       meta: {
         current_page: 1,
         last_page: 1,
@@ -369,10 +369,9 @@ export default {
     }
   },
   created() {
-    this.getAds()
+    // this.getAds()
     if (this.$route.query && this.$route.query.id) {
       this.getAd(this.$route.query.id)
-      console.log(this.$route.query.id)
     }
   },
   methods: {

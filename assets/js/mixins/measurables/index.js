@@ -1,6 +1,6 @@
 // import Vue from 'vue'
 // import { PropValidator } from 'vue/types/options'
-import { convertToUnit } from '../../util/helpers'
+import { convertToUnit } from '../../util'
 
 // export default Vue.extend({
 export const Measurable = {

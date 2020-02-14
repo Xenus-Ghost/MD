@@ -314,11 +314,14 @@
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
+import { getCategoryIDByUrl } from '@/assets/js/mixins'
+
 export default {
   layout: 'Category',
   components: {
     CategoryHeader
   },
+  mixins: [getCategoryIDByUrl],
   computed: {
     pageTitle() {
       return this.$route.params.subCategory

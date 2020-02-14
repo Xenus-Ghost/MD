@@ -1,5 +1,7 @@
 // import axios from 'axios'
 
+import { getUrl } from '@/assets/js/util'
+
 export const state = () => ({
   isAuthFormShow: false,
   authFormType: 'login',
@@ -45,4 +47,16 @@ export const mutations = {
   }
 }
 
-export const actions = {}
+export const actions = {
+  async nuxtServerInit({ commit, getters }, { req, isDev }) {
+    // console.log('nuxtServerInit')
+    // console.log(getUrl('advertisement-categories'))
+    await this.$axios
+      .get(getUrl('advertisement-categories'))
+      .then((response) => {
+        // console.log(response)
+        // console.log(response.data)
+        commit('categories/getAdCategories', response.data.data)
+      })
+  }
+}

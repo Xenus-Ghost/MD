@@ -1,3 +1,5 @@
+// import { getUrl } from '@/assets/js/util'
+
 export const state = () => ({
   adCategoriesList: [
     {
@@ -34,7 +36,7 @@ export const actions = {
       .get('https://admin.монтаждемонтаж.рф/api/advertisement-categories')
       .then((response) => {
         // console.log(response.data, this)
-        commit('categories.getAdCategories', response.data.data)
+        commit('getAdCategories', response.data.data)
       })
   },
   getEventsCategories({ commit }) {
