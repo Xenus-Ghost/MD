@@ -700,6 +700,7 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
+
 export default {
   layout: 'Category',
   components: {

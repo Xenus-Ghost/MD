@@ -7,6 +7,7 @@ export function getAuthorType(context) {
   if (context.params.author_type === 'торговые-центры') authorTypeId = 5
   if (context.params.author_type === 'интернет-магазины') authorTypeId = 4
   // if (context.params.type_id === 'Заказчики')
+  // if (context.params.author_type === 'Заказчики') adTypeId = 3
   return authorTypeId
   // }
 }
@@ -17,7 +18,6 @@ export function getAdTypeId(context) {
   if (context.params.adTypeId === 'частники') adTypeId = 1
   if (context.params.adTypeId === 'фирмы') adTypeId = 2
   if (context.params.adTypeId === 'все-фирмы-и-магазины') adTypeId = 3
-  // if (context.params.type_id === 'Заказчики')
   return adTypeId
   // }
 }

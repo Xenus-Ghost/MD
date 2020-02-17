@@ -2,7 +2,7 @@
   <article class="container_wide layout_category">
     <div class="grid-layout_beautification">
       <CategoryHeader>
-        Благоустройство
+        {{ body.title }}
         <template v-slot:right_column>
           <svg
             width="396"
@@ -298,13 +298,16 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '@/components/Services/ServiceGrid'
+import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
+
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     ServicesGrid,
     ServiceItem
-  }
+  },
+  mixins: [getCategoryIDByUrl, getCustomCategoryMeta]
 }
 </script>
 

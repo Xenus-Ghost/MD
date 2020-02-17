@@ -1,7 +1,7 @@
 <template>
   <div class="container_wide layout_category grid-layout_building">
     <CategoryHeader>
-      Строительство
+      {{ body.title }}
       <template v-slot:right_column>
         <svg
           width="479"
@@ -793,26 +793,7 @@
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_12 selling">
-      <h2 class="selling__title">Продажа</h2>
-      <div class="selling__buttons">
-        <Button to="продажа/частники" shape="rounded" borders="outline"
-          >Все частники</Button
-        >
-        <Button
-          to="продажа/все-фирмы-и-магазины"
-          shape="rounded"
-          borders="outline"
-          >Все фирмы и магазины</Button
-        >
-        <Button to="продажа/торговые-центры" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="продажа/интерне-магазины" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
-      </div>
-    </div>
+    <SellingButtons></SellingButtons>
   </div>
 </template>
 
@@ -820,15 +801,17 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
-import { getCategoryIDByUrl } from '@/assets/js/mixins'
+import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
+import { SellingButtons } from '@/components/Ad/Category'
 
 export default {
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
+    ServiceItem,
+    SellingButtons
   },
-  mixins: [getCategoryIDByUrl],
+  mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
   layout: 'Category'
 }
 </script>

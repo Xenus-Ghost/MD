@@ -52,18 +52,61 @@ export function getCategorySlug(route = this.$route ? this.$route : null) {
 
 export const getCategoryMeta = {
   created() {
-    const categoryName = this.$store.state.categories.adCategoriesList.find(
+    const categories = this.$store.state.categories
+    const categoryName = categories.adCategoriesList.find(
       (result) => result.name === getCategorySlug(this.$route)
     ).service_title
-    const authorType = getAuthorType(this.$route)
-      ? this.$store.state.advert.authorType.find(
-          (result) => result.id === getAuthorType(this.$route)
-        ).name
-      : this.$store.state.advert.adType.find((result) => result.id === 3).name
-    const headTitle = categoryName + ' - ' + authorType
+    console.log(this.$route)
+    const params = this.$route.params
+    const storeAdvert = this.$store.state.advert
+    let headTitle = categoryName
+    let authorType = null
+    // const category = null
+    let parentCategory = null
+    if (params.author_type) {
+      authorType = storeAdvert.authorType.find(
+        (result) => result.id === getAuthorType(this.$route)
+      )
+        ? storeAdvert.authorType.find(
+            (result) => result.id === getAuthorType(this.$route)
+          ).name
+        : params.author_type === 'заказчики'
+        ? storeAdvert.adType.find((result) => result.id === 3).name
+        : null
+      headTitle += ' - ' + authorType
+    }
 
+    if (params.category) {
+      parentCategory = getCategory(params.category, categories).category
+        .service_title
+      headTitle += ' - ' + parentCategory
+    }
     this.$set(this.head, 'title', headTitle)
-    this.$set(this.body, 'title', authorType || headTitle)
+    this.$set(this.body, 'title', authorType || categoryName || headTitle)
+  },
+  data() {
+    return {
+      head: { title: '' },
+      body: {
+        title: ''
+      }
+    }
+  },
+  head() {
+    return { title: this.head.title }
+  }
+}
+
+export const getCustomCategoryMeta = {
+  // this.$route.path
+  created() {
+    const categories = this.$store.state.categories
+    const categoryName = categories.adCategoriesList.find(
+      (result) => result.name === this.$route.path.replace('/', '')
+    ).service_title
+    const headTitle = categoryName
+    this.$set(this.head, 'title', headTitle)
+    this.$set(this.body, 'title', categoryName || headTitle)
   },
   data() {
     return {

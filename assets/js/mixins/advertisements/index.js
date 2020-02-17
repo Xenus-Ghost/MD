@@ -3,7 +3,8 @@ import {
   getCategory,
   validateCategory,
   getCategoryMeta,
-  getCategorySlug
+  getCategorySlug,
+  getCustomCategoryMeta
 } from './categories'
 
 import { getAuthorType } from './author_type'
@@ -17,5 +18,6 @@ export {
   getAuthorType,
   apiGetAds,
   getCategoryMeta,
-  getCategorySlug
+  getCategorySlug,
+  getCustomCategoryMeta
 }

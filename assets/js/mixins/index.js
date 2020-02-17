@@ -5,6 +5,7 @@ import {
   apiGetAds,
   getAuthorType,
   getCategoryMeta,
+  getCustomCategoryMeta,
   getCategorySlug
 } from './advertisements'
 
@@ -15,5 +16,6 @@ export {
   apiGetAds,
   getAuthorType,
   getCategoryMeta,
+  getCustomCategoryMeta,
   getCategorySlug
 }

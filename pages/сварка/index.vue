@@ -206,7 +206,9 @@
           Металло-конструкции
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="металлоконструкции" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem
@@ -220,7 +222,9 @@
           Трубопровод
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="трубопровод" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem
@@ -234,25 +238,13 @@
           Металлические лестницы
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="металлические-лестницы" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_12 grid__column_12-desktop-fhd selling">
-      <h2 class="selling__title">Продажа</h2>
-      <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-        <Button to="/" shape="rounded" borders="outline"
-          >Все фирмы и магазины</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
-      </div>
-    </div>
+    <SellingButtons></SellingButtons>
   </div>
 </template>
 
@@ -260,12 +252,14 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
+import { SellingButtons } from '@/components/Ad/Category'
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
+    ServiceItem,
+    SellingButtons
   }
 }
 </script>

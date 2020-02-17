@@ -640,7 +640,9 @@
           Кабели и проводка
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="кабели-и-проводка" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -651,7 +653,9 @@
           Свет и освещение
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="свет-и-освещение" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -662,7 +666,9 @@
           Автоматы, счетчики
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="автоматы-счетчики" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -673,7 +679,9 @@
           Бытовая техника
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="бытовая-техника" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -684,7 +692,13 @@
           Проектирование электроснабжения
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button
+            to="проектирование-электроснабжения"
+            shape="rounded"
+            borders="outline"
+          >
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -695,7 +709,13 @@
           Заземление и молниезащита
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button
+            to="заземление-и-молниезащита"
+            shape="rounded"
+            borders="outline"
+          >
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
     </ServicesGrid>
@@ -708,7 +728,9 @@
           Слаботочка
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="слаботочка" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -719,21 +741,25 @@
           Охранные системы и контроль доступа
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="охранные-системы" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
     </ServicesGrid>
     <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-        <Button to="/" shape="rounded" borders="outline"
+        <Button to="частники" shape="rounded" borders="outline"
+          >Все частники</Button
+        >
+        <Button to="фирмы-и-магазины" shape="rounded" borders="outline"
           >Все фирмы и магазины</Button
         >
-        <Button to="/" shape="rounded" borders="outline"
+        <Button to="все-торговые-центры" shape="rounded" borders="outline"
           >Все торговые центры</Button
         >
-        <Button to="/" shape="rounded" borders="outline"
+        <Button to="интернет-магазины" shape="rounded" borders="outline"
           >Интернет магазины</Button
         >
       </div>

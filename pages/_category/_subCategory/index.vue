@@ -2,7 +2,7 @@
   <article class="container_full layout_category">
     <div class="grid-layout_sub-category">
       <CategoryHeader>
-        {{ pageTitle }}
+        {{ body.title }}
         <template v-slot:right_column>
           <svg
             width="395"
@@ -314,14 +314,14 @@
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
-import { getCategoryIDByUrl } from '@/assets/js/mixins'
+import { getCategoryIDByUrl, getCategoryMeta } from '@/assets/js/mixins'
 
 export default {
   layout: 'Category',
   components: {
     CategoryHeader
   },
-  mixins: [getCategoryIDByUrl],
+  mixins: [getCategoryIDByUrl, getCategoryMeta],
   computed: {
     pageTitle() {
       return this.$route.params.subCategory
@@ -382,7 +382,7 @@ export default {
   align-items: center;
   @include on_tablet() {
     background: rgba(14, 36, 62, 0.3);
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 120px;
     border-bottom-left-radius: 120px;
   }
