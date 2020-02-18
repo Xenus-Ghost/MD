@@ -178,10 +178,12 @@ import {
 
 export default {
   validate({ params }) {
-    // Must be a number
     return (
       params.author_type === 'частники' ||
       params.author_type === 'все-фирмы-и-магазины' ||
+      params.author_type === 'фирмы-и-магазины' ||
+      params.author_type === 'магазины' ||
+      params.author_type === 'фирмы' ||
       params.author_type === 'торговые-центры' ||
       params.author_type === 'интернет-магазины'
     )

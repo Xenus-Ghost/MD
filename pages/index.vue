@@ -252,7 +252,7 @@ export default {
           icon_url: 'img/categories/10.svg'
         },
         landscape: {
-          path: '/ландшафтный_дизайн',
+          path: '/ландшафтный-дизайн',
           title: 'Ландшафтный дизайн',
           icon_url: 'img/categories/12.svg'
         },
@@ -262,12 +262,12 @@ export default {
           icon_url: 'img/categories/13.svg'
         },
         tools: {
-          path: '/инструменты',
+          path: '/инструменты-и-оборудование',
           title: 'Инструменты и оборудование',
           icon_url: 'img/categories/14.svg'
         },
         stoves: {
-          path: '/печи_и_камины',
+          path: '/печи-и-камины',
           title: 'Печи и камины',
           icon_url: 'img/categories/15.svg'
         }
