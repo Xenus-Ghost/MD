@@ -6,6 +6,7 @@ export const apiGetAds = {
   async asyncData(context) {
     // console.log(context, 'context')
     // console.log(context.route, 'context')
+    // const qs = require('qs')
     const route = context
     const slug =
       route.params.subCategory ||
@@ -17,11 +18,12 @@ export const apiGetAds = {
     const params = {
       type_id: typeID,
       category_id: category.category.id,
-      per_page: 12,
+      per_page: 99,
       author_type_id: authorTypeId
     }
-    // console.log(params)
+    console.log(params)
     const url = getUrl('advertisements')
+    // console.log(qs.stringify(params), 'params')
     const { data } = await context.$axios.get(url, { params })
     return {
       ads: data.data,
