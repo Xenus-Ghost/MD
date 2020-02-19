@@ -23,7 +23,7 @@
           />
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="металлы" shape="rounded" borders="outline">Подробнее</Button>
     </div>
     <div class="category">
       <CircleItem>
@@ -72,7 +72,7 @@
           </defs>
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="стекло" shape="rounded" borders="outline">Подробнее</Button>
     </div>
     <div class="category">
       <CircleItem>
@@ -131,7 +131,7 @@
           </defs>
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="дерево" shape="rounded" borders="outline">Подробнее</Button>
     </div>
     <div class="category">
       <CircleItem>
@@ -184,7 +184,9 @@
           />
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="пластмасса" shape="rounded" borders="outline"
+        >Подробнее</Button
+      >
     </div>
     <div class="category">
       <CircleItem>
@@ -257,7 +259,9 @@
           </defs>
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="отделочные-материалы" shape="rounded" borders="outline"
+        >Подробнее</Button
+      >
     </div>
     <div class="category">
       <CircleItem>
@@ -290,7 +294,9 @@
           />
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="бумага-и-картон" shape="rounded" borders="outline"
+        >Подробнее</Button
+      >
     </div>
     <div class="category">
       <CircleItem>
@@ -315,7 +321,7 @@
           />
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="лкм" shape="rounded" borders="outline">Подробнее</Button>
     </div>
     <div class="category">
       <CircleItem>
@@ -384,7 +390,9 @@
           />
         </svg>
       </CircleItem>
-      <Button to="/" shape="rounded" borders="outline">Подробнее</Button>
+      <Button to="гипсокартон-и-комплектующие" shape="rounded" borders="outline"
+        >Подробнее</Button
+      >
     </div>
   </div>
 </template>

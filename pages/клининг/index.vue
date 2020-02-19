@@ -11,7 +11,7 @@
     </CategoryHeader>
     <div class="container grid_cols_2 grid_cols_4_tablet buttons_grid">
       <Button
-        to="все_частники"
+        to="все-частники"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -19,7 +19,7 @@
         >Все частники</Button
       >
       <Button
-        to="все_фирмы"
+        to="все-фирмы"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"

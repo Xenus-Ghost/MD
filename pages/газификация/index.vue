@@ -700,7 +700,9 @@
           Частные дома, ИЖС, СНТ
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="частные-дома-ижс-снт" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -711,7 +713,9 @@
           Котельные
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button to="котельные" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -722,25 +726,17 @@
           Промышленное газифицирование
         </template>
         <template v-slot:footer>
-          <Button shape="rounded" borders="outline"> Подробнее</Button>
+          <Button
+            to="промышленное-газифицирование"
+            shape="rounded"
+            borders="outline"
+          >
+            Подробнее</Button
+          >
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <div class="grid__column_12 selling">
-      <h2 class="selling__title">Продажа</h2>
-      <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-        <Button to="/" shape="rounded" borders="outline"
-          >Все фирмы и магазины</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
-      </div>
-    </div>
+    <SellingButtons></SellingButtons>
   </div>
 </template>
 
@@ -749,13 +745,15 @@ import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
 import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
+import { SellingButtons } from '@/components/Ad/Category'
 
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
+    ServiceItem,
+    SellingButtons
   },
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta]
 }

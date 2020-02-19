@@ -6,7 +6,6 @@
     :class="[classes]"
     :to="to"
     :append="append"
-    :href="href"
     @click="$emit('click', $event)"
   >
     <div v-if="hasLeftIcon" class="button__icon button__icon_left">
@@ -57,6 +56,10 @@ export default {
     to: {
       type: String,
       default: null
+    },
+    href: {
+      type: String,
+      default: null
     }
     // small: {
     //   type: Boolean,
@@ -93,13 +96,13 @@ export default {
         !this.to.includes('https://')
       )
     },
-    href() {
+    /* computedHref() {
       if (this.tag === 'a' && this.to) {
         return this.to
-      } else {
+      } else if (!this.href) {
         return null
       }
-    },
+    }, */
     buttonType() {
       return this.buttonTag !== 'button' ? '' : 'button'
     },

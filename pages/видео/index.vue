@@ -152,7 +152,7 @@
       class="container grid__column_12 grid_cols_2 grid_cols_4_tablet grid_cols_6_desktop buttons_grid"
     >
       <Button
-        :to="Выставки"
+        to="выставки"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -160,7 +160,7 @@
         >Выставки</Button
       >
       <Button
-        :to="Форумы"
+        to="форумы"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -168,7 +168,7 @@
         >Форумы</Button
       >
       <Button
-        :to="Фирмы"
+        to="фирмы"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -176,7 +176,7 @@
         >Фирмы</Button
       >
       <Button
-        :to="Частники"
+        to="частники"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -184,7 +184,7 @@
         >Частники</Button
       >
       <Button
-        :to="Блогеры"
+        to="блогеры"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -192,7 +192,7 @@
         >Блогеры</Button
       >
       <Button
-        :to="Обучающие"
+        to="обучающие"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"

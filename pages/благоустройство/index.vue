@@ -172,7 +172,9 @@
             Архитектура
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button to="архитектура" shape="rounded" borders="outline">
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -183,7 +185,9 @@
             Освещение
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button to="освещение" shape="rounded" borders="outline">
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -194,7 +198,9 @@
             Парки и скверы
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button to="парки-и-скверы" shape="rounded" borders="outline">
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -205,7 +211,9 @@
             Озеленение
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button to="озеленение" shape="rounded" borders="outline">
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -216,7 +224,13 @@
             Рекламные конструкции
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button
+              to="рекламные-конструкции"
+              shape="rounded"
+              borders="outline"
+            >
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -227,7 +241,13 @@
             Детские и спорт площадки
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button
+              to="детские-и-спорт-площадки"
+              shape="rounded"
+              borders="outline"
+            >
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'" class="grid__column_offset-2_tablet">
@@ -238,7 +258,13 @@
             Площадки для выгула собак
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button
+              to="площадки-для-выгула-собак"
+              shape="rounded"
+              borders="outline"
+            >
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -249,7 +275,9 @@
             Ограждения и заборы
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button to="ограждение-и-заборы" shape="rounded" borders="outline">
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -260,7 +288,13 @@
             Строительство ангаров
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button
+              to="строительство-ангаров"
+              shape="rounded"
+              borders="outline"
+            >
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
         <ServiceItem :col="'1'">
@@ -271,25 +305,13 @@
             Сад и огород
           </template>
           <template v-slot:footer>
-            <Button shape="rounded" borders="outline"> Подробнее</Button>
+            <Button to="сад-и-огород" shape="rounded" borders="outline">
+              Подробнее</Button
+            >
           </template>
         </ServiceItem>
       </ServicesGrid>
-      <div class="grid__column_12 selling">
-        <h2 class="selling__title">Продажа</h2>
-        <div class="selling__buttons">
-          <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-          <Button to="/" shape="rounded" borders="outline"
-            >Все фирмы и магазины</Button
-          >
-          <Button to="/" shape="rounded" borders="outline"
-            >Все торговые центры</Button
-          >
-          <Button to="/" shape="rounded" borders="outline"
-            >Интернет магазины</Button
-          >
-        </div>
-      </div>
+      <SellingButtons></SellingButtons>
     </div>
   </article>
 </template>
@@ -299,13 +321,15 @@ import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '@/components/Services/ServiceGrid'
 import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
+import { SellingButtons } from '@/components/Ad/Category'
 
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
+    ServiceItem,
+    SellingButtons
   },
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta]
 }

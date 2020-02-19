@@ -394,7 +394,9 @@
         </svg>
         <div class="сustomers__buttons">
           <span>Заказчики</span>
-          <Button shape="rounded" borders="outline">Открть список</Button>
+          <Button to="заказчики" shape="rounded" borders="outline"
+            >Открть список</Button
+          >
         </div>
       </div>
       <div class="performers">
@@ -420,8 +422,10 @@
         </svg>
         <div class="performers__buttons">
           <span>Исполнители</span>
-          <Button shape="rounded" borders="outline">Частники</Button>
-          <Button shape="rounded" borders="outline">Фирмы</Button>
+          <Button to="частники" shape="rounded" borders="outline"
+            >Частники</Button
+          >
+          <Button to="фирмы" shape="rounded" borders="outline">Фирмы</Button>
         </div>
         <svg
           width="31"
@@ -461,7 +465,9 @@
     <div class="container grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все карьеры</Button>
+        <Button to="все-карьеры" shape="rounded" borders="outline"
+          >Все карьеры</Button
+        >
       </div>
     </div>
   </div>

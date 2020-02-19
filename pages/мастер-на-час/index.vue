@@ -547,7 +547,7 @@
     </CategoryHeader>
     <div class="container grid__column_12 grid_cols_4 buttons_grid">
       <Button
-        :to="Все_частники"
+        to="все-частники"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -555,7 +555,7 @@
         >Все частники</Button
       >
       <Button
-        :to="Все_фирмы"
+        to="все-фирмы"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
