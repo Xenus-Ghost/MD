@@ -519,6 +519,15 @@
               >
             </select>
           </label>
+          <label for="address" class="label grid__column_3">
+            <input
+              id="address"
+              v-model="ad.address"
+              class="input"
+              type="text"
+              placeholder="Адрес"
+            />
+          </label>
           <label for="start_time" class="label grid__column_3">
             <input
               id="start_time"
