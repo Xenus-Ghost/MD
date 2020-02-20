@@ -61,10 +61,11 @@ $modal: '.modal';
   }
 
   &__body {
-    margin: 10px 0;
+    margin: 20px 0;
     font-size: 0.8rem;
     max-height: 80vh;
     overflow-y: auto;
+    padding: 4px;
     @include on_mobile() {
       text-align: justify;
     }

@@ -93,7 +93,7 @@
         >Видео</Button
       >
       <Button
-        to="/мастер_на_час"
+        to="/мастер-на-час"
         style="grid-column: 3;grid-row: 3; justify-self: right"
         shape="rounded"
         borders="neon"

@@ -263,6 +263,10 @@
           {{ adModalData.description }}
         </div>
         <client-only>
+          <b
+            style="float: left; width: 100%; font-size: 1.1rem; margin-top: 5px"
+            >Поделиться объявлением:</b
+          >
           <Share open />
         </client-only>
       </template>

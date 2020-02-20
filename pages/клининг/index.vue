@@ -16,7 +16,7 @@
         borders="outline"
         class="grid__column_2"
         height="100%"
-        >Все частники</Button
+        >клининг</Button
       >
       <Button
         to="все-фирмы"
@@ -24,7 +24,7 @@
         borders="outline"
         class="grid__column_2"
         height="100%"
-        >Все фирмы</Button
+        >санитарные-службы</Button
       >
     </div>
   </div>
