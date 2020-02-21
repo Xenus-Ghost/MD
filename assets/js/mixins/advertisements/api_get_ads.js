@@ -2,39 +2,22 @@
 import { getCategory } from './categories'
 import { getUrl } from '@/assets/js/util'
 
-export const apiGetAds = {
-  async asyncData(context) {
-    // console.log(context, 'context')
-    // console.log(context.route, 'context')
-    // const qs = require('qs')
-    const route = context
-    const slug =
-      route.params.subCategory ||
-      route.params.category ||
-      route.fullPath.replace('/', '')
-    const authorTypeId = getAuthorTypeId(context)
-    const typeID = getAdTypeId(context)
-    const category = getCategory(slug, context.store.state.categories)
-    const params = {
-      type_id: typeID,
-      category_id: category.category.id,
-      per_page: 99,
-      author_type_id: authorTypeId
-    }
-    console.log(params)
-    const url = getUrl('advertisements')
-    // console.log(qs.stringify(params), 'params')
-    const { data } = await context.$axios.get(url, { params })
-    return {
-      ads: data.data,
-      links: data.links,
-      authorTypeId,
-      typeID,
-      queryParams: params
-    }
-  },
-  data() {
-    return {}
+export async function apiGetAds(params, axios) {
+  const qs = require('qs')
+  const urlParams = {
+    category_id: params.category_id,
+    per_page: 99
+  }
+  if (params.type_id) urlParams.type_id = params.type_id
+  if (params.author_type_id) urlParams.author_type_id = params.author_type_id
+  console.log(urlParams)
+  const url = getUrl('advertisements')
+  console.log(qs.stringify(params), 'params')
+  const { data } = await axios.get(url, { params: urlParams })
+  return {
+    ads: data.data,
+    links: data.links,
+    queryParams: params
   }
 }
 

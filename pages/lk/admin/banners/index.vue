@@ -14,6 +14,7 @@ import { getUrl } from '@/assets/js/util'
 
 export default {
   name: 'BannerAd',
+  layout: 'admin',
   async asyncData(context) {
     let banners = null
     const errors = []

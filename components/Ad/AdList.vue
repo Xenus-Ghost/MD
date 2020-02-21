@@ -300,7 +300,7 @@ export default {
       type: Boolean
     },
     adsProp: {
-      type: Array,
+      type: Array || Object,
       default: null
     },
     companyAd: {

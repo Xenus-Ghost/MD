@@ -248,7 +248,9 @@
             <Button to="частники" shape="rounded" borders="outline">
               Частники
             </Button>
-            <Button to="фирмы" shape="rounded" borders="outline">Фирмы</Button>
+            <Button to="фирмы-и-магазины" shape="rounded" borders="outline"
+              >Фирмы</Button
+            >
           </div>
           <svg
             width="31"

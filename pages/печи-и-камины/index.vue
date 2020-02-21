@@ -274,29 +274,18 @@
         </svg>
       </div>
     </div>
-    <div class="container grid__column_12 selling">
-      <h2 class="selling__title">Продажа</h2>
-      <div class="selling__buttons">
-        <Button to="/" shape="rounded" borders="outline">Все частники</Button>
-        <Button to="/" shape="rounded" borders="outline"
-          >Все фирмы и магазины</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Все торговые центры</Button
-        >
-        <Button to="/" shape="rounded" borders="outline"
-          >Интернет магазины</Button
-        >
-      </div>
-    </div>
+    <SellingButtons />
   </div>
 </template>
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import SellingButtons from '@/components/Ad/Category/SellingButtons'
 export default {
+  layout: 'Category',
   components: {
-    CategoryHeader
+    CategoryHeader,
+    SellingButtons
   }
 }
 </script>

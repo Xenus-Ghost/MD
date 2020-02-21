@@ -33,6 +33,7 @@ body {
   @include media_screen(desktop-wide) {
     font-size: var(--main-font-size)
   }
+  margin-right: 18px;
 }
 a{
   text-decoration: none;
@@ -44,7 +45,6 @@ a{
 
 .body-scroll_lock {
   overflow: hidden;
-  margin-right: 18px;
   &_mobile {
     @include on_mobile() {
       overflow: hidden;

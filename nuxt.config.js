@@ -116,13 +116,13 @@ export default {
   cache: true,
   router: {
     extendRoutes(routes, resolve) {
-      routes.splice(
-        0,
-        routes.length,
-        ...routes.map((route) => {
-          return { ...route, component: resolve(__dirname, route.component) }
-        })
-      )
+      // routes.splice(
+      //   0,
+      //   routes.length,
+      //   ...routes.map((route) => {
+      //     return { ...route, component: resolve(__dirname, route.component) }
+      //   })
+      // )
     }
   }
 }

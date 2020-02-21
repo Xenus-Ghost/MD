@@ -2,10 +2,7 @@ import { getAuthorType } from './index'
 
 export const getCategoryIDByUrl = {
   created() {
-    const slug =
-      this.$route.params.subCategory ||
-      this.$route.params.category ||
-      this.$route.fullPath.replace('/', '')
+    const slug = getCategorySlug
 
     const result = getCategory(slug, this.$store.state.categories)
 
@@ -42,43 +39,49 @@ export function getCategory(slug = null, categories = null) {
   return result
 }
 
-export function getCategorySlug(route = this.$route ? this.$route : null) {
-  return (
-    route.params.subCategory ||
-    route.params.category ||
-    route.fullPath.replace('/', '')
-  )
+export function getCategorySlug(
+  route = this.$route ? this.$route : null,
+  context
+) {
+  const slugs = route.path.split('/')
+  if (getAuthorType(context)) slugs.pop()
+  if (slugs[slugs.length - 1] === 'продажа') slugs.pop()
+  return slugs[slugs.length - 1]
+  // route.params.subCategory ||
+  // route.params.category ||
+  // route.fullPath.replace('/', '')
 }
 
 export const getCategoryMeta = {
-  created() {
+  created(context) {
+    // console.log()
     const categories = this.$store.state.categories
     const categoryName = categories.adCategoriesList.find(
-      (result) => result.name === getCategorySlug(this.$route)
+      (result) => result.name === getCategorySlug(this.$route, context)
     ).service_title
+    const category = getCategory(getCategorySlug())
     console.log(this.$route)
-    const params = this.$route.params
+    // const params = this.$route.params
     const storeAdvert = this.$store.state.advert
     let headTitle = categoryName
-    let authorType = null
+    let authorType = getAuthorType()
     // const category = null
     let parentCategory = null
-    if (params.author_type) {
+    if (authorType) {
       authorType = storeAdvert.authorType.find(
         (result) => result.id === getAuthorType(this.$route)
       )
         ? storeAdvert.authorType.find(
             (result) => result.id === getAuthorType(this.$route)
           ).name
-        : params.author_type === 'заказчики'
+        : authorType === 'заказчики'
         ? storeAdvert.adType.find((result) => result.id === 3).name
         : null
       headTitle += ' - ' + authorType
     }
 
-    if (params.category) {
-      parentCategory = getCategory(params.category, categories).category
-        .service_title
+    if (category) {
+      parentCategory = getCategory(category, categories).category.service_title
       headTitle += ' - ' + parentCategory
     }
     this.$set(this.head, 'title', headTitle)
@@ -101,8 +104,9 @@ export const getCustomCategoryMeta = {
   // this.$route.path
   created() {
     const categories = this.$store.state.categories
+
     const categoryName = categories.adCategoriesList.find(
-      (result) => result.name === this.$route.path.replace('/', '')
+      (result) => result.name === this.$route.name
     ).service_title
     const headTitle = categoryName
     this.$set(this.head, 'title', headTitle)

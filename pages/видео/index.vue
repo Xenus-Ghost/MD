@@ -168,7 +168,7 @@
         >Форумы</Button
       >
       <Button
-        to="фирмы"
+        to="фирмы-и-магазины"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"

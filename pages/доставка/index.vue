@@ -202,7 +202,7 @@
     </CategoryHeader>
     <div class="container grid__column_12 grid_cols_4 buttons_grid">
       <Button
-        :to="Все_частники"
+        to="частники"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -210,7 +210,7 @@
         >Все частники</Button
       >
       <Button
-        :to="Все_фирмы"
+        to="фирмы-и-магазины"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -218,7 +218,7 @@
         >Все фирмы</Button
       >
       <Button
-        :to="Грузчики_и_переезды"
+        to="грузчики-и-переезды"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -226,7 +226,7 @@
         >Грузчики и переезды</Button
       >
       <Button
-        :to="Хранение_вещей"
+        to="хранение-вещей"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -238,7 +238,7 @@
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 export default {
   layout: 'Category',
   components: {
