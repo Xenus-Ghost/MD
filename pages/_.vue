@@ -23,6 +23,7 @@ export default {
     const slugs = context.route.path.replace(/ /g, '').split('/')
     const lastSlug = slugs[slugs.length - 1]
     const categoriesList = context.store.state.categories.adCategoriesList
+    let subCategoriesList = []
     let routeValid = true
     let currentCategory = null
     const filterData = {}
@@ -63,7 +64,15 @@ export default {
       currentCategory = categoriesList.find(
         (result) => result.name === slugs[slugs.length - 1]
       )
-      pageType = 'category'
+      if (
+        !categoriesList.find(
+          (result) => result.parent_id === currentCategory.id
+        )
+      ) {
+        pageType = 'category'
+      } else {
+        pageType = 'categories'
+      }
       meta.title = currentCategory ? currentCategory.service_title : null
     }
     const axios = context.$axios
@@ -76,7 +85,20 @@ export default {
     } catch (e) {
       context.error({ statusCode: 404, message: 'Страница не найдена' })
     }
-    return { filterData, pageType, ads, links, queryParams, meta }
+
+    if (currentCategory)
+      subCategoriesList = categoriesList.filter(
+        (result) => result.parent_id === currentCategory.id
+      )
+    return {
+      filterData,
+      pageType,
+      ads,
+      links,
+      queryParams,
+      meta,
+      subCategoriesList
+    }
   },
   data() {
     return {
@@ -93,7 +115,8 @@ export default {
         links: this.links,
         queryParams: this.queryParams,
         filterData: this.filterData,
-        meta: this.meta
+        meta: this.meta,
+        categories: this.subCategoriesList
       }
       return data
     }

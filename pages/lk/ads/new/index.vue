@@ -688,10 +688,10 @@ export default {
       }
       formData.category_ids = this.category_ids
 
-      if (this.social.fb) formData.social = this.social.fb
-      if (this.social.ok) formData.social = this.social.ok
-      if (this.social.ig) formData.social = this.social.ig
-      if (this.social.vk) formData.social = this.social.vk
+      if (this.social.fb) formData.social.push(this.social.fb)
+      if (this.social.ok) formData.social.push(this.social.ok)
+      if (this.social.ig) formData.social.push(this.social.ig)
+      if (this.social.vk) formData.social.push(this.social.vk)
 
       await this.$axios
         .$post(getUrl('me/advertisements'), formData)

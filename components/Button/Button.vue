@@ -5,6 +5,7 @@
     :style="[measurableStyles, style]"
     :class="[classes]"
     :to="to"
+    :href="to"
     :append="append"
     @click="$emit('click', $event)"
   >
@@ -96,13 +97,14 @@ export default {
         !this.to.includes('https://')
       )
     },
-    /* computedHref() {
-      if (this.tag === 'a' && this.to) {
+    computedHref() {
+      /* if (this.tag === 'a' && this.to) {
         return this.to
       } else if (!this.href) {
         return null
-      }
-    }, */
+      } */
+      return this.to
+    },
     buttonType() {
       return this.buttonTag !== 'button' ? '' : 'button'
     },

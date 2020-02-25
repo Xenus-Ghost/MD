@@ -58,5 +58,6 @@ export const actions = {
         // console.log(response.data)
         commit('categories/getAdCategories', response.data.data)
       })
+      .catch((error) => console.error(error + error.response))
   }
 }
