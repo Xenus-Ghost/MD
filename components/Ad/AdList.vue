@@ -159,13 +159,22 @@
           >
             <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
             <div class="ad-modal__id">ID: {{ adModalData.author_id }}</div>
-            <div
+            <a
               v-for="(item, j) in adModalData.phone"
               :key="j"
+              :href="`tel:${item}`"
               class="ad-modal__phone"
             >
               {{ item }}
-            </div>
+            </a>
+            <a
+              v-if="adModalData.website"
+              :href="adModalData.website"
+              class="ad-modal__website"
+              target="_blank"
+            >
+              {{ adModalData.website }}
+            </a>
             <div class="ad-modal__address">{{ adModalData.address }}</div>
             <div v-if="adModalData.metro" class="ad-modal__address_metro">
               <svg

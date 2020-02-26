@@ -1,5 +1,5 @@
 <template>
-  <div class="grid__column_12 grid__column_12-desktop-fhd selling">
+  <div class="container grid__column_12 grid__column_12-desktop-fhd selling">
     <h2 class="selling__title">Продажа</h2>
     <div class="selling__buttons">
       <Button to="продажа/частники" shape="rounded" borders="outline"
