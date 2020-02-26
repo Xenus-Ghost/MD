@@ -46,14 +46,12 @@ export default {
       (result) => result.parent_id === currentCategory.id
     )
     if (!adType) adType = context.store.state.advert.adType[0]
-    console.log(!subCategoriesList.length)
     const needAdsPage =
       slugs.includes('дома-бани-дачи') && !subCategoriesList.length
     if (slugs.includes('дома-бани-дачи') && !subCategoriesList.length) {
       adType = context.store.state.advert.adType[1]
     }
     if (authorType || (adType && adType.id === 3) || needAdsPage) {
-      console.log(authorType, adType)
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
       if (currentCategory) meta.title += ` - ${currentCategory.service_title}`
@@ -74,11 +72,8 @@ export default {
       meta.title = currentCategory ? currentCategory.service_title : null
     }
     const axios = context.$axios
-    // console.log(filterData)
     const { ads, links, queryParams } = await apiGetAds(filterData, axios)
-    // if (!routeValid) error({ statusCode: 404, message: 'Post not found' })
     try {
-      // console.log(currentCategory.id)
       currentCategory.id = currentCategory.id + 0
     } catch (e) {
       context.error({ statusCode: 404, message: 'Страница не найдена' })

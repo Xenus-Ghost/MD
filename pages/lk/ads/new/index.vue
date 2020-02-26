@@ -246,47 +246,7 @@
               required
             />
           </label>
-          <label for="rootCategory" class="label grid__column_6">
-            <select
-              id="rootCategory"
-              v-model="ad.rootCategory"
-              name=""
-              class="input_select"
-              required
-              @change="changeCategory"
-            >
-              <option selected disabled value="0" class="input_option"
-                >Выберите категорию</option
-              >
-              <option
-                v-for="(item, j) in adRootCategories"
-                :key="j"
-                :value="item.id"
-                class="input_option"
-                >{{ item.service_title }}</option
-              >
-            </select>
-          </label>
-          <label for="category" class="label grid__column_6">
-            <select
-              id="category"
-              v-model="ad.category"
-              class="input_select"
-              name=""
-              required
-            >
-              <option selected disabled value="0" class="input_option"
-                >Выберите подкатегорию</option
-              >
-              <option
-                v-for="(item, j) in adSubCategories"
-                :key="j"
-                :value="item.id"
-                class="input_option"
-                >{{ item.service_title }}</option
-              >
-            </select>
-          </label>
+          <CategorySelect v-model="category_ids" class="grid__column_6" />
           <label for="description" class="label grid__column_6">
             <textarea
               id="description"
@@ -297,8 +257,7 @@
               required
             >
             Описание
-          </textarea
-            >
+          </textarea>
           </label>
           <label for="phone" class="label grid__column_6">
             <input
@@ -593,15 +552,16 @@ import { getUrl } from '@/assets/js/util'
 import CategoryHeader from '@/components/Category'
 import Card from '@/components/Card'
 import FileUploader from '@/components/FileUploader'
+import CategorySelect from '@/components/lk/CategorySelect'
 export default {
   middleware: ['auth'],
-  name: 'Index',
   layout: 'Cabinet',
   components: {
     CategoryHeader,
     Card,
     FileUploader,
-    VideoUploader
+    VideoUploader,
+    CategorySelect
   },
   data() {
     return {
@@ -641,7 +601,8 @@ export default {
         ig: null,
         ok: null,
         fb: null
-      }
+      },
+      category_ids: null
       // adCategoriesList: []
     }
   },
@@ -658,12 +619,12 @@ export default {
       }
       return result
     },
-    category_ids() {
+    /* category_ids() {
       const cats = []
       cats.push(this.ad.rootCategory)
       cats.push(this.ad.category)
       return cats
-    },
+    }, */
     citiesList() {
       return this.$store.state.address.citiesList
     },

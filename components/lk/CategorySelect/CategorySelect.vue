@@ -28,16 +28,40 @@
         class="input_select"
         name=""
         required
-        @change="update"
+        @change="changeCategory"
       >
-        <option selected disabled value="0" class="input_option"
+        <!--<option selected disabled value="0" class="input_option"
           >Выберите подкатегорию</option
-        >
+        >-->
         <option
           v-for="(item, j) in adSubCategories"
           :key="j"
           :value="item.id"
           class="input_option"
+          :selected="j === 1"
+          >{{ item.service_title }}</option
+        >
+      </select>
+    </label>
+    <label
+      v-if="subSubCategories"
+      for="3lvlCategory"
+      class="label grid__column_6"
+    >
+      <select
+        id="3lvlCategory"
+        v-model="subCategory"
+        class="input_select"
+        name=""
+        required
+        @change="update"
+      >
+        <option
+          v-for="(item, j) in subSubCategories"
+          :key="j"
+          :value="item.id"
+          class="input_option"
+          :selected="j === 1"
           >{{ item.service_title }}</option
         >
       </select>
@@ -56,7 +80,9 @@ export default {
     return {
       rootCategory: null,
       category: null,
-      adSubCategories: []
+      subCategory: null,
+      adSubCategories: [],
+      subSubCategories: null
     }
   },
   computed: {
@@ -64,40 +90,36 @@ export default {
       return this.$store.state.categories.adCategoriesList
     },
     adRootCategories() {
-      // const result = []
-      /* if (this.adCategoriesList.length > 0) {
-        this.adCategoriesList.forEach(function(item) {
-          if (!item.parent_id) result.push(item)
-        })
-      } */
-      // result = this.adCategoriesList.filter((item) => !item.parent_id)
       return this.adCategoriesList.filter((item) => !item.parent_id)
     },
     category_ids() {
       const cats = []
       cats.push(this.rootCategory)
-      cats.push(this.category)
+      if (this.category) cats.push(this.category)
+      if (this.subCategory) cats.push(this.subCategory)
       return cats
     }
   },
   methods: {
     changeCategory() {
+      this.update()
       let resultSubcat = []
-      // if (this.adCategoriesList.length > 0) {
-      // for (let i = 0; i < this.adCategoriesList.length; i++) {
-      //   console.log(this.adCategoriesList[i])
-      //   if (this.adCategoriesList[i].parent_id === this.rootCategory) {
-      //     resultSubcat.push(this.adCategoriesList[i])
-      //   }
-      // }
-      // }
       resultSubcat = this.adCategoriesList.filter(
         (item) => item.parent_id === this.rootCategory
+      )
+      const resultSubSubcat = this.adCategoriesList.filter(
+        (item) => item.parent_id === this.category && !!item.parent_id
       )
 
       // this.adSubCategories = resultSubcat
 
       this.$set(this, 'adSubCategories', resultSubcat)
+      if (resultSubSubcat.length) {
+        this.$set(this, 'subSubCategories', resultSubSubcat)
+      } else {
+        this.$set(this, 'subSubCategories', null)
+        this.$set(this, 'subCategory', null)
+      }
     },
     update() {
       this.$emit('change', this.category_ids)
