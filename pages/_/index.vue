@@ -32,7 +32,10 @@ export default {
       (result) => lastSlug === result.slug
     )
     if (authorType) slugs.pop()
-    if (slugs[slugs.length - 1] === 'продажа' || slugs[slugs.length - 1] ===  'заказчики') {
+    if (
+      slugs[slugs.length - 1] === 'продажа' ||
+      slugs[slugs.length - 1] === 'заказчики'
+    ) {
       slugs.pop()
     }
     let adType = context.store.state.advert.adType.find(
@@ -68,15 +71,17 @@ export default {
       filterData.author_type_id = authorType ? authorType.id : null
       filterData.type_id = adType ? adType.id : null
     } else {
-      if (
-        !categoriesList.find(
-          (result) => result.parent_id === currentCategory.id
-        )
-      ) {
-        pageType = 'category'
-      } else {
-        pageType = 'categories'
-      }
+      console.log(categoriesList)
+      if (categoriesList && categoriesList.length)
+        if (
+          !categoriesList.find(
+            (result) => result.parent_id === currentCategory.id
+          )
+        ) {
+          pageType = 'category'
+        } else {
+          pageType = 'categories'
+        }
       meta.title = currentCategory ? currentCategory.service_title : null
     }
     const axios = context.$axios
