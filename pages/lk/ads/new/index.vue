@@ -257,7 +257,8 @@
               required
             >
             Описание
-          </textarea>
+          </textarea
+            >
           </label>
           <label for="phone" class="label grid__column_6">
             <input

@@ -90,6 +90,7 @@ export default {
       obj.social = this.adData.social
       obj.metro = this.adData.metro
       obj.views = this.adData.views
+      obj.categories = this.adData.categories ? this.adData.categories : [1, 2, 3]
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj
