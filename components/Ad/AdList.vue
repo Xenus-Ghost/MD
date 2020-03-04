@@ -117,6 +117,13 @@
             <span class="views__value">{{ adModalData.views }}</span>
           </div>
         </div>
+        <div v-if="adModalData.logo" class="ad-modal__logo-wrapper">
+          <img
+            :src="adModalData.logo"
+            :alt="adModalData.title"
+            class="ad-modal__logo"
+          />
+        </div>
         <h2 v-if="!customerAd" class="ad-modal__title">
           {{ adModalData.title }}
         </h2>
@@ -167,6 +174,14 @@
               class="ad-modal__phone"
             >
               {{ item }}
+            </a>
+            <a
+              v-if="adModalData.email"
+              :href="`mailto:${adModalData.email}`"
+              class="ad-modal__website"
+              target="_blank"
+            >
+              {{ adModalData.email }}
             </a>
             <a
               v-if="adModalData.website"
@@ -477,9 +492,10 @@ export default {
   },
   created() {
     // this.getAds()
-    if (this.$route.query && this.$route.query.id) {
-      this.getAd(this.$route.query.id)
-    }
+    if (this.$route.query)
+      if (this.$route.query.id) {
+        this.getAd(this.$route.query.id)
+      }
   },
   methods: {
     async getAds() {
@@ -521,7 +537,10 @@ export default {
         .get(url)
         .then((e) => {
           // this.ad = e.data.data
-          e.data.data.categories = e.data.data.categories ? e.data.data.categories : [1, 2, 3]
+          e.data.data.categories = e.data.data.categories
+            ? e.data.data.categories
+            : [1, 2, 3]
+          if (e.data.data.logo) e.data.data.logo = getFileUrl(e.data.data.logo)
           this.$store.dispatch('advert/adModalOpen', e.data.data)
         })
         .catch((e) => {

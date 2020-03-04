@@ -68,6 +68,7 @@ export default {
       obj.description = this.adData.description
       if (this.adData.address) obj.address = this.adData.address
       if (this.adData.website) obj.website = this.adData.website
+      if (this.adData.website) obj.email = this.adData.email
       if (this.adData.presentation)
         obj.presentation = getFileUrl(this.adData.presentation)
       if (this.adData.price_list)
@@ -90,7 +91,9 @@ export default {
       obj.social = this.adData.social
       obj.metro = this.adData.metro
       obj.views = this.adData.views
-      obj.categories = this.adData.categories ? this.adData.categories : [1, 2, 3]
+      obj.categories = this.adData.categories
+        ? this.adData.categories
+        : [1, 2, 3]
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj

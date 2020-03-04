@@ -32,18 +32,24 @@ export default {
       (result) => lastSlug === result.slug
     )
     if (authorType) slugs.pop()
-    if (slugs[slugs.length - 1] === 'продажа') {
+    if (slugs[slugs.length - 1] === 'продажа' || slugs[slugs.length - 1] ===  'заказчики') {
       slugs.pop()
     }
     let adType = context.store.state.advert.adType.find(
       (result) =>
         lastSlug === result.slug || slugs[slugs.length - 2] === result.slug
     )
+    // if (slugs[slugs.length - 1] === 'заказчики') {
+    //   adType = context.store.state.advert.adType.find(
+    //     (result) => result.id === 3
+    //   )
+    // }
+    console.log(adType)
     const currentCategory = categoriesList.find(
       (result) => result.name === slugs[slugs.length - 1]
     )
     const subCategoriesList = categoriesList.filter(
-      (result) => result.parent_id === currentCategory.id
+      (result) => currentCategory && result.parent_id === currentCategory.id
     )
     if (!adType) adType = context.store.state.advert.adType[0]
     const needAdsPage =
@@ -51,12 +57,14 @@ export default {
     if (slugs.includes('дома-бани-дачи') && !subCategoriesList.length) {
       adType = context.store.state.advert.adType[1]
     }
+    console.log(authorType, adType.id, needAdsPage)
     if (authorType || (adType && adType.id === 3) || needAdsPage) {
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
+      console.log(pageType)
       if (currentCategory) meta.title += ` - ${currentCategory.service_title}`
       routeValid = !!currentCategory
-      filterData.category_id = currentCategory.id
+      filterData.category_id = currentCategory ? currentCategory.id : null
       filterData.author_type_id = authorType ? authorType.id : null
       filterData.type_id = adType ? adType.id : null
     } else {
@@ -73,6 +81,7 @@ export default {
     }
     const axios = context.$axios
     const { ads, links, queryParams } = await apiGetAds(filterData, axios)
+    console.log(currentCategory)
     try {
       currentCategory.id = currentCategory.id + 0
     } catch (e) {
