@@ -3,8 +3,7 @@
     <div class="grid-layout_sub-category">
       <CategoryHeader>
         {{ meta.title }}
-        <template v-slot:right_column>
-        </template>
+        <template v-slot:right_column> </template>
       </CategoryHeader>
       <div
         class="grid_cols_2_tablet container grid__column_12 grid_cols_6 buttons_grid"

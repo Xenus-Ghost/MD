@@ -1,3 +1,3 @@
-import {bannerForm, bannersTable} from './banners'
+import { bannerForm, bannersTable } from './banners'
 
 export { bannerForm, bannersTable }

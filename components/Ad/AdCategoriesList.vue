@@ -23,8 +23,10 @@ export default {
       // const data = this.$store.categories.adCategoriesList.map(
       //   (result) => result.id === this.categories.id
       // )
-      const data = this.categories.map(
-        (x) => this.$store.state.categories.adCategoriesList.find(result => result.id === x)
+      const data = this.categories.map((x) =>
+        this.$store.state.categories.adCategoriesList.find(
+          (result) => result.id === x
+        )
       )
       return data
     }

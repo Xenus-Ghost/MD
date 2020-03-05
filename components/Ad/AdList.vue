@@ -33,6 +33,7 @@
           id="metro"
           v-model="filter.metro"
           class="input_select ad-filter__select"
+          @change="adsRefresh"
         >
           <option
             value=""
@@ -62,6 +63,7 @@
           v-model="filter.region"
           class="input_select ad-filter__select"
           required
+          @change="adsRefresh"
         >
           <option
             value=""
@@ -507,20 +509,9 @@ export default {
         type_id: this.typeId,
         metro: this.filter.metro ? this.filter.metro : null,
         city: this.filter.city ? this.filter.city : null
-        // order_by: [{ column: '' }]
       }
-      // if (this.filter.city === 'Москва') params.order_by[0].column = 'metro'
-      // params.order_by = qs.stringify(params.order_by)
-      // if (this.filter.city === 'Москва') params.order_by[1] = 'Авиазаводская'
-      // if (this.filter.city === 'Москва') params.order_by[1] = 'ASC'
-      // const url = getUrl(`advertisements${jsonToParams(params)}`)
-      // params.order_by = JSON.parse(params.order_by)
-      // params = qs.stringify(params)
       const url = getUrl(`advertisements?${qs.stringify(params)}`)
-      // const urlParams = new URLSearchParams()
-      // urlParams.append(params)
       await this.$axios
-        // .get(url, { params })
         .get(url)
         .then((e) => {
           this.ads = e.data.data
@@ -565,6 +556,9 @@ export default {
     },
     setIndex(index) {
       this.index = index
+    },
+    adsRefresh() {
+      this.getAds()
     }
   }
 }
