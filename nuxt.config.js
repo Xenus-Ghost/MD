@@ -38,7 +38,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~plugins/globalComponents.js'],
+  plugins: ['~plugins/globalComponents.js', '~plugins/auth.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -80,6 +80,10 @@ export default {
   auth: {
     strategies: {
       local: {
+        refreshToken: {
+          property: 'authorization', // change to your refresh token property
+          url: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/refresh'
+        },
         endpoints: {
           login: {
             url: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/login',
@@ -95,6 +99,10 @@ export default {
             url: 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/me',
             method: 'post',
             propertyName: 'data'
+          },
+          refresh: {
+            url:
+              'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/auth/refresh'
           }
         }
         // tokenRequired: true,
