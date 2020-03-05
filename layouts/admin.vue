@@ -5,7 +5,7 @@
       @aboutModalOpen="aboutModalOpen"
     ></Menu>
     <CategoriesWidget></CategoriesWidget>
-    <div class="admin-layout">
+    <div class="container admin-layout">
       <nuxt class="admin-layout" />
     </div>
     <Modal v-show="aboutModalShow" @close="aboutModalShow = false">
@@ -106,7 +106,7 @@ export default {
     CategoriesWidget
     // Modal
   },
-  middleware: ['admin'],
+  middleware: ['auth', 'admin'],
   data() {
     return {
       aboutModalShow: false,

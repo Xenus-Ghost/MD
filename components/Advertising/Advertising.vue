@@ -1,43 +1,78 @@
 <template>
   <section class="advertising">
-    <div class="advertising__slider">
-      <div v-for="(ad, i) in ads" :key="i" class="advertising__slide">
-        <NuxtLink :to="ad.url">
-          <img class="advertising__image" :src="ad.img" alt="" />
-        </NuxtLink>
+    <div v-if="adList" class="advertising__slider">
+      <div
+        v-for="(ad, i) in adList"
+        :key="i"
+        :class="[
+          'advertising__slide',
+          ad.type_id === 1 ? 'advertising__slide_wide' : ''
+        ]"
+      >
+        <a :href="ad.path" class="advertising__link">
+          <img
+            class="advertising__image"
+            :src="ad.image ? ad.image : '/img/advertising/maxresdefault.jpg'"
+            :alt="ad.title"
+          />
+          <div class="advertising__title">
+            {{ ad.title }}
+          </div>
+        </a>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { getUrl } from '@/assets/js/util'
+
 export default {
   name: 'Advertising',
   props: {
     category: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
     }
   },
   data() {
     return {
-      ads: {
-        0: {
-          title: '',
-          img: '/img/advertising/maxresdefault.jpg',
-          url: '/'
-        },
-        1: {
-          title: '',
-          img: '/img/advertising/dsk_banner_aksay_september_insta.jpg',
-          url: '/'
-        },
-        2: {
-          title: '',
-          img: '/img/advertising/739_original.jpg',
-          url: '/'
+      ads: {},
+      adList: null
+    }
+  },
+  // computed: {
+  //   adList() {
+  //     const list = []
+  //     return list
+  //   }
+  // },
+  created() {
+    this.$axios
+      .get(getUrl(`banners/${this.category}`))
+      .then((result) => {
+        if (result.data.data.small.length || result.data.data.large.length) {
+          this.$set(this, 'ads', result.data.data)
+          this.makeList()
         }
+      })
+      .catch((error) => console.error(error))
+  },
+  methods: {
+    makeList() {
+      const list = []
+      if (this.ads.large && this.ads.large.length) list.push(this.ads.large[0])
+      const freeCells = 4 - list.length * 2
+      const smallLength = this.ads.small ? this.ads.small.length : 0
+      for (let i = 0; i < freeCells; i++) {
+        if (this.ads.small[i]) {
+          list.push(this.ads.small[i])
+        } else break
       }
+      this.$set(this, 'adList', list)
+      // if (this.ads.small && smallLength) {
+      //   list.push(this.ads.small[0])
+      // }
     }
   }
 }
@@ -56,7 +91,10 @@ export default {
   /*display: flex;*/
   overflow-x: auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  @include on_desktop() {
+    /*grid-auto-rows: 250px;*/
+  }
 }
 .advertising__slide {
   padding: 5px;
@@ -64,6 +102,21 @@ export default {
     flex: 100%;
     max-width: 100%;
   }*/
+  &_wide {
+    grid-column: span 2;
+  }
+}
+.advertising__link {
+  position: relative;
+}
+.advertising__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  min-height: 50px;
+  text-align: center;
 }
 .advertising__image {
   width: 100%;
