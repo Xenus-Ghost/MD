@@ -41,7 +41,11 @@ export default {
   },
   computed: {
     retutnBackUrl() {
-      return this.backURL ? this.backURL : this.$store.state.route.from.fullPath
+      // return this.backURL ? this.backURL : this.$store.state.route.from.fullPath
+      const url = this.$route.path.replace(/ /g, '').split('/')
+      url.pop()
+      if (url[url.length - 1] === 'продажа') url.pop()
+      return url.length > 1 ? url.join('/') : '/'
     }
   }
 }
