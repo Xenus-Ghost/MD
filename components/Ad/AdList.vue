@@ -308,10 +308,19 @@
             <Share open />
           </client-only>
           <div class="flex" style="width: 100%;">
-            <Button borders="outline" shape="rounded" style="margin: 0 auto"
+            <Button
+              borders="outline"
+              shape="rounded"
+              style="margin: 0 auto"
+              @click="claimFormShow = true"
               >Пожаловаться</Button
             >
           </div>
+          <AdClaim
+            v-if="claimFormShow"
+            :id="adModalData.id"
+            @close="claimFormShow = false"
+          ></AdClaim>
         </template>
       </Modal>
     </client-only>
@@ -323,6 +332,7 @@ import { getFileUrl, getUrl } from '@/assets/js/util'
 import { AdItem, AdCategoriesList, adFilter } from '@/components/Ad'
 import { EmbedVideo } from '@/components/Media'
 import { Share } from '@/components/Widgets'
+// import LightBox from '@/components/Modal/LightBox'
 const qs = require('qs')
 
 export default {
@@ -333,9 +343,10 @@ export default {
     EmbedVideo,
     Share,
     adFilter,
-    LightBox: process.client
-      ? () => import(/* webpackPrefetch: true */ '@/components/Modal/LightBox')
-      : null
+    LightBox: () =>
+      import(/* webpackPrefetch: true */ '@/components/Modal/LightBox'),
+    AdClaim: () => import(/* webpackPrefetch: true */ '@/components/Ad/AdClaim')
+    // LightBox
   },
   props: {
     category: {
@@ -390,7 +401,8 @@ export default {
         metro: '',
         address: '',
         region: ''
-      }
+      },
+      claimFormShow: false
     }
   },
   computed: {

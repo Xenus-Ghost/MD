@@ -81,36 +81,30 @@ export default {
       meta.title = currentCategory ? currentCategory.service_title : null
     }
     const axios = context.$axios
-    let ads, links, queryParams
+    // let ads, links, queryParams
     /* if (!!filterData.length) {
       const { ads, links, queryParams } = await apiGetAds(filterData, axios)
     } */
-    if (filterData.length) {
-      await apiGetAds(filterData, axios)
-        .then((response) => {
-          ads = response.ads
-          links = response.links
-          queryParams = response.queryParams
-        })
-        .catch((error) => {
-          throw new Error(error)
-        })
-    }
+
+    const { ads, links, queryParams } = await apiGetAds(filterData, axios)
+
+    // const apiResponse = { ads, links, queryParams}
 
     try {
       currentCategory.id = currentCategory.id + 0
     } catch (e) {
       context.error({ statusCode: 404, message: 'Страница не найдена' })
     }
-    return {
+    const returnData = {
       filterData,
       pageType,
-      ads,
-      links,
-      queryParams,
       meta,
       subCategoriesList
     }
+    if (typeof ads !== 'undefined') returnData.ads = ads
+    if (typeof links !== 'undefined') returnData.links = links
+    if (typeof queryParams !== 'undefined') returnData.queryParams = queryParams
+    return returnData
   },
   data() {
     return {

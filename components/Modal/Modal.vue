@@ -2,7 +2,7 @@
   <transition name="modal">
     <div class="modal__mask">
       <div class="modal__wrapper" @click.self="close">
-        <div class="modal__container">
+        <div :class="['modal__container', { modal__container_small: !!small }]">
           <button class="modal__button_close" @click="close">
             <svg
               viewBox="0 0 20 20"
@@ -43,6 +43,12 @@
 <script>
 export default {
   name: 'Modal',
+  props: {
+    small: {
+      type: Boolean,
+      default: null
+    }
+  },
   data() {
     return {
       showModal: false

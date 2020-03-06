@@ -42,6 +42,15 @@ $modal: '.modal';
       width: 970px;
       min-height: 470px;
     }
+
+    &_small {
+      @include on_tablet() {
+        width: 600px;
+      }
+      @include on_desktop() {
+        width: 600px;
+      }
+    }
   }
 
   &__header {
@@ -129,8 +138,8 @@ $modal: '.modal';
       height: 20px;
     }
     @include on_desktop() {
-      top: 20px;
-      right: 20px;
+      top: -20px;
+      right: -20px;
       width: 20px;
       height: 20px;
     }

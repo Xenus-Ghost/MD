@@ -216,6 +216,7 @@
               type="text"
               placeholder="Название объявления"
               required
+              maxlength="30"
             />
           </label>
           <label
@@ -230,6 +231,7 @@
               type="text"
               placeholder="Фамилия Имя Отчество"
               required
+              maxlength="90"
             />
           </label>
           <label
@@ -247,6 +249,7 @@
                   ? 'Название интернет-магазина'
                   : 'Название фирмы/компании'
               "
+              maxlength="30"
               required
             />
           </label>
@@ -259,8 +262,8 @@
               rows="10"
               class="input_textarea"
               required
+              placeholder="Описание"
             >
-            Описание
           </textarea
             >
           </label>
@@ -271,6 +274,7 @@
               class="input"
               type="tel"
               placeholder="Телефон"
+              maxlength="12"
               required
           /></label>
           <label
@@ -284,6 +288,7 @@
               class="input"
               type="tel"
               placeholder="Телефон"
+              maxlength="12"
           /></label>
           <label
             v-if="ad.account_type_id === 3"
@@ -296,6 +301,7 @@
               class="input"
               type="tel"
               placeholder="Телефон"
+              maxlength="12"
           /></label>
           <label
             v-if="ad.account_type_id !== 1"
@@ -370,6 +376,7 @@
               step="any"
               class="input"
               placeholder="Стоимость"
+              required
             />
           </label>
           <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
@@ -405,7 +412,10 @@
               Загрузить логотип
             </FileUploader>
           </div>
-          <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
+          <div
+            v-if="ad.type_id !== 3 && ad.account_type_id !== 1"
+            class="grid__column_full grid_cols_2"
+          >
             <div class="">
               <FileUploader
                 v-model="ad.price_list"

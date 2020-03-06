@@ -23,7 +23,7 @@ export default {
       },
       {
         name: 'theme-color',
-        content: '2161BC'
+        content: '#2161BC'
       }
     ],
     link: [
@@ -37,7 +37,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '2396FF' },
+  loading: { color: '#2396FF' },
   // loading: false,
   /*
    ** Global CSS
@@ -130,7 +130,7 @@ export default {
     video: ({ isDev }) =>
       isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
   }, */
-  /* ...(!isDev && {
+  ...(!isDev && {
     html: {
       minify: {
         collapseBooleanAttributes: true,
@@ -144,15 +144,15 @@ export default {
         useShortDoctype: true
       }
     }
-  }), */
+  }),
   splitChunks: {
     layouts: true,
     pages: true,
     commons: true
   },
-  /* optimization: {
+  optimization: {
     minimize: !isDev
-  }, */
+  },
   build: {
     /*
      ** You can extend webpack config here
