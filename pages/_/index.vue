@@ -66,7 +66,9 @@ export default {
       filterData.author_type_id = authorType ? authorType.id : null
       filterData.type_id = adType ? adType.id : null
     } else {
-      if (categoriesList && categoriesList.length)
+      console.log(categoriesList && !!categoriesList.length)
+      // if (categoriesList && !!categoriesList.length)
+      if (currentCategory)
         if (
           !categoriesList.find(
             (result) => result.parent_id === currentCategory.id
@@ -79,7 +81,22 @@ export default {
       meta.title = currentCategory ? currentCategory.service_title : null
     }
     const axios = context.$axios
-    const { ads, links, queryParams } = await apiGetAds(filterData, axios)
+    let ads, links, queryParams
+    /* if (!!filterData.length) {
+      const { ads, links, queryParams } = await apiGetAds(filterData, axios)
+    } */
+    if (filterData.length) {
+      await apiGetAds(filterData, axios)
+        .then((response) => {
+          ads = response.ads
+          links = response.links
+          queryParams = response.queryParams
+        })
+        .catch((error) => {
+          throw new Error(error)
+        })
+    }
+
     try {
       currentCategory.id = currentCategory.id + 0
     } catch (e) {
