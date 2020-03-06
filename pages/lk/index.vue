@@ -87,6 +87,14 @@
         <Button borders="neon" shape="semi_rounded" class="profile__button"
           >Форумы</Button
         >
+        <Button
+          v-if="isAdmin"
+          to="admin"
+          borders="neon"
+          shape="semi_rounded"
+          class="profile__button"
+          >Админ-панель</Button
+        >
       </div>
     </div>
     <Modal v-if="isAvatarUploadForm" @close="isAvatarUploadForm = false">
@@ -151,6 +159,11 @@ export default {
         this.$auth.$state.user.avatar.length > 0
         ? getFileUrl(this.$auth.$state.user.avatar)
         : '/img/icons/user_no_avatar.jpg'
+    },
+    isAdmin() {
+      return !!this.$store.state.auth.user.roles.find(
+        (result) => result.id === 1
+      )
     }
   },
   methods: {
@@ -194,8 +207,10 @@ export default {
   &__card {
     @include neon_borders(8);
     border-radius: 3rem;
-    padding: 50px 100px;
     max-width: 570px;
+    @include on_desktop() {
+      padding: 50px 100px;
+    }
   }
   &__header {
     border-bottom: 1px solid #ffffff;
@@ -243,7 +258,9 @@ export default {
   }
   &__grid_actions {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    @include on_desktop() {
+      grid-template-columns: repeat(4, 1fr);
+    }
     grid-gap: 31px 20px;
   }
 }

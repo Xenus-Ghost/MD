@@ -3,10 +3,14 @@
     <CategoryHeader>
       Подать объявление
       <template v-slot:right_column>
-        <img src="~/assets/img/icons/ad_new.svg" alt="" />
+        <img
+          class="header_category__image"
+          src="~/assets/img/icons/ad_new.svg"
+          alt=""
+        />
       </template>
     </CategoryHeader>
-    <div class="container grid_cols_2">
+    <div class="container grid_cols_2_desktop">
       <div class="grid__column_1">
         <h2>Услуги</h2>
         <Card>
@@ -688,62 +692,6 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/framework/basic.scss';
-.profile {
-  &__card {
-    @include neon_borders(8);
-    border-radius: 3rem;
-    padding: 50px 100px;
-    max-width: 570px;
-  }
-  &__header {
-    border-bottom: 1px solid #ffffff;
-    padding: 20px 0;
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    grid-gap: 20px;
-  }
-  &__photo {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  &__name {
-    font-weight: bold;
-    font-size: 20px;
-  }
-  &__phone {
-    font-weight: 500;
-    font-size: 20px;
-    &::before {
-      content: '';
-      display: block;
-      float: left;
-      background: url('~assets/img/icons/phone-call.svg') center no-repeat;
-      background-size: contain;
-      padding: 8px;
-    }
-  }
-  &__prop-table {
-    padding: 15px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 12px 28px;
-    font-size: 16px;
-  }
-  &__prop-name {
-    text-align: right;
-  }
-  &__prop-value {
-    font-weight: bold;
-    text-align: left;
-  }
-  &__grid_actions {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 31px 20px;
-  }
-}
 
 .advert-form {
   display: grid;

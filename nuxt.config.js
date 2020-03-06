@@ -9,6 +9,9 @@ export default {
     modern: 'client'
   }),
   head: {
+    htmlAttrs: {
+      lang: 'en'
+    },
     title: 'Монтаж Демонтаж',
     meta: [
       { charset: 'utf-8' },
@@ -16,11 +19,11 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'Монтаж Демонтаж'
       },
       {
         name: 'theme-color',
-        content: '#2161BC'
+        content: '2161BC'
       }
     ],
     link: [
@@ -34,7 +37,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#2396FF' },
+  loading: { color: '2396FF' },
   // loading: false,
   /*
    ** Global CSS
@@ -116,7 +119,7 @@ export default {
       }
     }
   },
-  filenames: {
+  /* filenames: {
     app: ({ isDev }) => (isDev ? '[name].js' : 'js/[contenthash].js'),
     chunk: ({ isDev }) => (isDev ? '[name].js' : 'js/[contenthash].js'),
     css: ({ isDev }) => (isDev ? '[name].css' : 'css/[contenthash].css'),
@@ -126,8 +129,8 @@ export default {
       isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
     video: ({ isDev }) =>
       isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
-  },
-  ...(!isDev && {
+  }, */
+  /* ...(!isDev && {
     html: {
       minify: {
         collapseBooleanAttributes: true,
@@ -141,15 +144,15 @@ export default {
         useShortDoctype: true
       }
     }
-  }),
+  }), */
   splitChunks: {
     layouts: true,
     pages: true,
     commons: true
   },
-  optimization: {
+  /* optimization: {
     minimize: !isDev
-  },
+  }, */
   build: {
     /*
      ** You can extend webpack config here

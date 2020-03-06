@@ -16,6 +16,12 @@
       height: 32px;
     }
   }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }
 .header__logo{
 
@@ -90,6 +96,7 @@
       }
     }
   }
+
 }
 
 h1 {
