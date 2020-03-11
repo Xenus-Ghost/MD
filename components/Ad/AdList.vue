@@ -107,7 +107,7 @@
               </a>
               <a
                 v-if="adModalData.website"
-                :href="adModalData.website"
+                :href="`/away?url=${adModalData.website}`"
                 class="ad-modal__website"
                 target="_blank"
               >
@@ -217,9 +217,7 @@
               <Button
                 v-if="adModalData.price_list"
                 tag="a"
-                :to="
-                  'https://docs.google.com/viewer?url=' + adModalData.price_list
-                "
+                :to="adModalData.price_list"
                 shape="rounded"
                 borders="outline"
                 target="_blank"
@@ -249,10 +247,7 @@
               <Button
                 v-if="adModalData.presentation"
                 tag="a"
-                :to="
-                  'https://docs.google.com/viewer?url=' +
-                    adModalData.presentation
-                "
+                :to="adModalData.presentation"
                 shape="rounded"
                 borders="outline"
                 target="_blank"

@@ -416,22 +416,12 @@
             class="grid__column_full grid_cols_2"
           >
             <div class="">
-              <FileUploader
-                v-model="ad.price_list"
-                auto-upload
-                file-type="document"
-                :max="1"
-              >
+              <FileUploader v-model="ad.price_list" auto-upload :max="1">
                 Загрузить Прайс-лист
               </FileUploader>
             </div>
             <div class="">
-              <FileUploader
-                v-model="ad.presentation"
-                auto-upload
-                file-type="document"
-                :max="1"
-              >
+              <FileUploader v-model="ad.presentation" auto-upload :max="1">
                 Загрузить Презентацию
               </FileUploader>
             </div>
@@ -616,28 +606,9 @@ export default {
         fb: null
       },
       category_ids: null
-      // adCategoriesList: []
     }
   },
   computed: {
-    /* adCategoriesList() {
-      return this.$store.state.categories.adCategoriesList
-    },
-    adRootCategories() {
-      const result = []
-      if (this.adCategoriesList.length > 0) {
-        this.adCategoriesList.forEach(function(item) {
-          if (!item.parent_id) result.push(item)
-        })
-      }
-      return result
-    }, */
-    /* category_ids() {
-      const cats = []
-      cats.push(this.ad.rootCategory)
-      cats.push(this.ad.category)
-      return cats
-    }, */
     citiesList() {
       return this.$store.state.address.citiesList
     },
@@ -669,6 +640,10 @@ export default {
       Object.keys(formData).forEach(
         (key) => !formData[key] && delete formData[key]
       )
+
+      if (this.ad.region !== 'Московская область' && !this.ad.city)
+        this.ad.city = this.ad.region
+
       await this.$axios
         .$post(getUrl('me/advertisements'), formData)
         .then((response) => {
@@ -678,18 +653,6 @@ export default {
           this.errors = error.response.data.errors
         })
     },
-    /* changeCategory() {
-      const resultSubcat = []
-      if (this.adCategoriesList.length > 0) {
-        for (let i = 0; i < this.adCategoriesList.length; i++) {
-          console.log(this.adCategoriesList[i])
-          if (this.adCategoriesList[i].parent_id === this.ad.rootCategory) {
-            resultSubcat.push(this.adCategoriesList[i])
-          }
-        }
-      }
-      this.adSubCategories = resultSubcat
-    }, */
     changePeriod() {
       const date = new Date()
       date.setMonth(date.getMonth() + this.ad.period)

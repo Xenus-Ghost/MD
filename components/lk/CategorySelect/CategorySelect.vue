@@ -35,7 +35,6 @@ import Treeselect from '@riophae/vue-treeselect'
 // import the styles
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import { listToTree } from '@/assets/js/util'
-// import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
 
 export default {
   name: 'CategorySelect',
@@ -56,29 +55,11 @@ export default {
     }
   },
   computed: {
-    /* adCategoriesList() {
-      return this.$store.state.categories.adCategoriesList
-    },
-    adRootCategories() {
-      return this.adCategoriesList.filter((item) => !item.parent_id)
-    }, */
-    /* category_ids() {
-      // const cats = []
-      // cats.push(this.rootCategory)
-      // if (this.category) cats.push(this.category)
-      // if (this.subCategory) cats.push(this.subCategory)
-      return [this.category]
-    }, */
     options() {
-      // const data = this.adCategoriesList.filter((item) => !item.parent_id)
       const data = this.$store.state.categories.adCategoriesList
       data.forEach((elem) => {
         elem.label = elem.service_title
       })
-
-      // data.forEach((elem) => {
-      //   elem.label = elem.service_title
-      // })
       return listToTree(data)
     }
   },
@@ -87,10 +68,7 @@ export default {
       const data = [this.category]
       this.$emit('change', data)
     }
-  } /*,
-  watch: {
-
-  } */
+  }
 }
 </script>
 

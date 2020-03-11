@@ -30,10 +30,13 @@ export default {
       with: ['categories', 'author']
     }
     const meta = {}
-    let pageType = 'page'
+    let pageType = null
     // define author
     const authorType = authorTypeList.find((result) => lastSlug === result.slug)
     if (authorType) slugs.pop()
+    if (slugs[slugs.length - 1] === 'продажа' && !authorType) {
+      pageType = 'adsPage'
+    }
     if (
       slugs[slugs.length - 1] === 'продажа' ||
       slugs[slugs.length - 1] === 'заказчики'
@@ -46,7 +49,6 @@ export default {
       (result) => lastSlug === result.slug || preLastSlug === result.slug
     )
     // define adtype
-    console.log(slugs, 'slugs')
     const currentCategory = categoriesList.find(
       (result) => result.name === slugs[slugs.length - 1]
     )
@@ -59,7 +61,7 @@ export default {
     if (slugs.includes('дома-бани-дачи') && !subCategoriesList.length) {
       adType = adTypeList[1]
     }
-    if (authorType || (adType && adType.id === 3) || needAdsPage) {
+    if (authorType || (adType && adType.id === 3) || needAdsPage || pageType === 'adsPage') {
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
       if (currentCategory) meta.title += ` - ${currentCategory.service_title}`
@@ -68,7 +70,6 @@ export default {
       filterData.author_type_id = authorType ? authorType.id : null
       filterData.type_id = adType ? adType.id : null
     } else {
-      console.log(categoriesList && !!categoriesList.length)
       // if (categoriesList && !!categoriesList.length)
       if (currentCategory)
         if (
@@ -95,6 +96,9 @@ export default {
     try {
       currentCategory.id = currentCategory.id + 0
     } catch (e) {
+      routeValid = false
+    }
+    if (!routeValid) {
       context.error({ statusCode: 404, message: 'Страница не найдена' })
     }
     const returnData = {
