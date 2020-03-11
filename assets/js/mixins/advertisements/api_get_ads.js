@@ -10,10 +10,12 @@ export async function apiGetAds(params, axios) {
   }
   if (params.type_id) urlParams.type_id = params.type_id
   if (params.author_type_id) urlParams.author_type_id = params.author_type_id
+  if (params.with) urlParams.with = params.with
   console.log(urlParams)
   const url = getUrl('advertisements')
   console.log(qs.stringify(params), 'params')
   const { data } = await axios.get(url, { params: urlParams })
+  console.log(data, 'data')
   return {
     ads: data.data,
     links: data.links,

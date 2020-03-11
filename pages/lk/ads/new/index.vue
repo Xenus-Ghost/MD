@@ -264,8 +264,7 @@
               required
               placeholder="Описание"
             >
-          </textarea
-            >
+            </textarea>
           </label>
           <label for="phone" class="label grid__column_6">
             <input
@@ -592,8 +591,7 @@ export default {
         rootCategory: 0,
         category: 0,
         city: '',
-        description:
-          this.author_type_id === 4 ? 'Описание магазина' : 'Описание',
+        description: null,
         phone: {
           main: ''
         },
@@ -622,7 +620,7 @@ export default {
     }
   },
   computed: {
-    adCategoriesList() {
+    /* adCategoriesList() {
       return this.$store.state.categories.adCategoriesList
     },
     adRootCategories() {
@@ -633,7 +631,7 @@ export default {
         })
       }
       return result
-    },
+    }, */
     /* category_ids() {
       const cats = []
       cats.push(this.ad.rootCategory)
@@ -668,7 +666,9 @@ export default {
       if (this.social.ok) formData.social.push(this.social.ok)
       if (this.social.ig) formData.social.push(this.social.ig)
       if (this.social.vk) formData.social.push(this.social.vk)
-
+      Object.keys(formData).forEach(
+        (key) => !formData[key] && delete formData[key]
+      )
       await this.$axios
         .$post(getUrl('me/advertisements'), formData)
         .then((response) => {
@@ -678,7 +678,7 @@ export default {
           this.errors = error.response.data.errors
         })
     },
-    changeCategory() {
+    /* changeCategory() {
       const resultSubcat = []
       if (this.adCategoriesList.length > 0) {
         for (let i = 0; i < this.adCategoriesList.length; i++) {
@@ -689,7 +689,7 @@ export default {
         }
       }
       this.adSubCategories = resultSubcat
-    },
+    }, */
     changePeriod() {
       const date = new Date()
       date.setMonth(date.getMonth() + this.ad.period)

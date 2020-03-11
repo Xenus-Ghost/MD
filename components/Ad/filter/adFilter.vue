@@ -10,7 +10,7 @@
         @change="regionChange"
       >
         <option
-          value=""
+          :value="null"
           selected
           disabled
           class="input_option ad-filter__option"
@@ -36,7 +36,7 @@
         @change="onChange"
       >
         <option
-          value=""
+          :value="null"
           selected
           disabled
           class="input_option ad-filter__option"
@@ -66,7 +66,7 @@
         @change="onChange"
       >
         <option
-          value=""
+          :value="null"
           selected
           disabled
           class="input_option ad-filter__option"
@@ -95,7 +95,11 @@ export default {
   },
   data() {
     return {
-      filter: {}
+      filter: {
+        region: null,
+        metro: null,
+        city: null
+      }
     }
   },
   computed: {
@@ -111,11 +115,14 @@ export default {
       // if (this.filter.region === 'Московская область') {
       // } else {
       // }
-      this.$delete(this.filter, 'metro')
-      this.$delete(this.filter, 'city')
+      this.$set(this.filter, 'metro', null)
+      this.$set(this.filter, 'city', null)
+      // this.$delete(this.filter, 'metro')
+      // this.$delete(this.filter, 'city')
     },
     onChange() {
       const data = this.filter
+      Object.keys(data).forEach((key) => data[key] == null && delete data[key])
       this.$emit('change', data)
     }
   }

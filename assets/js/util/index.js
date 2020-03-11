@@ -11,5 +11,8 @@ import {
   isString,
   keyCodes
 } from './helpers'
+import { listToTree } from './arrays'
+
 export { convertToUnit, generateString, isObject, isString, keyCodes }
 export { getUrl, getFileUrl, convertYoutubeLink, jsonToParams }
+export { listToTree }

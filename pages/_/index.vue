@@ -26,7 +26,9 @@ export default {
     const adTypeList = context.store.state.advert.adType
     const authorTypeList = context.store.state.advert.authorType
     let routeValid = true
-    const filterData = {}
+    const filterData = {
+      with: ['categories', 'author']
+    }
     const meta = {}
     let pageType = 'page'
     // define author

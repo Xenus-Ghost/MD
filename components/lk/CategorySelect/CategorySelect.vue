@@ -1,77 +1,47 @@
 <template>
   <div class="category-select">
-    <label for="rootCategory" class="label grid__column_6">
-      <select
-        id="rootCategory"
-        v-model="rootCategory"
-        name=""
-        class="input_select"
-        required
-        @change="changeCategory"
-      >
-        <option selected disabled value="0" class="input_option"
-          >Выберите категорию</option
-        >
-        <option
-          v-for="(item, j) in adRootCategories"
-          :key="j"
-          :value="item.id"
-          class="input_option"
-          >{{ item.service_title }}</option
-        >
-      </select>
-    </label>
-    <label for="category" class="label grid__column_6">
-      <select
-        id="category"
-        v-model="category"
-        class="input_select"
-        name=""
-        required
-        @change="changeCategory"
-      >
-        <!--<option selected disabled value="0" class="input_option"
-          >Выберите подкатегорию</option
-        >-->
-        <option
-          v-for="(item, j) in adSubCategories"
-          :key="j"
-          :value="item.id"
-          class="input_option"
-          :selected="j === 1"
-          >{{ item.service_title }}</option
-        >
-      </select>
-    </label>
-    <label
-      v-if="subSubCategories"
-      for="3lvlCategory"
-      class="label grid__column_6"
+    <treeselect
+      v-model="category"
+      :options="options"
+      :searchable="true"
+      :show-count="true"
+      :default-expand-level="0"
+      required
+      @input="update"
     >
-      <select
-        id="3lvlCategory"
-        v-model="subCategory"
-        class="input_select"
-        name=""
-        required
-        @change="update"
+      <label
+        slot="option-label"
+        slot-scope="{
+          node,
+          shouldShowCount,
+          count,
+          labelClassName,
+          countClassName
+        }"
+        :class="['category-select__label']"
       >
-        <option
-          v-for="(item, j) in subSubCategories"
-          :key="j"
-          :value="item.id"
-          class="input_option"
-          :selected="j === 1"
-          >{{ item.service_title }}</option
+        {{ node.label }}
+        <span v-if="shouldShowCount" :class="countClassName"
+          >({{ count }})</span
         >
-      </select>
-    </label>
+      </label>
+    </treeselect>
   </div>
 </template>
 
 <script>
+// import the component
+import Treeselect from '@riophae/vue-treeselect'
+// import the styles
+import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+import { listToTree } from '@/assets/js/util'
+// import { LOAD_CHILDREN_OPTIONS } from '@riophae/vue-treeselect'
+
 export default {
   name: 'CategorySelect',
+  components: {
+    Treeselect
+  },
   model: {
     prop: 'modelValue',
     event: 'change'
@@ -79,53 +49,80 @@ export default {
   data() {
     return {
       rootCategory: null,
-      category: null,
+      category: 1,
       subCategory: null,
       adSubCategories: [],
       subSubCategories: null
     }
   },
   computed: {
-    adCategoriesList() {
+    /* adCategoriesList() {
       return this.$store.state.categories.adCategoriesList
     },
     adRootCategories() {
       return this.adCategoriesList.filter((item) => !item.parent_id)
-    },
-    category_ids() {
-      const cats = []
-      cats.push(this.rootCategory)
-      if (this.category) cats.push(this.category)
-      if (this.subCategory) cats.push(this.subCategory)
-      return cats
+    }, */
+    /* category_ids() {
+      // const cats = []
+      // cats.push(this.rootCategory)
+      // if (this.category) cats.push(this.category)
+      // if (this.subCategory) cats.push(this.subCategory)
+      return [this.category]
+    }, */
+    options() {
+      // const data = this.adCategoriesList.filter((item) => !item.parent_id)
+      const data = this.$store.state.categories.adCategoriesList
+      data.forEach((elem) => {
+        elem.label = elem.service_title
+      })
+
+      // data.forEach((elem) => {
+      //   elem.label = elem.service_title
+      // })
+      return listToTree(data)
     }
   },
   methods: {
-    changeCategory() {
-      this.update()
-      let resultSubcat = []
-      resultSubcat = this.adCategoriesList.filter(
-        (item) => item.parent_id === this.rootCategory
-      )
-      const resultSubSubcat = this.adCategoriesList.filter(
-        (item) => item.parent_id === this.category && !!item.parent_id
-      )
-
-      // this.adSubCategories = resultSubcat
-
-      this.$set(this, 'adSubCategories', resultSubcat)
-      if (resultSubSubcat.length) {
-        this.$set(this, 'subSubCategories', resultSubSubcat)
-      } else {
-        this.$set(this, 'subSubCategories', null)
-        this.$set(this, 'subCategory', null)
-      }
-    },
     update() {
-      this.$emit('change', this.category_ids)
+      const data = [this.category]
+      this.$emit('change', data)
     }
-  }
+  } /*,
+  watch: {
+
+  } */
 }
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.vue-treeselect {
+  &__menu {
+    background-color: rgba(14, 36, 62, 0.95);
+  }
+  &__control {
+    background-color: rgba(14, 36, 62, 0.95);
+  }
+  &__value-container {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+.category-select {
+  &__label {
+    background-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+.vue-treeselect--single .vue-treeselect__option--selected {
+  background-color: var(--color-primary);
+}
+.vue-treeselect--single .vue-treeselect__option--selected:hover {
+  background-color: var(--color-primary);
+}
+.vue-treeselect__option:hover {
+  background-color: var(--color-primary);
+}
+</style>

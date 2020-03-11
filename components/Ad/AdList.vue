@@ -465,12 +465,17 @@ export default {
     async getAd(id = 0) {
       const url = getUrl(`advertisements/${id}`)
       await this.$axios
-        .get(url)
+        .get(url, {
+          params: {
+            with: ['categories', 'author']
+          }
+        })
         .then((e) => {
           // this.ad = e.data.data
+          console.log(e.data.data, 'modal')
           e.data.data.categories = e.data.data.categories
             ? e.data.data.categories
-            : [1, 2, 3]
+            : null
           if (e.data.data.logo) e.data.data.logo = getFileUrl(e.data.data.logo)
           this.$store.dispatch('advert/adModalOpen', e.data.data)
         })
