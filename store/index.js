@@ -59,15 +59,19 @@ export const actions = {
       this.$axios
         .get(getUrl('advertisement-categories'))
         .catch((error) => console.error(error + error.response)),
-      this.$axios
-        .get(getUrl('event-categories'))
-        .catch((error) => console.error(error + error.response))
+      process.server
+        ? JSON.parse(
+            require('fs').readFileSync(
+              'static/json_cache/evCategoriesList.json',
+              'utf8'
+            )
+          )
+        : this.$axios
+            .get(getUrl('event-categories'))
+            .catch((error) => console.error(error + error.response))
     ])
-    console.log(adCategories.data.data)
-    // console.log(EvCategories.data.data)
     if (adCategories)
       commit('categories/getAdCategories', adCategories.data.data)
-    if (EvCategories)
-      commit('categories/getEventsCategories', EvCategories.data.data)
+    if (EvCategories) commit('categories/getEventsCategories', EvCategories)
   }
 }

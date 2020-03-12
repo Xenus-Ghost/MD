@@ -9,7 +9,12 @@ export async function apiGetEvents(params, axios) {
   // if (params.author_type_id) urlParams.author_type_id = params.author_type_id
   if (params.with) urlParams.with = params.with
   const url = getUrl('events')
-  const { data } = await axios.get(url, { params: urlParams })
+  const { data } = await axios
+    .get(url, { params: urlParams })
+    .catch((error) => {
+      console.error(error)
+      return { data: { ads: null, links: null, queryParams: null } }
+    })
   return {
     ads: data.data,
     links: data.links,

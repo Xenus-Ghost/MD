@@ -62,6 +62,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
+    '@nuxtjs/component-cache',
     'nuxt-vuex-router-sync',
     ['@nuxtjs/localtunnel', { subdomain: 'md' }],
     [

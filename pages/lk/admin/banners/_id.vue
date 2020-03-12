@@ -45,9 +45,9 @@ export default {
 </script>
 
 <style lang="scss">
-.banner-form {
+/*.banner-form {
   grid-gap: 20px;
   width: 500px;
   max-width: 100%;
-}
+}*/
 </style>

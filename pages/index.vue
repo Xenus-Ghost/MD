@@ -61,7 +61,7 @@
         </template>
       </CircleContainer>
       <Button
-        to="/выставки"
+        to="/события/выставки"
         style="grid-column: 1;grid-row: 1"
         shape="rounded"
         borders="neon"
@@ -69,7 +69,7 @@
         >Выставки</Button
       >
       <Button
-        to="/форумы"
+        to="/события/форумы"
         style="grid-column: 3;grid-row: 1;justify-self: right"
         shape="rounded"
         borders="neon"
