@@ -11,20 +11,20 @@
     </CategoryHeader>
     <div class="container grid_cols_2 grid_cols_4_tablet buttons_grid">
       <Button
-        to="все-частники"
+        to="клининг-2"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
         height="100%"
-        >клининг</Button
+        >Клининг</Button
       >
       <Button
-        to="все-фирмы"
+        to="санитарные-службы"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
         height="100%"
-        >санитарные-службы</Button
+        >Санитарные службы</Button
       >
     </div>
   </div>

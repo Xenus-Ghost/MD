@@ -416,14 +416,30 @@
             class="grid__column_full grid_cols_2"
           >
             <div class="">
-              <FileUploader v-model="ad.price_list" auto-upload :max="1">
+              <FileUploader
+                v-model="ad.price_list"
+                file-type="document"
+                auto-upload
+                :max="1"
+              >
                 Загрузить Прайс-лист
               </FileUploader>
+              <span class="label">
+                Формат документа: .doc , .xlsx , .pdf, .pptx
+              </span>
             </div>
             <div class="">
-              <FileUploader v-model="ad.presentation" auto-upload :max="1">
+              <FileUploader
+                v-model="ad.presentation"
+                file-type="document"
+                auto-upload
+                :max="1"
+              >
                 Загрузить Презентацию
               </FileUploader>
+              <span class="label">
+                Формат документа: .doc , .xlsx , .pdf, .pptx
+              </span>
             </div>
           </div>
           <label for="region" class="label grid__column_3">
@@ -625,6 +641,8 @@ export default {
     },
     modalAddClose() {
       this.showModalAdd = false
+      this.errors = null
+      this.success = null
     },
     async adSubmit() {
       const formData = this.ad
@@ -664,7 +682,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/framework/basic.scss';
+@import '~~assets/scss/framework/basic.scss';
 
 .advert-form {
   display: grid;

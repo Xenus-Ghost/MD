@@ -49,15 +49,25 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit, getters }, { req, isDev }) {
-    // console.log('nuxtServerInit')
-    // console.log(getUrl('advertisement-categories'))
-    await this.$axios
+    /* await this.$axios
       .get(getUrl('advertisement-categories'))
       .then((response) => {
-        // console.log(response)
-        // console.log(response.data)
         commit('categories/getAdCategories', response.data.data)
       })
-      .catch((error) => console.error(error + error.response))
+      .catch((error) => console.error(error + error.response)) */
+    const [adCategories, EvCategories] = await Promise.all([
+      this.$axios
+        .get(getUrl('advertisement-categories'))
+        .catch((error) => console.error(error + error.response)),
+      this.$axios
+        .get(getUrl('event-categories'))
+        .catch((error) => console.error(error + error.response))
+    ])
+    console.log(adCategories.data.data)
+    // console.log(EvCategories.data.data)
+    if (adCategories)
+      commit('categories/getAdCategories', adCategories.data.data)
+    if (EvCategories)
+      commit('categories/getEventsCategories', EvCategories.data.data)
   }
 }

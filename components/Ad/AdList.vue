@@ -111,7 +111,7 @@
                 class="ad-modal__website"
                 target="_blank"
               >
-                {{ adModalData.website }}
+                Наш сайт: {{ adModalData.website }}
               </a>
               <div class="ad-modal__address">{{ adModalData.address }}</div>
               <div v-if="adModalData.metro" class="ad-modal__address_metro">

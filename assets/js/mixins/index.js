@@ -9,6 +9,8 @@ import {
   getCategorySlug
 } from './advertisements'
 
+import { apiGetEvents } from './events'
+
 export {
   getCategoryIDByUrl,
   getCategory,
@@ -17,5 +19,6 @@ export {
   getAuthorType,
   getCategoryMeta,
   getCustomCategoryMeta,
-  getCategorySlug
+  getCategorySlug,
+  apiGetEvents
 }

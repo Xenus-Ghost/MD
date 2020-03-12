@@ -547,7 +547,7 @@
     </CategoryHeader>
     <div class="container grid__column_12 grid_cols_4 buttons_grid">
       <Button
-        to="все-частники"
+        to="частники"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -555,7 +555,7 @@
         >Все частники</Button
       >
       <Button
-        to="все-фирмы"
+        to="фирмы-и-магазины"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"

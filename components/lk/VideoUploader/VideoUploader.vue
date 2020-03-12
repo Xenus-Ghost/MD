@@ -17,6 +17,11 @@
           <Button @click.native="modalVideoClose">Сохранить</Button>
         </template>
       </Modal>
+      <ul class="videos__list">
+        <li v-for="(video, v) in videoURL" :key="v" class="videos__list-item">
+          {{ video }}
+        </li>
+      </ul>
     </div>
   </client-only>
 </template>

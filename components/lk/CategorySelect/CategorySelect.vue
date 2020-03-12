@@ -6,6 +6,7 @@
       :searchable="true"
       :show-count="true"
       :default-expand-level="0"
+      :disable-branch-nodes="true"
       required
       @input="update"
     >
@@ -102,5 +103,8 @@ export default {
 }
 .vue-treeselect__option:hover {
   background-color: var(--color-primary);
+}
+.vue-treeselect__single-value {
+  color: white;
 }
 </style>

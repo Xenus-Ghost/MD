@@ -84,6 +84,18 @@ export default {
     crossDomain: true
   },
   /*
+   PWA
+   */
+  pwa: {
+    manifest: {
+      crossorigin: 'use-credentials',
+      lang: 'ru'
+    }
+  },
+  workbox: {
+    cachingExtensions: '@/plugins/workbox-range-request.js'
+  },
+  /*
    ** Build configuration
    */
   auth: {
@@ -147,7 +159,7 @@ export default {
   }),
   splitChunks: {
     layouts: true,
-    pages: true,
+    // pages: true,
     commons: true
   },
   optimization: {

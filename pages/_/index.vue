@@ -61,7 +61,12 @@ export default {
     if (slugs.includes('дома-бани-дачи') && !subCategoriesList.length) {
       adType = adTypeList[1]
     }
-    if (authorType || (adType && adType.id === 3) || needAdsPage || pageType === 'adsPage') {
+    if (
+      authorType ||
+      (adType && adType.id === 3) ||
+      needAdsPage ||
+      pageType === 'adsPage'
+    ) {
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
       if (currentCategory) meta.title += ` - ${currentCategory.service_title}`
