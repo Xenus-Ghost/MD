@@ -169,12 +169,40 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
+import { apiGetAds } from '@/assets/js/mixins'
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
     Advertising,
     AdList
+  },
+  async asyncData(context) {
+    const currentCategory = context.store.state.categories.adCategoriesList.find(result => result.name === 'снос-демонтаж')
+    const filterData = {
+      with: ['categories', 'author']
+    }
+    filterData.category_id = currentCategory ? currentCategory.id : null
+    // filterData.author_type_id = authorType ? authorType.id : null
+    filterData.type_id = 1
+    const { ads, links, queryParams } = await apiGetAds(filterData, context.$axios)
+    const returnData = {
+      filterData,
+    }
+    if (typeof ads !== 'undefined') returnData.ads = ads
+    if (typeof links !== 'undefined') returnData.links = links
+    if (typeof queryParams !== 'undefined') returnData.queryParams = queryParams
+    return returnData
+  },
+  data() {
+    return {
+
+    }
+  },
+  head() {
+    return {
+      title: 'Снос-демонтаж'
+    }
   }
 }
 </script>

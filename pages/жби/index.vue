@@ -121,24 +121,36 @@
       </template>
     </CategoryHeader>
     <div class="zhbi__buttons">
-      <Button to="/" shape="semi_rounded" borders="outline" class="zhbi__button"
+      <Button
+        to="жби-заводы"
+        shape="semi_rounded"
+        borders="outline"
+        class="zhbi__button"
         >Все ЖБИ заводы</Button
       >
-      <Button to="/" shape="semi_rounded" borders="outline" class="zhbi__button"
+      <Button
+        to="полигоны-и-свалки"
+        shape="semi_rounded"
+        borders="outline"
+        class="zhbi__button"
         >Все полигоны и свалки</Button
       >
-      <Button to="/" shape="semi_rounded" borders="outline" class="zhbi__button"
+      <Button
+        to="бетонные-заводы"
+        shape="semi_rounded"
+        borders="outline"
+        class="zhbi__button"
         >Все бетонные заводы</Button
       >
       <Button
-        to="/"
+        to="цпс"
         shape="semi_rounded"
         borders="outline"
         class="zhbi__button_left "
         >Цемент, песчатные смеси</Button
       >
       <Button
-        to="/"
+        to="кирпич-плитка-бордюры"
         shape="semi_rounded"
         borders="outline"
         class="zhbi__button_right "
@@ -149,11 +161,15 @@
         <div class="careers__content grid_cols_2">
           <div class="careers__item">
             <span>Песок</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="карьеры-песок" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
-            <span>Песок</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <span>Щебень</span>
+            <Button to="карьеры-щебень" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
         </div>
       </div>
@@ -164,35 +180,51 @@
         >
           <div class="careers__item">
             <span>Плиты, перекрытия</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="плиты-перекрытия" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Фундаментные блоки</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="фундаментные-блоки" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Дорожные плиты</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="дорожные-плиты" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Сваи</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="сваи" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Элементы лестниц</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="элементы-лестниц" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Ригели</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="ригели" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Тротуарная плитка</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="тротуарная-плитка" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
           <div class="careers__item">
             <span>Бордюры</span>
-            <Button shape="rounded" borders="outline">Подробнее</Button>
+            <Button to="бордюры" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
           </div>
         </div>
       </div>
@@ -200,7 +232,7 @@
   </div>
 </template>
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 export default {
   layout: 'category',
   components: {

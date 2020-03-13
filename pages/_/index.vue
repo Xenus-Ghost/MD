@@ -29,6 +29,7 @@ export default {
     const filterData = {
       with: ['categories', 'author']
     }
+    console.log(slugs)
     const meta = {}
     let pageType = null
     // define author
@@ -57,10 +58,17 @@ export default {
     )
     if (!adType) adType = adTypeList[0]
     const needAdsPage =
-      slugs.includes('дома-бани-дачи') && !subCategoriesList.length
-    if (slugs.includes('дома-бани-дачи') && !subCategoriesList.length) {
+      (slugs.includes('дома-бани-дачи') ||
+        slugs.includes('жби') ||
+        slugs.includes('снос-демонтаж')) &&
+      !subCategoriesList.length
+    if (
+      (slugs.includes('дома-бани-дачи') || slugs.includes('жби')) &&
+      !subCategoriesList.length
+    ) {
       adType = adTypeList[1]
-    }
+    } else if (slugs.includes('снос-демонтаж')) adType = adTypeList[0]
+
     if (
       authorType ||
       (adType && adType.id === 3) ||

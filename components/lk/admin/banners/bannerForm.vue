@@ -52,7 +52,7 @@
 
     <div class="grid__column_1">
       <FileUploader v-model="bannerData.image" />
-      <VideoUploader v-model="bannerData.video" max="1" />
+      <VideoUploader v-model="bannerData.video" :max="1" />
     </div>
     <div class="grid__column_2">
       <Button type="submit">Готово</Button>
