@@ -56,12 +56,17 @@ export default {
     }
   },
   computed: {
+    catList() {
+      return this.$store.state.categories.adCategoriesList
+    },
     options() {
-      const data = this.$store.state.categories.adCategoriesList
+      // let data = []
+      const data = this.catList
       data.forEach((elem) => {
         elem.label = elem.service_title
       })
-      return listToTree(data)
+      const returnData = listToTree(data)
+      return returnData
     }
   },
   methods: {

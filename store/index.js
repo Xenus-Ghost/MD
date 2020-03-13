@@ -55,11 +55,12 @@ export const actions = {
         commit('categories/getAdCategories', response.data.data)
       })
       .catch((error) => console.error(error + error.response)) */
+    const cached = true
     const [adCategories, EvCategories] = await Promise.all([
       this.$axios
         .get(getUrl('advertisement-categories'))
         .catch((error) => console.error(error + error.response)),
-      process.server
+      cached
         ? JSON.parse(
             require('fs').readFileSync(
               'static/json_cache/evCategoriesList.json',

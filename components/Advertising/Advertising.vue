@@ -9,12 +9,15 @@
           ad.type_id === 1 ? 'advertising__slide_wide' : ''
         ]"
       >
-        <a :href="ad.path" class="advertising__link">
-          <img
+        <a :href="ad.url ? ad.url : '#'" class="advertising__link">
+          <!--          <img class="advertising__image" :src="ad.path" :alt="ad.title" />-->
+          <component
+            :is="ad.type_id === 1 ? mediaComponent : 'img'"
             class="advertising__image"
-            :src="ad.image ? ad.image : '/img/advertising/maxresdefault.jpg'"
+            :video-id="ad.path"
+            :src="getFileUrl(ad.path)"
             :alt="ad.title"
-          />
+          ></component>
           <div class="advertising__title">
             {{ ad.title }}
           </div>
@@ -25,10 +28,11 @@
 </template>
 
 <script>
-import { getUrl } from '@/assets/js/util'
+import { getUrl, getFileUrl } from '@/assets/js/util'
 
 export default {
   name: 'Advertising',
+  components: {},
   props: {
     category: {
       type: Number,
@@ -41,12 +45,11 @@ export default {
       adList: null
     }
   },
-  // computed: {
-  //   adList() {
-  //     const list = []
-  //     return list
-  //   }
-  // },
+  computed: {
+    mediaComponent() {
+      return () => import(`@/components/Media/Video/EmbedVideo`)
+    }
+  },
   created() {
     this.$axios
       .get(getUrl(`banners/${this.category}`))
@@ -73,6 +76,9 @@ export default {
       // if (this.ads.small && smallLength) {
       //   list.push(this.ads.small[0])
       // }
+    },
+    getFileUrl(path) {
+      return getFileUrl(path)
     }
   }
 }

@@ -170,7 +170,11 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
+    extend(config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
+    },
     postcss: require('autoprefixer')(),
     // splitChunks: {
     //   layouts: true

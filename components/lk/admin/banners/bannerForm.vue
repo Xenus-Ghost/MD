@@ -15,12 +15,13 @@
       <label for="" class="input-label">
         <input
           id="path"
-          v-model="bannerData.path"
+          v-model="bannerData.url"
           name="path"
           type="text"
           class="input"
           placeholder="Ссылка"
           required
+          disabled
         />
       </label>
       <CategorySelect v-model="bannerData.categories" />
@@ -51,8 +52,14 @@
     </div>
 
     <div class="grid__column_1">
-      <FileUploader v-model="bannerData.image" />
-      <VideoUploader v-model="bannerData.video" :max="1" />
+      <FileUploader
+        v-model="bannerData.path"
+        auto-upload
+        preview
+        file-type="image"
+        :max="1"
+      />
+      <VideoUploader v-model="bannerData.path" :max="1" />
     </div>
     <div class="grid__column_2">
       <Button type="submit">Готово</Button>
@@ -110,7 +117,10 @@ export default {
         type_id: this.bannerData.type_id,
         active: this.bannerData.active,
         title: this.bannerData.title,
-        path: this.bannerData.path,
+        path:
+          typeof this.bannerData.path === 'string'
+            ? this.bannerData.path
+            : this.bannerData.path[0],
         categories: this.bannerData.categories
       }
       const url = this.isEdit

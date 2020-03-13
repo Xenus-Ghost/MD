@@ -8,9 +8,7 @@
         height="auto"
         class="embed__iframe"
         :src="
-          'https://www.youtube.com/embed/' +
-            videoId +
-            '?autoplay=0&origin=http://example.com'
+          `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=0&origin=${origin_url}`
         "
         frameborder="0"
       ></iframe>
