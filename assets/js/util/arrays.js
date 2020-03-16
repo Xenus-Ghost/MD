@@ -1,4 +1,5 @@
-export function listToTree(list, emptyChildren) {
+export function listToTree(listSource, emptyChildren) {
+  const list = JSON.parse(JSON.stringify(listSource))
   const map = {}
   let node
   const roots = []
@@ -12,9 +13,11 @@ export function listToTree(list, emptyChildren) {
     node = list[i]
     if (node.parent_id) {
       // if you have dangling branches check that map[node.parentId] exists
-      if (!list[map[node.parent_id]].children)
-        list[map[node.parent_id]].children = []
-      list[map[node.parent_id]].children.push(node)
+      if (list[map[node.parent_id]]) {
+        if (!list[map[node.parent_id]].children)
+          list[map[node.parent_id]].children = []
+        list[map[node.parent_id]].children.push(node)
+      }
     } else {
       roots.push(node)
     }

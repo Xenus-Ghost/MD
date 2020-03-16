@@ -1,6 +1,6 @@
 <template>
   <div class="grid-layout_profile">
-    <CategoryHeader>
+    <CategoryHeader :back-u-r-l="'../'">
       Личный кабинет
       <template v-slot:right_column>
         <div class="profile__card">

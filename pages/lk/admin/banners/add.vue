@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Добавление объявления</h1>
+    <Button to="../" shape="rounded" borders="outline">Назад</Button>
     <Card>
       <bannerForm />
     </Card>

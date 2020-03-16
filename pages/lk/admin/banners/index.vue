@@ -1,5 +1,6 @@
 <template>
   <div class="banner-admin">
+    <Button to="../" shape="rounded" borders="outline">Назад</Button>
     <bannersTable :data="banners" />
     <div v-if="!!errors" class="error">Произошла ошибка</div>
     <Button to="add">Добавить</Button>

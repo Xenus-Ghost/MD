@@ -12,11 +12,12 @@
         <a :href="ad.url ? ad.url : '#'" class="advertising__link">
           <!--          <img class="advertising__image" :src="ad.path" :alt="ad.title" />-->
           <component
-            :is="ad.type_id === 1 ? mediaComponent : 'img'"
+            :is="ad.video_code ? mediaComponent : 'img'"
             class="advertising__image"
-            :video-id="ad.path"
-            :src="getFileUrl(ad.path)"
+            :video-id="ad.video_code"
+            :src="ad.path ? getFileUrl(ad.path) : null"
             :alt="ad.title"
+            height="100%"
           ></component>
           <div class="advertising__title">
             {{ ad.title }}
@@ -97,8 +98,13 @@ export default {
   /*display: flex;*/
   overflow-x: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 160px 120px;
+  grid-gap: 10px;
   @include on_desktop() {
+    grid-gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 240px;
     /*grid-auto-rows: 250px;*/
   }
 }

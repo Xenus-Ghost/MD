@@ -24,7 +24,10 @@
           disabled
         />
       </label>
-      <CategorySelect v-model="bannerData.categories" />
+      <CategorySelect
+        v-model="bannerData.categories"
+        :categories="categories"
+      />
       <label for="">
         <select
           id="type_id"
@@ -100,7 +103,8 @@ export default {
       message: {
         success: false,
         errors: null
-      }
+      },
+      categories: this.$store.state.categories.adCategoriesList
     }
   },
   computed: {

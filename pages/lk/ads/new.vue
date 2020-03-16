@@ -1,6 +1,6 @@
 <template>
   <div class="grid-layout_profile">
-    <CategoryHeader>
+    <CategoryHeader :back-u-r-l="'/lk'">
       Подать объявление
       <template v-slot:right_column>
         <img
@@ -253,7 +253,11 @@
               required
             />
           </label>
-          <CategorySelect v-model="category_ids" class="grid__column_6" />
+          <CategorySelect
+            v-model="category_ids"
+            class="grid__column_6"
+            :categories="categories"
+          />
           <label for="description" class="label grid__column_6">
             <textarea
               id="description"
@@ -630,6 +634,18 @@ export default {
     },
     metroList() {
       return this.$store.state.address.metroList
+    },
+    categories() {
+      const list = this.$store.state.categories.adCategoriesList
+      let returnData = []
+      let filterField = 'service_title'
+      if (this.ad.type_id === 1) {
+        filterField = 'service_title'
+      } else if (this.ad.type_id === 2) {
+        filterField = 'sale_title'
+      }
+      returnData = list.filter((result) => result[filterField])
+      return returnData
     }
   },
   methods: {

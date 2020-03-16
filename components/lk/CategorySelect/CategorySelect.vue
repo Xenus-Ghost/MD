@@ -46,6 +46,12 @@ export default {
     prop: 'modelValue',
     event: 'change'
   },
+  props: {
+    categories: {
+      type: Array,
+      default: null
+    }
+  },
   data() {
     return {
       rootCategory: null,
@@ -56,14 +62,11 @@ export default {
     }
   },
   computed: {
-    catList() {
-      return this.$store.state.categories.adCategoriesList
-    },
     options() {
       // let data = []
-      const data = this.catList
+      const data = this.categories
       data.forEach((elem) => {
-        elem.label = elem.service_title
+        elem.label = elem.service_title ? elem.service_title : elem.sale_title
       })
       const returnData = listToTree(data)
       return returnData

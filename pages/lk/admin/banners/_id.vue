@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Редактирование объявления</h1>
+    <Button to="../" shape="rounded" borders="outline">Назад</Button>
     <Card>
       <bannerForm :banner="bannerData" />
     </Card>

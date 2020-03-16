@@ -29,6 +29,7 @@
         <CategorySelect
           v-model="ad.category"
           class="grid__column_full"
+          :categories="categories"
         ></CategorySelect>
         <label for="website" class="label grid__column_full">
           <input
@@ -76,7 +77,8 @@ export default {
         rootCategory: null,
         category_ids: null
       },
-      adSubCategories: null
+      adSubCategories: null,
+      categories: this.$store.state.categories.adCategoriesList
     }
   },
   computed: {
