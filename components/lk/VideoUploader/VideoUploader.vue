@@ -32,18 +32,18 @@ export default {
   name: 'VideoUploader',
   model: {
     prop: 'modelValue',
-    event: 'change'
+    event: 'change',
   },
   props: {
     max: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   data() {
     return {
       videoURL: [],
-      modalVideoShow: false
+      modalVideoShow: false,
     }
   },
   methods: {
@@ -58,7 +58,7 @@ export default {
         this.videoURL[i] = convertYoutubeLink(this.videoURL[i])
       }
       this.$emit('change', this.videoURL)
-    }
-  }
+    },
+  },
 }
 </script>

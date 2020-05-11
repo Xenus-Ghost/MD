@@ -174,7 +174,7 @@
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <SellingButtons></SellingButtons>
+    <!--    <SellingButtons></SellingButtons>-->
   </div>
 </template>
 
@@ -182,7 +182,7 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
-import { SellingButtons } from '@/components/Ad/Category'
+// import { SellingButtons } from '@/components/Ad/Category'
 
 export default {
   layout: 'Category',
@@ -190,8 +190,8 @@ export default {
     CategoryHeader,
     ServicesGrid,
     ServiceItem,
-    SellingButtons
-  }
+    // SellingButtons,
+  },
 }
 </script>
 

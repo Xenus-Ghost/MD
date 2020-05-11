@@ -7,8 +7,16 @@
       :show-count="true"
       :default-expand-level="0"
       :disable-branch-nodes="true"
+      :multiple="true"
       required
-      @input="update"
+      :placeholder="placeholder"
+      :value-consists-of="'ALL_WITH_INDETERMINATE'"
+      :flat="true"
+      @input="
+        (arg) => {
+          update(arg)
+        }
+      "
     >
       <label
         slot="option-label"
@@ -17,7 +25,7 @@
           shouldShowCount,
           count,
           labelClassName,
-          countClassName
+          countClassName,
         }"
         :class="['category-select__label']"
       >
@@ -40,25 +48,34 @@ import { listToTree } from '@/assets/js/util'
 export default {
   name: 'CategorySelect',
   components: {
-    Treeselect
+    Treeselect,
   },
   model: {
     prop: 'modelValue',
-    event: 'change'
+    event: 'change',
   },
   props: {
     categories: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
+    max: {
+      type: Number,
+      default: 2,
+    },
+    placeholder: {
+      type: String,
+      default: 'Выберите...',
+    },
   },
   data() {
     return {
       rootCategory: null,
-      category: 1,
+      category: [],
       subCategory: null,
       adSubCategories: [],
-      subSubCategories: null
+      subSubCategories: null,
+      parentCategory: null,
     }
   },
   computed: {
@@ -70,14 +87,28 @@ export default {
       })
       const returnData = listToTree(data)
       return returnData
-    }
+    },
   },
   methods: {
-    update() {
-      const data = [this.category]
-      this.$emit('change', data)
-    }
-  }
+    update(e) {
+      const numbersLength = e.length
+      const lastCategory = this.categories.find(
+        (result) => result.id === e[numbersLength - 1]
+      )
+      this.$set(this, 'parentCategory', lastCategory.parent_id)
+      let tempParentId = null
+      if (this.parentCategory === null)
+        this.category.splice(0, numbersLength - 1)
+      this.category.forEach((elem, index, object) => {
+        tempParentId = this.categories.find((result) => result.id === elem)
+          .parent_id
+        if (tempParentId !== this.parentCategory) {
+          object.splice(index, 1)
+        }
+      })
+      this.$emit('change', this.category)
+    },
+  },
 }
 </script>
 

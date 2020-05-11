@@ -46,12 +46,12 @@ export default {
   props: {
     small: {
       type: Boolean,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      showModal: false
+      showModal: false,
     }
   },
   methods: {
@@ -63,8 +63,8 @@ export default {
       this.showModal = false
       this.$emit('close')
       document.querySelector('body').classList.remove('body-scroll_lock')
-    }
-  }
+    },
+  },
 }
 </script>
 

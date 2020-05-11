@@ -3,40 +3,40 @@ import { getFileUrl, getUrl } from '@/assets/js/util'
 export const state = () => ({
   isAdModalOpen: false,
   adModalData: {
-    photo: []
+    photo: [],
   },
   authorType: [
     {
       id: 1,
       name: 'Частники',
-      slug: 'частники'
+      slug: 'частники',
     },
     {
       id: 2,
       name: 'Фирмы и магазины',
-      slug: 'фирмы-и-магазины'
+      slug: 'фирмы-и-магазины',
     },
     {
       id: 3,
       name: 'Частники',
-      slug: 'частники'
+      slug: 'частники',
     },
     {
       id: 4,
       name: 'Интернет-магазины',
-      slug: 'интернет-магазины'
+      slug: 'интернет-магазины',
     },
     {
       id: 5,
       name: 'Торговые центры',
-      slug: 'торговые-центры'
-    }
+      slug: 'торговые-центры',
+    },
   ],
   adType: [
     { id: 1, name: 'Услуги', slug: 'услуги' },
     { id: 2, name: 'Продажа', slug: 'продажа' },
-    { id: 3, name: 'Заказчики', slug: 'заказчики' }
-  ]
+    { id: 3, name: 'Заказчики', slug: 'заказчики' },
+  ],
 })
 
 export const mutations = {
@@ -52,7 +52,7 @@ export const mutations = {
   },
   adModalDataAddView(state, data) {
     state.adModalData.views++
-  }
+  },
 }
 
 export const actions = {
@@ -101,5 +101,5 @@ export const actions = {
     if (typeof document !== 'undefined') {
       document.querySelector('body').classList.remove('body-scroll_lock')
     }
-  }
+  },
 }

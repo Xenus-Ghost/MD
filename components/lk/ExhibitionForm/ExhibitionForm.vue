@@ -107,16 +107,16 @@ import { VideoUploader } from '@/components/lk'
 export default {
   name: 'ExhibitionForm',
   components: {
-    VideoUploader
+    VideoUploader,
   },
   data() {
     return {
       ad: {
         author_type_id: null,
         rootCategory: null,
-        category_ids: null
+        category_ids: null,
       },
-      adSubCategories: null
+      adSubCategories: null,
     }
   },
   computed: {
@@ -126,7 +126,7 @@ export default {
     adRootCategories() {
       const result = []
       if (this.adCategoriesList.length > 0) {
-        this.adCategoriesList.forEach(function(item) {
+        this.adCategoriesList.forEach(function (item) {
           if (!item.parent_id) result.push(item)
         })
       }
@@ -137,7 +137,7 @@ export default {
       cats.push(this.ad.rootCategory)
       cats.push(this.ad.category)
       return cats
-    }
+    },
   },
   methods: {
     changeCategory() {
@@ -154,8 +154,8 @@ export default {
     },
     submit() {
       this.$axios.post()
-    }
-  }
+    },
+  },
 }
 </script>
 

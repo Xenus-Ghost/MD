@@ -160,7 +160,7 @@ export default {
   directives: {
     clickoutside: {
       bind(el, binding, vnode) {
-        el.clickOutsideEvent = function(event) {
+        el.clickOutsideEvent = function (event) {
           // here I check that click was outside the el and his childrens
           if (!(el === event.target || el.contains(event.target))) {
             // and if it did, call method provided in attribute value
@@ -176,18 +176,18 @@ export default {
       },
       stopProp(event) {
         event.stopPropagation()
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      isShow: false
+      isShow: false,
     }
   },
   computed: {
     isCategoriesWidgetShow() {
       return this.$store.state.isCategoriesWidgetShow
-    }
+    },
   },
   methods: {
     widgetToggle() {
@@ -210,8 +210,8 @@ export default {
       } else {
         this.$store.commit('categoriesWidgetOpen')
       } */
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,7 +1,7 @@
 import { BACKEND_API_URL, BACKEND_URL } from '@/constants'
 
 export function getUrl(path) {
-  return BACKEND_API_URL + path
+  return `${BACKEND_API_URL}${path}`
 }
 
 export function getFileUrl(path) {

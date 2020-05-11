@@ -7,7 +7,7 @@
           <!--          <img src="@/assets/img/icons/MD_logo.svg" alt="">-->
         </template>
       </CategoryHeader>
-      <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw">
+      <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw;">
         <div class="сustomers">
           <svg
             width="31"
@@ -129,7 +129,7 @@
           </svg>
         </div>
       </div>
-      <SellingButtons />
+      <SellingButtons v-if="category.sale_title" />
     </div>
   </article>
 </template>
@@ -143,20 +143,24 @@ export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    SellingButtons
+    SellingButtons,
   },
   // mixins: [getCategoryIDByUrl, getCategoryMeta],
   props: {
     meta: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
+    category: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
-      a: 'a'
+      a: 'a',
     }
-  }
+  },
   /* computed: {
     pageTitle() {
       return this.meta.title

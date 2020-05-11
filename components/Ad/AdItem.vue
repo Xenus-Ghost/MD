@@ -40,17 +40,17 @@ export default {
       type: Object,
       default: () => {
         return {}
-      }
+      },
     },
     privateAd: {
-      type: Boolean
+      type: Boolean,
     },
     companyAd: {
-      type: Boolean
+      type: Boolean,
     },
     customerAd: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   computed: {
     ad() {
@@ -111,7 +111,7 @@ export default {
         arr.push('ad__item_customer')
       }
       return arr
-    }
+    },
   },
   methods: {
     adOpen() {
@@ -124,8 +124,8 @@ export default {
       this.$router.push({ query: { id: this.ad.id } })
 
       this.adData.views++
-    }
-  }
+    },
+  },
 }
 </script>
 

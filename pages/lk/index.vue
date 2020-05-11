@@ -125,7 +125,7 @@ import {
   MyAds,
   AdBannerForm,
   ExhibitionForm,
-  VideoAddForm
+  VideoAddForm,
 } from '@/components/lk'
 
 import { getFileUrl } from '@/assets/js/util'
@@ -140,7 +140,7 @@ export default {
     MyAds,
     AdBannerForm,
     ExhibitionForm,
-    VideoAddForm
+    VideoAddForm,
   },
   data() {
     return {
@@ -150,7 +150,7 @@ export default {
       isAvatarUploadForm: false,
       isShowAdBannerForm: false,
       isShowExhibitionForm: false,
-      isShowVideoAddForm: false
+      isShowVideoAddForm: false,
     }
   },
   computed: {
@@ -164,7 +164,7 @@ export default {
       return !!this.$store.state.auth.user.roles.find(
         (result) => result.id === 1
       )
-    }
+    },
   },
   methods: {
     showAdList() {
@@ -196,8 +196,8 @@ export default {
     },
     closeVideoAddForm() {
       this.isShowVideoAddForm = false
-    }
-  }
+    },
+  },
 }
 </script>
 

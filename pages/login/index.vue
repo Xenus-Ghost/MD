@@ -14,6 +14,6 @@ export default {
     this.$store.commit('redirectAdd', '/lk')
     this.$router.push('/')
     this.$store.commit('authFormOpen')
-  }
+  },
 }
 </script>

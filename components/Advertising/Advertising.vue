@@ -6,7 +6,7 @@
         :key="i"
         :class="[
           'advertising__slide',
-          ad.type_id === 1 ? 'advertising__slide_wide' : ''
+          ad.type_id === 1 ? 'advertising__slide_wide' : '',
         ]"
       >
         <a :href="ad.url ? ad.url : '#'" class="advertising__link">
@@ -37,19 +37,19 @@ export default {
   props: {
     category: {
       type: Number,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       ads: {},
-      adList: null
+      adList: null,
     }
   },
   computed: {
     mediaComponent() {
       return () => import(`@/components/Media/Video/EmbedVideo`)
-    }
+    },
   },
   created() {
     this.$axios
@@ -67,7 +67,7 @@ export default {
       const list = []
       if (this.ads.large && this.ads.large.length) list.push(this.ads.large[0])
       const freeCells = 4 - list.length * 2
-      const smallLength = this.ads.small ? this.ads.small.length : 0
+      // const smallLength = this.ads.small ? this.ads.small.length : 0
       for (let i = 0; i < freeCells; i++) {
         if (this.ads.small[i]) {
           list.push(this.ads.small[i])
@@ -80,8 +80,8 @@ export default {
     },
     getFileUrl(path) {
       return getFileUrl(path)
-    }
-  }
+    },
+  },
 }
 </script>
 

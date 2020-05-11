@@ -13,7 +13,7 @@ export default {
       let url = this.$route.query.url
       url = !(url.includes('https') || url.includes('http')) ? '//' + url : url
       return url
-    }
+    },
   },
   mounted() {
     // console.log(this.$route.query.url)
@@ -21,7 +21,7 @@ export default {
       // console.log(this.url)
       window.location.replace(this.url)
     }, 1000)
-  }
+  },
 }
 </script>
 

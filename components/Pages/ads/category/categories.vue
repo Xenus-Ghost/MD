@@ -7,7 +7,7 @@
       </CategoryHeader>
       <div
         class="grid_cols_2_tablet container grid__column_12 grid_cols_6 buttons_grid"
-        style="grid-gap: 3vw"
+        style="grid-gap: 3vw;"
       >
         <Button
           v-for="(cat, i) in categories"
@@ -30,23 +30,23 @@ import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 export default {
   layout: 'Category',
   components: {
-    CategoryHeader
+    CategoryHeader,
   },
   props: {
     meta: {
       type: Object,
-      default: null
+      default: null,
     },
     categories: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      a: 'a'
+      a: 'a',
     }
-  }
+  },
 }
 </script>
 

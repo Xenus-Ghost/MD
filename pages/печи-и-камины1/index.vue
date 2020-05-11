@@ -158,7 +158,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw">
+    <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw;">
       <div class="сustomers">
         <svg
           width="31"
@@ -285,8 +285,8 @@ export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    SellingButtons
-  }
+    SellingButtons,
+  },
 }
 </script>
 

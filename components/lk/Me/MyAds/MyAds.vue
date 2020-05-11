@@ -62,7 +62,7 @@
               <div
                 :class="[
                   'my-ad__status',
-                  row.status.id === 1 ? 'my-ad__status_active' : ''
+                  row.status.id === 1 ? 'my-ad__status_active' : '',
                 ]"
               >
                 <span>
@@ -118,7 +118,7 @@
             <div
               :class="[
                 'my-ad__status',
-                row.status.id === 1 ? 'my-ad__status_active' : ''
+                row.status.id === 1 ? 'my-ad__status_active' : '',
               ]"
             >
               <span>
@@ -161,8 +161,8 @@ export default {
   props: {
     userID: {
       type: Number,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -173,8 +173,8 @@ export default {
         firms: [],
         onlineShop: [],
         shoppingCenter: [],
-        plant: []
-      }
+        plant: [],
+      },
     }
   },
   created() {
@@ -184,7 +184,7 @@ export default {
   methods: {
     getAds(typeId) {
       const params = jsonToParams({
-        type_id: typeId || this.type_id
+        type_id: typeId || this.type_id,
       })
       this.$axios.get(getUrl(`me/advertisements${params}`)).then((response) => {
         response.data.data.forEach(
@@ -257,8 +257,8 @@ export default {
           console.log(e.response)
           this.changeCategory(this.type_id)
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

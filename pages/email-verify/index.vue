@@ -4,7 +4,7 @@
       Подтверждение E-Mail
     </template>
     <template>
-      <div style="display: flex; flex-direction: column; align-items: center">
+      <div style="display: flex; flex-direction: column; align-items: center;">
         <!--<Button
           v-if="result === ''"
           shape="semi-rounded"
@@ -35,7 +35,7 @@ export default {
     return {
       token: this.$route.query.token ? this.$route.query.token : 'err',
       result: '',
-      error: null
+      error: null,
     }
   },
   created() {
@@ -47,7 +47,7 @@ export default {
         .$post(
           'https://admin.монтаждемонтаж.рф/api/auth/email-verification/send',
           {
-            handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify'
+            handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify',
           }
         )
         .then((e) => {
@@ -68,7 +68,7 @@ export default {
       /* .catch((e) => {
           this.error = e + ''
         }) */
-    }
-  }
+    },
+  },
 }
 </script>

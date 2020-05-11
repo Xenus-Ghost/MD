@@ -342,7 +342,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw">
+    <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw;">
       <div class="сustomers">
         <svg
           width="31"
@@ -467,20 +467,26 @@
     <div class="container grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
-        <Button to="все-карьеры" shape="rounded" borders="outline"
-          >Все карьеры</Button
-        >
+        <Button to="жби" shape="rounded" borders="outline">
+          Асфальт
+        </Button>
+        <Button to="жби/карьеры-песок" shape="rounded" borders="outline">
+          Песок
+        </Button>
+        <Button to="жби/карьеры-щебень" shape="rounded" borders="outline">
+          Щебень
+        </Button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 export default {
   components: {
-    CategoryHeader
-  }
+    CategoryHeader,
+  },
 }
 </script>
 

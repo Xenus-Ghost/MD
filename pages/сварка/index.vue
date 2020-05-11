@@ -213,7 +213,7 @@
       </ServiceItem>
       <ServiceItem
         :col="'0'"
-        class=" grid__column_1-tablet grid__column_3-phone "
+        class="grid__column_1-tablet grid__column_3-phone"
       >
         <template v-slot:icon>
           <img src="@/assets/img/icons/pipe.svg" alt="" />
@@ -229,7 +229,7 @@
       </ServiceItem>
       <ServiceItem
         :col="'0'"
-        class="grid__column_1-tablet grid__column_3-phone "
+        class="grid__column_1-tablet grid__column_3-phone"
       >
         <template v-slot:icon>
           <img src="@/assets/img/icons/ladder.svg" alt="" />
@@ -259,8 +259,8 @@ export default {
     CategoryHeader,
     ServicesGrid,
     ServiceItem,
-    SellingButtons
-  }
+    SellingButtons,
+  },
 }
 </script>
 

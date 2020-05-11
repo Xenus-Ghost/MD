@@ -44,6 +44,15 @@
       }
     }
   }
+  .button {
+    font-size: .7rem;
+    height: 20px;
+    width: 100%;
+    @include media_screen(desktop-wide) {
+      font-size: 1rem;
+      height: auto;
+    }
+  }
 }
 .service__item{
   position: relative;
@@ -95,12 +104,4 @@
   display: flex;
   justify-content: center;
 }
-.button {
-   font-size: .7rem;
-   height: 20px;
-   width: 100%;
-   @include media_screen(desktop-wide) {
-     font-size: 1rem;
-     height: auto;
-   }
- }
+

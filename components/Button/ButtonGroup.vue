@@ -11,12 +11,12 @@ export default {
   props: {
     type: {
       default: 'grid',
-      type: String
+      type: String,
     },
     size: {
       default: 'normal',
-      type: String
-    }
+      type: String,
+    },
     // small: {
     //   type: Boolean,
     //   default: false
@@ -28,14 +28,14 @@ export default {
   },
   data() {
     return {
-      baseClassName: 'button'
+      baseClassName: 'button',
     }
   },
   computed: {
     style() {
       return {
         // 'height': (this.height + 'px').replace('pxpx', 'px').replace('%px', '%'),
-        'background-color': this.color
+        'background-color': this.color,
         // 'max-height': (this.maxHeight + 'px').replace('pxpx', 'px').replace('%px', '%'),
         // 'max-width': (this.maxWidth + 'px').replace('pxpx', 'px').replace('%px', '%'),
         // 'min-height': (this.minHeight + 'px').replace('pxpx', 'px').replace('%px', '%'),
@@ -44,11 +44,11 @@ export default {
     },
     classes() {
       const arr = {
-        buttons_group_grid: this.type
+        buttons_group_grid: this.type,
       }
       return arr
-    }
-  }
+    },
+  },
 }
 </script>
 

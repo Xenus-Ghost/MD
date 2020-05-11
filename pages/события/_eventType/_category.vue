@@ -23,7 +23,7 @@ export default {
   components: {
     CategoryHeader,
     // Advertising,
-    AdList
+    AdList,
   },
   async asyncData(context) {
     const data = {}
@@ -40,7 +40,7 @@ export default {
     body.title = category.title
     const filterData = {
       category_id: data.category.id,
-      with: ['categories', 'author']
+      with: ['categories', 'author'],
     }
     const axios = context.$axios
     // console.log(context)
@@ -65,13 +65,13 @@ export default {
       // if (this.typeID === 3) obj.push({ customerAd: true })
       // if (this.filterData.type_id) obj.push({ typeId: this.filterData.type_id })
       return obj
-    }
+    },
   },
   head() {
     return {
-      title: this.meta.title
+      title: this.meta.title,
     }
-  }
+  },
 }
 </script>
 

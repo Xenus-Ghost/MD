@@ -127,7 +127,7 @@ export const state = () => ({
     'Электрогорск',
     'Электросталь',
     'Электроугли',
-    'Яхрома'
+    'Яхрома',
   ],
   metroList: [
     'Авиамоторная',
@@ -457,14 +457,14 @@ export const state = () => ({
     'Южная',
     'Юго-Восточная',
     'Я',
-    'Ясенево'
-  ]
+    'Ясенево',
+  ],
 })
 
 export const mutations = {
   saveAddressList(state, data) {
     state.addressList = data
-  }
+  },
 }
 
 export const actions = {
@@ -474,5 +474,5 @@ export const actions = {
       .get(getUrl('addresses'))
       .then((e) => this.commit('saveAddressList', e))
   },
-  getAdresses({ commit }) {}
+  getAdresses({ commit }) {},
 }

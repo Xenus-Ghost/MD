@@ -16,11 +16,11 @@ export const getCategoryIDByUrl = {
         id: null,
         name: null,
         title: null,
-        parent: null
+        parent: null,
       },
-      subCategories: []
+      subCategories: [],
     }
-  }
+  },
 }
 
 export const validateCategory = () => {}
@@ -91,13 +91,13 @@ export const getCategoryMeta = {
     return {
       head: { title: '' },
       body: {
-        title: ''
-      }
+        title: '',
+      },
     }
   },
   head() {
     return { title: this.head.title }
-  }
+  },
 }
 
 export const getCustomCategoryMeta = {
@@ -116,11 +116,11 @@ export const getCustomCategoryMeta = {
     return {
       head: { title: '' },
       body: {
-        title: ''
-      }
+        title: '',
+      },
     }
   },
   head() {
     return { title: this.head.title }
-  }
+  },
 }

@@ -23,16 +23,16 @@ export default {
   props: {
     col: {
       default: null,
-      type: String
-    }
+      type: String,
+    },
   },
   computed: {
     classes() {
       const obj = ['grid__column_1']
       if (this.col) obj.push('grid__column_' + this.col)
       return obj
-    }
-  }
+    },
+  },
 }
 </script>
 

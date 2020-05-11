@@ -166,50 +166,50 @@ import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 export default {
   layout: 'Category ',
   components: {
-    CategoryHeader
+    CategoryHeader,
   },
   data() {
     return {
       categories: {
         0: {
           path: 'новостройки',
-          title: 'Новостройки'
+          title: 'Новостройки',
         },
         1: {
           path: 'загородная-недвижимость',
-          title: 'Загородная недвижимость'
+          title: 'Загородная недвижимость',
         },
         2: {
           path: 'мебель',
-          title: 'Мебель'
+          title: 'Мебель',
         },
         3: {
           path: 'готовые-дома-бани-дачи-и-беседки',
-          title: 'Готовые дома, бани, дачи и беседки'
+          title: 'Готовые дома, бани, дачи и беседки',
         },
         4: {
           path: 'строительство-под-ключ',
-          title: 'Строительство под ключ'
+          title: 'Строительство под ключ',
         },
         5: {
           path: 'умные-дома',
-          title: 'Умные дома'
+          title: 'Умные дома',
         },
         6: {
           path: 'бассейны-и-фонтаны',
-          title: 'Бассейны и фонтаны'
+          title: 'Бассейны и фонтаны',
         },
         7: {
           path: 'лифты',
-          title: 'Лифты'
+          title: 'Лифты',
         },
         8: {
           path: 'ворота-и-рольставни',
-          title: 'Ворота и рольставни'
-        }
-      }
+          title: 'Ворота и рольставни',
+        },
+      },
     }
-  }
+  },
 }
 </script>
 

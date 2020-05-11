@@ -17,8 +17,8 @@ export default {
   layout: 'admin',
   components: {
     Card,
-    bannerForm
-  }
+    bannerForm,
+  },
 }
 </script>
 

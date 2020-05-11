@@ -299,8 +299,8 @@ import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 export default {
   layout: 'Category',
   components: {
-    CategoryHeader
-  }
+    CategoryHeader,
+  },
 }
 </script>
 

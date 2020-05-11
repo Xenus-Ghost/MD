@@ -171,7 +171,7 @@
       </template>
     </CategoryHeader>
     <ServicesGrid
-      :cols="'4_tablet'"
+      :cols="'5_tablet'"
       class="grid__column_12 grid__column_9-tablet"
       width="100%"
     >
@@ -230,6 +230,19 @@
           >
         </template>
       </ServiceItem>
+      <ServiceItem :col="'1'">
+        <template v-slot:icon>
+          <img src="@/assets/img/icons/jackhammer.svg" alt="" />
+        </template>
+        <template v-slot:default>
+          Спецодежда
+        </template>
+        <template v-slot:footer>
+          <Button to="строительный" shape="rounded" borders="outline">
+            Подробнее</Button
+          >
+        </template>
+      </ServiceItem>
     </ServicesGrid>
     <div class="grid__column_12 grid__column_3-tablet selling">
       <h2 class="selling__title">Услуга</h2>
@@ -268,8 +281,8 @@ export default {
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
-  }
+    ServiceItem,
+  },
 }
 </script>
 

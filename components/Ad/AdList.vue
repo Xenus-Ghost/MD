@@ -29,7 +29,7 @@
             <div
               class="views ad-modal__views"
               :title="`Просмотров: ${adModalData.views}`"
-              style="justify-self: end"
+              style="justify-self: end;"
             >
               <img
                 src="~assets/img/icons/eye.svg"
@@ -70,9 +70,7 @@
             <div v-if="customerAd" class="grid__column_2">
               <img
                 v-if="customerAd"
-                style="    width: 100%;
-    height: 100%;
-    object-fit: contain;"
+                style="width: 100%; height: 100%; object-fit: contain;"
                 src="/img/icons/employee.png"
                 alt="Заказчик"
               />
@@ -81,10 +79,10 @@
               :class="[
                 {
                   grid__column_2: !customerAd,
-                  grid__column_10: customerAd
+                  grid__column_10: customerAd,
                 },
                 'grid',
-                'grid-row-gap_4'
+                'grid-row-gap_4',
               ]"
             >
               <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
@@ -158,7 +156,7 @@
             <div
               v-if="!customerAd"
               :class="['grid__column_1', 'grid_rows_4']"
-              style="grid-gap: 10px"
+              style="grid-gap: 10px;"
             >
               <Button shape="rounded" borders="outline">
                 <template #icon_left>
@@ -297,7 +295,12 @@
           </div>
           <client-only>
             <b
-              style="float: left; width: 100%; font-size: 1.1rem; margin-top: 5px"
+              style="
+                float: left;
+                width: 100%;
+                font-size: 1.1rem;
+                margin-top: 5px;
+              "
               >Поделиться объявлением:</b
             >
             <Share open />
@@ -306,7 +309,7 @@
             <Button
               borders="outline"
               shape="rounded"
-              style="margin: 0 auto"
+              style="margin: 0 auto;"
               @click="claimFormShow = true"
               >Пожаловаться</Button
             >
@@ -340,39 +343,40 @@ export default {
     adFilter,
     LightBox: () =>
       import(/* webpackPrefetch: true */ '@/components/Modal/LightBox'),
-    AdClaim: () => import(/* webpackPrefetch: true */ '@/components/Ad/AdClaim')
+    AdClaim: () =>
+      import(/* webpackPrefetch: true */ '@/components/Ad/AdClaim'),
     // LightBox
   },
   props: {
     category: {
       type: Number,
-      default: 0
+      default: 0,
     },
     privateAd: {
-      type: Boolean
+      type: Boolean,
     },
     adsProp: {
       type: Array || Object,
-      default: null
+      default: null,
     },
     companyAd: {
-      type: Boolean
+      type: Boolean,
     },
     customerAd: {
-      type: Boolean
+      type: Boolean,
     },
     authorTypeId: {
       type: Number,
-      default: 1
+      default: 1,
     },
     accountTypeId: {
       type: Number,
-      default: null
+      default: null,
     },
     typeId: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   data() {
     return {
@@ -381,13 +385,13 @@ export default {
         current_page: 1,
         last_page: 1,
         per_page: 99,
-        total: 0
+        total: 0,
       },
       links: {
         first: null,
         last: null,
         next: null,
-        prev: null
+        prev: null,
       },
       videoShow: false,
       index: null,
@@ -395,9 +399,9 @@ export default {
         city: '',
         metro: '',
         address: '',
-        region: ''
+        region: '',
       },
-      claimFormShow: false
+      claimFormShow: false,
     }
   },
   computed: {
@@ -423,7 +427,7 @@ export default {
     },
     metroList() {
       return this.$store.state.address.metroList
-    }
+    },
   },
   created() {
     // this.getAds()
@@ -439,7 +443,7 @@ export default {
         category_id: this.category,
         per_page: 12,
         author_type_id: this.authorTypeId,
-        type_id: this.typeId
+        type_id: this.typeId,
         // metro: this.filter.metro ? this.filter.metro : null,
         // city: this.filter.city ? this.filter.city : null
       }
@@ -462,8 +466,8 @@ export default {
       await this.$axios
         .get(url, {
           params: {
-            with: ['categories', 'author']
-          }
+            with: ['categories', 'author'],
+          },
         })
         .then((e) => {
           // this.ad = e.data.data
@@ -499,8 +503,8 @@ export default {
     },
     adsRefresh() {
       this.getAds()
-    }
-  }
+    },
+  },
 }
 </script>
 

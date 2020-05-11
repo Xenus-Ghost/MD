@@ -119,7 +119,7 @@ export default {
       firstName: '',
       lastName: '',
       phone: '',
-      error: null
+      error: null,
       // formType: 'login'
     }
   },
@@ -129,10 +129,10 @@ export default {
     },
     formType() {
       return this.$store.state.authFormType
-    }
+    },
   },
   mounted() {
-    this.$root.$on('authFormOpen', function() {
+    this.$root.$on('authFormOpen', function () {
       this.authFormShow()
     })
   },
@@ -169,8 +169,8 @@ export default {
         .loginWith('local', {
           data: {
             email: this.email,
-            password: this.password
-          }
+            password: this.password,
+          },
         })
         .then((e) => {
           this.email = ''
@@ -198,7 +198,7 @@ export default {
         name: this.name,
         first_name: this.firstName,
         last_name: this.lastName,
-        phone: this.phone
+        phone: this.phone,
       }
       await this.$axios
         .$post(
@@ -225,15 +225,15 @@ export default {
         .$post(
           'https://admin.монтаждемонтаж.рф/api/auth/email-verification/send',
           {
-            handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify'
+            handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify',
           }
         )
         .then((e) => {
           this.result = ''
           this.error = ''
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

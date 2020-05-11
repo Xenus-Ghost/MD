@@ -46,7 +46,7 @@
         <strong>
           Чем наш сайт полезен для посетителей?
         </strong>
-        <ul style="list-style: none">
+        <ul style="list-style: none;">
           <li>
             самый крупный справочник мебельной тематики для посетителей из
             России, республик Беларусь и Казахстана
@@ -62,7 +62,7 @@
         Контактная информация
       </template>
       <template>
-        <div class="grid_cols_2" style="grid-gap: 30px">
+        <div class="grid_cols_2" style="grid-gap: 30px;">
           <div>
             <strong>Адрес офиса</strong>
             <p>
@@ -103,12 +103,12 @@ export default {
   components: {
     Menu,
     CategoriesWidget,
-    ProfileWidget
+    ProfileWidget,
   },
   data() {
     return {
       aboutModalShow: false,
-      contactsModalShow: false
+      contactsModalShow: false,
     }
   },
   methods: {
@@ -119,15 +119,15 @@ export default {
     aboutModalOpen() {
       this.contactsModalShow = true
       document.querySelector('body').classList.add('body-scroll_lock')
-    }
+    },
   },
   head() {
     return {
       bodyAttrs: {
-        class: 'background_1'
-      }
+        class: 'background_1',
+      },
     }
-  }
+  },
 }
 </script>
 <style lang="scss">

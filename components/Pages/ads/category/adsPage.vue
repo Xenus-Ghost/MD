@@ -21,33 +21,33 @@ export default {
   components: {
     CategoryHeader,
     Advertising,
-    AdList
+    AdList,
   },
   props: {
     filterData: {
       type: Object,
-      default: null
+      default: null,
     },
     ads: {
       type: Array || Object,
-      default: null
+      default: null,
     },
     links: {
       type: Object,
-      default: null
+      default: null,
     },
     meta: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       authorTypeId: null,
       typeID: null,
       body: {
-        title: ''
-      }
+        title: '',
+      },
     }
   },
   computed: {
@@ -64,13 +64,13 @@ export default {
       if (this.typeID === 3) obj.push({ customerAd: true })
       if (this.filterData.type_id) obj.push({ typeId: this.filterData.type_id })
       return obj
-    }
+    },
   },
   head() {
     return {
-      title: this.meta.title
+      title: this.meta.title,
     }
-  }
+  },
 }
 </script>
 

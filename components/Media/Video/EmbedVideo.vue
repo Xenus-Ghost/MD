@@ -8,9 +8,7 @@
         :height="height"
         class="embed__iframe"
         loading="lazy"
-        :src="
-          `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=0&origin=${origin_url}`
-        "
+        :src="`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=0&origin=${origin_url}`"
         frameborder="0"
         :style="styles"
       ></iframe>
@@ -28,16 +26,16 @@ export default {
   props: {
     videoId: {
       type: String,
-      required: true
+      required: true,
     },
     width: {
       type: String || Number,
-      default: '100%'
-    }
+      default: '100%',
+    },
   },
   data() {
     return {
-      origin_url: null
+      origin_url: null,
     }
   },
   computed: {
@@ -50,14 +48,14 @@ export default {
       if (this.minHeight) styles['min-height'] = this.minHeight
       if (this.maxHeight) styles['max-height'] = this.maxHeight
       return styles
-    }
+    },
   },
   created() {
     if (process.client) {
       // eslint-disable-next-line nuxt/no-globals-in-created
       this.origin_url = window.location.href
     }
-  }
+  },
 }
 </script>
 

@@ -15,21 +15,21 @@ import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 export default {
   name: 'LightBox',
   components: {
-    CoolLightBox
+    CoolLightBox,
   },
   props: {
     items: {
       type: Array || Object,
-      default: null
+      default: null,
     },
     index: {
       type: Number,
-      default: null
+      default: null,
     },
     loop: {
       type: Boolean,
-      default: null
-    }
-  }
+      default: null,
+    },
+  },
 }
 </script>

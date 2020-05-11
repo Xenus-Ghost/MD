@@ -86,8 +86,8 @@ export default {
   props: {
     banner: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -98,19 +98,19 @@ export default {
         path: null,
         categories: null,
         image: null,
-        video: null
+        video: null,
       },
       message: {
         success: false,
-        errors: null
+        errors: null,
       },
-      categories: this.$store.state.categories.adCategoriesList
+      categories: this.$store.state.categories.adCategoriesList,
     }
   },
   computed: {
     isEdit() {
       return !!this.banner
-    }
+    },
   },
   created() {
     if (this.banner) this.$set(this, 'bannerData', this.banner)
@@ -125,7 +125,7 @@ export default {
           typeof this.bannerData.path === 'string'
             ? this.bannerData.path
             : this.bannerData.path[0],
-        categories: this.bannerData.categories
+        categories: this.bannerData.categories,
       }
       const url = this.isEdit
         ? getUrl(`admin/banners/${this.bannerData.id}`)
@@ -134,7 +134,7 @@ export default {
       await this.$axios({
         method: axisoMethod,
         url,
-        data: formData
+        data: formData,
       })
         .then((response) => {
           // this.message.success = true
@@ -145,8 +145,8 @@ export default {
           // this.message.errors.push(error.response.data.errors)
           console.error(error)
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -13,5 +13,5 @@ export {
   AdBannerForm,
   MyAds,
   VideoAddForm,
-  CategorySelect
+  CategorySelect,
 }

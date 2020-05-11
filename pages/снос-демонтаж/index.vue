@@ -9,7 +9,7 @@
           viewBox="0 0 395 395"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style="filter: drop-shadow(0 0 6px dodgerblue)"
+          style="filter: drop-shadow(0 0 6px dodgerblue);"
         >
           <g filter="url(#filter0_f)">
             <circle
@@ -175,17 +175,22 @@ export default {
   components: {
     CategoryHeader,
     Advertising,
-    AdList
+    AdList,
   },
   async asyncData(context) {
-    const currentCategory = context.store.state.categories.adCategoriesList.find(result => result.name === 'снос-демонтаж')
+    const currentCategory = context.store.state.categories.adCategoriesList.find(
+      (result) => result.name === 'снос-демонтаж'
+    )
     const filterData = {
-      with: ['categories', 'author']
+      with: ['categories', 'author'],
     }
     filterData.category_id = currentCategory ? currentCategory.id : null
     // filterData.author_type_id = authorType ? authorType.id : null
     filterData.type_id = 1
-    const { ads, links, queryParams } = await apiGetAds(filterData, context.$axios)
+    const { ads, links, queryParams } = await apiGetAds(
+      filterData,
+      context.$axios
+    )
     const returnData = {
       filterData,
     }
@@ -195,15 +200,13 @@ export default {
     return returnData
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   head() {
     return {
-      title: 'Снос-демонтаж'
+      title: 'Снос-демонтаж',
     }
-  }
+  },
 }
 </script>
 

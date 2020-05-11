@@ -28,11 +28,11 @@ export default {
   props: {
     type: {
       default: 'button',
-      type: String
+      type: String,
     },
     size: {
       default: 'normal',
-      type: String
+      type: String,
     },
     // round: {
     //   default: true,
@@ -40,28 +40,28 @@ export default {
     // },
     shape: {
       default: '',
-      type: String
+      type: String,
     },
     outline: {
       type: Boolean,
-      default: true
+      default: true,
     },
     borders: {
       type: String,
-      default: ''
+      default: '',
     },
     tag: {
       type: String,
-      default: 'button'
+      default: 'button',
     },
     to: {
       type: String,
-      default: null
+      default: null,
     },
     href: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
     // small: {
     //   type: Boolean,
     //   default: false
@@ -73,7 +73,7 @@ export default {
   },
   data() {
     return {
-      baseClassName: 'button'
+      baseClassName: 'button',
       // classList: '',
       // sizeClass: 'button' + '--' + this.size
       // shapeClass: 'button' + '--' + this.shape
@@ -111,7 +111,7 @@ export default {
     style() {
       return {
         // 'height': (this.height + 'px').replace('pxpx', 'px').replace('%px', '%'),
-        'background-color': this.color
+        'background-color': this.color,
         // 'max-height': (this.maxHeight + 'px').replace('pxpx', 'px').replace('%px', '%'),
         // 'max-width': (this.maxWidth + 'px').replace('pxpx', 'px').replace('%px', '%'),
         // 'min-height': (this.minHeight + 'px').replace('pxpx', 'px').replace('%px', '%'),
@@ -128,7 +128,7 @@ export default {
         button_size_big: this.size === 'big',
         button_size_large: this.size === 'large',
         button_outline: this.borders === 'outline',
-        button_neon: this.borders === 'neon'
+        button_neon: this.borders === 'neon',
       }
       return arr
     },
@@ -137,8 +137,8 @@ export default {
     },
     hasRightIcon() {
       return !!this.$slots.icon_right
-    }
-  }
+    },
+  },
 }
 </script>
 

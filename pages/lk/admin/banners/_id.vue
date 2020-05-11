@@ -19,7 +19,7 @@ export default {
   middleware: ['auth', 'admin'],
   components: {
     bannerForm,
-    Card
+    Card,
   },
   async asyncData(context) {
     const id = context.route.params.id
@@ -38,10 +38,10 @@ export default {
         active: 1,
         title: null,
         path: null,
-        categories: null
-      }
+        categories: null,
+      },
     }
-  }
+  },
 }
 </script>
 

@@ -22,7 +22,7 @@ import CategoryHeader from '@/components/Category'
 export default {
   layout: 'admin',
   middleware: ['auth', 'admin'],
-  components: { CategoryHeader }
+  components: { CategoryHeader },
 }
 </script>
 

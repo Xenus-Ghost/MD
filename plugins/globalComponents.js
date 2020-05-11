@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Button from './../components/Button/Button'
 import Modal from './../components/Modal/Modal'
+import Card from '@/components/Card/Card'
 import LoginForm from '@/components/Registration/LoginForm'
 
 Vue.component('Button', Button)
 Vue.component('Modal', Modal)
 Vue.component('LoginForm', LoginForm)
+Vue.component('Card', Card)
 
 Vue.directive('click-outside', {
   bind() {
@@ -20,5 +22,11 @@ Vue.directive('click-outside', {
 
   stopProp(event) {
     event.stopPropagation()
-  }
+  },
 })
+
+/* $nuxt.$router.onError((error) => {
+  if (/loading chunk \d* failed./i.test(error.message)) {
+    window.location.reload()
+  }
+}) */

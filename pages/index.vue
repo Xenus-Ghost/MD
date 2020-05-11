@@ -26,7 +26,11 @@
             >
             <div
               v-if="!isLogged"
-              style="display: flex; justify-content: space-between; margin-bottom: 15px"
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+              "
             >
               <Button
                 borders="outline"
@@ -48,7 +52,7 @@
             <Button
               borders="outline"
               shape="rounded"
-              style="align-self: center"
+              style="align-self: center;"
               :class="['home-page__button', 'button_black-list']"
               @click.native="BlackListOpen"
             >
@@ -62,7 +66,7 @@
       </CircleContainer>
       <Button
         to="/события/выставки"
-        style="grid-column: 1;grid-row: 1"
+        style="grid-column: 1; grid-row: 1;"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -70,7 +74,7 @@
       >
       <Button
         to="/события/форумы"
-        style="grid-column: 3;grid-row: 1;justify-self: right"
+        style="grid-column: 3; grid-row: 1; justify-self: right;"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -78,7 +82,7 @@
       >
       <Button
         to="/доставка"
-        style="grid-column: 1;grid-row: 3"
+        style="grid-column: 1; grid-row: 3;"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -86,7 +90,7 @@
       >
       <Button
         to="/видео"
-        style="grid-column: 1;grid-row: 4"
+        style="grid-column: 1; grid-row: 4;"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -94,7 +98,7 @@
       >
       <Button
         to="/мастер-на-час"
-        style="grid-column: 3;grid-row: 3; justify-self: right"
+        style="grid-column: 3; grid-row: 3; justify-self: right;"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -102,7 +106,7 @@
       >
       <Button
         to="/клининг"
-        style="grid-column: 3;grid-row: 4; justify-self: right"
+        style="grid-column: 3; grid-row: 4; justify-self: right;"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -201,7 +205,7 @@ export default {
   components: {
     CircleContainer,
     CircleItem,
-    BlackList
+    BlackList,
   },
   data() {
     return {
@@ -209,76 +213,76 @@ export default {
         monolith: {
           path: '/монолит',
           title: 'Монолит',
-          icon_url: 'img/categories/1.svg'
+          icon_url: 'img/categories/1.svg',
         },
         building: {
           path: '/строительство',
           title: 'Строительство',
-          icon_url: 'img/categories/2.svg'
+          icon_url: 'img/categories/2.svg',
         },
         renovation: {
           path: '/ремонт',
           title: 'Ремонт',
-          icon_url: 'img/categories/3.svg'
+          icon_url: 'img/categories/3.svg',
         },
         electric: {
           path: '/электрика',
           title: 'Электрика',
-          icon_url: 'img/categories/4.svg'
+          icon_url: 'img/categories/4.svg',
         },
         plumbing: {
           path: '/сантехника',
           title: 'Сантехника',
-          icon_url: 'img/categories/5.svg'
+          icon_url: 'img/categories/5.svg',
         },
         welding: {
           path: '/сварка',
           title: 'Сварка',
-          icon_url: 'img/categories/6.svg'
+          icon_url: 'img/categories/6.svg',
         },
         designing: {
           path: '/проектирование',
           title: 'Проектирование',
-          icon_url: 'img/categories/8.svg'
+          icon_url: 'img/categories/8.svg',
         },
         roads: {
           path: '/дороги',
           title: 'Дороги',
-          icon_url: 'img/categories/9.svg'
+          icon_url: 'img/categories/9.svg',
         },
         gas: {
           path: '/газификация',
           title: 'Газификация',
-          icon_url: 'img/categories/10.svg'
+          icon_url: 'img/categories/10.svg',
         },
         landscape: {
           path: '/ландшафтный-дизайн',
           title: 'Ландшафтный дизайн',
-          icon_url: 'img/categories/12.svg'
+          icon_url: 'img/categories/12.svg',
         },
         beautification: {
           path: '/благоустройство',
           title: 'Благоустройство',
-          icon_url: 'img/categories/13.svg'
+          icon_url: 'img/categories/13.svg',
         },
         tools: {
           path: '/инструменты-и-оборудование',
           title: 'Инструменты и оборудование',
-          icon_url: 'img/categories/14.svg'
+          icon_url: 'img/categories/14.svg',
         },
         stoves: {
           path: '/печи-и-камины',
           title: 'Печи и камины',
-          icon_url: 'img/categories/15.svg'
-        }
+          icon_url: 'img/categories/15.svg',
+        },
       },
-      isBlackListShow: false
+      isBlackListShow: false,
     }
   },
   computed: {
     isLogged() {
       return this.$store.state.auth.loggedIn
-    }
+    },
   },
   /* mounted() {
     this.$root.$on('authFormOpen', function (id) {})
@@ -291,8 +295,8 @@ export default {
     BlackListOpen() {
       this.isBlackListShow = true
     },
-    ...mapMutations({})
-  }
+    ...mapMutations({}),
+  },
 }
 </script>
 

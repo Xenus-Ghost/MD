@@ -91,15 +91,15 @@ export default {
   name: 'AdFilter',
   model: {
     prop: 'modelValue',
-    event: 'change'
+    event: 'change',
   },
   data() {
     return {
       filter: {
         region: null,
         metro: null,
-        city: null
-      }
+        city: null,
+      },
     }
   },
   computed: {
@@ -108,7 +108,7 @@ export default {
     },
     metroList() {
       return this.$store.state.address.metroList
-    }
+    },
   },
   methods: {
     regionChange() {
@@ -124,8 +124,8 @@ export default {
       const data = this.filter
       Object.keys(data).forEach((key) => data[key] == null && delete data[key])
       this.$emit('change', data)
-    }
-  }
+    },
+  },
 }
 </script>
 

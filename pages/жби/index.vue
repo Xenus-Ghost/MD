@@ -146,14 +146,14 @@
         to="цпс"
         shape="semi_rounded"
         borders="outline"
-        class="zhbi__button_left "
+        class="zhbi__button_left"
         >Цемент, песчатные смеси</Button
       >
       <Button
         to="кирпич-плитка-бордюры"
         shape="semi_rounded"
         borders="outline"
-        class="zhbi__button_right "
+        class="zhbi__button_right"
         >Кирпич, плитка, бордюры</Button
       >
       <div class="careers">
@@ -236,8 +236,8 @@ import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 export default {
   layout: 'category',
   components: {
-    CategoryHeader
-  }
+    CategoryHeader,
+  },
 }
 </script>
 <style lang="scss">

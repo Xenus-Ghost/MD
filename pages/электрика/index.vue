@@ -776,8 +776,8 @@ export default {
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
-  }
+    ServiceItem,
+  },
 }
 </script>
 

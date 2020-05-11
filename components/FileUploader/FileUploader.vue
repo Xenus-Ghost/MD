@@ -59,45 +59,45 @@ export default {
   },
   model: {
     prop: 'modelValue',
-    event: 'change'
+    event: 'change',
   },
   props: {
     multiple: {
       type: Boolean,
-      default: null
+      default: null,
     },
     vModel: {
       type: Array || Object || String,
-      default: null
+      default: null,
     },
     autoUpload: {
       type: Boolean,
-      default: false
+      default: false,
     },
     preview: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fileType: {
       type: String,
-      default: 'image'
+      default: 'image',
     },
     base64: {
       type: Boolean,
-      default: false
+      default: false,
     },
     loadButton: {
       type: Boolean || String,
-      default: null
+      default: null,
     },
     dataURL: {
       type: String,
-      default: null
+      default: null,
     },
     max: {
       type: Number,
-      default: 5
-    }
+      default: 5,
+    },
   },
   data() {
     return {
@@ -106,7 +106,7 @@ export default {
       url: BACKEND_API_URL + 'files',
       response: {},
       uploaded: [],
-      errors: []
+      errors: [],
     }
   },
   computed: {
@@ -115,7 +115,7 @@ export default {
     },
     selectorId() {
       return generateString()
-    }
+    },
   },
   methods: {
     fileSelected(event) {
@@ -152,7 +152,7 @@ export default {
             this.errors.push({
               fileName: file.name,
               size: file.size,
-              status: error.response.status
+              status: error.response.status,
             })
           })
       }
@@ -193,10 +193,10 @@ export default {
     makeError(fileName, message = '') {
       this.errors.push({
         fileName,
-        status: message
+        status: message,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

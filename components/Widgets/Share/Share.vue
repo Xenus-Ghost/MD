@@ -2,7 +2,7 @@
   <div
     :class="[
       'share__container',
-      float === 'left' ? 'share__container_left' : 'share__container_right'
+      float === 'left' ? 'share__container_left' : 'share__container_right',
     ]"
   >
     <ul v-if="show || open" class="share__list">
@@ -29,7 +29,7 @@
       v-show="!open"
       :class="[
         'share__button',
-        float === 'left' ? 'share__button_left' : 'share__button_right'
+        float === 'left' ? 'share__button_left' : 'share__button_right',
       ]"
       shape="rounded"
       title="Поделиться"
@@ -50,63 +50,63 @@ export default {
   props: {
     link: {
       type: String,
-      default: process.client ? window.location.href : '/'
+      default: process.client ? window.location.href : '/',
     },
     services: {
       type: String,
       default:
-        'telegram, vkontakte, odnoklassniki, facebook, viber, whatsapp, skype'
+        'telegram, vkontakte, odnoklassniki, facebook, viber, whatsapp, skype',
     },
     float: {
       type: String,
-      default: 'left'
+      default: 'left',
     },
     open: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       servicesTemplates: {
         telegram: {
           title: 'Telegram',
-          templateUrl: 'tg://msg_url?url='
+          templateUrl: 'tg://msg_url?url=',
         },
         vkontakte: {
           title: 'Вконтакте',
-          templateUrl: 'https://vk.com/share.php?url='
+          templateUrl: 'https://vk.com/share.php?url=',
         },
         odnoklassniki: {
           title: 'Одноклассники',
-          templateUrl: 'https://connect.ok.ru/offer?url='
+          templateUrl: 'https://connect.ok.ru/offer?url=',
         },
         facebook: {
           title: 'facebook',
-          templateUrl: 'https://www.facebook.com/sharer.php?src=sp&u='
+          templateUrl: 'https://www.facebook.com/sharer.php?src=sp&u=',
         },
         viber: {
           title: 'Viber',
-          templateUrl: 'viber://forward?text='
+          templateUrl: 'viber://forward?text=',
         },
         whatsapp: {
           title: 'WhatsApp',
-          templateUrl: 'https://api.whatsapp.com/send?text='
+          templateUrl: 'https://api.whatsapp.com/send?text=',
         },
         yandexCollections: {
           title: 'Яндекс Коллекции',
-          templateUrl: 'https://yandex.ru/collections/share/?url='
+          templateUrl: 'https://yandex.ru/collections/share/?url=',
         },
         twitter: {
           title: 'Twitter',
-          templateUrl: 'https://twitter.com/intent/tweet?text=&url='
+          templateUrl: 'https://twitter.com/intent/tweet?text=&url=',
         },
         skype: {
           title: 'Skype',
-          templateUrl: 'https://web.skype.com/share?url='
-        }
+          templateUrl: 'https://web.skype.com/share?url=',
+        },
       },
-      show: false
+      show: false,
     }
   },
   computed: {
@@ -117,12 +117,12 @@ export default {
         result.push({
           name: item,
           url: this.servicesTemplates[item].templateUrl + this.link,
-          title: this.servicesTemplates[item].title
+          title: this.servicesTemplates[item].title,
         })
       })
       return result
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -61,8 +61,8 @@ export default {
       } else {
         this.authFormOpen()
       }
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped lang="scss">

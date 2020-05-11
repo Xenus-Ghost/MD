@@ -5,20 +5,20 @@ export const state = () => ({
     {
       parent_id: null,
       service_title: 'Строительство',
-      id: 1
+      id: 1,
     },
     {
       id: 2,
       service_title: 'Кладочные работы',
-      parent_id: 1
+      parent_id: 1,
     },
     {
       id: 3,
       service_title: 'Земляные работы',
-      parent_id: 1
-    }
+      parent_id: 1,
+    },
   ],
-  evCategoriesList: {}
+  evCategoriesList: {},
 })
 
 export const mutations = {
@@ -27,7 +27,7 @@ export const mutations = {
   },
   getEventsCategories(state, data) {
     state.evCategoriesList = data
-  }
+  },
 }
 
 export const actions = {
@@ -46,5 +46,5 @@ export const actions = {
         // console.log(response.data, this)
         commit('getEventsCategories', response.data.data)
       })
-  }
+  },
 }

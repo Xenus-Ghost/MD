@@ -697,7 +697,7 @@
           Изыскательные работы
         </template>
         <template v-slot:footer>
-          <Button to="изыскательная-работа" shape="rounded" borders="outline">
+          <Button to="изыскательные-работы" shape="rounded" borders="outline">
             Подробнее</Button
           >
         </template>
@@ -716,8 +716,8 @@ export default {
   components: {
     CategoryHeader,
     ServicesGrid,
-    ServiceItem
-  }
+    ServiceItem,
+  },
 }
 </script>
 

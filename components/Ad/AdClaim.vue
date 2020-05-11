@@ -75,8 +75,8 @@ export default {
   props: {
     id: {
       type: Number,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -84,11 +84,11 @@ export default {
         phone: null,
         email: null,
         description: null,
-        claimType: 1
+        claimType: 1,
       },
       message: {
-        success: null
-      }
+        success: null,
+      },
     }
   },
   methods: {
@@ -98,8 +98,8 @@ export default {
     },
     close() {
       this.$emit('close')
-    }
-  }
+    },
+  },
 }
 </script>
 

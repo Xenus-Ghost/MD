@@ -32,7 +32,7 @@ export const keyCodes = Object.freeze({
   backspace: 8,
   insert: 45,
   pageup: 33,
-  pagedown: 34
+  pagedown: 34,
 })
 
 export function generateString(number = 7) {

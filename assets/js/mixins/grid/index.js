@@ -4,8 +4,8 @@ export const grids = {
   name: 'grids',
   props: {
     cols: {
-      type: [String, Number, Array]
-    }
+      type: [String, Number, Array],
+    },
   },
   computed: {
     gridStyles() {
@@ -26,16 +26,16 @@ export const grids = {
       ]
       if (parseInt(cols) <= 12) grid.push(['grid_cols_' + cols])
       return grid
-    }
-  }
+    },
+  },
 }
 
 export const columns = {
   name: 'columns',
   props: {
     col: {
-      type: [String, Number, Array]
-    }
+      type: [String, Number, Array],
+    },
   },
   computed: {
     // gridStyles() {
@@ -49,6 +49,6 @@ export const columns = {
       const col = typeof this.cols === 'string' ? this.col : this.col
       const grid = ['grid__column_' + col]
       return grid
-    }
-  }
+    },
+  },
 }

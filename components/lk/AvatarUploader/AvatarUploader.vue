@@ -7,7 +7,7 @@
       :src="img"
       :stencil-props="{
         minAspectRatio: 1,
-        maxAspectRatio: 1
+        maxAspectRatio: 1,
       }"
       :style="{}"
       @change="change"
@@ -39,7 +39,7 @@ export default {
   components: {
     Cropper,
     CircleStencil,
-    FileUploader
+    FileUploader,
   },
   data() {
     return {
@@ -48,13 +48,13 @@ export default {
         width: 0,
         height: 0,
         left: 0,
-        top: 0
+        top: 0,
       },
       image: null,
       canvas: null,
       images: [],
       errors: null,
-      result: null
+      result: null,
     }
   },
   methods: {
@@ -82,8 +82,8 @@ export default {
           console.log(e.response)
           this.errors = e.response
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

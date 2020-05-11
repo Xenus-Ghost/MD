@@ -36,7 +36,7 @@
       <span class="menu__item menu__item_mobile" @click="categoriesOpen">
         Категории
       </span>
-      <div style="font-size: 0.9rem">
+      <div style="font-size: 0.9rem;">
         RU
         <img src="~assets/img/flags/ru.svg" alt="RU" />
       </div>
@@ -49,7 +49,7 @@ export default {
   directives: {
     clickoutside: {
       bind(el, binding, vnode) {
-        el.clickOutsideEvent = function(event) {
+        el.clickOutsideEvent = function (event) {
           if (!(el === event.target || el.contains(event.target))) {
             vnode.context[binding.expression](event)
           }
@@ -63,12 +63,12 @@ export default {
       },
       stopProp(event) {
         event.stopPropagation()
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      isShow: false
+      isShow: false,
     }
   },
   computed: {
@@ -79,7 +79,7 @@ export default {
     },
     isLogged() {
       return this.$auth.loggedIn
-    }
+    },
   },
   methods: {
     contactsModalOpen() {
@@ -99,8 +99,8 @@ export default {
     },
     async logout() {
       await this.$auth.logout()
-    }
-  }
+    },
+  },
 }
 </script>
 

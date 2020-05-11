@@ -12,7 +12,7 @@ export const Measurable = {
     minHeight: [String, Number],
     minWidth: [String, Number],
     width: [String, Number],
-    margin: [String, Number]
+    margin: [String, Number],
   },
   computed: {
     measurableStyles() {
@@ -32,6 +32,6 @@ export const Measurable = {
       if (width) styles.width = width
       if (margin) styles.margin = margin
       return styles
-    }
-  }
+    },
+  },
 }

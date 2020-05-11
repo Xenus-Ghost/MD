@@ -29,14 +29,14 @@ export default {
   props: {
     backURL: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       back: this.$store.state.route.from.fullPath
         ? this.$store.state.route.from.fullPath
-        : ''
+        : '',
     }
   },
   computed: {
@@ -46,8 +46,8 @@ export default {
       url.pop()
       if (url[url.length - 1] === 'продажа') url.pop()
       return url.length > 1 ? url.join('/') : '/'
-    }
-  }
+    },
+  },
 }
 </script>
 

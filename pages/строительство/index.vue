@@ -809,10 +809,10 @@ export default {
     CategoryHeader,
     ServicesGrid,
     ServiceItem,
-    SellingButtons
+    SellingButtons,
   },
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
-  layout: 'Category'
+  layout: 'Category',
 }
 </script>
 

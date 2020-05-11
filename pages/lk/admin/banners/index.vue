@@ -16,7 +16,7 @@ export default {
   name: 'BannerAd',
   layout: 'admin',
   components: {
-    bannersTable
+    bannersTable,
   },
   /* async asyncData(context) {
     let banners = null
@@ -30,9 +30,9 @@ export default {
   data() {
     return {
       banners: null,
-      errors: null
+      errors: null,
     }
-  }
+  },
 }
 </script>
 

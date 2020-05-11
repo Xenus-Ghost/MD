@@ -39,12 +39,12 @@ export default {
   props: {
     data: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      banners: null
+      banners: null,
     }
   },
   /* computed: {
@@ -72,8 +72,8 @@ export default {
         .get(getUrl('admin/banners'))
         .then((response) => this.$set(this, 'banners', response.data.data))
         .catch((e) => console.error(e))
-    }
-  }
+    },
+  },
 }
 </script>
 

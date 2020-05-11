@@ -15,8 +15,8 @@ export default {
   props: {
     categories: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     catList() {
@@ -29,8 +29,8 @@ export default {
         )
       ) */
       return this.categories
-    }
-  }
+    },
+  },
 }
 </script>
 

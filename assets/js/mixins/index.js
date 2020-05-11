@@ -6,7 +6,7 @@ import {
   getAuthorType,
   getCategoryMeta,
   getCustomCategoryMeta,
-  getCategorySlug
+  getCategorySlug,
 } from './advertisements'
 
 import { apiGetEvents } from './events'
@@ -20,5 +20,5 @@ export {
   getCategoryMeta,
   getCustomCategoryMeta,
   getCategorySlug,
-  apiGetEvents
+  apiGetEvents,
 }

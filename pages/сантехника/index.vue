@@ -687,8 +687,8 @@ export default {
     CategoryHeader,
     ServicesGrid,
     ServiceItem,
-    SellingButtons
-  }
+    SellingButtons,
+  },
 }
 </script>
 

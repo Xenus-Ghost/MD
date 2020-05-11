@@ -23,12 +23,12 @@ export default {
   props: {
     n: {
       default: 1,
-      type: Number || String
+      type: Number || String,
     },
     to: {
       default: null,
-      type: String
-    }
+      type: String,
+    },
   },
   computed: {
     index() {
@@ -44,11 +44,11 @@ export default {
           ' rotate(' +
           parseInt(this.index) * (-90 * (360 / 13)) +
           'deg)',
-        display: 'none'
+        display: 'none',
       }
       return obj
-    }
-  }
+    },
+  },
 }
 </script>
 

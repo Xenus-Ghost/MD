@@ -6,7 +6,7 @@ export async function apiGetAds(params, axios) {
   // const qs = require('qs')
   const urlParams = {
     category_id: params.category_id,
-    per_page: 99
+    per_page: 99,
   }
   if (params.type_id) urlParams.type_id = params.type_id
   if (params.author_type_id) urlParams.author_type_id = params.author_type_id
@@ -19,7 +19,7 @@ export async function apiGetAds(params, axios) {
   return {
     ads: data.data,
     links: data.links,
-    queryParams: params
+    queryParams: params,
   }
 }
 

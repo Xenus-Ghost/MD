@@ -27,10 +27,11 @@ export default {
     const authorTypeList = context.store.state.advert.authorType
     let routeValid = true
     const filterData = {
-      with: ['categories', 'author']
+      with: ['categories', 'author'],
     }
-    console.log(slugs)
+    // console.log(slugs)
     const meta = {}
+
     let pageType = null
     // define author
     const authorType = authorTypeList.find((result) => lastSlug === result.slug)
@@ -118,7 +119,8 @@ export default {
       filterData,
       pageType,
       meta,
-      subCategoriesList
+      subCategoriesList,
+      category: currentCategory,
     }
     if (typeof ads !== 'undefined') returnData.ads = ads
     if (typeof links !== 'undefined') returnData.links = links
@@ -127,7 +129,7 @@ export default {
   },
   data() {
     return {
-      url: this.$route
+      url: this.$route,
     }
   },
   computed: {
@@ -141,19 +143,20 @@ export default {
         queryParams: this.queryParams,
         filterData: this.filterData,
         meta: this.meta,
-        categories: this.subCategoriesList
+        categories: this.subCategoriesList,
+        category: this.category,
       }
       return data
-    }
+    },
   },
   created() {
     // console.log(this.$route)
   },
   head() {
     return {
-      title: this.meta.title
+      title: this.meta.title,
     }
-  }
+  },
 }
 </script>
 

@@ -753,9 +753,9 @@ export default {
     CategoryHeader,
     ServicesGrid,
     ServiceItem,
-    SellingButtons
+    SellingButtons,
   },
-  mixins: [getCategoryIDByUrl, getCustomCategoryMeta]
+  mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
 }
 </script>
 

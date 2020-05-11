@@ -4,7 +4,7 @@ import {
   validateCategory,
   getCategoryMeta,
   getCategorySlug,
-  getCustomCategoryMeta
+  getCustomCategoryMeta,
 } from './categories'
 
 import { getAuthorType } from './author_type'
@@ -19,5 +19,5 @@ export {
   apiGetAds,
   getCategoryMeta,
   getCategorySlug,
-  getCustomCategoryMeta
+  getCustomCategoryMeta,
 }
