@@ -55,11 +55,19 @@ export const actions = {
         commit('categories/getAdCategories', response.data.data)
       })
       .catch((error) => console.error(error + error.response)) */
-    const cached = true
+    const cached = false
     const [adCategories, EvCategories] = await Promise.all([
       this.$axios
-        .get(getUrl('advertisement-categories'), { params: { with: 'meta' } })
-        .catch((error) => console.error([error], 'nuxtServerInitError')),
+        .get('advertisement-categories', {
+          params: { with: 'meta' },
+          validateStatus: false,
+        })
+        .catch((error) => {
+          console.error(error)
+          console.error(error.data)
+          console.error(error.status)
+          console.error(error.headers)
+        }),
       cached
         ? JSON.parse(
             require('fs').readFileSync(

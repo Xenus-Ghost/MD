@@ -67,6 +67,14 @@ export default {
       type: String,
       default: 'Выберите...',
     },
+    labelField: {
+      type: String,
+      default: null,
+    },
+    adtype: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -83,7 +91,7 @@ export default {
       // let data = []
       const data = this.categories
       data.forEach((elem) => {
-        elem.label = elem.service_title ? elem.service_title : elem.sale_title
+        elem.label = elem.name
       })
       const returnData = listToTree(data)
       return returnData

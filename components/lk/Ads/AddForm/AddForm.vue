@@ -368,13 +368,44 @@ export default {
     categories() {
       const list = this.$store.state.categories.adCategoriesList
       let returnData = []
-      let filterField = 'service_title'
+      /* let filterField = 'service_title'
       if (this.ad.type_id === 1) {
         filterField = 'service_title'
       } else if (this.ad.type_id === 2) {
         filterField = 'sale_title'
+      } */
+      // returnData = list.filter((result) => result[filterField])
+      let authorTypeField = null
+
+      switch (this.ad.author_type_id) {
+        case 1:
+          authorTypeField = 'private-person'
+          break
+        case 2:
+          authorTypeField = 'firm'
+          break
+        case 4:
+          authorTypeField = 'online-shop'
+          break
+        case 5:
+          authorTypeField = 'shopping-center'
+          break
+        case 6:
+          authorTypeField = 'plant'
+          break
+        default:
+          authorTypeField = null
+          break
       }
-      returnData = list.filter((result) => result[filterField])
+
+      returnData = list.filter((result) =>
+        result.meta.find(
+          (res) =>
+            res.type_id === this.ad.type_id &&
+            authorTypeField !== null &&
+            res[authorTypeField] === 1
+        )
+      )
       return returnData
     },
   },
