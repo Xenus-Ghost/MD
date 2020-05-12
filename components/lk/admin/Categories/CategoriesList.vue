@@ -11,6 +11,7 @@
       :category-data="item"
       :url="'admin/advertisement-categories/'"
       @change="refresh"
+      @subcatAdd="create"
     />
     <div>
       <Button @click="create">Добавить</Button>
@@ -54,8 +55,21 @@ export default {
           this.$set(this, 'categoriesList', listToTree(response.data.data))
         )
     },
-    create() {
-      this.categoriesList.push({})
+    create(parent_id = null) {
+      this.categoriesList.push({
+        parent_id,
+        /* meta: [
+          {
+            type_id: 1,
+            title: '',
+            'private-person': 0,
+            firm: 0,
+            'online-shop': 0,
+            'shopping-center': 0,
+            plant: 0,
+          },
+        ], */
+      })
     },
     async refresh() {
       // this.$set(this, 'categoriesList', null)

@@ -16,6 +16,12 @@
           class="input"
         />
       </label>
+      <Button
+        class="category__button_subcat"
+        @click="$emit('subcatAdd', data.id)"
+      >
+        Добавить подкатегорию</Button
+      >
     </div>
     <details class="category__meta" open>
       <!--      <summary>-->
@@ -114,6 +120,11 @@
         :key="i"
         :category-data="item"
         :url="'admin/advertisement-categories/'"
+        @subcatAdd="
+          (parent_id) => {
+            $emit('subcatAdd', parent_id)
+          }
+        "
       />
     </details>
   </div>
@@ -135,7 +146,25 @@ export default {
     },
     categoryData: {
       type: Object,
-      default: null,
+      default() {
+        return {
+          meta: [
+            {
+              type_id: 1,
+              title: this.data.service_title
+                ? this.data.service_title
+                : this.data.name
+                ? this.data.name
+                : '',
+              'private-person': 0,
+              firm: 0,
+              'online-shop': 0,
+              'shopping-center': 0,
+              plant: 0,
+            },
+          ],
+        }
+      },
     },
     url: {
       type: String,
@@ -225,6 +254,7 @@ export default {
 .category {
   &__main-data {
     display: flex;
+    flex-wrap: wrap;
     flex-basis: 33%;
   }
   &__id {
@@ -242,6 +272,9 @@ export default {
       /*height: 100%;*/
       cursor: pointer;
     }
+  }
+  &__button_subcat {
+    flex-basis: 100%;
   }
   &__meta-item {
     display: grid;
