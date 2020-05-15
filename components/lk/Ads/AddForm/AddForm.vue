@@ -306,6 +306,7 @@
 import VideoUploader from '@/components/lk/VideoUploader/VideoUploader'
 
 import { getUrl } from '@/assets/js/util'
+import { getAuthorTypeFieldName } from '@/assets/js/util/ads'
 import FileUploader from '@/components/FileUploader'
 import CategorySelect from '@/components/lk/CategorySelect'
 import { PhoneInputGroup, AddressInputGroup } from '@/components/lk/Ads/Inputs'
@@ -375,28 +376,7 @@ export default {
         filterField = 'sale_title'
       } */
       // returnData = list.filter((result) => result[filterField])
-      let authorTypeField = null
-
-      switch (this.ad.author_type_id) {
-        case 1:
-          authorTypeField = 'private-person'
-          break
-        case 2:
-          authorTypeField = 'firm'
-          break
-        case 4:
-          authorTypeField = 'online-shop'
-          break
-        case 5:
-          authorTypeField = 'shopping-center'
-          break
-        case 6:
-          authorTypeField = 'plant'
-          break
-        default:
-          authorTypeField = null
-          break
-      }
+      const authorTypeField = getAuthorTypeFieldName(this.ad.author_type_id)
 
       returnData = list.filter((result) =>
         result.meta.find(
@@ -406,6 +386,11 @@ export default {
             res[authorTypeField] === 1
         )
       )
+      returnData.forEach((item) => {
+        item.label = item.meta.find(
+          (metaItem) => metaItem[authorTypeField] === 1
+        ).title
+      })
       return returnData
     },
   },

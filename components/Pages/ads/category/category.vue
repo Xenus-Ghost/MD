@@ -8,7 +8,7 @@
         </template>
       </CategoryHeader>
       <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw;">
-        <div class="сustomers">
+        <div v-if="adType.isCustomer" class="сustomers">
           <svg
             width="31"
             height="150"
@@ -129,7 +129,7 @@
           </svg>
         </div>
       </div>
-      <SellingButtons v-if="category.sale_title" />
+      <SellingButtons v-if="adType.isSell" :author-types="SellingAuthors" />
     </div>
   </article>
 </template>
@@ -161,11 +161,57 @@ export default {
       a: 'a',
     }
   },
-  /* computed: {
-    pageTitle() {
-      return this.meta.title
-    }
-  } */
+  computed: {
+    adType() {
+      const adType = {}
+      const categoryMeta = this.category.meta
+      adType.isService = !!categoryMeta.find((result) => result.type_id === 1)
+      adType.isSell = !!categoryMeta.find((result) => result.type_id === 2)
+      adType.isCustomer = !!categoryMeta.find((result) => result.type_id === 3)
+      return adType
+    },
+    authorType() {
+      const authorType = {}
+      const categoryMeta = this.category.meta
+      authorType.isPrivate = !!categoryMeta.find(
+        (result) => result['private-person'] === 1
+      )
+      authorType.isFirm = !!categoryMeta.find((result) => result.firm === 1)
+      authorType.isOnlineShop = !!categoryMeta.find(
+        (result) => result['online-shop'] === 1
+      )
+      authorType.isShoppingCenter = !!categoryMeta.find(
+        (result) => result['shopping-center'] === 1
+      )
+      authorType.isPlant = !!categoryMeta.find((result) => result.plant === 1)
+      return authorType
+    },
+    SellingAuthors() {
+      const obj = {}
+      const categoryMeta = this.category.meta
+      obj.private_person = !!categoryMeta.find(
+        (result) => result['private-person'] === 1 && result.type_id === 2
+      )
+      obj.firm = !!categoryMeta.find(
+        (result) => result.firm === 1 && result.type_id === 2
+      )
+      obj.online_shop = !!categoryMeta.find(
+        (result) => result['online-shop'] === 1 && result.type_id === 2
+      )
+      obj.shopping_center = !!categoryMeta.find(
+        (result) => result['shopping-center'] === 1 && result.type_id === 2
+      )
+      obj.plant = !!categoryMeta.find(
+        (result) => result.plant === 1 && result.type_id === 2
+      )
+      return obj
+    },
+  },
+  methods: {
+    getVisibility(adType = null, authorType = null) {
+      return true
+    },
+  },
 }
 </script>
 
@@ -227,6 +273,7 @@ export default {
   }
   @include on_desktop() {
     grid-column: 1 span;
+    grid-column-start: 2;
   }
   &__lines {
     @include on_mobile() {

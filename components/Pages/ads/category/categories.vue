@@ -17,7 +17,11 @@
           borders="outline"
           class="grid__column_2"
           height="100%"
-          >{{ cat.service_title }}</Button
+          >{{
+            cat.service_title
+              ? cat.service_title
+              : cat.meta.find((result) => result.title).title
+          }}</Button
         >
       </div>
     </div>
@@ -63,7 +67,7 @@ export default {
     grid-template-rows: 2fr 2fr auto;
   }
 }
-.сustomers {
+/*.сustomers {
   align-self: center;
   padding: 5% 10%;
   display: flex;
@@ -128,5 +132,5 @@ export default {
       grid-column: 1/-1;
     }
   }
-}
+}*/
 </style>

@@ -71,7 +71,7 @@ export default {
       type: String,
       default: null,
     },
-    adtype: {
+    adType: {
       type: String,
       default: null,
     },
@@ -90,9 +90,9 @@ export default {
     options() {
       // let data = []
       const data = this.categories
-      data.forEach((elem) => {
+      /* data.forEach((elem) => {
         elem.label = elem.name
-      })
+      }) */
       const returnData = listToTree(data)
       return returnData
     },

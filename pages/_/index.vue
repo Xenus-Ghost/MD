@@ -84,7 +84,6 @@ export default {
       filterData.author_type_id = authorType ? authorType.id : null
       filterData.type_id = adType ? adType.id : null
     } else {
-      // if (categoriesList && !!categoriesList.length)
       if (currentCategory)
         if (
           !categoriesList.find(
@@ -98,14 +97,8 @@ export default {
       meta.title = currentCategory ? currentCategory.service_title : null
     }
     const axios = context.$axios
-    // let ads, links, queryParams
-    /* if (!!filterData.length) {
-      const { ads, links, queryParams } = await apiGetAds(filterData, axios)
-    } */
 
     const { ads, links, queryParams } = await apiGetAds(filterData, axios)
-
-    // const apiResponse = { ads, links, queryParams}
 
     try {
       currentCategory.id = currentCategory.id + 0
