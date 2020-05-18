@@ -3,11 +3,13 @@ import Button from './../components/Button/Button'
 import Modal from './../components/Modal/Modal'
 import Card from '@/components/Card/Card'
 import LoginForm from '@/components/Registration/LoginForm'
+import XInput from '@/components/Input'
 
 Vue.component('Button', Button)
 Vue.component('Modal', Modal)
 Vue.component('LoginForm', LoginForm)
 Vue.component('Card', Card)
+Vue.component('XInput', XInput)
 
 Vue.directive('click-outside', {
   bind() {

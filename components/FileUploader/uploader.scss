@@ -57,6 +57,14 @@
   left: 0;
   z-index: 1;
 }
+.uploader__message-list {
+  padding: 0.25rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.uploader__message {
+  font-size: 0.8rem;
+}
 .uploader__error-list {
   display: flex;
   flex-direction: column;

@@ -61,7 +61,7 @@ export default {
     },
     max: {
       type: Number,
-      default: 2,
+      default: 1,
     },
     placeholder: {
       type: String,

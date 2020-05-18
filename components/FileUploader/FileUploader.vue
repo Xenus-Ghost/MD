@@ -13,6 +13,9 @@
         <slot>выбрать файлы</slot>
       </Button>
       <Button v-if="loadButton" @click.native="upload()">Загрузить</Button>
+      <div class="uploader__message-list">
+        <span class="uploader__message">Маскимум: {{ max }}</span>
+      </div>
       <div v-if="preview || autoUpload" class="uploader__list">
         <div v-for="(file, j) in uploaded" :key="j" class="uploader__file">
           <img

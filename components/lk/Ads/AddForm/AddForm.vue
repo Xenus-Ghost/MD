@@ -1,14 +1,16 @@
 <template>
   <Modal @close="$emit('close')">
     <template v-slot:header>
-      <span v-if="ad.account_type_id === 1" class="modal__title">
-        Бесплатная публикация
-      </span>
-      <span v-if="ad.account_type_id === 2" class="modal__title">
-        PRO публикация
-      </span>
-      <span v-if="ad.account_type_id === 3" class="modal__title">
-        Премиум публикация
+      <span class="modal__title">
+        {{
+          `${
+            ad.account_type_id === 1
+              ? 'Бесплатная'
+              : ad.account_type_id === 2
+              ? 'PRO'
+              : 'Премиум'
+          } публикация`
+        }}
       </span>
     </template>
     <template>
@@ -53,38 +55,48 @@
             Завод
           </Button>
         </div>
-        <label for="title" class="label grid__column_6">
-          <input
-            id="title"
-            v-model="ad.title"
-            class="input"
-            type="text"
-            placeholder="Название объявления"
-            required
-            maxlength="30"
-          />
-        </label>
-        <label for="name" class="label grid__column_6">
-          <input
-            id="name"
-            v-model="ad.name"
-            class="input"
-            type="text"
-            :placeholder="
-              ad.author_type_id === 4
-                ? 'Название интернет-магазина'
-                : ad.author_type_id === 2
-                ? 'Название фирмы/компании'
-                : 'Фамилия Имя Отчество'
-            "
-            maxlength="60"
-            required
-          />
-        </label>
+        <x-input
+          id="title"
+          v-model="ad.title"
+          class="grid__column_6"
+          input-type="text"
+          placeholder="Название объявления"
+          :max-length="30"
+        />
+        <x-input
+          id="name"
+          v-model="ad.name"
+          class="grid__column_6"
+          input-type="text"
+          :placeholder="
+            ad.author_type_id === 4
+              ? 'Название интернет-магазина'
+              : ad.author_type_id === 2
+              ? 'Название фирмы/компании'
+              : 'Фамилия Имя Отчество'
+          "
+          maxlength="60"
+          required
+        />
+        <x-input
+          v-if="
+            ad.account_type_id >= 2 &&
+            (ad.author_type_id === 2 ||
+              ad.author_type_id === 5 ||
+              ad.author_type_id === 6)
+          "
+          id="inn"
+          v-model="ad.inn"
+          class="grid__column_6"
+          input-type="text"
+          placeholder="Реквизиты ИНН ОГРН"
+          :max-length="100"
+        />
         <CategorySelect
           v-model="category_ids"
           class="grid__column_6"
           :categories="categories"
+          :max="maxCategories"
         />
         <label for="description" class="label grid__column_6">
           <textarea
@@ -103,86 +115,55 @@
           :count="phoneCount"
           class="grid__column_3"
         />
-        <label
+        <x-input
           v-if="ad.account_type_id !== 1"
-          for="website"
-          class="label grid__column_3"
-        >
-          <input
-            id="website"
-            v-model="ad.website"
-            type="url"
-            inputmode="url"
-            class="input"
-            placeholder="Ссылка на сайт"
-            autocomplete="url"
-          />
-        </label>
-        <label
+          id="website"
+          v-model="ad.website"
+          class="grid__column_3"
+          input-type="url"
+          inputmode="url"
+          placeholder="Ссылка на сайт"
+          autocomplete="url"
+        />
+        <x-input
           v-if="ad.account_type_id !== 1"
-          for="vk"
-          class="label grid__column_3"
-        >
-          <input
-            id="vk"
-            v-model="social.vk"
-            type="text"
-            class="input"
-            placeholder="ссылка на сообщество VK"
-          />
-        </label>
-        <label
+          id="vk"
+          v-model="social.vk"
+          class="grid__column_3"
+          placeholder="ссылка на сообщество VK"
+        />
+        <x-input
           v-if="ad.account_type_id !== 1"
-          for="ok"
-          class="label grid__column_3"
-        >
-          <input
-            id="ok"
-            v-model="social.ok"
-            type="text"
-            class="input"
-            placeholder="ссылка на сообщество OK"
-          />
-        </label>
-        <label
+          id="ok"
+          v-model="social.ok"
+          class="grid__column_3"
+          placeholder="ссылка на сообщество OK"
+        />
+        <x-input
           v-if="ad.account_type_id !== 1"
-          for="ig"
-          class="label grid__column_3"
-        >
-          <input
-            id="ig"
-            v-model="social.ig"
-            type="text"
-            class="input"
-            placeholder="ссылка на Instagram"
-          />
-        </label>
-        <label
+          id="ig"
+          v-model="social.ig"
+          class="grid__column_3"
+          placeholder="ссылка на Instagram"
+        />
+        <x-input
           v-if="ad.account_type_id !== 1"
-          for="fb"
+          id="fb"
+          v-model="social.fb"
+          class="grid__column_3"
+          placeholder="ссылка на сообщество FB"
+        />
+        <x-input
+          id="price"
+          v-model="ad.price"
           class="label grid__column_3"
-        >
-          <input
-            id="fb"
-            v-model="social.fb"
-            type="text"
-            class="input"
-            placeholder="ссылка на сообщество FB"
-          />
-        </label>
-        <label for="price" class="label grid__column_3">
-          <input
-            id="price"
-            v-model="ad.price"
-            type="number"
-            step="any"
-            min="0"
-            class="input"
-            placeholder="Стоимость"
-            required
-            inputmode="decimal"
-          />
-        </label>
+          type="number"
+          step="any"
+          min="0"
+          placeholder="Стоимость"
+          required
+          inputmode="decimal"
+        />
         <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
           <div class="">
             <FileUploader
@@ -191,12 +172,13 @@
               auto-upload
               preview
               file-type="image"
+              :max="maxPhoto"
             >
               Загрузить фотографии
             </FileUploader>
           </div>
-          <div v-if="ad.account_type_id !== 1" class="">
-            <VideoUploader v-model="ad.video"></VideoUploader>
+          <div v-if="ad.account_type_id !== 1 && maxVideo > 0" class="">
+            <VideoUploader v-model="ad.video" :max="maxVideo" />
           </div>
         </div>
         <div
@@ -363,19 +345,13 @@ export default {
       addressCount: 1,
       citiesList: this.$store.state.address.citiesList,
       metroList: this.$store.state.address.metroList,
+      maxPhoto: 1,
     }
   },
   computed: {
     categories() {
       const list = this.$store.state.categories.adCategoriesList
       let returnData = []
-      /* let filterField = 'service_title'
-      if (this.ad.type_id === 1) {
-        filterField = 'service_title'
-      } else if (this.ad.type_id === 2) {
-        filterField = 'sale_title'
-      } */
-      // returnData = list.filter((result) => result[filterField])
       const authorTypeField = getAuthorTypeFieldName(this.ad.author_type_id)
 
       returnData = list.filter((result) =>
@@ -393,14 +369,40 @@ export default {
       })
       return returnData
     },
+    maxVideo() {
+      let max = 0
+      if (this.ad.author_type_id === 5) {
+        max =
+          this.ad.account_type_id === 2
+            ? 3
+            : this.ad.account_type_id === 3
+            ? 1
+            : 1
+      }
+      return max
+    },
+    maxCategories() {
+      let max = 1
+      if (this.ad.account_type_id > 1) max = 5
+      return max
+    },
   },
   mounted() {
     this.ad.account_type_id = this.props.account_type_id
     this.ad.author_type_id = this.props.author_type_id
     this.ad.type_id = this.props.type_id
 
-    if (this.ad.author_type_id >= 2) this.phoneCount = 3
+    // if (this.ad.author_type_id >= 2) this.phoneCount = 3
     if (this.ad.author_type_id >= 2) this.addressCount = 3
+
+    this.phoneCount =
+      this.ad.account_type_id === 2 ? 2 : this.ad.account_type_id === 3 ? 5 : 1
+    this.maxPhoto =
+      this.ad.account_type_id === 2
+        ? 10
+        : this.ad.account_type_id === 3
+        ? 15
+        : 1
   },
   methods: {
     async adSubmit() {
