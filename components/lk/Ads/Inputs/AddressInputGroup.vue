@@ -1,33 +1,33 @@
 <template>
   <div class="input-group input-group_address grid_cols_6">
     <ul class="city-metro__list grid__column_4">
-      <li v-for="n in count" :key="n" class="city-metro__element grid_cols_6">
+      <li v-for="n in count" :key="n-1" class="city-metro__element grid_cols_6">
         <label for="region" class="label grid__column_3">
           <select
             id="region"
-            v-model="addresses.region[n]"
+            v-model="addresses.region[n - 1]"
             class="input_select"
             required
           >
-            <option :value="null" selected disabled class="input_option">
+            <option value="" disabled class="input_option">
               Выберите...
             </option>
             <option value="Москва" class="input_option">
               Москва
             </option>
-            <option value="Мосовская область" class="input_option">
-              Мосовская область
+            <option value="Московская область" class="input_option">
+              Московская область
             </option>
           </select>
         </label>
         <label
-          v-show="addresses.region[n] && addresses.region[n] !== 'Москва'"
+          v-show="addresses.region[n - 1] && addresses.region[n - 1] !== 'Москва'"
           :for="`city-${n}`"
           class="label grid__column_3"
         >
           <select
             :id="`city-${n}`"
-            v-model="addresses.city[n]"
+            v-model="addresses.city[n - 1]"
             class="input_select"
             required
           >
@@ -45,13 +45,13 @@
           </select>
         </label>
         <label
-          v-if="addresses.region[n] === 'Москва'"
+          v-if="addresses.region[n - 1] === 'Москва'"
           :for="`metro-${n}`"
           class="label grid__column_3"
         >
           <select
             :id="`metro-${n}`"
-            v-model="addresses.metro[n]"
+            v-model="addresses.metro[n - 1]"
             class="input_select"
           >
             <option :value="null" selected disabled class="input_option">
@@ -72,13 +72,13 @@
     <div class="input_addresses grid__column_2">
       <label
         v-for="n in count"
-        :key="n"
+        :key="n - 1"
         :for="`address_${n}`"
         class="label grid__column_3"
       >
         <input
           :id="`address_${n}`"
-          v-model="addresses.address[n]"
+          v-model="addresses.address[n - 1]"
           class="input"
           type="text"
           :placeholder="`Адрес (${n})`"

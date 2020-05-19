@@ -54,6 +54,14 @@
           >
             Завод
           </Button>
+          <Button
+            shape="semi_rounded"
+            borders="neon"
+            :class="ad.author_type_id === 7 ? 'button_active' : ''"
+            @click.native="ad.author_type_id = 7"
+          >
+            Недвижимость
+          </Button>
         </div>
         <x-input
           id="title"
@@ -194,7 +202,11 @@
           </FileUploader>
         </div>
         <div
-          v-if="ad.type_id !== 3 && ad.account_type_id !== 1"
+          v-if="
+            ad.type_id !== 3 &&
+            ad.account_type_id === 3 &&
+            (ad.author_type_id === 4 || ad.author_type_id === 2)
+          "
           class="grid__column_full grid_cols_2"
         >
           <div class="">
@@ -384,6 +396,7 @@ export default {
     maxCategories() {
       let max = 1
       if (this.ad.account_type_id > 1) max = 5
+      if (this.author_type_id === 1 && this.ad.type_id === 2) max = 1
       return max
     },
   },
