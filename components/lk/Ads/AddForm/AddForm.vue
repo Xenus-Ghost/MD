@@ -68,12 +68,19 @@
           v-model="ad.title"
           class="grid__column_6"
           input-type="text"
-          placeholder="Название объявления"
+          :placeholder="
+            ad.type_id === 1
+              ? 'Название объявления'
+              : ad.author_type_id === 4
+              ? 'Название интернет-магазина'
+              : 'Название фирмы/компании'
+          "
           :max-length="30"
         />
-        <x-input
+        <!--<x-input
           id="name"
           v-model="ad.name"
+          name="name"
           class="grid__column_6"
           input-type="text"
           :placeholder="
@@ -85,7 +92,7 @@
           "
           maxlength="60"
           required
-        />
+        />-->
         <x-input
           v-if="
             ad.account_type_id >= 2 &&
@@ -95,6 +102,7 @@
           "
           id="inn"
           v-model="ad.inn"
+          name="inn"
           class="grid__column_6"
           input-type="text"
           placeholder="Реквизиты ИНН ОГРН"
@@ -110,7 +118,7 @@
           <textarea
             id="description"
             v-model="ad.description"
-            name=""
+            name="description"
             rows="10"
             class="input_textarea"
             required
@@ -120,6 +128,7 @@
         </label>
         <PhoneInputGroup
           v-model="ad.phone"
+          name="phone[]"
           :count="phoneCount"
           class="grid__column_3"
         />
@@ -127,6 +136,7 @@
           v-if="ad.account_type_id !== 1"
           id="website"
           v-model="ad.website"
+          name="website"
           class="grid__column_3"
           input-type="url"
           inputmode="url"
@@ -137,6 +147,7 @@
           v-if="ad.account_type_id !== 1"
           id="vk"
           v-model="social.vk"
+          name="social[vk]"
           class="grid__column_3"
           placeholder="ссылка на сообщество VK"
         />
@@ -144,6 +155,7 @@
           v-if="ad.account_type_id !== 1"
           id="ok"
           v-model="social.ok"
+          name="social[ok]"
           class="grid__column_3"
           placeholder="ссылка на сообщество OK"
         />
@@ -151,6 +163,7 @@
           v-if="ad.account_type_id !== 1"
           id="ig"
           v-model="social.ig"
+          name="social[ig]"
           class="grid__column_3"
           placeholder="ссылка на Instagram"
         />
@@ -158,14 +171,16 @@
           v-if="ad.account_type_id !== 1"
           id="fb"
           v-model="social.fb"
+          name="social[ig]"
           class="grid__column_3"
           placeholder="ссылка на сообщество FB"
         />
         <x-input
           id="price"
           v-model="ad.price"
+          name="price"
           class="label grid__column_3"
-          type="number"
+          input-type="number"
           step="any"
           min="0"
           placeholder="Стоимость"
@@ -241,6 +256,7 @@
           <input
             id="start_time"
             v-model="ad.start_time"
+            name="start_time"
             class="input_date"
             type="date"
             placeholder="Дата начала"
@@ -250,6 +266,7 @@
           <input
             id="end_time"
             v-model="ad.end_time"
+            name="end_time"
             class="input_date"
             type="date"
             placeholder="Дата окончания"
@@ -263,6 +280,7 @@
           <input
             id="period"
             v-model="ad.period"
+            name="period"
             type="number"
             min="1"
             max="36"
@@ -435,6 +453,8 @@ export default {
 
       if (this.ad.region !== 'Московская область' && !this.ad.city)
         this.ad.city = this.ad.region
+
+      if (this.ad.name === null) this.ad.name = this.ad.title
 
       await this.$axios
         .$post(getUrl('me/advertisements'), formData)

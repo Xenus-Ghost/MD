@@ -1,13 +1,17 @@
 <template>
   <div class="input-group input-group_address grid_cols_6">
     <ul class="city-metro__list grid__column_4">
-      <li v-for="n in count" :key="n-1" class="city-metro__element grid_cols_6">
+      <li
+        v-for="n in count"
+        :key="n - 1"
+        class="city-metro__element grid_cols_6"
+      >
         <label for="region" class="label grid__column_3">
           <select
             id="region"
             v-model="addresses.region[n - 1]"
             class="input_select"
-            required
+            :required="n === true || n < required"
           >
             <option value="" disabled class="input_option">
               Выберите...
@@ -21,7 +25,9 @@
           </select>
         </label>
         <label
-          v-show="addresses.region[n - 1] && addresses.region[n - 1] !== 'Москва'"
+          v-show="
+            addresses.region[n - 1] && addresses.region[n - 1] !== 'Москва'
+          "
           :for="`city-${n}`"
           class="label grid__column_3"
         >
@@ -29,7 +35,11 @@
             :id="`city-${n}`"
             v-model="addresses.city[n - 1]"
             class="input_select"
-            required
+            :required="
+              (n === true || n < required) &&
+              addresses.region[n - 1] &&
+              addresses.region[n - 1] !== 'Москва'
+            "
           >
             <option :value="null" selected disabled class="input_option">
               Выберите город

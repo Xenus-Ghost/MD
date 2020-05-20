@@ -111,34 +111,56 @@
               >
                 Наш сайт: {{ adModalData.website }}
               </a>
-              <div class="ad-modal__address">{{ adModalData.address }}</div>
-              <div v-if="adModalData.metro" class="ad-modal__address_metro">
-                <svg
-                  class="icon-svg_metro"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#icon-svg_metro)">
-                    <path
-                      d="M16.0715 0H1.92859C0.865115 0 0 0.865115 0 1.92859V16.0715C0 17.1349 0.865115 18 1.92859 18H16.0715C17.1349 18 18 17.1349 18 16.0715V1.92859C18 0.865115 17.1349 0 16.0715 0V0ZM16.7143 16.0715C16.7143 16.4261 16.4261 16.7143 16.0715 16.7143H1.92859C1.5739 16.7143 1.28574 16.4261 1.28574 16.0715V1.92859C1.28574 1.5739 1.5739 1.28574 1.92859 1.28574H16.0715C16.4261 1.28574 16.7143 1.5739 16.7143 1.92859V16.0715Z"
-                      fill="white"
-                    />
-                    <path
-                      d="M13.7464 3.90695C13.506 3.80651 13.2297 3.86173 13.0458 4.0463L9.00029 8.0918L4.9548 4.0463C4.7715 3.863 4.49461 3.80775 4.25418 3.90695C4.01375 4.00615 3.85742 4.24092 3.85742 4.50083V14.1419H5.14312V6.05278L8.54572 9.45538C8.79682 9.70649 9.20362 9.70649 9.45478 9.45538L12.8574 6.05278V14.1419H14.1431V4.50088C14.1432 4.24097 13.9868 4.00615 13.7464 3.90695Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="icon-svg_metro">
-                      <rect width="18" height="18" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                {{ adModalData.metro }}
+              <div class="ad-modal__address-list">
+                <div class="ad-modal__address-item">
+                  <div
+                    v-for="(city, c) in adModalData.city"
+                    :key="c"
+                    class="ad-modal__address"
+                  >
+                    {{ city }}
+                  </div>
+                  <div
+                    v-for="(address, a) in adModalData.address"
+                    :key="a"
+                    class="ad-modal__address"
+                  >
+                    {{ address }}
+                  </div>
+                  <div
+                    v-for="(metro, m) in adModalData.city"
+                    :key="m"
+                    class="ad-modal__address_metro"
+                  >
+                    <svg
+                      class="icon-svg_metro"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#icon-svg_metro)">
+                        <path
+                          d="M16.0715 0H1.92859C0.865115 0 0 0.865115 0 1.92859V16.0715C0 17.1349 0.865115 18 1.92859 18H16.0715C17.1349 18 18 17.1349 18 16.0715V1.92859C18 0.865115 17.1349 0 16.0715 0V0ZM16.7143 16.0715C16.7143 16.4261 16.4261 16.7143 16.0715 16.7143H1.92859C1.5739 16.7143 1.28574 16.4261 1.28574 16.0715V1.92859C1.28574 1.5739 1.5739 1.28574 1.92859 1.28574H16.0715C16.4261 1.28574 16.7143 1.5739 16.7143 1.92859V16.0715Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M13.7464 3.90695C13.506 3.80651 13.2297 3.86173 13.0458 4.0463L9.00029 8.0918L4.9548 4.0463C4.7715 3.863 4.49461 3.80775 4.25418 3.90695C4.01375 4.00615 3.85742 4.24092 3.85742 4.50083V14.1419H5.14312V6.05278L8.54572 9.45538C8.79682 9.70649 9.20362 9.70649 9.45478 9.45538L12.8574 6.05278V14.1419H14.1431V4.50088C14.1432 4.24097 13.9868 4.00615 13.7464 3.90695Z"
+                          fill="white"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="icon-svg_metro">
+                          <rect width="18" height="18" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    {{ metro }}
+                  </div>
+                </div>
               </div>
+
               <div v-if="adModalData.social" class="ad-modal__socials">
                 <a
                   v-for="(i, j) in adModalData.social"
@@ -476,6 +498,9 @@ export default {
             ? e.data.data.categories
             : null
           if (e.data.data.logo) e.data.data.logo = getFileUrl(e.data.data.logo)
+          e.data.data.address = e.data.data.address.split('------')
+          e.data.data.city = e.data.data.city.split('------')
+          e.data.data.metro = e.data.data.metro.split('------')
           this.$store.dispatch('advert/adModalOpen', e.data.data)
         })
         .catch((e) => {

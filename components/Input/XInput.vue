@@ -10,6 +10,8 @@
       :type="inputType"
       class="x-field__input"
       :placeholder="placeholder"
+      :autocomplete="autocomplete"
+      :required="required"
       @input="update"
     />
     <span v-if="message" class="x-field__message">
@@ -27,7 +29,7 @@ export default {
   },
   props: {
     autocomplete: {
-      type: Boolean || String,
+      type: String || Boolean,
       default: null,
     },
     value: {

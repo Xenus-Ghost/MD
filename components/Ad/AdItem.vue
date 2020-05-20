@@ -66,7 +66,7 @@ export default {
       if (this.adData.name) obj.name = this.adData.name
       // if (this.adData.caption) obj.caption = this.adData.caption
       obj.description = this.adData.description
-      if (this.adData.address) obj.address = this.adData.address
+
       if (this.adData.website) obj.website = this.adData.website
       if (this.adData.website) obj.email = this.adData.email
       if (this.adData.presentation)
@@ -89,9 +89,16 @@ export default {
         obj.phone = this.adData.phone
       }
       obj.social = this.adData.social
-      obj.metro = this.adData.metro
+      // obj.metro = this.adData.metro
       obj.views = this.adData.views
       obj.categories = this.adData.categories ? this.adData.categories : null
+
+      // obj.metro = typeof this.adData.metro === "string" ? [this.adData.metro] : this.adData.metro
+      // obj.address = typeof this.adData.address === "string" ? [this.adData.address] : this.adData.address
+      // obj.city = typeof this.adData.city === "string" ? [this.adData.city] : this.adData.city
+      if (this.adData.city) obj.city = this.adData.city.split('------')
+      if (this.adData.address) obj.address = this.adData.address.split('------')
+      if (this.adData.metro) obj.metro = this.adData.metro.split('------')
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj
