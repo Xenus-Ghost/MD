@@ -1,0 +1,37 @@
+<template>
+  <article class="container_full layout_category">
+    <div class="grid-layout_sub-category">
+      <CategoryHeader>
+        Загородные дома
+        <template v-slot:right_column> </template>
+      </CategoryHeader>
+      <div class="container grid-gap_8 grid grid_cols_2 grid__column_full">
+        <div class="grid__column">
+          <h2 style="text-align: center; font-size: 3rem; font-weight: bold;">
+            Банки
+          </h2>
+          <Card class=""></Card>
+        </div>
+        <div class="grid__column">
+          <h2 style="text-align: center; font-size: 3rem; font-weight: bold;">
+            Страховые компании
+          </h2>
+          <Card class=""></Card>
+        </div>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script>
+import CategoryHeader from '@/components/Category/Header/CategoryHeader'
+import Card from '@/components/Card'
+export default {
+  components: {
+    CategoryHeader,
+    Card,
+  },
+}
+</script>
+
+<style scoped></style>

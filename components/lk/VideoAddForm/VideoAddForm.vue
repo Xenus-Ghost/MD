@@ -25,7 +25,7 @@
               :key="j"
               :value="item.id"
               class="input_option"
-              >{{ item.service_title }}</option
+              >{{ item.title }}</option
             >
           </select>
         </label>
@@ -45,7 +45,7 @@
               :key="j"
               :value="item.id"
               class="input_option"
-              >{{ item.service_title }}</option
+              >{{ item.title }}</option
             >
           </select>
         </label>

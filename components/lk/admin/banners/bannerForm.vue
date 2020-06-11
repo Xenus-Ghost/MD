@@ -79,7 +79,6 @@
 import CategorySelect from '@/components/lk/CategorySelect'
 import { VideoUploader } from '@/components/lk'
 import FileUploader from '@/components/FileUploader'
-import { getUrl } from '@/assets/js/util'
 export default {
   name: 'BannerForm',
   components: { CategorySelect, VideoUploader, FileUploader },
@@ -128,8 +127,8 @@ export default {
         categories: this.bannerData.categories,
       }
       const url = this.isEdit
-        ? getUrl(`admin/banners/${this.bannerData.id}`)
-        : getUrl(`admin/banners`)
+        ? `admin/banners/${this.bannerData.id}`
+        : `admin/banners`
       const axisoMethod = this.isEdit ? 'put' : 'post'
       await this.$axios({
         method: axisoMethod,

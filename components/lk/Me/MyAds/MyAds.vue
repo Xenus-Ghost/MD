@@ -154,7 +154,7 @@
 </template>
 
 <script>
-import { getUrl, jsonToParams } from '@/assets/js/util'
+import { jsonToParams } from '@/assets/js/util'
 import { dateTimeParse } from '@/assets/js/util/helpers'
 export default {
   name: 'MyAds',
@@ -186,7 +186,7 @@ export default {
       const params = jsonToParams({
         type_id: typeId || this.type_id,
       })
-      this.$axios.get(getUrl(`me/advertisements${params}`)).then((response) => {
+      this.$axios.get(`me/advertisements${params}`).then((response) => {
         response.data.data.forEach(
           // (ad) => (ad.start_time = ad.start_time.split(' ')[0])
           (ad) => (ad.start_time = dateTimeParse(ad.start_time))
@@ -249,7 +249,7 @@ export default {
     },
     async removeAd(id) {
       await this.$axios
-        .delete(getUrl(`me/advertisements/${id}`))
+        .delete(`me/advertisements/${id}`)
         .then((e) => {
           this.changeCategory(this.type_id)
         })

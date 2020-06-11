@@ -3,15 +3,19 @@
     <client-only>
       <adFilter v-model="filter" @change="adsRefresh" />
     </client-only>
-    <div class="ad__list" :class="classList">
-      <AdItem
+    <div :class="classList">
+      <component
+        :is="adItemComponent"
         v-for="(ad, i) in ads"
         :key="i"
         :ad-data="ad"
         :private-ad="privateAd === true"
         :company-ad="companyAd === true"
         :customer-ad="customerAd === true"
-      ></AdItem>
+        :class="[category === 119 ? 'ad__item_country' : '']"
+        :ad-type="typeId"
+        :author-type="authorTypeId"
+      ></component>
     </div>
     <client-only>
       <LightBox
@@ -22,7 +26,14 @@
       ></LightBox>
     </client-only>
     <client-only>
-      <Modal v-if="isAdOpen" :class="'ad-modal'" @close="adClose">
+      <Modal
+        v-if="isAdOpen"
+        :class="[
+          'ad-modal',
+          adModalData.account_type_id === 3 ? 'ad-modal_premium' : '',
+        ]"
+        @close="adClose"
+      >
         <template>
           <div class="grid grid_cols_2">
             <span class="ad-modal__id_muted">ID: {{ adModalData.id }}</span>
@@ -66,8 +77,14 @@
             :categories="adModalData.categories"
           ></AdCategoriesList>
           <div v-if="!customerAd" class="line_horizontal"></div>
+          <div class="grid__column_full" style="position: relative;">
+            <ad-address-list
+              v-if="adModalData.address && adModalData.address.length > 1"
+              :address-list="adModalData.address"
+            />
+          </div>
           <div :class="{ grid_cols_3: !customerAd, grid_cols_12: customerAd }">
-            <div v-if="customerAd" class="grid__column_2">
+            <div v-if="customerAd" class="grid__column_1">
               <img
                 v-if="customerAd"
                 style="width: 100%; height: 100%; object-fit: contain;"
@@ -78,23 +95,23 @@
             <div
               :class="[
                 {
-                  grid__column_2: !customerAd,
+                  grid__column_1: !customerAd,
                   grid__column_10: customerAd,
                 },
                 'grid',
-                'grid-row-gap_4',
+                'grid-row-gap_1',
               ]"
             >
-              <h2 class="ad-modal__name">{{ adModalData.name }}</h2>
-              <div class="ad-modal__id">ID: {{ adModalData.author_id }}</div>
-              <a
-                v-for="(item, j) in adModalData.phone"
-                :key="j"
-                :href="`tel:${item}`"
-                class="ad-modal__phone"
-              >
-                {{ item }}
-              </a>
+              <div class="ad-modal__phone-list">
+                <a
+                  v-for="(item, j) in adModalData.phone"
+                  :key="j"
+                  :href="`tel:${item}`"
+                  class="ad-modal__phone"
+                >
+                  {{ item }}
+                </a>
+              </div>
               <a
                 v-if="adModalData.email"
                 :href="`mailto:${adModalData.email}`"
@@ -103,64 +120,19 @@
               >
                 {{ adModalData.email }}
               </a>
+            </div>
+            <div class="grid__column_1 grid grid-gap_1">
+              <div v-if="adModalData.ogrn" class="ad-modal__ogrn">
+                {{ adModalData.ogrn }}
+              </div>
               <a
                 v-if="adModalData.website"
                 :href="`/away?url=${adModalData.website}`"
                 class="ad-modal__website"
                 target="_blank"
               >
-                Наш сайт: {{ adModalData.website }}
+                {{ adModalData.website }}
               </a>
-              <div class="ad-modal__address-list">
-                <div class="ad-modal__address-item">
-                  <div
-                    v-for="(city, c) in adModalData.city"
-                    :key="c"
-                    class="ad-modal__address"
-                  >
-                    {{ city }}
-                  </div>
-                  <div
-                    v-for="(address, a) in adModalData.address"
-                    :key="a"
-                    class="ad-modal__address"
-                  >
-                    {{ address }}
-                  </div>
-                  <div
-                    v-for="(metro, m) in adModalData.city"
-                    :key="m"
-                    class="ad-modal__address_metro"
-                  >
-                    <svg
-                      class="icon-svg_metro"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#icon-svg_metro)">
-                        <path
-                          d="M16.0715 0H1.92859C0.865115 0 0 0.865115 0 1.92859V16.0715C0 17.1349 0.865115 18 1.92859 18H16.0715C17.1349 18 18 17.1349 18 16.0715V1.92859C18 0.865115 17.1349 0 16.0715 0V0ZM16.7143 16.0715C16.7143 16.4261 16.4261 16.7143 16.0715 16.7143H1.92859C1.5739 16.7143 1.28574 16.4261 1.28574 16.0715V1.92859C1.28574 1.5739 1.5739 1.28574 1.92859 1.28574H16.0715C16.4261 1.28574 16.7143 1.5739 16.7143 1.92859V16.0715Z"
-                          fill="white"
-                        />
-                        <path
-                          d="M13.7464 3.90695C13.506 3.80651 13.2297 3.86173 13.0458 4.0463L9.00029 8.0918L4.9548 4.0463C4.7715 3.863 4.49461 3.80775 4.25418 3.90695C4.01375 4.00615 3.85742 4.24092 3.85742 4.50083V14.1419H5.14312V6.05278L8.54572 9.45538C8.79682 9.70649 9.20362 9.70649 9.45478 9.45538L12.8574 6.05278V14.1419H14.1431V4.50088C14.1432 4.24097 13.9868 4.00615 13.7464 3.90695Z"
-                          fill="white"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="icon-svg_metro">
-                          <rect width="18" height="18" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                    {{ metro }}
-                  </div>
-                </div>
-              </div>
-
               <div v-if="adModalData.social" class="ad-modal__socials">
                 <a
                   v-for="(i, j) in adModalData.social"
@@ -174,13 +146,19 @@
                   />
                 </a>
               </div>
+              <Share />
             </div>
             <div
               v-if="!customerAd"
               :class="['grid__column_1', 'grid_rows_4']"
               style="grid-gap: 10px;"
             >
-              <Button shape="rounded" borders="outline">
+              <Button
+                shape="rounded"
+                borders="outline"
+                block
+                style="--border-color: #ffb800;"
+              >
                 <template #icon_left>
                   <svg
                     width="13"
@@ -208,7 +186,8 @@
                 v-if="adModalData.video"
                 shape="rounded"
                 borders="outline"
-                @click.native="showEmbedVideos"
+                block
+                @click="showEmbedVideos"
               >
                 <template #icon_left>
                   <svg
@@ -241,6 +220,7 @@
                 shape="rounded"
                 borders="outline"
                 target="_blank"
+                block
               >
                 <template #icon_left>
                   <svg
@@ -271,6 +251,7 @@
                 shape="rounded"
                 borders="outline"
                 target="_blank"
+                block
               >
                 <template #icon_left>
                   <svg
@@ -315,18 +296,6 @@
           <div class="ad-modal__description">
             {{ adModalData.description }}
           </div>
-          <client-only>
-            <b
-              style="
-                float: left;
-                width: 100%;
-                font-size: 1.1rem;
-                margin-top: 5px;
-              "
-              >Поделиться объявлением:</b
-            >
-            <Share open />
-          </client-only>
           <div class="flex" style="width: 100%;">
             <Button
               borders="outline"
@@ -348,17 +317,19 @@
 </template>
 
 <script>
-import { getFileUrl, getUrl } from '@/assets/js/util'
-import { AdItem, AdCategoriesList, adFilter } from '@/components/Ad'
+import { getFileUrl } from '@/assets/js/util'
+import { AdCategoriesList, adFilter } from '@/components/Ad'
 import { EmbedVideo } from '@/components/Media'
 import { Share } from '@/components/Widgets'
-// import LightBox from '@/components/Modal/LightBox'
+import AdAddressList from '@/components/Ad/AdAddressList'
+
 const qs = require('qs')
 
 export default {
   name: 'AdList',
   components: {
-    AdItem,
+    AdAddressList,
+    // AdItem,
     AdCategoriesList,
     EmbedVideo,
     Share,
@@ -399,6 +370,10 @@ export default {
       type: Number,
       default: 1,
     },
+    filterData: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
@@ -434,7 +409,9 @@ export default {
       return this.$store.state.advert.adModalData
     },
     classList() {
-      const arr = []
+      const arr = ['ad__list']
+      const categoryId = this.category
+      const newBuildingId = [127, 128, 129, 130]
       if (this.privateAd) {
         arr.push('ad__list_private')
       } else if (this.companyAd) {
@@ -442,6 +419,11 @@ export default {
       } else if (this.customerAd) {
         arr.push('ad__list_customer')
       }
+      if (categoryId === 119) arr.push('ad__list_building', 'ad__list_country')
+      if (newBuildingId.includes(categoryId)) arr.push('ad__list_building')
+      if (this.authorTypeId === 4) arr.push('ad__list_eshop')
+      if (this.authorTypeId === 5) arr.push('ad__list_center')
+      if (this.authorTypeId === 6) arr.push('ad__list_plant')
       return arr
     },
     citiesList() {
@@ -450,9 +432,16 @@ export default {
     metroList() {
       return this.$store.state.address.metroList
     },
+    adItemComponent() {
+      const component =
+        [119, 127, 128, 129, 130].includes(this.category) ||
+        this.authorTypeId === 6
+          ? 'AdItemBuilding'
+          : 'AdItem'
+      return () => import(`@/components/Ad/${component}`)
+    },
   },
   created() {
-    // this.getAds()
     if (this.$route.query)
       if (this.$route.query.id) {
         this.getAd(this.$route.query.id)
@@ -471,7 +460,7 @@ export default {
       }
       if (this.filter.metro) params.metro = this.filter.metro
       if (this.filter.city) params.city = this.filter.city
-      const url = getUrl(`advertisements?${qs.stringify(params)}`)
+      const url = `advertisements?${qs.stringify(params)}`
       await this.$axios
         .get(url)
         .then((e) => {
@@ -484,7 +473,7 @@ export default {
         })
     },
     async getAd(id = 0) {
-      const url = getUrl(`advertisements/${id}`)
+      const url = `advertisements/${id}`
       await this.$axios
         .get(url, {
           params: {
@@ -532,8 +521,6 @@ export default {
   },
 }
 </script>
-
 <style lang="scss">
-@import '~assets/scss/app/index.scss';
 @import 'scss/ad';
 </style>

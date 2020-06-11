@@ -17,7 +17,11 @@
       <div v-if="success" class="advert-form__message_success">
         <h2>Объявление добавлено!</h2>
       </div>
-      <form v-if="!success" class="advert-form" @submit.prevent="adSubmit">
+      <form
+        v-if="!success && !errors"
+        class="advert-form"
+        @submit.prevent="adSubmit"
+      >
         <div
           v-if="ad.type_id === 2 && ad.author_type_id >= 2"
           class="grid_cols_4 grid__column_full"
@@ -39,6 +43,7 @@
             Интернет-магазины
           </Button>
           <Button
+            v-if="ad.account_type_id !== 1"
             shape="semi_rounded"
             borders="neon"
             :class="ad.author_type_id === 5 ? 'button_active' : ''"
@@ -55,6 +60,7 @@
             Завод
           </Button>
           <Button
+            v-if="ad.account_type_id !== 1"
             shape="semi_rounded"
             borders="neon"
             :class="ad.author_type_id === 7 ? 'button_active' : ''"
@@ -69,7 +75,7 @@
           class="grid__column_6"
           input-type="text"
           :placeholder="
-            ad.type_id === 1
+            ad.author_type_id === 1
               ? 'Название объявления'
               : ad.author_type_id === 4
               ? 'Название интернет-магазина'
@@ -77,22 +83,6 @@
           "
           :max-length="30"
         />
-        <!--<x-input
-          id="name"
-          v-model="ad.name"
-          name="name"
-          class="grid__column_6"
-          input-type="text"
-          :placeholder="
-            ad.author_type_id === 4
-              ? 'Название интернет-магазина'
-              : ad.author_type_id === 2
-              ? 'Название фирмы/компании'
-              : 'Фамилия Имя Отчество'
-          "
-          maxlength="60"
-          required
-        />-->
         <x-input
           v-if="
             ad.account_type_id >= 2 &&
@@ -195,7 +185,7 @@
               auto-upload
               preview
               file-type="image"
-              :max="maxPhoto"
+              :max="maxPhotos"
             >
               Загрузить фотографии
             </FileUploader>
@@ -251,7 +241,11 @@
             </span>
           </div>
         </div>
-        <AddressInputGroup class="grid__column_6" :count="3" />
+        <AddressInputGroup
+          v-model="addresses"
+          class="grid__column_6"
+          :count="3"
+        />
         <label for="start_time" class="label grid__column_3">
           <input
             id="start_time"
@@ -309,6 +303,13 @@
           </ul>
         </div>
       </form>
+      <div
+        v-if="!success && (errors && errors.length > 0 && errors.includes('limit'))"
+        class="advert-form__message_error"
+      >
+        <h2>Ошибка!</h2>
+        <span>Вы достигли лимита объявлений на своем тарифе</span>
+      </div>
     </template>
     <template v-slot:footer></template>
   </Modal>
@@ -317,8 +318,11 @@
 <script>
 import VideoUploader from '@/components/lk/VideoUploader/VideoUploader'
 
-import { getUrl } from '@/assets/js/util'
-import { getAuthorTypeFieldName } from '@/assets/js/util/ads'
+import {
+  getAuthorTypeFieldName,
+  getMaxCategories,
+  getMaxPhotos,
+} from '@/assets/js/util/ads'
 import FileUploader from '@/components/FileUploader'
 import CategorySelect from '@/components/lk/CategorySelect'
 import { PhoneInputGroup, AddressInputGroup } from '@/components/lk/Ads/Inputs'
@@ -339,7 +343,7 @@ export default {
   },
   data() {
     return {
-      errors: null,
+      errors: [],
       success: null,
       ad: {
         author_id: this.$auth.$state.user.id,
@@ -358,6 +362,7 @@ export default {
         period: 1,
         website: null,
         ticker: null,
+        title: null,
         status_id: 1,
         account_type_id: 1,
         photo: [],
@@ -375,7 +380,13 @@ export default {
       addressCount: 1,
       citiesList: this.$store.state.address.citiesList,
       metroList: this.$store.state.address.metroList,
-      maxPhoto: 1,
+      // maxPhoto: 1,
+      addresses: {
+        address: [],
+        city: [],
+        region: [],
+        metro: [],
+      },
     }
   },
   computed: {
@@ -412,32 +423,49 @@ export default {
       return max
     },
     maxCategories() {
-      let max = 1
-      if (this.ad.account_type_id > 1) max = 5
-      if (this.author_type_id === 1 && this.ad.type_id === 2) max = 1
-      return max
+      return getMaxCategories({
+        adType: this.ad.type_id,
+        authorType: this.ad.author_type_id,
+        accountType: this.ad.account_type_id,
+      })
+    },
+    maxPhotos() {
+      return getMaxPhotos({
+        adType: this.ad.type_id,
+        authorType: this.ad.author_type_id,
+        accountType: this.ad.account_type_id,
+      })
     },
   },
   mounted() {
     this.ad.account_type_id = this.props.account_type_id
     this.ad.author_type_id = this.props.author_type_id
     this.ad.type_id = this.props.type_id
-
+    const canPost = !!this.$axios
+      .get('/me/advertisements/check', {
+        params: {
+          account_type_id: this.ad.account_type_id,
+          author_type_id: this.ad.author_type_id,
+          type_id: this.ad.type_id,
+        },
+      })
+      .catch((error) => {
+        this.$toast.error(error.response.data.message)
+      }).creating_available
+    // console.log(canPost)
+    if (canPost === false) {
+      this.success = false
+      this.errors.push('limit')
+    }
     // if (this.ad.author_type_id >= 2) this.phoneCount = 3
     if (this.ad.author_type_id >= 2) this.addressCount = 3
 
     this.phoneCount =
       this.ad.account_type_id === 2 ? 2 : this.ad.account_type_id === 3 ? 5 : 1
-    this.maxPhoto =
-      this.ad.account_type_id === 2
-        ? 10
-        : this.ad.account_type_id === 3
-        ? 15
-        : 1
   },
   methods: {
     async adSubmit() {
-      const formData = this.ad
+      const formData = { ...this.ad, ...this.addresses }
       if (formData.account_type_id === 1) {
         delete formData.website
       }
@@ -447,22 +475,35 @@ export default {
       if (this.social.ok) formData.social.push(this.social.ok)
       if (this.social.ig) formData.social.push(this.social.ig)
       if (this.social.vk) formData.social.push(this.social.vk)
+
+      // JUST FOR DEV TEST [[
+      formData.address = formData.address.filter((el) => !!el)
+      // formData.metro = formData.metro[0]
+      formData.city = formData.city[0]
+      formData.metro = formData.metro.filter((el) => !!el)
+      // ]] JUST FOR DEV TEST
       Object.keys(formData).forEach(
         (key) => !formData[key] && delete formData[key]
       )
 
-      if (this.ad.region !== 'Московская область' && !this.ad.city)
-        this.ad.city = this.ad.region
+      delete formData.region
 
-      if (this.ad.name === null) this.ad.name = this.ad.title
+      // if (this.ad.region !== 'Московская область' && !this.ad.city)
+      //   this.ad.city = this.ad.region
+
+      // if (this.ad.name === null) this.ad.name = this.ad.title
 
       await this.$axios
-        .$post(getUrl('me/advertisements'), formData)
+        .$post('me/advertisements', formData)
         .then((response) => {
           this.success = true
         })
         .catch((error) => {
           this.errors = error.response.data.errors
+          if (error.response.data.message)
+            this.$toast.error(
+              `Произошла ошибка: ${error.response.data.message}`
+            )
         })
     },
     changePeriod() {

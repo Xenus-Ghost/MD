@@ -38,7 +38,7 @@ export default {
       error: null,
     }
   },
-  created() {
+  mounted() {
     this.verify()
   },
   methods: {

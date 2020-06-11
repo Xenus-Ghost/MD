@@ -1,3 +1,4 @@
+@import '~assets/scss/framework/basic';
 $button-class: '.button';
 #{$button-class}{
   --button-primary-color: var(--color-primary);
@@ -15,23 +16,26 @@ $button-class: '.button';
   //margin: 6px 8px;
   outline: none;
   border: none;
-  height: 28px;
+  height: 1.75rem;
   box-shadow: bottom-shadow(2), top-shadow(1);
   will-change: box-shadow;
   transition: box-shadow ease .2s;
   text-decoration: none;
   @include media_screen(desktop-wide) {
     padding: .1rem 1rem;
-    height: 36px;
+    height: 2.25rem;
   }
   &:hover{
-    box-shadow: bottom-shadow(4), top-shadow(2);
+    box-shadow: bottom-shadow(2), top-shadow(1);
   }
   &:focus{
-     box-shadow: bottom-shadow(5, var(--button-primary-color)), top-shadow(5, var(--button-primary-color));
+     box-shadow: bottom-shadow(3, var(--button-primary-color)), top-shadow(2, var(--button-primary-color));
    }
+  &:active{
+    box-shadow: bottom-shadow(5, var(--button-primary-color)), top-shadow(4, var(--button-primary-color));
+  }
   &_active {
-    box-shadow: bottom-shadow(5, var(--button-primary-color)), top-shadow(3, var(--button-primary-color));
+    box-shadow: bottom-shadow(4, var(--button-primary-color)), top-shadow(2, var(--button-primary-color));
     @include text-neon()
   }
 
@@ -40,17 +44,20 @@ $button-class: '.button';
     &_small{
       padding: 0 .5rem;
       font-size: .8rem;
-      height: 28px;
+      height: 1.75rem;
+    }
+    &_normal {
+      font-size: 0.875rem;
     }
     &_big{
-      padding: .2rem 2rem;
+      padding: .3rem 2.5rem;
       font-size: 1.1rem;
-      height: 48px;
+      height: 3rem;
     }
     &_large{
       padding: .4rem 3rem;
       font-size: 1.6rem;
-      height: 60px;
+      height: 3.75rem;
     }
   }
   //shape
@@ -62,7 +69,6 @@ $button-class: '.button';
       padding: 0;
       &#{$button-class}_size{
         &_small {
-
           width: 40px;
           height: 40px;
         }
@@ -77,7 +83,7 @@ $button-class: '.button';
       }
     }
     &_rounded{
-      border-radius: 28px;
+      border-radius: 1.75rem;
     }
     &_semi_rounded {
       border-radius: 6px;
@@ -89,18 +95,27 @@ $button-class: '.button';
   }
 
   &_outline{
+    --border-color: white;
     color: white;
     background: rgba(34, 55, 87, 0.6);
-    box-shadow: 0 0 2px 1px white;
+    box-shadow: 0 0 2px 1px var(--border-color);
     &:hover{
+      --border-color: #7BD7FF;
       @include text-neon();
-      $shadow-value: 12px;
-      box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
+      $shadow-value: 6px;
+      box-shadow: 0 0 $shadow-value 1px var(--border-color), 0 0 $shadow-value 1px var(--border-color) inset;
+    }
+    &:active {
+      --border-color: #7BD7FF;
+      @include text-neon();
+      $shadow-value: 8px;
+      box-shadow: 0 0 $shadow-value 1px var(--border-color), 0 0 $shadow-value 1px var(--border-color) inset;
     }
     &:focus {
+      --border-color: #7BD7FF;
       @include text-neon();
-      $shadow-value: 18px;
-      box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
+      $shadow-value: 8px;
+      box-shadow: 0 0 $shadow-value 1px var(--border-color), 0 0 $shadow-value 1px var(--border-color) inset;
     }
   }
   &_neon{
@@ -110,12 +125,17 @@ $button-class: '.button';
     $shadow-value: 12px;
     box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
     &:hover{
+      $shadow-value: 14px;
+      background-color: rgba(15, 98, 133, 0.1);
+      box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
+    }
+    &:active{
       $shadow-value: 16px;
       background-color: rgba(15, 98, 133, 0.1);
       box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
     }
     &:focus {
-      $shadow-value: 16px;
+      $shadow-value: 14px;
       background-color: rgba(15, 98, 133, 0.4);
       box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
       @include text-neon()
@@ -124,6 +144,12 @@ $button-class: '.button';
 
   &__content{
     vertical-align: middle;
+    font-size: inherit;
+  }
+
+  &_block {
+    display: flex;
+    width: 100%;
   }
 }
 .button__icon{

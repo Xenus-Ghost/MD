@@ -69,6 +69,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/framework/basic.scss';
 @import 'modal';
 </style>

@@ -21,7 +21,7 @@
 
 <script>
 import CategoriesItem from './CategoriesItem'
-import { getUrl, listToTree } from '@/assets/js/util'
+import { listToTree } from '@/assets/js/util'
 
 export default {
   name: 'CategoriesList',
@@ -43,9 +43,6 @@ export default {
   },
   mounted() {
     this.getData()
-    /* if (this.treeView && this.categoriesList) {
-      this.changeToTreeView(this.categoriesList)
-    } */
   },
   methods: {
     async getData() {
@@ -58,17 +55,6 @@ export default {
     create(parent_id = null) {
       this.categoriesList.push({
         parent_id,
-        /* meta: [
-          {
-            type_id: 1,
-            title: '',
-            'private-person': 0,
-            firm: 0,
-            'online-shop': 0,
-            'shopping-center': 0,
-            plant: 0,
-          },
-        ], */
       })
     },
     async refresh() {

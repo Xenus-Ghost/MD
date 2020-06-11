@@ -55,7 +55,7 @@ export const actions = {
         commit('categories/getAdCategories', response.data.data)
       })
       .catch((error) => console.error(error + error.response)) */
-    const cached = false
+    const cached = true
     const [adCategories, EvCategories] = await Promise.all([
       this.$axios
         .get('advertisement-categories', {
@@ -69,26 +69,18 @@ export const actions = {
           console.error(error.headers)
         }),
       cached
-        ? JSON.parse(
+        ? await JSON.parse(
             require('fs').readFileSync(
               'static/json_cache/evCategoriesList.json',
               'utf8'
             )
           )
         : this.$axios
-            .get(getUrl('event-categories'))
+            .get('/event-categories')
             .catch((error) => console.error(error + error.response)),
     ])
     if (adCategories)
       commit('categories/getAdCategories', adCategories.data.data)
     if (EvCategories) commit('categories/getEventsCategories', EvCategories)
-    // const adCategoriesData = adCategories.data.data
-    /* const test = adCategoriesData.filter(
-      (element) => element.meta.find((el) => el.type_id)
-      // element.meta !== false
-    ) */
-    // console.log(adCategoriesData[0].meta)
-    // console.log(test)
-    // console.log(test[0].meta)
   },
 }

@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <div class="embed">
+    <div class="embed" :style="{ 'padding-bottom': `${aspectRatio * 100}%` }">
       <iframe
         id="ytplayer"
         type="text/html"
@@ -32,6 +32,10 @@ export default {
       type: String || Number,
       default: '100%',
     },
+    aspectRatio: {
+      type: String || Number,
+      default: 9 / 16,
+    },
   },
   data() {
     return {
@@ -47,6 +51,8 @@ export default {
       if (this.maxWidth) styles['max-width'] = this.maxWidth
       if (this.minHeight) styles['min-height'] = this.minHeight
       if (this.maxHeight) styles['max-height'] = this.maxHeight
+      // if (this.aspectRatio)
+      //   styles['padding-bottom'] = `${this.aspectRatio * 100}%`
       return styles
     },
   },
@@ -59,8 +65,19 @@ export default {
 }
 </script>
 
-<style scoped>
-.embed__iframe {
-  /*min-height: 400px;*/
+<style lang="scss">
+.embed {
+  position: relative;
+  width: 100%;
+  & + .embed {
+    margin-top: 1rem;
+  }
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*min-height: 400px;*/
+    height: 100%;
+  }
 }
 </style>

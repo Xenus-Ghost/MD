@@ -31,7 +31,6 @@
 
 <script>
 import { Cropper, CircleStencil } from 'vue-advanced-cropper'
-import { getUrl } from '@/assets/js/util'
 import FileUploader from '@/components/FileUploader'
 
 export default {
@@ -70,7 +69,7 @@ export default {
       const data = {}
       data.avatar = this.images[0].path
       const userId = this.$store.state.auth.user.id
-      const url = getUrl(`admin/users/${userId}`)
+      const url = `/admin/users/${userId}`
       await this.$axios
         .put(url, data)
         .then((e) => {

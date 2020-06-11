@@ -18,8 +18,8 @@
           class="grid__column_2"
           height="100%"
           >{{
-            cat.service_title
-              ? cat.service_title
+            cat.title
+              ? cat.title
               : cat.meta.find((result) => result.title).title
           }}</Button
         >

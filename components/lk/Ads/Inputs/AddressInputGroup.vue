@@ -12,8 +12,9 @@
             v-model="addresses.region[n - 1]"
             class="input_select"
             :required="n === true || n < required"
+            @change="update"
           >
-            <option value="" disabled class="input_option">
+            <option :value="null" selected disabled class="input_option">
               Выберите...
             </option>
             <option value="Москва" class="input_option">
@@ -40,6 +41,7 @@
               addresses.region[n - 1] &&
               addresses.region[n - 1] !== 'Москва'
             "
+            @change="update"
           >
             <option :value="null" selected disabled class="input_option">
               Выберите город
@@ -63,6 +65,7 @@
             :id="`metro-${n}`"
             v-model="addresses.metro[n - 1]"
             class="input_select"
+            @change="update"
           >
             <option :value="null" selected disabled class="input_option">
               Метро
@@ -92,6 +95,7 @@
           class="input"
           type="text"
           :placeholder="`Адрес (${n})`"
+          @input="update"
         />
       </label>
     </div>
@@ -127,9 +131,24 @@ export default {
       citiesList: this.$store.state.address.citiesList,
     }
   },
+  mounted() {
+    if (this.count > 1) {
+      for (let i = 0; i < this.count; i++) {
+        this.$set(this.addresses.city, i, null)
+        this.$set(this.addresses.metro, i, null)
+        this.$set(this.addresses.region, i, null)
+        this.$set(this.addresses.address, i, null)
+      }
+    }
+  },
   methods: {
     update() {
       const data = this.addresses
+      this.addresses.region.forEach((item, i) => {
+        if (item === 'Москва') {
+          this.$set(this.addresses.city, i, 'Москва')
+        }
+      })
       this.$emit('change', data)
     },
   },

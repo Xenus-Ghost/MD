@@ -1,13 +1,9 @@
-<template>
-
-</template>
+<template> <div></div> </template>
 
 <script>
-  export default {
-    name: 'CategoryMeta'
-  }
+export default {
+  name: 'CategoryMeta',
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

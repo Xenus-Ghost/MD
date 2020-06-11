@@ -14,7 +14,7 @@
           :key="c"
           class="banner__category"
         >
-          {{ cat.service_title }}
+          {{ cat.title }}
         </li>
       </ul>
       <div class="banner__date_created">
@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import { getUrl } from '@/assets/js/util'
-
 export default {
   name: 'BannersTable',
   props: {
@@ -56,20 +54,20 @@ export default {
     // let banners = null
     const errors = null
     await this.$axios
-      .get(getUrl('admin/banners'))
+      .get('/admin/banners')
       .then((response) => this.$set(this, 'banners', response.data.data))
       .catch((e) => errors.push(e.response.data))
   },
   methods: {
     async deleteBanner(id) {
       await this.$axios
-        .delete(getUrl(`admin/banners/${id}`))
+        .delete(`admin/banners/${id}`)
         .then((response) => this.$forceUpdate())
         .catch((e) => console.error(e))
     },
     async refreshData() {
       await this.$axios
-        .get(getUrl('admin/banners'))
+        .get('admin/banners')
         .then((response) => this.$set(this, 'banners', response.data.data))
         .catch((e) => console.error(e))
     },

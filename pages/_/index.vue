@@ -9,9 +9,14 @@
 </template>
 
 <script>
-// const { pathToRegexp, match } = require('path-to-regexp')
-// import { adsPage, category } from '@/components/Pages'
 import { apiGetAds } from '@/assets/js/mixins'
+import {
+  getAdType,
+  getAdTypeIdByUrl,
+  getAuthorTypeByUrl,
+  getCategoryTitle,
+  getCatSlugs,
+} from '@/assets/js/util/ads'
 
 export default {
   name: '',
@@ -21,43 +26,34 @@ export default {
       .split('/')
       .filter((result) => !!result)
     const lastSlug = slugs[slugs.length - 1]
-    const preLastSlug = slugs[slugs.length - 2]
+    // const preLastSlug = slugs[slugs.length - 2]
+    const categoriesSlugs = getCatSlugs(context.route.path)
     const categoriesList = context.store.state.categories.adCategoriesList
     const adTypeList = context.store.state.advert.adType
+    let adType = getAdType(
+      getAdTypeIdByUrl(context.route.path) || 1,
+      adTypeList
+    )
     const authorTypeList = context.store.state.advert.authorType
+    const authorType = authorTypeList.find(
+      (result) => getAuthorTypeByUrl(context.route.path) === result.id
+    )
+    const currentCategory = categoriesList.find(
+      (result) => result.name === categoriesSlugs[categoriesSlugs.length - 1]
+    )
     let routeValid = true
     const filterData = {
       with: ['categories', 'author'],
     }
-    // console.log(slugs)
     const meta = {}
 
     let pageType = null
-    // define author
-    const authorType = authorTypeList.find((result) => lastSlug === result.slug)
-    if (authorType) slugs.pop()
-    if (slugs[slugs.length - 1] === 'продажа' && !authorType) {
+    if (adType.id === 2 && !authorType) {
       pageType = 'adsPage'
     }
-    if (
-      slugs[slugs.length - 1] === 'продажа' ||
-      slugs[slugs.length - 1] === 'заказчики'
-    ) {
-      slugs.pop()
-    }
-    // define author//
-    // define adtype
-    let adType = adTypeList.find(
-      (result) => lastSlug === result.slug || preLastSlug === result.slug
-    )
-    // define adtype
-    const currentCategory = categoriesList.find(
-      (result) => result.name === slugs[slugs.length - 1]
-    )
     const subCategoriesList = categoriesList.filter(
       (result) => currentCategory && result.parent_id === currentCategory.id
     )
-    if (!adType) adType = adTypeList[0]
     const needAdsPage =
       (slugs.includes('дома-бани-дачи') ||
         slugs.includes('жби') ||
@@ -78,7 +74,10 @@ export default {
     ) {
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
-      if (currentCategory) meta.title += ` - ${currentCategory.service_title}`
+      if (currentCategory)
+        meta.title += currentCategory.service_title
+          ? ` - ${currentCategory.service_title}`
+          : null
       routeValid = !!currentCategory
       filterData.category_id = currentCategory ? currentCategory.id : null
       filterData.author_type_id = authorType ? authorType.id : null
@@ -94,11 +93,15 @@ export default {
         } else {
           pageType = 'categories'
         }
-      meta.title = currentCategory ? currentCategory.service_title : null
+      meta.title = getCategoryTitle(currentCategory, {
+        author_type_id: filterData.author_type_id,
+        type_id: filterData.type_id,
+      })
     }
     const axios = context.$axios
-
-    const { ads, links, queryParams } = await apiGetAds(filterData, axios)
+    const { ads, links, queryParams } = filterData.category_id
+      ? await apiGetAds(filterData, axios)
+      : { ads: null, links: null, queryParams: null }
 
     try {
       currentCategory.id = currentCategory.id + 0

@@ -1,69 +1,47 @@
 <template>
   <div :class="classList">
-    <div
-      v-if="adType !== 2"
-      class="views ad__views"
-      :title="`Просмотров: ${ad.views}`"
-    >
-      <img
-        src="~assets/img/icons/eye.svg"
-        :alt="`Просмотров: ${ad.views}`"
-        class="views__icon"
-      />
-      <span class="views__value">{{ ad.views }}</span>
-    </div>
-    <img
-      v-if="ad.logo"
-      :src="ad.logo"
+    <image-slider
+      v-if="authorType !== 6"
+      :slides="ad.photo"
       :alt="ad.title"
-      :class="[
-        'ad__logo',
-        authorType === 4 ? 'ad__logo_eshop' : '',
-        authorType === 5 ? 'ad__logo_center' : '',
-      ]"
+      class="ad__slider"
       @click="adOpen"
     />
-    <img
-      v-if="adType === 1"
-      :src="ad.img"
-      :alt="ad.title"
-      class="ad__photo"
-      @click="adOpen"
-    />
-    <span
-      v-if="ad.author && ad.author['first_name'] && ad.type_id === 3"
-      class="ad__title ad__name"
-      >{{
-        `${ad.author['first_name']} ${
-          ad.author['last_name'] ? ad.author['last_name'] : ''
-        }`
-      }}</span
-    >
-    <span v-if="!customerAd" class="ad__sub-title">{{ ad.title }}</span>
-    <div v-if="authorType === 5" class="ad__photos ad__photos_center">
-      <img
+    <div v-if="authorType === 6" class="ad__photos_plant">
+      <div
         v-for="(img, i) in ad.photo.slice(0, 4)"
         :key="i"
-        :src="img"
-        alt=""
-        class="ad__photo_center"
-      />
+        class="ad__photo-wrapper_plant"
+      >
+        <img :src="img" class="ad__photo_plant" />
+      </div>
     </div>
+    <span v-if="ad.title" class="ad__title ad__name">{{ ad.title }}</span>
     <span
-      v-if="ad.price && authorType !== 4 && authorType !== 5"
-      class="ad__price"
-      >{{ ad.price ? ad.price + 'руб' : '' }}</span
+      v-if="authorType !== 6"
+      class="ad__sub-title"
+      style="text-align: center;"
+      >{{ ad.short_desc }}</span
     >
-    <span v-if="authorType === 5" class="ad__sub-title">
-      {{ ad.short_desc }}
-    </span>
-    <a
-      v-if="authorType === 4"
-      :href="ad.website"
-      class="ad__website"
-      target="_blank"
-      >{{ ad.website }}</a
-    >
+    <div class="ad__contacts grid_cols_2">
+      <div class="grid__column">
+        <div v-if="ad.address && ad.address[0].street" class="ad__address">
+          {{ ad.address[0].street }}
+        </div>
+        <div v-if="ad.address && ad.address[0].metro" class="ad__metro">
+          {{ ad.address[0].metro }}
+        </div>
+      </div>
+      <div v-if="authorType !== 6" class="grid__column">
+        <a
+          v-if="ad.phone && ad.phone.length > 0"
+          :href="`tel:${ad.phone[0]}`"
+          class="ad__phone"
+        >
+          {{ ad.phone[0] }}
+        </a>
+      </div>
+    </div>
     <Button
       :to="ad.url"
       borders="outline"
@@ -78,8 +56,10 @@
 
 <script>
 import { getFileUrl } from '@/assets/js/util'
+import { ImageSlider } from '@/components/Slider'
 export default {
-  name: 'AdItem',
+  name: 'AdItemBuilding',
+  components: { ImageSlider },
   props: {
     adData: {
       type: Object,
@@ -117,7 +97,6 @@ export default {
         : null
       if (this.adData.title) obj.title = this.adData.title
       if (this.adData.author) obj.author = this.adData.author
-      // if (this.adData.caption) obj.caption = this.adData.caption
       obj.short_desc = this.adData.short_desc
       obj.description = this.adData.description
 
@@ -128,12 +107,17 @@ export default {
       if (this.adData.price_list)
         obj.price_list = getFileUrl(this.adData.price_list)
       if (this.adData.price) obj.price = this.adData.price
-      if (!this.customerAd && this.adData.photo && this.adData.photo.length > 0)
+      if (this.adData.photo && this.adData.photo.length > 0) {
         obj.photo = this.adData.photo
+        const photoLength = obj.photo.length
+        for (let i = 0; i < photoLength; i++) {
+          obj.photo[i] = getFileUrl(obj.photo[i])
+        }
+      }
       obj.img = this.adData.img
         ? this.adData.img
         : obj.photo
-        ? getFileUrl(obj.photo[0])
+        ? obj.photo[0]
         : ''
       if (this.customerAd) obj.img = '/img/icons/employee.png'
       obj.logo = this.adData.logo ? getFileUrl(this.adData.logo) : null
@@ -143,22 +127,21 @@ export default {
         obj.phone = this.adData.phone
       }
       obj.social = this.adData.social
-      // obj.metro = this.adData.metro
       obj.views = this.adData.views
       obj.categories = this.adData.categories ? this.adData.categories : null
 
-      // obj.metro = typeof this.adData.metro === "string" ? [this.adData.metro] : this.adData.metro
-      // obj.address = typeof this.adData.address === "string" ? [this.adData.address] : this.adData.address
-      // obj.city = typeof this.adData.city === "string" ? [this.adData.city] : this.adData.city
-      // if (this.adData.city) obj.city = this.adData.city
-      if (this.adData.address) obj.address = this.adData.address.street
-      if (this.adData.metro) obj.metro = this.adData.address.metro
-      // if (this.adData.url) obj.url = this.adData.url
-      // console.log(obj)
+      if (this.adData.city) obj.city = this.adData.city
+      if (this.adData.address) obj.address = this.adData.address
+      /* if (this.adData.metro)
+        obj.metro =
+          typeof this.adData.metro === 'string'
+            ? this.adData.metro.split('------')
+            : this.adData.metro */
+      if (this.adData.ogrn) obj.ogrn = this.adData.ogrn
       return obj
     },
     classList() {
-      const arr = ['ad__item']
+      const arr = ['ad__item', 'ad__item_building']
       if (this.ad.account_type_id === 2) {
         arr.push('ad__item_pro')
       } else if (this.ad.account_type_id === 3) {
@@ -171,21 +154,13 @@ export default {
       } else if (this.customerAd) {
         arr.push('ad__item_customer')
       }
-      if (this.authorType === 4) arr.push('ad__item_eshop')
-      if (this.authorType === 5) arr.push('ad__item_center')
       return arr
     },
   },
   methods: {
     adOpen() {
       this.$store.dispatch('advert/adModalOpen', this.ad)
-      // this.$route.query.id = this.ad.id
-      // this.$route.push({ path: '', query: { id: this.ad.id } })
-
-      // this.$set(this.$route.query, 'id', this.ad.id)
-
       this.$router.push({ query: { id: this.ad.id } })
-
       this.adData.views++
     },
   },
@@ -193,6 +168,5 @@ export default {
 </script>
 
 <style lang="scss">
-/*@import '~assets/scss/app/index.scss';*/
 /*@import 'scss/ad_item';*/
 </style>

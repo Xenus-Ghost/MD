@@ -35,6 +35,9 @@
         >
       </label>
     </treeselect>
+    <span class="category-select__counter">
+      {{ `Выбрано: ${selectedCount} / ${max > 0 ? max : '-'}` }}
+    </span>
   </div>
 </template>
 
@@ -96,6 +99,9 @@ export default {
       const returnData = listToTree(data)
       return returnData
     },
+    selectedCount() {
+      return this.category.length
+    },
   },
   methods: {
     update(e) {
@@ -103,7 +109,11 @@ export default {
       const lastCategory = this.categories.find(
         (result) => result.id === e[numbersLength - 1]
       )
-      this.$set(this, 'parentCategory', lastCategory.parent_id)
+      this.$set(
+        this,
+        'parentCategory',
+        lastCategory ? lastCategory.parent_id : null
+      )
       let tempParentId = null
       if (this.parentCategory === null)
         this.category.splice(0, numbersLength - 1)
@@ -114,6 +124,11 @@ export default {
           object.splice(index, 1)
         }
       })
+      if (numbersLength > this.max && this.max > 0) {
+        this.category.pop()
+        // alert(`Максимум ${this.max}`)
+        this.$toast.error(`Максимум ${this.max} категорий`)
+      }
       this.$emit('change', this.category)
     },
   },
@@ -135,6 +150,10 @@ export default {
   }
 }
 .category-select {
+  &__counter {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+  }
   &__label {
     background-color: transparent;
     &:hover {

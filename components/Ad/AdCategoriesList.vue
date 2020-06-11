@@ -3,7 +3,7 @@
     <h3>Категории работ:</h3>
     <ul class="adCategories__list">
       <li v-for="(item, i) in catList" :key="i" class="adCategories__item">
-        {{ item.service_title }}
+        {{ item.title }}
       </li>
     </ul>
   </div>
@@ -20,14 +20,6 @@ export default {
   },
   computed: {
     catList() {
-      // const data = this.$store.categories.adCategoriesList.map(
-      //   (result) => result.id === this.categories.id
-      // )
-      /* const data = this.categories.map((x) =>
-        this.$store.state.categories.adCategoriesList.find(
-          (result) => result.id === x
-        )
-      ) */
       return this.categories
     },
   },

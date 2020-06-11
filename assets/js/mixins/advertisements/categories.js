@@ -58,7 +58,7 @@ export const getCategoryMeta = {
     const categories = this.$store.state.categories
     const categoryName = categories.adCategoriesList.find(
       (result) => result.name === getCategorySlug(this.$route, context)
-    ).service_title
+    ).title
     const category = getCategory(getCategorySlug())
     console.log(this.$route)
     // const params = this.$route.params
@@ -81,7 +81,7 @@ export const getCategoryMeta = {
     }
 
     if (category) {
-      parentCategory = getCategory(category, categories).category.service_title
+      parentCategory = getCategory(category, categories).category.title
       headTitle += ' - ' + parentCategory
     }
     this.$set(this.head, 'title', headTitle)
@@ -107,7 +107,7 @@ export const getCustomCategoryMeta = {
 
     const categoryName = categories.adCategoriesList.find(
       (result) => result.name === this.$route.name
-    ).service_title
+    ).title
     const headTitle = categoryName
     this.$set(this.head, 'title', headTitle)
     this.$set(this.body, 'title', categoryName || headTitle)

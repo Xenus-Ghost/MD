@@ -5,7 +5,7 @@
       <template v-slot:right_column> </template>
     </CategoryHeader>
     <Advertising :category="filterData.category_id"></Advertising>
-    <h2 class="text_center text_neon">{{ body.title }}</h2>
+    <!--    <h2 class="text_center text_neon">{{ body.title }}</h2>-->
     <AdList v-bind="props" />
   </div>
 </template>

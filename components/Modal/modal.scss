@@ -1,6 +1,9 @@
+@import '~assets/scss/framework/basic.scss';
 $modal: '.modal';
 #{$modal} {
   &__mask {
+    --border-color: #7BD7FFdd;
+    --close-button-color: #7BD7FF;
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -8,7 +11,7 @@ $modal: '.modal';
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
     display: table;
     transition: opacity .3s ease;
   }
@@ -25,17 +28,18 @@ $modal: '.modal';
     //min-height: 250px;
     margin: 0 auto;
     padding: 10px 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .33), 0 0 10px 1px #7BD7FFdd, 0 0 10px 1px #7BD7FFdd inset;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33), 0 0 5px 1px var(--border-color) 0 0 5px 1px var(--border-color) inset;
     transition: all .3s ease;
     background: rgba(14, 36, 62, 0.7);
-    border: 1px solid #7BD7FFdd;
-    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
     @include on_tablet() {
       padding: 10px 20px;
-      border-radius: 50px;
+      border-radius: 3.125rem;
       width: 740px;
-      border: 4px solid #7BD7FF;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+      border: 2px solid var(--border-color);
+      //box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .33), 0 0 10px 1px var(--border-color), 0 0 10px 1px var(--border-color) inset;
     }
     @include media_screen(desktop-wide) {
       //padding: 44px 5%;

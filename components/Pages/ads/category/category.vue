@@ -60,7 +60,7 @@
           <div class="сustomers__buttons">
             <span>Заказчики</span>
             <Button to="заказчики" shape="rounded" borders="outline">
-              Открть список
+              Открыть список
             </Button>
           </div>
         </div>

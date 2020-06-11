@@ -1,7 +1,12 @@
+@import '~assets/scss/app/index.scss';
 .ad-modal {
+  &_premium {
+    --border-color: #ffb800dd !important;
+    --close-button-color: #ffb800 !important;
+  }
   &__id {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 19px;
 
     &_muted {
@@ -21,7 +26,7 @@
   &__logo {
     width: 100%;
     height: 100%;
-    max-height: 394px;
+    max-height: 295px;
     object-fit: contain;
     object-position: center;
   }
@@ -82,16 +87,26 @@
   }
 
   &__phone {
-    &:before {
+    &-list {
+      display: grid;
+      grid-row-gap: 0.5rem;
+      padding-left: 0.25rem;
+    }
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 24px;
+    &:first-of-type:before {
       content: '';
       display: block;
-      width: 16px;
-      height: 16px;
-      margin-right: 5px;
+      width: 1.125rem;
+      height: 1.125rem;
+      margin-right: 0.3125rem;
       background: url("~assets/img/icons/phone-call.svg") no-repeat center;
       background-size: contain;
       float: left;
-
+    }
+    &:not(:first-of-type) {
+      margin-left: 1.3125rem;
     }
   }
 

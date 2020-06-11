@@ -62,6 +62,10 @@ export default {
       type: String,
       default: null,
     },
+    block: {
+      type: Boolean,
+      default: false,
+    },
     // small: {
     //   type: Boolean,
     //   default: false
@@ -126,9 +130,11 @@ export default {
         button_shape_semi_rounded: this.shape === 'semi_rounded',
         button_size_small: this.size === 'small',
         button_size_big: this.size === 'big',
+        button_size_normal: this.size === 'normal',
         button_size_large: this.size === 'large',
         button_outline: this.borders === 'outline',
         button_neon: this.borders === 'neon',
+        button_block: !!this.block,
       }
       return arr
     },
@@ -143,6 +149,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/framework/basic';
 @import 'buttons';
 </style>

@@ -151,8 +151,8 @@ export default {
           meta: [
             {
               type_id: 1,
-              title: this.data.service_title
-                ? this.data.service_title
+              title: this.data.title
+                ? this.data.title
                 : this.data.name
                 ? this.data.name
                 : '',
@@ -185,7 +185,7 @@ export default {
       const data = {
         name: this.data.name,
         title: this.data.title,
-        service_title: this.data.service_title,
+        // service_title: this.data.service_title,
       }
       if (this.data.id) data.id = this.data.id
       if (this.data.meta && this.data.meta.length > 0)
@@ -226,8 +226,8 @@ export default {
     addMeta() {
       this.data.meta.push({
         type_id: 1,
-        title: this.data.service_title
-          ? this.data.service_title
+        title: this.data.title
+          ? this.data.title
           : this.data.name
           ? this.data.name
           : '',

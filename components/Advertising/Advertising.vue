@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { getUrl, getFileUrl } from '@/assets/js/util'
+import { getFileUrl } from '@/assets/js/util'
 
 export default {
   name: 'Advertising',
@@ -53,7 +53,7 @@ export default {
   },
   created() {
     this.$axios
-      .get(getUrl(`banners/${this.category}`))
+      .get(`banners/${this.category}`)
       .then((result) => {
         if (result.data.data.small.length || result.data.data.large.length) {
           this.$set(this, 'ads', result.data.data)
@@ -67,16 +67,12 @@ export default {
       const list = []
       if (this.ads.large && this.ads.large.length) list.push(this.ads.large[0])
       const freeCells = 4 - list.length * 2
-      // const smallLength = this.ads.small ? this.ads.small.length : 0
       for (let i = 0; i < freeCells; i++) {
         if (this.ads.small[i]) {
           list.push(this.ads.small[i])
         } else break
       }
       this.$set(this, 'adList', list)
-      // if (this.ads.small && smallLength) {
-      //   list.push(this.ads.small[0])
-      // }
     },
     getFileUrl(path) {
       return getFileUrl(path)

@@ -1,5 +1,5 @@
-import { BACKEND_API_URL, BACKEND_URL } from './constants'
-console.log(BACKEND_API_URL)
+import { BACKEND_API_URL } from './constants'
+// console.log(BACKEND_API_URL)
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
@@ -77,6 +77,7 @@ export default {
       },
     ],
     'nuxt-trailingslash-module',
+    '@nuxtjs/toast',
     // ['@nuxtjs/proxy'],
   ],
   /*
@@ -103,6 +104,19 @@ export default {
       // ws: false,
     },
   }, */
+  toast: {
+    position: 'top-right',
+    register: [
+      // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error',
+        },
+      },
+    ],
+  },
   /*
    PWA
    */

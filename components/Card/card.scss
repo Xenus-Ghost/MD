@@ -10,4 +10,10 @@
       }
     }
   }
+  &__header {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.875rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
 }

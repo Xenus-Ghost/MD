@@ -5,14 +5,15 @@
     </label>
     <input
       :id="inputId"
+      v-model="inputValue"
       :name="name"
-      :value="inputValue"
       :type="inputType"
       class="x-field__input"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
       :required="required"
-      @input="update"
+      @input="update('input')"
+      @change="update('change')"
     />
     <span v-if="message" class="x-field__message">
       {{ message }}
@@ -112,9 +113,9 @@ export default {
     this.inputId = this.id ? this.id : 'x-text-input-' + uid
   },
   methods: {
-    update() {
+    update(method) {
       const data = this.inputValue
-      this.$emit('change', data)
+      this.$emit(method, data)
     },
   },
 }

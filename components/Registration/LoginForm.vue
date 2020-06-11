@@ -57,9 +57,6 @@
         <label for="" class="grid__column_2">
           <input v-model="phone" type="tel" placeholder="Телефон" />
         </label>
-        <!--<label for="" class="grid__column_2">
-          <input v-model="name" type="text" placeholder="Имя пользователя" />
-        </label>-->
         <label for="" class="grid__column_2">
           <input
             v-model="email"
@@ -152,19 +149,6 @@ export default {
       this.$store.commit('authFormOpen', type)
     },
     login(autoClose = true, sendverificationEmail = false) {
-      /* const formData = {
-        email: this.email,
-        password: this.password,
-        crossDomain: true
-      }
-      const { user } = await this.$axios.$post(
-        'https://admin.монтаждемонтаж.рф/api/auth/login',
-        JSON.stringify(formData),
-        {
-          crossDomain: true
-        }
-      )
-      this.$store.commit('authSaveToken', user) */
       this.$auth
         .loginWith('local', {
           data: {
@@ -186,7 +170,6 @@ export default {
           }
         })
         .catch((e) => {
-          // this.error = e + ''
           this.error = 'Введены неверные данные'
         })
     },
@@ -201,33 +184,24 @@ export default {
         phone: this.phone,
       }
       await this.$axios
-        .$post(
-          'https://admin.монтаждемонтаж.рф/api/auth/registration',
-          formData
-        )
+        .$post('/auth/registration', formData)
         .then((e) => {
           this.login(false, true)
           this.formToggle('email-verify')
           setTimeout(this.authFormClose(), 450)
           setTimeout(this.$router.push('/lk'), 500)
-          // console.log(this.$auth.loggedIn)
-          // this.send()
           console.debug(e)
         })
         .catch((e) => {
           console.debug(e.response)
-          // this.error = e.response.data.message
           this.error = 'Введены неверные данные'
         })
     },
     async send() {
       await this.$axios
-        .$post(
-          'https://admin.монтаждемонтаж.рф/api/auth/email-verification/send',
-          {
-            handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify',
-          }
-        )
+        .$post('/auth/email-verification/send', {
+          handler_url: 'https://xn--80aaledd0beefeg0ch.xn--p1ai/email-verify',
+        })
         .then((e) => {
           this.result = ''
           this.error = ''

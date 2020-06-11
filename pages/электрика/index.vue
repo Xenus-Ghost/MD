@@ -750,16 +750,16 @@
     <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
-        <Button to="частники" shape="rounded" borders="outline"
+        <Button to="продажа/частники" shape="rounded" borders="outline"
           >Все частники</Button
         >
-        <Button to="фирмы-и-магазины" shape="rounded" borders="outline"
+        <Button to="продажа/фирмы-и-магазины" shape="rounded" borders="outline"
           >Все фирмы и магазины</Button
         >
-        <Button to="все-торговые-центры" shape="rounded" borders="outline"
+        <Button to="продажа/торговые-центры" shape="rounded" borders="outline"
           >Все торговые центры</Button
         >
-        <Button to="интернет-магазины" shape="rounded" borders="outline"
+        <Button to="продажа/интернет-магазины" shape="rounded" borders="outline"
           >Интернет магазины</Button
         >
       </div>
