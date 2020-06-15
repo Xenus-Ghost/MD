@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="$emit('close')">
+  <Modal @close="close">
     <template v-slot:header>
       <span class="modal__title">
         {{
@@ -18,7 +18,7 @@
         <h2>Объявление добавлено!</h2>
       </div>
       <form
-        v-if="!success && !errors"
+        v-if="!success && errors.length === 0"
         class="advert-form"
         @submit.prevent="adSubmit"
       >
@@ -437,11 +437,13 @@ export default {
       })
     },
   },
-  mounted() {
+  async mounted() {
     this.ad.account_type_id = this.props.account_type_id
     this.ad.author_type_id = this.props.author_type_id
     this.ad.type_id = this.props.type_id
-    const canPost = !!this.$axios
+    // eslint-disable-next-line camelcase
+    let creatingAvailable = false
+    await this.$axios
       .get('/me/advertisements/check', {
         params: {
           account_type_id: this.ad.account_type_id,
@@ -449,11 +451,19 @@ export default {
           type_id: this.ad.type_id,
         },
       })
+      .then((data) => {
+        creatingAvailable = data.data.data.creating_available
+        console.log(creatingAvailable)
+        // console.log(data.data.data)
+        // console.log(data.data.data.creating_available)
+        // console.log(data.creating_available)
+      })
       .catch((error) => {
         this.$toast.error(error.response.data.message)
-      }).creating_available
-    // console.log(canPost)
-    if (canPost === false) {
+      })
+    console.log(creatingAvailable)
+    // eslint-disable-next-line camelcase
+    if (!creatingAvailable) {
       this.success = false
       this.errors.push('limit')
     }
@@ -497,6 +507,7 @@ export default {
         .$post('me/advertisements', formData)
         .then((response) => {
           this.success = true
+          this.$toast.success(`Объявление добавлено`)
         })
         .catch((error) => {
           this.errors = error.response.data.errors
@@ -511,6 +522,11 @@ export default {
       date.setMonth(date.getMonth() + this.ad.period)
       const endDate = date.toISOString().split('T')[0]
       this.ad.end_time = endDate
+    },
+    close() {
+      this.$set(this, 'errors', [])
+      this.$set(this, 'success', false)
+      this.$emit('close')
     },
   },
 }

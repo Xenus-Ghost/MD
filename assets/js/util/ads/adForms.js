@@ -210,3 +210,122 @@ export function getMaxPhotos(params) {
   }
   return tariff[adTypeName][authorTypeName][accountTypeName]
 }
+
+export function getMaxAddresses(params) {
+  const { adType, authorType, accountType } = params
+  const adTypeName =
+    adType === 1 ? 'service' : adType === 2 ? 'sale' : 'customers'
+  const accountTypeName =
+    accountType === 1 ? 'free' : accountType === 2 ? 'pro' : 'premium'
+  const authorTypeName =
+    authorType === 1
+      ? 'private'
+      : authorType === 2
+      ? 'firm'
+      : authorType === 4
+      ? 'onlineShop'
+      : authorType === 5
+      ? 'shoppingCenter'
+      : authorType === 6
+      ? 'plant'
+      : 'building'
+  const tariff = {
+    service: {
+      private: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      firm: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      onlineShop: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      shoppingCenter: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      plant: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      buildings: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+    },
+    sale: {
+      private: {
+        free: 5,
+        pro: 10,
+        premium: 20,
+      },
+      firm: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      onlineShop: {
+        free: 5,
+        pro: 10,
+        premium: 15,
+      },
+      shoppingCenter: {
+        free: 0,
+        pro: 10,
+        premium: 15,
+      },
+      plant: {
+        free: 5,
+        pro: 10,
+        premium: 15,
+      },
+      buildings: {
+        free: 0,
+        pro: 10,
+        premium: 15,
+      },
+    },
+    customers: {
+      private: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      firm: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      onlineShop: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      shoppingCenter: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      plant: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+      buildings: {
+        free: 1,
+        pro: 5,
+        premium: 10,
+      },
+    },
+  }
+  return tariff[adTypeName][authorTypeName][accountTypeName]
+}

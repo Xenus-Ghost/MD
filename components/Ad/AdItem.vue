@@ -151,8 +151,8 @@ export default {
       // obj.address = typeof this.adData.address === "string" ? [this.adData.address] : this.adData.address
       // obj.city = typeof this.adData.city === "string" ? [this.adData.city] : this.adData.city
       // if (this.adData.city) obj.city = this.adData.city
-      if (this.adData.address) obj.address = this.adData.address.street
-      if (this.adData.metro) obj.metro = this.adData.address.metro
+      if (this.adData.address) obj.address = this.adData.address
+      if (this.adData.metro) obj.metro = this.adData.metro
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)
       return obj

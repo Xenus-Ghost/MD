@@ -75,8 +75,8 @@ export default {
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
       if (currentCategory)
-        meta.title += currentCategory.service_title
-          ? ` - ${currentCategory.service_title}`
+        meta.title += currentCategory.title
+          ? ` - ${currentCategory.title}`
           : null
       routeValid = !!currentCategory
       filterData.category_id = currentCategory ? currentCategory.id : null

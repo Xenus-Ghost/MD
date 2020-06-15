@@ -12,6 +12,14 @@
       >
         Баннерная реклама
       </Button>
+      <Button
+        to="categories"
+        borders="neon"
+        shape="semi_rounded"
+        class="profile__button"
+      >
+        Категории
+      </Button>
     </div>
   </div>
 </template>
