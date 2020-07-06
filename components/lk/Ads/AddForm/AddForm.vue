@@ -17,11 +17,7 @@
       <div v-if="success" class="advert-form__message_success">
         <h2>Объявление добавлено!</h2>
       </div>
-      <form
-        v-if="!success && errors.length === 0"
-        class="advert-form"
-        @submit.prevent="adSubmit"
-      >
+      <form v-if="canPost" class="advert-form" @submit.prevent="adSubmit">
         <div
           v-if="ad.type_id === 2 && ad.author_type_id >= 2"
           class="grid_cols_4 grid__column_full"
@@ -79,13 +75,12 @@
               ? 'Название объявления'
               : ad.author_type_id === 4
               ? 'Название интернет-магазина'
-              : 'Название фирмы/компании'
+              : 'Название объявления'
           "
           :max-length="30"
         />
         <x-input
           v-if="
-            ad.account_type_id >= 2 &&
             (ad.author_type_id === 2 ||
               ad.author_type_id === 5 ||
               ad.author_type_id === 6)
@@ -117,12 +112,12 @@
           </textarea>
         </label>
         <PhoneInputGroup
-          v-model="ad.phone"
+          v-model="ad.phones"
           name="phone[]"
           :count="phoneCount"
           class="grid__column_3"
         />
-        <x-input
+        <!--<x-input
           v-if="ad.account_type_id !== 1"
           id="website"
           v-model="ad.website"
@@ -132,11 +127,11 @@
           inputmode="url"
           placeholder="Ссылка на сайт"
           autocomplete="url"
-        />
+        />-->
         <x-input
           v-if="ad.account_type_id !== 1"
           id="vk"
-          v-model="social.vk"
+          v-model="ad.vk"
           name="social[vk]"
           class="grid__column_3"
           placeholder="ссылка на сообщество VK"
@@ -144,7 +139,7 @@
         <x-input
           v-if="ad.account_type_id !== 1"
           id="ok"
-          v-model="social.ok"
+          v-model="ad.ok"
           name="social[ok]"
           class="grid__column_3"
           placeholder="ссылка на сообщество OK"
@@ -152,7 +147,7 @@
         <x-input
           v-if="ad.account_type_id !== 1"
           id="ig"
-          v-model="social.ig"
+          v-model="ad.ig"
           name="social[ig]"
           class="grid__column_3"
           placeholder="ссылка на Instagram"
@@ -160,7 +155,7 @@
         <x-input
           v-if="ad.account_type_id !== 1"
           id="fb"
-          v-model="social.fb"
+          v-model="ad.fb"
           name="social[ig]"
           class="grid__column_3"
           placeholder="ссылка на сообщество FB"
@@ -180,7 +175,7 @@
         <div v-if="ad.type_id !== 3" class="grid__column_full grid_cols_2">
           <div class="">
             <FileUploader
-              v-model="ad.photo"
+              v-model="ad.photos"
               multiple
               auto-upload
               preview
@@ -190,8 +185,8 @@
               Загрузить фотографии
             </FileUploader>
           </div>
-          <div v-if="ad.account_type_id !== 1 && maxVideo > 0" class="">
-            <VideoUploader v-model="ad.video" :max="maxVideo" />
+          <div v-if="maxVideo > 0" class="">
+            <VideoUploader v-model="ad.videos" :max="maxVideo" />
           </div>
         </div>
         <div
@@ -202,7 +197,13 @@
           "
           class="grid__column_full"
         >
-          <FileUploader v-model="ad.logo" auto-upload preview file-type="image">
+          <FileUploader
+            v-model="ad.logo"
+            auto-upload
+            preview
+            file-type="image"
+            :max="1"
+          >
             Загрузить логотип
           </FileUploader>
         </div>
@@ -210,7 +211,7 @@
           v-if="
             ad.type_id !== 3 &&
             ad.account_type_id === 3 &&
-            (ad.author_type_id === 4 || ad.author_type_id === 2)
+            ad.author_type_id !== 1
           "
           class="grid__column_full grid_cols_2"
         >
@@ -244,7 +245,8 @@
         <AddressInputGroup
           v-model="addresses"
           class="grid__column_6"
-          :count="3"
+          :count="maxAddress"
+          :address-count="maxAddress"
         />
         <label for="start_time" class="label grid__column_3">
           <input
@@ -288,7 +290,10 @@
         <Button type="submit">
           Опубликовать
         </Button>
-        <div v-if="errors" class="grid__column_3 advert-form__messages">
+        <div
+          v-if="errors && errors.length >= 1"
+          class="grid__column_3 advert-form__messages"
+        >
           <span class="advert-form__messages-title">
             Ошибка
           </span>
@@ -322,6 +327,8 @@ import {
   getAuthorTypeFieldName,
   getMaxCategories,
   getMaxPhotos,
+  getMaxVideos,
+  getMaxAddresses,
 } from '@/assets/js/util/ads'
 import FileUploader from '@/components/FileUploader'
 import CategorySelect from '@/components/lk/CategorySelect'
@@ -353,9 +360,9 @@ export default {
         category: 0,
         city: '',
         description: null,
-        phone: [],
+        phones: [],
         social: [],
-        address: '',
+        addresses: '',
         metro: '',
         start_time: new Date().toISOString().substr(0, 10),
         end_time: this.endTime,
@@ -365,7 +372,7 @@ export default {
         title: null,
         status_id: 1,
         account_type_id: 1,
-        photo: [],
+        photos: [],
         price: null,
       },
       adSubCategories: [],
@@ -387,6 +394,7 @@ export default {
         region: [],
         metro: [],
       },
+      canPost: false,
     }
   },
   computed: {
@@ -411,16 +419,11 @@ export default {
       return returnData
     },
     maxVideo() {
-      let max = 0
-      if (this.ad.author_type_id === 5) {
-        max =
-          this.ad.account_type_id === 2
-            ? 3
-            : this.ad.account_type_id === 3
-            ? 1
-            : 1
-      }
-      return max
+      return getMaxVideos({
+        adType: this.ad.type_id,
+        authorType: this.ad.author_type_id,
+        accountType: this.ad.account_type_id,
+      })
     },
     maxCategories() {
       return getMaxCategories({
@@ -435,6 +438,16 @@ export default {
         authorType: this.ad.author_type_id,
         accountType: this.ad.account_type_id,
       })
+    },
+    maxAddress() {
+      return getMaxAddresses({
+        adType: this.ad.type_id,
+        authorType: this.ad.author_type_id,
+        accountType: this.ad.account_type_id,
+      })
+    },
+    maxCurrentAddresses() {
+      return 1
     },
   },
   async mounted() {
@@ -466,7 +479,7 @@ export default {
     if (!creatingAvailable) {
       this.success = false
       this.errors.push('limit')
-    }
+    } else this.canPost = true
     // if (this.ad.author_type_id >= 2) this.phoneCount = 3
     if (this.ad.author_type_id >= 2) this.addressCount = 3
 
@@ -487,7 +500,7 @@ export default {
       if (this.social.vk) formData.social.push(this.social.vk)
 
       // JUST FOR DEV TEST [[
-      formData.address = formData.address.filter((el) => !!el)
+      formData.addresses = formData.address.filter((el) => !!el)
       // formData.metro = formData.metro[0]
       formData.city = formData.city[0]
       formData.metro = formData.metro.filter((el) => !!el)
@@ -507,10 +520,33 @@ export default {
         .$post('me/advertisements', formData)
         .then((response) => {
           this.success = true
+          this.canPost = false
           this.$toast.success(`Объявление добавлено`)
+          const advertisementId = response.data.id
+          if (this.ad.account_type_id > 1) {
+            this.$axios
+              .$get(`/me/advertisements/${advertisementId}/create-payment`)
+              .then((response) => {
+                console.log(response)
+                window.open(response.url, '_blank')
+              })
+          }
         })
         .catch((error) => {
-          this.errors = error.response.data.errors
+          // this.errors = error.response.data.errors
+          // this.$set(this, 'errors', error.response.data.errors)
+          const errors = error.response.data.errors
+          // const errorsLength = errors.length
+          for (const [key, value] of Object.entries(errors)) {
+            console.log([key, value])
+            this.errors.push(value)
+          }
+          /* for (let i = 0; i < errorsLength; i++) {
+            console.log(errors[i])
+            this.errors.push(errors[i][0])
+          } */
+          console.log(errors)
+          console.log(errors.length)
           if (error.response.data.message)
             this.$toast.error(
               `Произошла ошибка: ${error.response.data.message}`

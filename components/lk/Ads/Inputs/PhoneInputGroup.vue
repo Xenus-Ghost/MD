@@ -12,6 +12,7 @@
         class="input"
         type="tel"
         placeholder="Телефон"
+        minlength="12"
         maxlength="12"
         :required="required === true || n < required"
         inputmode="tel"

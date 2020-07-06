@@ -19,7 +19,7 @@
     </div>
     <client-only>
       <LightBox
-        :items="adModalData.photo"
+        :items="adModalData.photos"
         :index="index"
         loop
         @close="index = null"
@@ -60,9 +60,12 @@
           <h2 v-if="!customerAd" class="ad-modal__title">
             {{ adModalData.title }}
           </h2>
-          <div v-show="adModalData.photo" class="ad-modal__photos">
+          <div
+            v-if="adModalData.photos && adModalData.photos.length > 0"
+            class="ad-modal__photos"
+          >
             <a
-              v-for="(item, p) in adModalData.photo"
+              v-for="(item, p) in adModalData.photos"
               :key="p"
               :href="item"
               class="ad-modal__photo-link"
@@ -77,11 +80,35 @@
             :categories="adModalData.categories"
           ></AdCategoriesList>
           <div v-if="!customerAd" class="line_horizontal"></div>
-          <div class="grid__column_full" style="position: relative;">
-            <ad-address-list
-              v-if="adModalData.address && adModalData.address.length > 1"
-              :address-list="adModalData.address"
-            />
+          <div class="grid__column_full">
+            <div>
+              <div
+                v-if="
+                  (privateAd && adModalData.author.first_name) ||
+                  adModalData.author.last_name
+                "
+              >
+                {{
+                  `${adModalData.author.first_name} ${adModalData.author.last_name}`
+                }}
+              </div>
+              <span v-if="privateAd">
+                {{ `ID: ${adModalData.author_id}` }}
+              </span>
+            </div>
+            <div
+              v-if="
+                (adModalData.addresses && adModalData.addresses.length > 0) ||
+                (adModalData.metro && adModalData.metro.length > 0)
+              "
+              class="grid__column_full"
+              style="position: relative;"
+            >
+              <ad-address-list
+                :address-list="adModalData.addresses"
+                :metro-list="adModalData.metro"
+              />
+            </div>
           </div>
           <div :class="{ grid_cols_3: !customerAd, grid_cols_12: customerAd }">
             <div v-if="customerAd" class="grid__column_1">
@@ -104,12 +131,12 @@
             >
               <div class="ad-modal__phone-list">
                 <a
-                  v-for="(item, j) in adModalData.phone"
+                  v-for="(item, j) in adModalData.phones"
                   :key="j"
-                  :href="`tel:${item}`"
+                  :href="`tel:${item.value}`"
                   class="ad-modal__phone"
                 >
-                  {{ item }}
+                  {{ item.value }}
                 </a>
               </div>
               <a
@@ -137,7 +164,7 @@
                 <a
                   v-for="(i, j) in adModalData.social"
                   :key="j"
-                  :href="i.value"
+                  :href="`/away?url=${i.value}`"
                   target="_blank"
                 >
                   <img
@@ -148,11 +175,7 @@
               </div>
               <Share />
             </div>
-            <div
-              v-if="!customerAd"
-              :class="['grid__column_1', 'grid_rows_4']"
-              style="grid-gap: 10px;"
-            >
+            <div :class="['grid__column_1']" style="grid-gap: 10px;">
               <Button
                 shape="rounded"
                 borders="outline"
@@ -183,7 +206,7 @@
                 Добавить в избранное
               </Button>
               <Button
-                v-if="adModalData.video"
+                v-if="adModalData.videos"
                 shape="rounded"
                 borders="outline"
                 block
@@ -278,7 +301,7 @@
               <Modal v-if="videoShow" @close="closeEmbedVideos">
                 <template>
                   <EmbedVideo
-                    v-for="(video, v) in adModalData.video"
+                    v-for="(video, v) in adModalData.videos"
                     :key="v"
                     :video-id="video"
                   ></EmbedVideo>
@@ -287,7 +310,13 @@
             </div>
           </div>
           <div v-if="customerAd" class="line_horizontal"></div>
-          <div v-if="!customerAd" class="ad-modal__description-header">
+          <div v-if="authorTypeId > 1" class="ad-modal__description-header">
+            Описание:
+          </div>
+          <div
+            v-if="!customerAd && authorTypeId === 1"
+            class="ad-modal__description-header"
+          >
             Описание специалиста:
           </div>
           <div v-if="customerAd" class="ad-modal__description-header">
@@ -487,7 +516,7 @@ export default {
             ? e.data.data.categories
             : null
           if (e.data.data.logo) e.data.data.logo = getFileUrl(e.data.data.logo)
-          e.data.data.address = e.data.data.address.split('------')
+          // e.data.data.addresses = e.data.data.addresses
           e.data.data.city = e.data.data.city.split('------')
           e.data.data.metro = e.data.data.metro.split('------')
           this.$store.dispatch('advert/adModalOpen', e.data.data)

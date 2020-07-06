@@ -9,7 +9,7 @@
     />
     <div v-if="authorType === 6" class="ad__photos_plant">
       <div
-        v-for="(img, i) in ad.photo.slice(0, 4)"
+        v-for="(img, i) in ad.photos.slice(0, 4)"
         :key="i"
         class="ad__photo-wrapper_plant"
       >
@@ -25,20 +25,20 @@
     >
     <div class="ad__contacts grid_cols_2">
       <div class="grid__column">
-        <div v-if="ad.address && ad.address[0].street" class="ad__address">
-          {{ ad.address[0].street }}
+        <div v-if="ad.addresses && ad.addresses[0]" class="ad__address">
+          {{ ad.addresses[0] }}
         </div>
-        <div v-if="ad.address && ad.address[0].metro" class="ad__metro">
-          {{ ad.address[0].metro }}
+        <div v-if="ad.metro && ad.metro[0]" class="ad__metro">
+          {{ ad.metro[0] }}
         </div>
       </div>
       <div v-if="authorType !== 6" class="grid__column">
         <a
-          v-if="ad.phone && ad.phone.length > 0"
-          :href="`tel:${ad.phone[0]}`"
+          v-if="ad.phones && ad.phones.length > 0"
+          :href="`tel:${ad.phones[0]}`"
           class="ad__phone"
         >
-          {{ ad.phone[0] }}
+          {{ ad.phones[0] }}
         </a>
       </div>
     </div>
@@ -107,31 +107,31 @@ export default {
       if (this.adData.price_list)
         obj.price_list = getFileUrl(this.adData.price_list)
       if (this.adData.price) obj.price = this.adData.price
-      if (this.adData.photo && this.adData.photo.length > 0) {
-        obj.photo = this.adData.photo
-        const photoLength = obj.photo.length
+      if (this.adData.photos && this.adData.photos.length > 0) {
+        obj.photos = this.adData.photos
+        const photoLength = obj.photos.length
         for (let i = 0; i < photoLength; i++) {
-          obj.photo[i] = getFileUrl(obj.photo[i])
+          obj.photos[i] = getFileUrl(obj.photos[i])
         }
       }
       obj.img = this.adData.img
         ? this.adData.img
-        : obj.photo
-        ? obj.photo[0]
+        : obj.photos
+        ? obj.photos[0]
         : ''
       if (this.customerAd) obj.img = '/img/icons/employee.png'
       obj.logo = this.adData.logo ? getFileUrl(this.adData.logo) : null
-      if (this.adData.video && this.adData.video.length > 0)
-        obj.video = this.adData.video
-      if (this.adData.phone && this.adData.phone.length > 0) {
-        obj.phone = this.adData.phone
+      if (this.adData.videos && this.adData.videos.length > 0)
+        obj.videos = this.adData.videos
+      if (this.adData.phones && this.adData.phones.length > 0) {
+        obj.phones = this.adData.phones
       }
       obj.social = this.adData.social
       obj.views = this.adData.views
       obj.categories = this.adData.categories ? this.adData.categories : null
 
       if (this.adData.city) obj.city = this.adData.city
-      if (this.adData.address) obj.address = this.adData.address
+      if (this.adData.addresses) obj.addresses = this.adData.addresses
       /* if (this.adData.metro)
         obj.metro =
           typeof this.adData.metro === 'string'

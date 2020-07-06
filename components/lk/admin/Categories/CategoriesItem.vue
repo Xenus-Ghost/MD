@@ -90,6 +90,15 @@
             @change="update"
           />
         </label>
+        <label class="label">
+          Недвижимость
+          <input
+            v-model="metaItem['property']"
+            type="checkbox"
+            class="input_checkbox"
+            @change="update"
+          />
+        </label>
         <label class="label" style="flex-basis: 100%;">
           <input v-model="data.meta[m].title" type="text" @change="update" />
         </label>
@@ -161,6 +170,7 @@ export default {
               'online-shop': 0,
               'shopping-center': 0,
               plant: 0,
+              property: 0,
             },
           ],
         }
@@ -236,6 +246,7 @@ export default {
         'online-shop': 0,
         'shopping-center': 0,
         plant: 0,
+        property: 0,
       })
     },
   },
@@ -278,7 +289,7 @@ export default {
   }
   &__meta-item {
     display: grid;
-    grid-template-columns: repeat(5, auto) 2fr;
+    grid-template-columns: repeat(6, auto) 2fr;
     grid-gap: 0.5rem;
     margin-bottom: 0.35rem;
   }

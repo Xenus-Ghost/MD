@@ -45,7 +45,7 @@ export function getMaxCategories(params) {
       } else if (accountType === 2) {
         max = 1
       } else {
-        max = 1
+        max = 99
       }
     } else if (authorType === 2) {
       if (accountType === 1) {
@@ -53,7 +53,7 @@ export function getMaxCategories(params) {
       } else if (accountType === 2) {
         max = 5
       } else {
-        max = 0
+        max = 99
       }
     } else if (authorType === 4) {
       if (accountType === 1) {
@@ -61,7 +61,7 @@ export function getMaxCategories(params) {
       } else if (accountType === 2) {
         max = 5
       } else {
-        max = 0
+        max = 99
       }
     } else if (authorType === 5) {
       if (accountType === 1) {
@@ -69,7 +69,7 @@ export function getMaxCategories(params) {
       } else if (accountType === 2) {
         max = 5
       } else {
-        max = 0
+        max = 99
       }
     } else if (authorType === 6) {
       if (accountType === 1) {
@@ -77,7 +77,7 @@ export function getMaxCategories(params) {
       } else if (accountType === 2) {
         max = 5
       } else {
-        max = 0
+        max = 99
       }
     } else if (authorType === 7) {
       if (accountType === 1) {
@@ -85,7 +85,7 @@ export function getMaxCategories(params) {
       } else if (accountType === 2) {
         max = 5
       } else {
-        max = 0
+        max = 99
       }
     }
   }
@@ -109,38 +109,18 @@ export function getMaxPhotos(params) {
       ? 'shoppingCenter'
       : authorType === 6
       ? 'plant'
-      : 'building'
+      : 'buildings'
   const tariff = {
     service: {
       private: {
-        free: 1,
-        pro: 5,
-        premium: 10,
+        free: 5,
+        pro: 10,
+        premium: 15,
       },
       firm: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      onlineShop: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      shoppingCenter: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      plant: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      buildings: {
-        free: 1,
-        pro: 5,
-        premium: 10,
+        free: 5,
+        pro: 10,
+        premium: 15,
       },
     },
     sale: {
@@ -150,9 +130,9 @@ export function getMaxPhotos(params) {
         premium: 20,
       },
       firm: {
-        free: 1,
-        pro: 5,
-        premium: 10,
+        free: 5,
+        pro: 10,
+        premium: 15,
       },
       onlineShop: {
         free: 5,
@@ -201,13 +181,114 @@ export function getMaxPhotos(params) {
         pro: 5,
         premium: 10,
       },
-      buildings: {
+      building: {
         free: 1,
         pro: 5,
         premium: 10,
       },
     },
   }
+  // console.log([adTypeName],[authorTypeName],[accountTypeName])
+  return tariff[adTypeName][authorTypeName][accountTypeName]
+}
+
+export function getMaxVideos(params) {
+  const { adType, authorType, accountType } = params
+  const adTypeName =
+    adType === 1 ? 'service' : adType === 2 ? 'sale' : 'customers'
+  const accountTypeName =
+    accountType === 1 ? 'free' : accountType === 2 ? 'pro' : 'premium'
+  const authorTypeName =
+    authorType === 1
+      ? 'private'
+      : authorType === 2
+      ? 'firm'
+      : authorType === 4
+      ? 'onlineShop'
+      : authorType === 5
+      ? 'shoppingCenter'
+      : authorType === 6
+      ? 'plant'
+      : 'buildings'
+  const tariff = {
+    service: {
+      private: {
+        free: 0,
+        pro: 1,
+        premium: 3,
+      },
+      firm: {
+        free: 0,
+        pro: 3,
+        premium: 5,
+      },
+    },
+    sale: {
+      private: {
+        free: 0,
+        pro: 1,
+        premium: 5,
+      },
+      firm: {
+        free: 0,
+        pro: 1,
+        premium: 5,
+      },
+      onlineShop: {
+        free: 0,
+        pro: 1,
+        premium: 5,
+      },
+      shoppingCenter: {
+        free: 0,
+        pro: 1,
+        premium: 5,
+      },
+      plant: {
+        free: 0,
+        pro: 1,
+        premium: 5,
+      },
+      buildings: {
+        free: 0,
+        pro: 1,
+        premium: 5,
+      },
+    },
+    customers: {
+      private: {
+        free: 0,
+        pro: 0,
+        premium: 0,
+      },
+      firm: {
+        free: 0,
+        pro: 0,
+        premium: 0,
+      },
+      onlineShop: {
+        free: 0,
+        pro: 0,
+        premium: 0,
+      },
+      shoppingCenter: {
+        free: 0,
+        pro: 0,
+        premium: 0,
+      },
+      plant: {
+        free: 0,
+        pro: 0,
+        premium: 0,
+      },
+      building: {
+        free: 0,
+        pro: 0,
+        premium: 0,
+      },
+    },
+  }
+  // console.log([adTypeName],[authorTypeName],[accountTypeName])
   return tariff[adTypeName][authorTypeName][accountTypeName]
 }
 
@@ -233,65 +314,45 @@ export function getMaxAddresses(params) {
     service: {
       private: {
         free: 1,
-        pro: 5,
-        premium: 10,
+        pro: 1,
+        premium: 1,
       },
       firm: {
         free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      onlineShop: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      shoppingCenter: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      plant: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      buildings: {
-        free: 1,
-        pro: 5,
-        premium: 10,
+        pro: 1,
+        premium: 1,
       },
     },
     sale: {
       private: {
-        free: 5,
-        pro: 10,
-        premium: 20,
+        free: 1,
+        pro: 1,
+        premium: 1,
       },
       firm: {
         free: 1,
         pro: 5,
-        premium: 10,
+        premium: 20,
       },
       onlineShop: {
-        free: 5,
-        pro: 10,
-        premium: 15,
+        free: 1,
+        pro: 5,
+        premium: 20,
       },
       shoppingCenter: {
         free: 0,
-        pro: 10,
-        premium: 15,
+        pro: 5,
+        premium: 20,
       },
       plant: {
-        free: 5,
-        pro: 10,
-        premium: 15,
+        free: 1,
+        pro: 5,
+        premium: 20,
       },
-      buildings: {
+      building: {
         free: 0,
-        pro: 10,
-        premium: 15,
+        pro: 5,
+        premium: 20,
       },
     },
     customers: {
@@ -301,26 +362,6 @@ export function getMaxAddresses(params) {
         premium: 10,
       },
       firm: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      onlineShop: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      shoppingCenter: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      plant: {
-        free: 1,
-        pro: 5,
-        premium: 10,
-      },
-      buildings: {
         free: 1,
         pro: 5,
         premium: 10,

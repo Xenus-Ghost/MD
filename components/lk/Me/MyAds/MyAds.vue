@@ -62,22 +62,22 @@
               <div
                 :class="[
                   'my-ad__status',
-                  row.status.id === 1 ? 'my-ad__status_active' : '',
+                  row.status_id === 1 ? 'my-ad__status_active' : '',
                 ]"
               >
                 <span>
-                  {{ row.status.title }}
+                  {{ row.status_id }}
                 </span>
               </div>
               <div class="my-ad__actions">
-                <span v-if="row.status.id === 1" class="my-ad__button_pause">
+                <span v-if="row.status_id === 1" class="my-ad__button_pause">
                   <img
                     class="my-ad__icon"
                     src="~assets/img/icons/pause.svg"
                     alt=""
                   />
                 </span>
-                <span v-if="row.status.id !== 1" class="my-ad__button_redo"
+                <span v-if="row.status_id !== 1" class="my-ad__button_redo"
                   ><img
                     class="my-ad__icon"
                     src="~assets/img/icons/redo.svg"
@@ -118,22 +118,22 @@
             <div
               :class="[
                 'my-ad__status',
-                row.status.id === 1 ? 'my-ad__status_active' : '',
+                row.status_id === 1 ? 'my-ad__status_active' : '',
               ]"
             >
               <span>
-                {{ row.status.title }}
+                {{ row.status_id }}
               </span>
             </div>
             <div class="my-ad__actions">
-              <span v-if="row.status.id === 1" class="my-ad__button_pause">
+              <span v-if="row.status_id === 1" class="my-ad__button_pause">
                 <img
                   class="my-ad__icon"
                   src="~assets/img/icons/pause.svg"
                   alt=""
                 />
               </span>
-              <span v-if="row.status.id !== 1" class="my-ad__button_redo"
+              <span v-if="row.status_id !== 1" class="my-ad__button_redo"
                 ><img
                   class="my-ad__icon"
                   src="~assets/img/icons/redo.svg"

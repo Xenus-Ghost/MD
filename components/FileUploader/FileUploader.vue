@@ -9,12 +9,12 @@
         :multiple="multiple"
         @change="fileSelected($event)"
       />
-      <Button @click.native="onPickFile">
+      <Button :disabled="currentCount >= max" @click.native="onPickFile">
         <slot>выбрать файлы</slot>
       </Button>
       <Button v-if="loadButton" @click.native="upload()">Загрузить</Button>
       <div class="uploader__message-list">
-        <span class="uploader__message">Маскимум: {{ max }}</span>
+        <span class="uploader__message">Максимум: {{ max }}</span>
       </div>
       <div v-if="preview || autoUpload" class="uploader__list">
         <div v-for="(file, j) in uploaded" :key="j" class="uploader__file">
@@ -110,6 +110,7 @@ export default {
       response: {},
       uploaded: [],
       errors: [],
+      currentCount: 0,
     }
   },
   computed: {
@@ -149,6 +150,7 @@ export default {
           .then((response) => {
             this.uploaded.push(response.data.data[0])
             formData = new FormData()
+            this.currentCount++
           })
           .catch((error) => {
             console.log(error.response)

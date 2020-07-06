@@ -7,11 +7,12 @@
       :show-count="true"
       :default-expand-level="0"
       :disable-branch-nodes="true"
-      :multiple="true"
+      :multiple="multiple"
+      :close-on-select="true"
       required
       :placeholder="placeholder"
       :value-consists-of="'ALL_WITH_INDETERMINATE'"
-      :flat="true"
+      :flat="multiple"
       @input="
         (arg) => {
           update(arg)
@@ -35,7 +36,7 @@
         >
       </label>
     </treeselect>
-    <span class="category-select__counter">
+    <span v-if="multiple" class="category-select__counter">
       {{ `Выбрано: ${selectedCount} / ${max > 0 ? max : '-'}` }}
     </span>
   </div>
@@ -82,7 +83,7 @@ export default {
   data() {
     return {
       rootCategory: null,
-      category: [],
+      category: this.multiple ? [] : null,
       subCategory: null,
       adSubCategories: [],
       subSubCategories: null,
@@ -100,36 +101,48 @@ export default {
       return returnData
     },
     selectedCount() {
-      return this.category.length
+      return this.multiple
+        ? this.category && this.category.length
+          ? this.category.length
+          : 0
+        : 0
+    },
+    multiple() {
+      return this.max > 1
     },
   },
   methods: {
     update(e) {
       const numbersLength = e.length
-      const lastCategory = this.categories.find(
-        (result) => result.id === e[numbersLength - 1]
-      )
-      this.$set(
-        this,
-        'parentCategory',
-        lastCategory ? lastCategory.parent_id : null
-      )
-      let tempParentId = null
-      if (this.parentCategory === null)
-        this.category.splice(0, numbersLength - 1)
-      this.category.forEach((elem, index, object) => {
-        tempParentId = this.categories.find((result) => result.id === elem)
-          .parent_id
-        if (tempParentId !== this.parentCategory) {
-          object.splice(index, 1)
+      console.log(e)
+      if (this.multiple) {
+        const lastCategory = this.categories.find(
+          (result) => result.id === e[numbersLength - 1]
+        )
+        this.$set(
+          this,
+          'parentCategory',
+          lastCategory ? lastCategory.parent_id : null
+        )
+        let tempParentId = null
+        if (this.parentCategory === null)
+          this.category.splice(0, numbersLength - 1)
+        this.category.forEach((elem, index, object) => {
+          tempParentId = this.categories.find((result) => result.id === elem)
+            .parent_id
+          if (tempParentId !== this.parentCategory) {
+            object.splice(index, 1)
+          }
+        })
+        if (numbersLength > this.max && this.max > 0) {
+          this.category.pop()
+          // alert(`Максимум ${this.max}`)
+          this.$toast.error(`Максимум ${this.max} категорий`)
         }
-      })
-      if (numbersLength > this.max && this.max > 0) {
-        this.category.pop()
-        // alert(`Максимум ${this.max}`)
-        this.$toast.error(`Максимум ${this.max} категорий`)
+        this.$emit('change', this.category)
+      } else {
+        this.$emit('change', [e])
       }
-      this.$emit('change', this.category)
     },
   },
 }
@@ -161,10 +174,11 @@ export default {
     }
   }
 }
-.vue-treeselect--single .vue-treeselect__option--selected {
-  background-color: var(--color-primary);
+.vue-treeselect__option--selected,
+.vue-treeselect__option--highlight {
+  background-color: var(--color-primary) !important;
 }
-.vue-treeselect--single .vue-treeselect__option--selected:hover {
+.vue-treeselect__option--selected:hover {
   background-color: var(--color-primary);
 }
 .vue-treeselect__option:hover {

@@ -287,6 +287,25 @@ export default {
   /* mounted() {
     this.$root.$on('authFormOpen', function (id) {})
   }, */
+  created() {
+    const query = this.$route.query
+    console.log(this.$route.query)
+    // console.log(this.route.params)
+    if (query.OutSum && query.InvId && query.SignatureValue) {
+      this.$axios
+        .$get('me/payments/confirm', { params: query })
+        .then((response) => {
+          // this.$toast.success('Услуга успешно оплачена')
+          // console.log(response, response.data)
+          if (response.data && response.data.is_payment_correct) {
+            this.$router.push('/payment/success/')
+          } else {
+            this.$router.push('/payment/fail/')
+          }
+        })
+    }
+    // this.$toast.success('Услуга успешно оплачена')
+  },
   methods: {
     authFormOpen() {
       // this.isAuthFormShow = false

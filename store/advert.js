@@ -3,7 +3,8 @@ import { getFileUrl, getUrl } from '@/assets/js/util'
 export const state = () => ({
   isAdModalOpen: false,
   adModalData: {
-    photo: [],
+    photos: [],
+    addresses: [],
   },
   authorType: [
     {

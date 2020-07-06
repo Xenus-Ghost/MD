@@ -4,7 +4,7 @@
       <CategoryHeader>
         {{ meta.title }}
         <template v-slot:right_column>
-          <!--          <img src="@/assets/img/icons/MD_logo.svg" alt="">-->
+          <!--          <img src="@/assets/img/icons/MD_logo.svg" alt="" />-->
         </template>
       </CategoryHeader>
       <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw;">

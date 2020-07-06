@@ -84,7 +84,7 @@
     </ul>
     <div class="input_addresses grid__column_2">
       <label
-        v-for="n in count"
+        v-for="n in addressCount"
         :key="n - 1"
         :for="`address_${n}`"
         class="label grid__column_3"
@@ -113,6 +113,10 @@ export default {
     count: {
       type: Number,
       default: 1,
+    },
+    addressCount: {
+      type: Number,
+      default: 0,
     },
     required: {
       type: Number || Boolean,

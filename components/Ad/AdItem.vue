@@ -13,8 +13,8 @@
       <span class="views__value">{{ ad.views }}</span>
     </div>
     <img
-      v-if="ad.logo"
-      :src="ad.logo"
+      v-if="authorType > 1 && (ad.logo || ad.img)"
+      :src="ad.logo ? ad.logo : ad.img"
       :alt="ad.title"
       :class="[
         'ad__logo',
@@ -24,7 +24,7 @@
       @click="adOpen"
     />
     <img
-      v-if="adType === 1"
+      v-if="adType === 1 || (adType === 2 && authorType === 1)"
       :src="ad.img"
       :alt="ad.title"
       class="ad__photo"
@@ -42,7 +42,7 @@
     <span v-if="!customerAd" class="ad__sub-title">{{ ad.title }}</span>
     <div v-if="authorType === 5" class="ad__photos ad__photos_center">
       <img
-        v-for="(img, i) in ad.photo.slice(0, 4)"
+        v-for="(img, i) in ad.photos.slice(0, 4)"
         :key="i"
         :src="img"
         alt=""
@@ -128,21 +128,36 @@ export default {
       if (this.adData.price_list)
         obj.price_list = getFileUrl(this.adData.price_list)
       if (this.adData.price) obj.price = this.adData.price
-      if (!this.customerAd && this.adData.photo && this.adData.photo.length > 0)
-        obj.photo = this.adData.photo
+      if (
+        !this.customerAd &&
+        this.adData.photos &&
+        this.adData.photos.length > 0
+      )
+        obj.photos = this.adData.photos
+      if (obj.photos && obj.photos.length > 0) {
+        obj.photos.forEach(
+          (item, i) =>
+            (obj.photos[i] = item.value ? item.value : getFileUrl(item))
+        )
+      }
+      // console.log(getFileUrl(obj.photos[0]))
       obj.img = this.adData.img
         ? this.adData.img
-        : obj.photo
-        ? getFileUrl(obj.photo[0])
+        : obj.photos && obj.photos.length > 0
+        ? getFileUrl(obj.photos[0])
         : ''
       if (this.customerAd) obj.img = '/img/icons/employee.png'
       obj.logo = this.adData.logo ? getFileUrl(this.adData.logo) : null
-      if (this.adData.video && this.adData.video.length > 0)
-        obj.video = this.adData.video
-      if (this.adData.phone && this.adData.phone.length > 0) {
-        obj.phone = this.adData.phone
+      if (this.adData.videos && this.adData.videos.length > 0)
+        obj.videos = this.adData.videos
+      if (this.adData.phones && this.adData.phones.length > 0) {
+        obj.phones = this.adData.phones
       }
-      obj.social = this.adData.social
+      obj.social = []
+      if (this.adData.ig) obj.social.push(this.adData.ig)
+      if (this.adData.vk) obj.social.push(this.adData.vk)
+      if (this.adData.ok) obj.social.push(this.adData.ok)
+      if (this.adData.fb) obj.social.push(this.adData.fb)
       // obj.metro = this.adData.metro
       obj.views = this.adData.views
       obj.categories = this.adData.categories ? this.adData.categories : null
@@ -151,7 +166,7 @@ export default {
       // obj.address = typeof this.adData.address === "string" ? [this.adData.address] : this.adData.address
       // obj.city = typeof this.adData.city === "string" ? [this.adData.city] : this.adData.city
       // if (this.adData.city) obj.city = this.adData.city
-      if (this.adData.address) obj.address = this.adData.address
+      if (this.adData.addresses) obj.addresses = this.adData.addresses
       if (this.adData.metro) obj.metro = this.adData.metro
       // if (this.adData.url) obj.url = this.adData.url
       // console.log(obj)

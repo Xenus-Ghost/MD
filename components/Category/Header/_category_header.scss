@@ -74,6 +74,7 @@
     }
   }
   &_right {
+    justify-self: center;
     @include on_desktop() {
       max-height: 40vh;
       &>img {

@@ -16,10 +16,10 @@
         :key="a"
         class="ad-modal__address-item"
       >
-        <div class="ad-modal__address">
-          {{ address.street }}
+        <div v-if="address && address.value" class="ad-modal__address">
+          {{ address.value }}
         </div>
-        <div class="ad-modal__address_metro">
+        <div v-if="metroList && metroList[a]" class="ad-modal__address_metro">
           <svg
             class="icon-svg_metro"
             width="18"
@@ -44,12 +44,12 @@
               </clipPath>
             </defs>
           </svg>
-          {{ address.metro }}
+          {{ metroList[a].value }}
         </div>
       </div>
     </div>
     <Button
-      v-if="!show"
+      v-if="!show && (addresses.length > 2 || metroList && addresses.length > 2)"
       borders="outline"
       shape="semi_rounded"
       size="big"
@@ -72,6 +72,10 @@ export default {
   name: 'AdAddressList',
   props: {
     addressList: {
+      type: Array,
+      default: null,
+    },
+    metroList: {
       type: Array,
       default: null,
     },

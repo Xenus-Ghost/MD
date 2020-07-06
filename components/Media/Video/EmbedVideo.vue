@@ -8,7 +8,9 @@
         :height="height"
         class="embed__iframe"
         loading="lazy"
-        :src="`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=0&origin=${origin_url}`"
+        :src="`https://www.youtube-nocookie.com/embed/${
+          videoId && videoId.value ? videoId.value : videoId
+        }?autoplay=0&origin=${origin_url}`"
         frameborder="0"
         :style="styles"
       ></iframe>

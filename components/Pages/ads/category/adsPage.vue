@@ -2,7 +2,32 @@
   <div class="container_wide layout_category grid-layout_ads">
     <CategoryHeader>
       {{ meta.title }}
-      <template v-slot:right_column> </template>
+      <template v-slot:right_column>
+        <img
+          v-if="authorTypeId === 7"
+          src="@/assets/img/icons/categories/buildings.svg"
+          alt=""
+          class="category__icon"
+        />
+        <img
+          v-if="authorTypeId === 4"
+          src="@/assets/img/icons/categories/eshop.svg"
+          alt=""
+          class="category__icon"
+        />
+        <img
+          v-if="authorTypeId === 6"
+          src="@/assets/img/icons/categories/plant.svg"
+          alt=""
+          class="category__icon"
+        />
+        <img
+          v-if="authorTypeId === 5"
+          src="@/assets/img/icons/categories/shoppingCenter.svg"
+          alt=""
+          class="category__icon"
+        />
+      </template>
     </CategoryHeader>
     <Advertising :category="filterData.category_id"></Advertising>
     <!--    <h2 class="text_center text_neon">{{ body.title }}</h2>-->
@@ -43,7 +68,9 @@ export default {
   },
   data() {
     return {
-      authorTypeId: null,
+      authorTypeId: this.filterData.author_type_id
+        ? this.filterData.author_type_id
+        : null,
       typeID: null,
       body: {
         title: '',
@@ -76,4 +103,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/app/index.scss';
+.category__icon {
+  justify-self: center;
+}
 </style>
