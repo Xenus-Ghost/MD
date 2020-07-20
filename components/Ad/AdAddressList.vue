@@ -49,7 +49,9 @@
       </div>
     </div>
     <Button
-      v-if="!show && (addresses.length > 2 || metroList && addresses.length > 2)"
+      v-if="
+        !show && (addresses.length >= 2 || (metroList && addresses.length >= 2))
+      "
       borders="outline"
       shape="semi_rounded"
       size="big"
@@ -94,6 +96,9 @@ export default {
           : [this.addressList[0], this.addressList[1]]
       return obj
     },
+  },
+  mounted() {
+    console.log(this.addresses.length)
   },
 }
 </script>

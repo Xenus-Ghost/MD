@@ -1,6 +1,6 @@
 <template>
   <div class="grid-layout_profile">
-    <CategoryHeader :back-u-r-l="'/lk'">
+    <CategoryHeader :back-url="'/lk'">
       Подать объявление
       <template v-slot:right_column>
         <img
@@ -10,13 +10,16 @@
         />
       </template>
     </CategoryHeader>
-    <div class="container grid_cols_2_desktop">
+    <div
+      class="container grid_cols_2_desktop grid-gap_8"
+      style="text-align: center;"
+    >
       <div class="grid__column_1">
         <h2>Услуги</h2>
         <Card>
-          <div class="grid_cols_2">
-            <div class="grid__column_1 grid_rows_3">
-              <h3>
+          <div class="grid_cols_2 grid-gap_6">
+            <div class="grid__column_1 grid_rows_3 grid-gap_4">
+              <h3 class="add-ad__title">
                 Частник
               </h3>
               <Button
@@ -36,13 +39,14 @@
               <Button
                 shape="semi_rounded"
                 borders="neon"
+                color="secondary"
                 @click.native="modalAddOpen(3, 1)"
               >
                 Премиум-аккаунт
               </Button>
             </div>
-            <div class="grid__column_1 grid_rows_3">
-              <h3>
+            <div class="grid__column_1 grid_rows_3 grid-gap_4">
+              <h3 class="add-ad__title">
                 Фирма
               </h3>
               <Button
@@ -62,12 +66,18 @@
               <Button
                 shape="semi_rounded"
                 borders="neon"
+                color="secondary"
                 @click.native="modalAddOpen(3, 2)"
               >
                 Премиум-аккаунт
               </Button>
             </div>
-            <Button shape="semi_rounded" borders="neon" class="grid__column_2">
+            <Button
+              shape="semi_rounded"
+              borders="neon"
+              class="grid__column_2"
+              :to="'price'"
+            >
               Тарифы
             </Button>
           </div>
@@ -76,9 +86,9 @@
       <div class="grid__column_1">
         <h2>Продажа</h2>
         <Card>
-          <div class="grid_cols_2">
-            <div class="grid__column_1 grid_rows_3">
-              <h3>
+          <div class="grid_cols_2 grid-gap_6">
+            <div class="grid__column_1 grid_rows_3 grid-gap_4">
+              <h3 class="add-ad__title">
                 Частник
               </h3>
               <Button
@@ -98,13 +108,14 @@
               <Button
                 shape="semi_rounded"
                 borders="neon"
+                color="secondary"
                 @click.native="modalAddOpen(3, 1, 2)"
               >
                 Премиум-аккаунт
               </Button>
             </div>
-            <div class="grid__column_1 grid_rows_3">
-              <h3>
+            <div class="grid__column_1 grid_rows_3 grid-gap_4">
+              <h3 class="add-ad__title">
                 Фирма
               </h3>
               <Button
@@ -124,12 +135,18 @@
               <Button
                 shape="semi_rounded"
                 borders="neon"
+                color="secondary"
                 @click.native="modalAddOpen(3, 2, 2)"
               >
                 Премиум-аккаунт
               </Button>
             </div>
-            <Button shape="semi_rounded" borders="neon" class="grid__column_2">
+            <Button
+              shape="semi_rounded"
+              borders="neon"
+              class="grid__column_2"
+              :to="'price'"
+            >
               Тарифы
             </Button>
           </div>
@@ -139,6 +156,7 @@
         <Button
           shape="semi_rounded"
           borders="neon"
+          block
           @click.native="modalAddOpen(1, 1, 3)"
         >
           Заказчик - бесплатно
@@ -148,6 +166,7 @@
         <Button
           shape="semi_rounded"
           borders="neon"
+          block
           @click.native="modalAddOpen(1, 4, 2)"
         >
           Интернет-магазин
@@ -227,5 +246,8 @@ export default {
       display: none;
     }
   }
+}
+.add-ad__title {
+  margin: 0;
 }
 </style>

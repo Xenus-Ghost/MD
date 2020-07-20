@@ -74,6 +74,10 @@ export default {
     //   type: Boolean,
     //   default: false
     // }
+    color: {
+      type: String,
+      default: 'primary',
+    },
   },
   data() {
     return {
@@ -115,7 +119,7 @@ export default {
     style() {
       return {
         // 'height': (this.height + 'px').replace('pxpx', 'px').replace('%px', '%'),
-        'background-color': this.color,
+        // 'background-color': this.color,
         // 'max-height': (this.maxHeight + 'px').replace('pxpx', 'px').replace('%px', '%'),
         // 'max-width': (this.maxWidth + 'px').replace('pxpx', 'px').replace('%px', '%'),
         // 'min-height': (this.minHeight + 'px').replace('pxpx', 'px').replace('%px', '%'),
@@ -136,6 +140,7 @@ export default {
         button_neon: this.borders === 'neon',
         button_block: !!this.block,
       }
+      if (this.color) arr[`button_${this.color}`] = true
       return arr
     },
     hasLeftIcon() {

@@ -8,7 +8,12 @@ import {
   getCatSlugs,
 } from './adCategories'
 
-import { getMaxCategories, getMaxPhotos, getMaxVideos, getMaxAddresses, } from './adForms'
+import {
+  getMaxCategories,
+  getMaxPhotos,
+  getMaxVideos,
+  getMaxAddresses,
+} from './adForms'
 
 export {
   getAuthorTypeFieldName,

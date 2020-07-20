@@ -3,6 +3,7 @@ $button-class: '.button';
 #{$button-class}{
   --button-primary-color: var(--color-primary);
   --button-text-color: var(--color-primary);
+  --border-color: #7BD7FF;
   font-size: 1rem;
   cursor: pointer;
   display: inline-flex;
@@ -37,6 +38,15 @@ $button-class: '.button';
   &_active {
     box-shadow: bottom-shadow(4, var(--button-primary-color)), top-shadow(2, var(--button-primary-color));
     @include text-neon()
+  }
+
+  //color
+  &_primary {
+
+  }
+  &_secondary {
+    --text-color: #ffb800;
+    --border-color: #ffb800;
   }
 
   //size
@@ -95,7 +105,7 @@ $button-class: '.button';
   }
 
   &_outline{
-    --border-color: white;
+    --border-color: rgba(255, 255, 255, 0.81);
     color: white;
     background: rgba(34, 55, 87, 0.6);
     box-shadow: 0 0 2px 1px var(--border-color);
@@ -103,13 +113,13 @@ $button-class: '.button';
       --border-color: #7BD7FF;
       @include text-neon();
       $shadow-value: 6px;
-      box-shadow: 0 0 $shadow-value 1px var(--border-color), 0 0 $shadow-value 1px var(--border-color) inset;
+      box-shadow: 0 0 $shadow-value 2px var(--border-color), 0 0 $shadow-value 2px var(--border-color) inset;
     }
     &:active {
       --border-color: #7BD7FF;
       @include text-neon();
       $shadow-value: 8px;
-      box-shadow: 0 0 $shadow-value 1px var(--border-color), 0 0 $shadow-value 1px var(--border-color) inset;
+      box-shadow: 0 0 ($shadow-value - 3) 3px var(--border-color), 0 0 $shadow-value 3px var(--border-color) inset;
     }
     &:focus {
       --border-color: #7BD7FF;
@@ -120,24 +130,25 @@ $button-class: '.button';
   }
   &_neon{
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    text-shadow: 0 0 4px var(--text-color, white);
+    border: 2px solid rgba(255, 255, 255, 0.85);
     background-color: rgba(14, 36, 62, 0.1);
-    $shadow-value: 12px;
-    box-shadow: 0 0 $shadow-value 1px #7BD7FF, 0 0 $shadow-value 1px #7BD7FF inset;
+    $shadow-value: 10px;
+    box-shadow: 0 0 $shadow-value 1px var(--border-color), 0 0 $shadow-value 1px var(--border-color) inset;
     &:hover{
-      $shadow-value: 14px;
+      $shadow-value: 12px;
       background-color: rgba(15, 98, 133, 0.1);
-      box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
+      box-shadow: 0 0 $shadow-value 2px var(--border-color), 0 0 $shadow-value 2px var(--border-color) inset;
     }
     &:active{
-      $shadow-value: 16px;
+      $shadow-value: 14px;
       background-color: rgba(15, 98, 133, 0.1);
-      box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
+      box-shadow: 0 0 $shadow-value 2px var(--border-color), 0 0 $shadow-value 2px var(--border-color) inset;
     }
     &:focus {
-      $shadow-value: 14px;
+      $shadow-value: 12px;
       background-color: rgba(15, 98, 133, 0.4);
-      box-shadow: 0 0 $shadow-value 2px #7BD7FF, 0 0 $shadow-value 2px #7BD7FF inset;
+      box-shadow: 0 0 $shadow-value 2px var(--border-color), 0 0 $shadow-value 2px var(--border-color) inset;
       @include text-neon()
     }
   }

@@ -53,7 +53,7 @@ export default {
     height: calc(100vh - 65px);
   }
   padding-bottom: 0.5vw;
-  /deep/ .header_category {
+  ::v-deep .header_category {
     grid-template-rows: minmax(200px, 1fr) auto;
     grid-template-columns: 1fr;
   }

@@ -6,6 +6,10 @@
         ссылка
         <input v-model.trim="data.name" type="text" />
       </label>
+      <label class="label">
+        Название (общее)
+        <input v-model.trim="data.title" type="text" />
+      </label>
       <label class="label label__parent-id">
         Родитель
         <input
@@ -33,7 +37,7 @@
         class="category__meta-item"
       >
         <label class="label">
-          Тип объявлений
+          <!--          Тип объявлений-->
           <select
             v-model="metaItem.type_id"
             class="input_select"
@@ -46,34 +50,37 @@
           </select>
         </label>
         <label class="label">
-          Фирмы и магазины
+          <span v-if="m === 0">Фирмы</span>
           <input
             v-model="metaItem.firm"
             type="checkbox"
             class="input_checkbox"
+            :disabled="metaItem.type_id === 3"
             @change="update"
           />
         </label>
         <label class="label">
-          Интернет-магазины
+          <span v-if="m === 0">eshop</span>
           <input
             v-model="metaItem['online-shop']"
             type="checkbox"
             class="input_checkbox"
+            :disabled="metaItem.type_id === 3 || metaItem.type_id === 1"
             @change="update"
           />
         </label>
         <label class="label">
-          Заводы
+          <span v-if="m === 0">Заводы</span>
           <input
             v-model="metaItem.plant"
             type="checkbox"
             class="input_checkbox"
+            :disabled="metaItem.type_id === 3 || metaItem.type_id === 1"
             @change="update"
           />
         </label>
         <label class="label">
-          Частные лица
+          <span v-if="m === 0">Частные</span>
           <input
             v-model="metaItem['private-person']"
             type="checkbox"
@@ -82,20 +89,22 @@
           />
         </label>
         <label class="label">
-          Торговые центры
+          <span v-if="m === 0">Центры</span>
           <input
             v-model="metaItem['shopping-center']"
             type="checkbox"
             class="input_checkbox"
+            :disabled="metaItem.type_id === 3 || metaItem.type_id === 1"
             @change="update"
           />
         </label>
         <label class="label">
-          Недвижимость
+          <span v-if="m === 0">Недвиж</span>
           <input
-            v-model="metaItem['property']"
+            v-model="metaItem.property"
             type="checkbox"
             class="input_checkbox"
+            :disabled="metaItem.type_id === 3 || metaItem.type_id === 1"
             @change="update"
           />
         </label>
@@ -112,7 +121,7 @@
       >
     </details>
     <div class="category__actions">
-      <span class="my-ad__button_redo" @click="update"
+      <span class="my-ad__button_redo" @click="buttonUpdate"
         ><img class="my-ad__icon" src="~assets/img/icons/redo.svg" alt=""
       /></span>
       <span class="my-ad__button_remove" @click="remove()"
@@ -123,6 +132,7 @@
       v-if="categoryData.children"
       style="flex-basis: 100%; padding-left: 2rem;"
     >
+      <summary>Подкатегории</summary>
       <CategoriesItem
         v-for="(item, i) in categoryData.children"
         :id="item.id"
@@ -131,10 +141,16 @@
         :url="'admin/advertisement-categories/'"
         @subcatAdd="
           (parent_id) => {
-            $emit('subcatAdd', parent_id)
+            $emit('subcatAdd', parent_id, item)
           }
         "
       />
+      <Button
+        class="category__button_subcat"
+        @click="$emit('subcatAdd', { parent_id: data.id, parentCat: data })"
+      >
+        Добавить подкатегорию ({{ data.id }})</Button
+      >
     </details>
   </div>
 </template>
@@ -191,7 +207,12 @@ export default {
     }
   },
   methods: {
-    async update() {
+    async buttonUpdate(e) {
+      console.log(e)
+      await this.update(true, e)
+    },
+    async update(force = false) {
+      if (!this.data.id && force === false) return
       const data = {
         name: this.data.name,
         title: this.data.title,
@@ -204,7 +225,8 @@ export default {
       /* data.meta.forEach((elem) => {
         delete elem.category_id
       }) */
-      const method = data.id ? 'put' : 'post'
+      const method = !data.id && force === true ? 'post' : 'put'
+      if (!this.data.id && method === 'post' && force === false) return
       let url = this.url
       if (data.id) url += data.id
       await this.$axios({
@@ -213,7 +235,7 @@ export default {
         data,
       })
         .then((response) => {
-          this.$set(this, 'categoriesList', response.data.data)
+          this.$set(this, 'categoryData', response.data.data)
           this.$emit('change')
         })
         .catch((error) => {
@@ -261,16 +283,23 @@ export default {
   border-radius: 0.25rem;
   display: flex;
   flex-wrap: wrap;
+  summary {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+  }
 }
 .category {
   &__main-data {
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 33%;
+    flex-basis: 25%;
+    margin-right: 1rem;
   }
   &__id {
     width: 3rem;
     padding: 0.25rem;
+    margin-right: 0.5rem;
+    font-size: 1.35rem;
   }
   &__meta {
     flex: 1;
@@ -283,15 +312,23 @@ export default {
       /*height: 100%;*/
       cursor: pointer;
     }
+    input[type='checkbox'] {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      &[disabled] {
+        opacity: 0.25;
+      }
+    }
   }
   &__button_subcat {
     flex-basis: 100%;
   }
   &__meta-item {
     display: grid;
-    grid-template-columns: repeat(6, auto) 2fr;
+    grid-template-columns: 2fr repeat(6, 1fr) 3fr;
     grid-gap: 0.5rem;
     margin-bottom: 0.35rem;
+    font-size: 0.9rem;
   }
 }
 .label__parent-id {

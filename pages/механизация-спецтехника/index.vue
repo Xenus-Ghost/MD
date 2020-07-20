@@ -383,7 +383,7 @@ export default {
         font-size: 20px;
       }
     }
-    /deep/ .button {
+    ::v-deep .button {
       align-self: center;
     }
   }

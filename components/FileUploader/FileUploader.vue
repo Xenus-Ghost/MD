@@ -9,7 +9,7 @@
         :multiple="multiple"
         @change="fileSelected($event)"
       />
-      <Button :disabled="currentCount >= max" @click.native="onPickFile">
+      <Button :disabled="currentCount > max" @click.native="onPickFile">
         <slot>выбрать файлы</slot>
       </Button>
       <Button v-if="loadButton" @click.native="upload()">Загрузить</Button>
@@ -110,7 +110,6 @@ export default {
       response: {},
       uploaded: [],
       errors: [],
-      currentCount: 0,
     }
   },
   computed: {
@@ -119,6 +118,9 @@ export default {
     },
     selectorId() {
       return generateString()
+    },
+    currentCount() {
+      return this.uploaded.length
     },
   },
   methods: {
@@ -142,6 +144,10 @@ export default {
     async upload() {
       let formData = new FormData()
       for (let i = 0; i < this.files.length; i++) {
+        if (this.uploaded.length > this.max) {
+          this.$toast.error('Превышено максимальное количество фотографий!')
+          return
+        }
         const file = this.files[i]
         // console.log(file)
         formData.append('files[' + i + ']', file)
@@ -150,7 +156,7 @@ export default {
           .then((response) => {
             this.uploaded.push(response.data.data[0])
             formData = new FormData()
-            this.currentCount++
+            // this.currentCount++
           })
           .catch((error) => {
             console.log(error.response)

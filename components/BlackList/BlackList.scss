@@ -92,7 +92,7 @@
       }
     }
   }
-  /deep/ .modal__container {
+  ::v-deep .modal__container {
     @include on_tablet() {
       min-width: 900px;
     }
@@ -102,7 +102,7 @@
     grid-gap: 20px;
   }
   &__form-modal {
-    /deep/ .modal__container {
+    ::v-deep .modal__container {
       min-width: auto;
       max-width: 500px;
     }
@@ -110,7 +110,7 @@
       font-weight: bold;
       font-size: 16px;
     }
-    /deep/ .button {
+    ::v-deep .button {
       height: 40px;
       padding: 10px;
     }

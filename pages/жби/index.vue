@@ -318,7 +318,7 @@ export default {
     max-width: 150px;
     width: 100%;
     justify-self: center;
-    /deep/ .button {
+    ::v-deep .button {
       font-weight: normal;
       @include media_screen(desktop-wide, max) {
         font-size: 0.75rem;

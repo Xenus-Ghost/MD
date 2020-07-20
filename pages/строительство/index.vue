@@ -833,7 +833,7 @@ export default {
 
 <style scoped lang="scss">
 .services {
-  /deep/ .services__list_grid {
+  ::v-deep .services__list_grid {
     border-radius: 3.5rem;
     padding: 10px 50px;
   }

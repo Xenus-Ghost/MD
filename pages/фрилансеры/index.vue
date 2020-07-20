@@ -892,7 +892,7 @@ export default {
   grid-column-gap: 20px;
 }
 .services {
-  /deep/ .services__list_grid {
+  ::v-deep .services__list_grid {
     border-radius: 5rem;
   }
 }

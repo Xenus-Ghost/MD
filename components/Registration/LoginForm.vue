@@ -226,7 +226,7 @@ export default {
     width: 80%;
     grid-template-columns: repeat(4, 1fr);
   }
-  /deep/ .button {
+  ::v-deep .button {
     @include on_tablet() {
       grid-column: 2/4;
     }

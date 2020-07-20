@@ -5,7 +5,7 @@
       @aboutModalOpen="aboutModalOpen"
     ></Menu>
     <CategoriesWidget></CategoriesWidget>
-    <div class="container admin-layout">
+    <div class="container_wide admin-layout">
       <nuxt class="admin-layout" />
     </div>
     <Modal v-show="aboutModalShow" @close="aboutModalShow = false">

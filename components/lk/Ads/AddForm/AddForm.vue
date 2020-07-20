@@ -117,8 +117,8 @@
           :count="phoneCount"
           class="grid__column_3"
         />
-        <!--<x-input
-          v-if="ad.account_type_id !== 1"
+        <x-input
+          v-if="ad.account_type_id > 1"
           id="website"
           v-model="ad.website"
           name="website"
@@ -127,7 +127,7 @@
           inputmode="url"
           placeholder="Ссылка на сайт"
           autocomplete="url"
-        />-->
+        />
         <x-input
           v-if="ad.account_type_id !== 1"
           id="vk"
@@ -402,6 +402,7 @@ export default {
       const list = this.$store.state.categories.adCategoriesList
       let returnData = []
       const authorTypeField = getAuthorTypeFieldName(this.ad.author_type_id)
+      const adType = this.ad.type_id
 
       returnData = list.filter((result) =>
         result.meta.find(
@@ -413,7 +414,7 @@ export default {
       )
       returnData.forEach((item) => {
         item.label = item.meta.find(
-          (metaItem) => metaItem[authorTypeField] === 1
+          (metaItem) => metaItem.type_id === adType
         ).title
       })
       return returnData

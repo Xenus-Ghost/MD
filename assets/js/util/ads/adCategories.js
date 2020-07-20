@@ -23,6 +23,9 @@ export function getAuthorTypeFieldName(id = null) {
     case 6:
       authorTypeField = 'plant'
       break
+    case 7:
+      authorTypeField = 'property'
+      break
     default:
       authorTypeField = null
       break
@@ -35,9 +38,11 @@ export function getCategoryTitle(category, params = {}) {
   const authorTypeIdField = params
     ? getAuthorTypeFieldName(params.author_type_id)
     : null
-  console.log(authorTypeIdField)
+  // console.log(authorTypeIdField)
   if (params && category.meta) {
-    if (params.type_id) {
+    if (params.type_id === 2) {
+      title = category.meta.find((result) => result.type_id === 2).title
+    } else if (params.type_id) {
       title = category.meta.find((result) => result.type_id === params.type_id)
         .title
     } else if (params.author_type_id) {

@@ -1,15 +1,32 @@
 .card {
-  box-shadow: 0 0 12px 1px #7bd7ff, 0 0 12px 1px #7bd7ff inset;
+  --card-border-color: #7bd7ff;
   border-radius: 12px;
   padding: 20px;
-  &_value{
-    @for $i from 1 to 12 {
-      &_#{$i} {
-        $value: #{$i * 2 + 1}px;
-        box-shadow: 0 0 $value 1px #7bd7ff, 0 0 $value 1px #7bd7ff inset;
+  &_shadow {
+    border: 2px solid hsla(0, 0%, 100%, 0.60);
+    box-shadow: 0 0 12px 1px var(--card-border-color), 0 0 12px 1px var(--card-border-color) inset;
+    &_value{
+      @for $i from 1 to 12 {
+        &_#{$i} {
+          $value: #{$i * 2 + 1}px;
+          box-shadow: 0 0 $value 1px var(--card-border-color), 0 0 $value 1px var(--card-border-color) inset;
+        }
       }
     }
   }
+  &_outline {
+    border: 3px solid var(--card-border-color);
+    box-shadow: 0 0 6px 1px var(--card-border-color), 0 0 6px 1px var(--card-border-color) inset;
+    &_value{
+      @for $i from 1 to 12 {
+        &_#{$i} {
+          $value: #{$i * 2 + 1}px;
+          border-width: #{$value};
+        }
+      }
+    }
+  }
+
   &__header {
     width: 100%;
     padding: 2rem;

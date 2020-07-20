@@ -60,6 +60,10 @@
           <h2 v-if="!customerAd" class="ad-modal__title">
             {{ adModalData.title }}
           </h2>
+          <AdCategoriesList
+            v-if="!customerAd"
+            :categories="adModalData.categories"
+          ></AdCategoriesList>
           <div
             v-if="adModalData.photos && adModalData.photos.length > 0"
             class="ad-modal__photos"
@@ -75,17 +79,13 @@
               <img :src="item" alt="photo" class="ad-modal__photo" />
             </a>
           </div>
-          <AdCategoriesList
-            v-if="!customerAd"
-            :categories="adModalData.categories"
-          ></AdCategoriesList>
           <div v-if="!customerAd" class="line_horizontal"></div>
           <div class="grid__column_full">
             <div>
               <div
                 v-if="
                   (privateAd && adModalData.author.first_name) ||
-                  adModalData.author.last_name
+                  (customerAd && adModalData.author.last_name)
                 "
               >
                 {{
@@ -110,7 +110,12 @@
               />
             </div>
           </div>
-          <div :class="{ grid_cols_3: !customerAd, grid_cols_12: customerAd }">
+          <div
+            :class="[
+              { grid_cols_3: !customerAd, grid_cols_12: customerAd },
+              'grid-gap_4',
+            ]"
+          >
             <div v-if="customerAd" class="grid__column_1">
               <img
                 v-if="customerAd"
@@ -175,7 +180,10 @@
               </div>
               <Share />
             </div>
-            <div :class="['grid__column_1']" style="grid-gap: 10px;">
+            <div
+              :class="['grid__column_1']"
+              style="grid-gap: 10px; display: grid;"
+            >
               <Button
                 shape="rounded"
                 borders="outline"
@@ -210,6 +218,7 @@
                 shape="rounded"
                 borders="outline"
                 block
+                class="mb-2"
                 @click="showEmbedVideos"
               >
                 <template #icon_left>

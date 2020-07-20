@@ -52,9 +52,24 @@ export default {
           this.$set(this, 'categoriesList', listToTree(response.data.data))
         )
     },
-    create(parent_id = null) {
-      this.categoriesList.push({
+    create(parent_id = null, parentCat = null) {
+      if (parentCat && !parentCat.children) parentCat.children = []
+      // eslint-disable-next-line camelcase
+      console.log([parent_id, parentCat])
+      const cat = parentCat.children || this.categoriesList
+      cat.push({
         parent_id,
+        meta: [
+          {
+            type_id: 1,
+            'private-person': 0,
+            firm: 0,
+            'online-shop': 0,
+            'shopping-center': 0,
+            plant: 0,
+            property: 0,
+          },
+        ],
       })
     },
     async refresh() {

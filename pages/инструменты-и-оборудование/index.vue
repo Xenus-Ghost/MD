@@ -323,7 +323,7 @@ export default {
   &__button {
     height: 140px;
     justify-self: center;
-    /deep/ .button__content {
+    ::v-deep .button__content {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;

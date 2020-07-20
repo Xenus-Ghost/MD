@@ -1,5 +1,5 @@
 <template>
-  <header class="header_category">
+  <header class="header_category container">
     <div class="header__col_left">
       <div class="header__logo">
         <div class="logo">MD</div>
@@ -9,12 +9,12 @@
         <slot>Монолит</slot>
       </h1>
       <Button
-        :to="retutnBackUrl"
+        :to="returnBackUrl"
         shape="rounded"
         borders="neon"
         class="header_category__button_back"
       >
-        Назад
+        {{ backTitle || 'Назад' }}
       </Button>
     </div>
     <div class="header__col_right">
@@ -27,7 +27,11 @@
 export default {
   name: 'CategoryHeader',
   props: {
-    backURL: {
+    backUrl: {
+      type: String,
+      default: null,
+    },
+    backTitle: {
       type: String,
       default: null,
     },
@@ -40,12 +44,12 @@ export default {
     }
   },
   computed: {
-    retutnBackUrl() {
+    returnBackUrl() {
       // return this.backURL ? this.backURL : this.$store.state.route.from.fullPath
       const url = this.$route.path.replace(/ /g, '').split('/')
       url.pop()
       if (url[url.length - 1] === 'продажа') url.pop()
-      return url.length > 1 ? url.join('/') : '/'
+      return this.backUrl || (url.length > 1 ? url.join('/') : '/')
     },
   },
 }
