@@ -3,7 +3,9 @@
     <div v-if="$slots.header" class="card__header">
       <slot name="header"></slot>
     </div>
-    <slot></slot>
+    <div class="card__body">
+      <slot></slot>
+    </div>
   </div>
 </template>
 

@@ -218,6 +218,12 @@ export default {
   &_premium {
     --card-border-color: #ffb800;
   }
+  .card__header {
+    width: 90%;
+  }
+  .card__body {
+    width: 70%;
+  }
 }
 .price__title {
   font-weight: bold;
@@ -254,7 +260,7 @@ export default {
       position: absolute;
       content: '';
       top: 20%;
-      right: -3rem;
+      right: 0;
       width: 1px;
       height: 60%;
       background-color: white;
@@ -265,6 +271,9 @@ export default {
 .price__list {
   max-height: 330px;
   height: 100%;
+  max-width: 330px;
+  display: flex;
+  justify-content: center;
 }
 .price__button {
   align-self: end;
