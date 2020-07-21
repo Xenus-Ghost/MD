@@ -18,7 +18,7 @@
             Размещение одного объявление в одной категории на один месяц.
           </p>
         </template>
-        <div class="grid_cols_2">
+        <div class="grid_cols_1 grid_cols_2_desktop">
           <div class="grid__column_1 price__column">
             <p class="price__title_md">Частник</p>
             <List :items="items.free.private" class="price__list" />
@@ -46,7 +46,7 @@
             Размещение одного объявление в одной категории на один месяц.
           </p>
         </template>
-        <div class="grid_cols_2">
+        <div class="grid_cols_1 grid_cols_2_desktop">
           <div class="grid__column_1 price__column">
             <p class="price__title_md">Частник</p>
             <List :items="items.pro.private" class="price__list" />
@@ -88,7 +88,7 @@
             Размещение одного объявление в одной категории на один месяц.
           </p>
         </template>
-        <div class="grid_cols_2">
+        <div class="grid_cols_1 grid_cols_2_desktop">
           <div class="grid__column_1 price__column">
             <p class="price__title_md">Частник</p>
             <List :items="items.premium.private" class="price__list" />
@@ -132,6 +132,8 @@ import CategoryHeader from '@/components/Category'
 
 import List from '@/components/List/List'
 export default {
+  middleware: ['auth'],
+  layout: 'Cabinet',
   components: {
     List,
     CategoryHeader,
@@ -212,6 +214,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/scss/framework/basic.scss';
+
 .price__card {
   margin-bottom: 2rem;
   border-radius: 50px;
@@ -219,10 +223,14 @@ export default {
     --card-border-color: #ffb800;
   }
   .card__header {
-    width: 90%;
+    @include on_desktop() {
+      width: 90%;
+    }
   }
   .card__body {
-    width: 70%;
+    @include on_desktop() {
+      width: 70%;
+    }
   }
 }
 .price__title {
@@ -252,32 +260,40 @@ export default {
   grid-template-rows: 26px auto 35px;
   grid-auto-rows: 35px;
   grid-gap: 1rem;
-  width: 400px;
   justify-self: center;
   position: relative;
-  &:first-of-type {
-    &:after {
-      position: absolute;
-      content: '';
-      top: 20%;
-      right: 0;
-      width: 1px;
-      height: 60%;
-      background-color: white;
-      filter: blur(6px);
+  @include on_desktop() {
+    width: 400px;
+    &:first-of-type {
+      &:after {
+        position: absolute;
+        content: '';
+        top: 20%;
+        right: 0;
+        width: 1px;
+        height: 60%;
+        background-color: white;
+        filter: blur(6px);
+      }
     }
   }
 }
 .price__list {
-  max-height: 330px;
   height: 100%;
-  max-width: 330px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
+  @include on_desktop() {
+    max-height: 330px;
+    max-width: 330px;
+  }
 }
 .price__button {
   align-self: end;
-  width: 330px;
+  width: 100%;
   justify-self: center;
+  @include on_desktop() {
+    width: 330px;
+  }
 }
 </style>
