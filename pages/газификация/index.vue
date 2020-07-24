@@ -700,9 +700,7 @@
           Частные дома, ИЖС, СНТ
         </template>
         <template v-slot:footer>
-          <Button to="частные-дома-ижс-снт" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="51" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -713,9 +711,7 @@
           Котельные
         </template>
         <template v-slot:footer>
-          <Button to="котельные" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="52" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -726,13 +722,7 @@
           Промышленное газифицирование
         </template>
         <template v-slot:footer>
-          <Button
-            to="промышленное-газифицирование"
-            shape="rounded"
-            borders="outline"
-          >
-            Подробнее</Button
-          >
+          <Button to="53" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>

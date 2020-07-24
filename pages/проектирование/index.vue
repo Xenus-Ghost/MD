@@ -645,9 +645,7 @@
           Юрист
         </template>
         <template v-slot:footer>
-          <Button to="юрист" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="46" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -658,9 +656,7 @@
           Сметы
         </template>
         <template v-slot:footer>
-          <Button to="сметы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="47" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -671,9 +667,7 @@
           Геодезия
         </template>
         <template v-slot:footer>
-          <Button to="геодезия" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="48" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -684,9 +678,7 @@
           Экспертиза
         </template>
         <template v-slot:footer>
-          <Button to="экспертиза" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="49" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -697,9 +689,7 @@
           Изыскательные работы
         </template>
         <template v-slot:footer>
-          <Button to="изыскательные-работы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="50" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>

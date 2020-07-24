@@ -173,37 +173,25 @@
       <div class="card__content grid_cols_2">
         <div class="card__item">
           <span class="card__title">Строительная техника</span>
-          <Button
-            to="строительная-техника/фирмы-и-магазины"
-            shape="rounded"
-            borders="outline"
+          <Button to="112/фирмы-и-магазины" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Дорожная техника</span>
-          <Button
-            to="дорожная-техника/фирмы-и-магазины"
-            shape="rounded"
-            borders="outline"
+          <Button to="113/фирмы-и-магазины" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Транспортная техника</span>
-          <Button
-            to="транспортная-техника/фирмы-и-магазины"
-            shape="rounded"
-            borders="outline"
+          <Button to="114/фирмы-и-магазины" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Коммунальная техника</span>
-          <Button
-            to="коммунальная-техника/фирмы-и-магазины"
-            shape="rounded"
-            borders="outline"
+          <Button to="115/фирмы-и-магазины" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
@@ -214,37 +202,25 @@
       <div class="card__content grid_cols_2">
         <div class="card__item">
           <span class="card__title">Строительная техника</span>
-          <Button
-            to="строительная-техника/частники"
-            shape="rounded"
-            borders="outline"
+          <Button to="112/частники" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Дорожная техника</span>
-          <Button
-            to="дорожная-техника/частники"
-            shape="rounded"
-            borders="outline"
+          <Button to="113/частники" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Транспортная техника</span>
-          <Button
-            to="транспортная-техника/частники"
-            shape="rounded"
-            borders="outline"
+          <Button to="114/частники" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Коммунальная техника</span>
-          <Button
-            to="коммунальная-техника/частники"
-            shape="rounded"
-            borders="outline"
+          <Button to="115/частники" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
@@ -255,37 +231,25 @@
       <div class="card__content grid_cols_2 grid_cols_4_tablet">
         <div class="card__item">
           <span class="card__title">Строительная техника</span>
-          <Button
-            to="строительная-техника/продажа"
-            shape="rounded"
-            borders="outline"
+          <Button to="112/продажа" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Дорожная техника</span>
-          <Button
-            to="дорожная-техника/продажа"
-            shape="rounded"
-            borders="outline"
+          <Button to="113/продажа" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Транспортная техника</span>
-          <Button
-            to="транспортная-техника/продажа"
-            shape="rounded"
-            borders="outline"
+          <Button to="114/продажа" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>
         <div class="card__item">
           <span class="card__title">Коммунальная техника</span>
-          <Button
-            to="коммунальная-техника/продажа"
-            shape="rounded"
-            borders="outline"
+          <Button to="115/продажа" shape="rounded" borders="outline"
             >Подробнее</Button
           >
         </div>

@@ -129,9 +129,7 @@
           Авторский надзор
         </template>
         <template v-slot:footer>
-          <Button to="авторский-надзор" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="54" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -142,9 +140,7 @@
           Геодезическая съемка
         </template>
         <template v-slot:footer>
-          <Button to="геодезическая-съемка" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="55" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -155,9 +151,7 @@
           Консультация
         </template>
         <template v-slot:footer>
-          <Button to="консультация" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="56" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -168,13 +162,10 @@
           Проект
         </template>
         <template v-slot:footer>
-          <Button to="проект" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="57" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
-    <!--    <SellingButtons></SellingButtons>-->
   </div>
 </template>
 
@@ -182,7 +173,6 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
-// import { SellingButtons } from '@/components/Ad/Category'
 
 export default {
   layout: 'Category',
@@ -190,7 +180,6 @@ export default {
     CategoryHeader,
     ServicesGrid,
     ServiceItem,
-    // SellingButtons,
   },
 }
 </script>

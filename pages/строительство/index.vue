@@ -640,7 +640,7 @@
           Кладочные работы
         </template>
         <template v-slot:footer>
-          <Button to="кладочные-работы" shape="rounded" borders="outline">
+          <Button to="2" shape="rounded" borders="outline">
             Подробнее
           </Button>
         </template>
@@ -653,7 +653,7 @@
           Земляные работы
         </template>
         <template v-slot:footer>
-          <Button to="земляные-работы" shape="rounded" borders="outline">
+          <Button to="3" shape="rounded" borders="outline">
             Подробнее
           </Button>
         </template>
@@ -666,9 +666,7 @@
           Бурение
         </template>
         <template v-slot:footer>
-          <Button to="бурение" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="4" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -679,9 +677,7 @@
           Фасадные работы
         </template>
         <template v-slot:footer>
-          <Button to="фасадные-работы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="5" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -692,9 +688,7 @@
           Кровельные работы
         </template>
         <template v-slot:footer>
-          <Button to="кровельные-работы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="6" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -705,9 +699,7 @@
           Высотные работы
         </template>
         <template v-slot:footer>
-          <Button to="высотные-работы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="7" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -718,9 +710,7 @@
           Тротуарная плитка
         </template>
         <template v-slot:footer>
-          <Button to="тротуарная-плитка" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="8" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -731,9 +721,7 @@
           Окна и балконы
         </template>
         <template v-slot:footer>
-          <Button to="окна-и-балконы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="9" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -744,9 +732,7 @@
           Двери и замки
         </template>
         <template v-slot:footer>
-          <Button to="двери-и-замки" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="10" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -757,9 +743,7 @@
           Рольставни и секц. ворота
         </template>
         <template v-slot:footer>
-          <Button to="рольставни-и-ворота" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="11" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -770,13 +754,7 @@
           Вентиляция и кондиционеры
         </template>
         <template v-slot:footer>
-          <Button
-            to="вентиляция-и-кондиционеры"
-            shape="rounded"
-            borders="outline"
-          >
-            Подробнее</Button
-          >
+          <Button to="12" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -787,9 +765,7 @@
           Гидро- и звукоизоляция
         </template>
         <template v-slot:footer>
-          <Button to="гидро-и-звукоизоляция" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="13" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>

@@ -28,6 +28,7 @@ export default {
     const lastSlug = slugs[slugs.length - 1]
     // const preLastSlug = slugs[slugs.length - 2]
     const categoriesSlugs = getCatSlugs(context.route.path)
+    const lastCategorySlug = categoriesSlugs[categoriesSlugs.length - 1]
     const categoriesList = context.store.state.categories.adCategoriesList
     const adTypeList = context.store.state.advert.adType
     let adType = getAdType(
@@ -38,8 +39,10 @@ export default {
     const authorType = authorTypeList.find(
       (result) => getAuthorTypeByUrl(context.route.path) === result.id
     )
+    console.log(parseFloat(lastCategorySlug))
+    console.log(typeof parseFloat(lastCategorySlug))
     const currentCategory = categoriesList.find(
-      (result) => result.name === categoriesSlugs[categoriesSlugs.length - 1]
+      (result) => parseFloat(lastCategorySlug) === result.id
     )
     let routeValid = true
     const filterData = {

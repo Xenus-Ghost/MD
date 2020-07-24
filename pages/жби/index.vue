@@ -143,14 +143,14 @@
         >Все бетонные заводы</Button
       >
       <Button
-        to="цпс"
+        to="109"
         shape="semi_rounded"
         borders="outline"
         class="zhbi__button_left"
         >Цемент, песчатные смеси</Button
       >
       <Button
-        to="кирпич-плитка-бордюры"
+        to="108"
         shape="semi_rounded"
         borders="outline"
         class="zhbi__button_right"
@@ -158,16 +158,22 @@
       >
       <div class="careers">
         <h2>Все карьеры</h2>
-        <div class="careers__content grid_cols_2">
+        <div class="careers__content grid_cols_3">
           <div class="careers__item">
             <span>Песок</span>
-            <Button to="карьеры-песок" shape="rounded" borders="outline"
+            <Button to="400/139" shape="rounded" borders="outline"
               >Подробнее</Button
             >
           </div>
           <div class="careers__item">
             <span>Щебень</span>
-            <Button to="карьеры-щебень" shape="rounded" borders="outline"
+            <Button to="400/140" shape="rounded" borders="outline"
+              >Подробнее</Button
+            >
+          </div>
+          <div class="careers__item">
+            <span>Щебень</span>
+            <Button to="400/280" shape="rounded" borders="outline"
               >Подробнее</Button
             >
           </div>

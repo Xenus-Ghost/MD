@@ -218,7 +218,7 @@
         >Все фирмы</Button
       >
       <Button
-        to="грузчики-и-переезды"
+        to="79"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -226,12 +226,20 @@
         >Грузчики и переезды</Button
       >
       <Button
-        to="хранение-вещей"
+        to="80"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
         height="100%"
         >Хранение вещей</Button
+      >
+      <Button
+        to="312"
+        shape="semi_rounded"
+        borders="outline"
+        class="grid__column_2"
+        height="100%"
+        >Доставка питания</Button
       >
     </div>
   </div>

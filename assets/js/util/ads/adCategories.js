@@ -38,8 +38,9 @@ export function getCategoryTitle(category, params = {}) {
   const authorTypeIdField = params
     ? getAuthorTypeFieldName(params.author_type_id)
     : null
-  // console.log(authorTypeIdField)
-  if (params && category.meta) {
+  console.log(category)
+  console.log(params)
+  if (params && params.author_type_id && params.type_id && category.meta) {
     if (params.type_id === 2) {
       title = category.meta.find((result) => result.type_id === 2).title
     } else if (params.type_id) {
@@ -50,6 +51,7 @@ export function getCategoryTitle(category, params = {}) {
         .title
     }
   } else {
+    console.log(category.title)
     title = category.title ? category.title : category.name
   }
   return title

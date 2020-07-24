@@ -186,9 +186,7 @@
           Проф. инструмент
         </template>
         <template v-slot:footer>
-          <Button to="проф-инструмент" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="68" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -199,9 +197,7 @@
           Бытовой
         </template>
         <template v-slot:footer>
-          <Button to="бытовой" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="69" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -212,9 +208,7 @@
           Электрический
         </template>
         <template v-slot:footer>
-          <Button to="электрический" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="70" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -225,9 +219,7 @@
           Строительный
         </template>
         <template v-slot:footer>
-          <Button to="строительный" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="71" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -238,21 +230,14 @@
           Спецодежда
         </template>
         <template v-slot:footer>
-          <Button to="строительный" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="144" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
     <div class="grid__column_12 grid__column_3-tablet selling">
       <h2 class="selling__title">Услуга</h2>
       <div class="selling__buttons">
-        <Button
-          to="аренда"
-          shape="rounded"
-          borders="neon"
-          class="selling__button"
-        >
+        <Button to="117" shape="rounded" borders="neon" class="selling__button">
           <svg
             width="64"
             height="44"

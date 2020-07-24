@@ -640,9 +640,7 @@
           Отопление
         </template>
         <template v-slot:footer>
-          <Button to="отопление" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="40" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -653,9 +651,7 @@
           Водоснабжение
         </template>
         <template v-slot:footer>
-          <Button to="водоснабжение" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="41" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -666,9 +662,7 @@
           Канализация
         </template>
         <template v-slot:footer>
-          <Button to="канализация" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="42" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>

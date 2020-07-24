@@ -11,7 +11,7 @@
     </CategoryHeader>
     <div class="container grid_cols_2 grid_cols_4_tablet buttons_grid">
       <Button
-        to="клининг-2"
+        to="134"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"
@@ -19,7 +19,7 @@
         >Клининг</Button
       >
       <Button
-        to="санитарные-службы"
+        to="135"
         shape="semi_rounded"
         borders="outline"
         class="grid__column_2"

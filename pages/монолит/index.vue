@@ -460,11 +460,7 @@
           Заливка бетона
         </template>
         <template v-slot:footer>
-          <Button
-            to="заливка-бетона"
-            shape="rounded"
-            borders="outline"
-            width="100%"
+          <Button to="72" shape="rounded" borders="outline" width="100%"
             >Подробнее</Button
           >
         </template>
@@ -477,11 +473,7 @@
           Армирующие каркасы
         </template>
         <template v-slot:footer>
-          <Button
-            to="армирующие-каркасы"
-            shape="rounded"
-            borders="outline"
-            width="100%"
+          <Button to="73" shape="rounded" borders="outline" width="100%"
             >Подробнее</Button
           >
         </template>
@@ -494,11 +486,7 @@
           Монтаж опалубки
         </template>
         <template v-slot:footer>
-          <Button
-            to="монтаж-опалубки"
-            shape="rounded"
-            borders="outline"
-            width="100%"
+          <Button to="74" shape="rounded" borders="outline" width="100%"
             >Подробнее</Button
           >
         </template>

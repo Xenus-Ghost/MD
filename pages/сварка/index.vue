@@ -206,9 +206,7 @@
           Металло-конструкции
         </template>
         <template v-slot:footer>
-          <Button to="металлоконструкции" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="43" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem
@@ -222,9 +220,7 @@
           Трубопровод
         </template>
         <template v-slot:footer>
-          <Button to="трубопровод" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="44" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem
@@ -238,9 +234,7 @@
           Металлические лестницы
         </template>
         <template v-slot:footer>
-          <Button to="металлические-лестницы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="45" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>

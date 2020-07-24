@@ -28,9 +28,9 @@ export const validateCategory = () => {}
 export function getCategory(slug = null, categories = null) {
   const result = {}
 
-  result.category = categories.adCategoriesList.filter(
+  result.category = categories.adCategoriesList.find(
     (item) => item.name === slug
-  )[0]
+  )
 
   result.subCategories = categories.adCategoriesList.filter(
     (item) => item.parent_id === result.id

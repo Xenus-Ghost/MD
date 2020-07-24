@@ -470,9 +470,7 @@
           Потолки
         </template>
         <template v-slot:footer>
-          <Button to="потолки" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="26" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -483,9 +481,7 @@
           Штукатурные работы
         </template>
         <template v-slot:footer>
-          <Button to="штукатурные-работы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="27" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -496,9 +492,7 @@
           Обои и малярные работы
         </template>
         <template v-slot:footer>
-          <Button to="обои-и-малярные-работы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="28" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -509,9 +503,7 @@
           Полы
         </template>
         <template v-slot:footer>
-          <Button to="полы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="29" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -522,9 +514,7 @@
           Напольные покрытия
         </template>
         <template v-slot:footer>
-          <Button to="напольные-покрытия" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="30" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'2'">
@@ -535,9 +525,7 @@
           Плитка
         </template>
         <template v-slot:footer>
-          <Button to="плитка" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="31" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>

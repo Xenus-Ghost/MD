@@ -172,7 +172,7 @@
             Архитектура
           </template>
           <template v-slot:footer>
-            <Button to="архитектура" shape="rounded" borders="outline">
+            <Button to="58" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -185,7 +185,7 @@
             Освещение
           </template>
           <template v-slot:footer>
-            <Button to="освещение" shape="rounded" borders="outline">
+            <Button to="59" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -198,7 +198,7 @@
             Парки и скверы
           </template>
           <template v-slot:footer>
-            <Button to="парки-и-скверы" shape="rounded" borders="outline">
+            <Button to="60" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -211,7 +211,7 @@
             Озеленение
           </template>
           <template v-slot:footer>
-            <Button to="озеленение" shape="rounded" borders="outline">
+            <Button to="61" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -224,11 +224,7 @@
             Рекламные конструкции
           </template>
           <template v-slot:footer>
-            <Button
-              to="рекламные-конструкции"
-              shape="rounded"
-              borders="outline"
-            >
+            <Button to="62" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -241,11 +237,7 @@
             Детские и спорт площадки
           </template>
           <template v-slot:footer>
-            <Button
-              to="детские-и-спорт-площадки"
-              shape="rounded"
-              borders="outline"
-            >
+            <Button to="63" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -258,11 +250,7 @@
             Площадки для выгула собак
           </template>
           <template v-slot:footer>
-            <Button
-              to="площадки-для-выгула-собак"
-              shape="rounded"
-              borders="outline"
-            >
+            <Button to="64" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -275,7 +263,7 @@
             Ограждения и заборы
           </template>
           <template v-slot:footer>
-            <Button to="ограждение-и-заборы" shape="rounded" borders="outline">
+            <Button to="65" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -288,11 +276,7 @@
             Строительство ангаров
           </template>
           <template v-slot:footer>
-            <Button
-              to="строительство-ангаров"
-              shape="rounded"
-              borders="outline"
-            >
+            <Button to="66" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>
@@ -305,7 +289,7 @@
             Сад и огород
           </template>
           <template v-slot:footer>
-            <Button to="сад-и-огород" shape="rounded" borders="outline">
+            <Button to="67" shape="rounded" borders="outline">
               Подробнее</Button
             >
           </template>

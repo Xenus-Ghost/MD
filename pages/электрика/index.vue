@@ -640,9 +640,7 @@
           Кабели и проводка
         </template>
         <template v-slot:footer>
-          <Button to="кабели-и-проводка" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="32" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -653,9 +651,7 @@
           Свет и освещение
         </template>
         <template v-slot:footer>
-          <Button to="свет-и-освещение" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="33" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -666,9 +662,7 @@
           Автоматы, счетчики
         </template>
         <template v-slot:footer>
-          <Button to="автоматы-счетчики" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="34" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -679,9 +673,7 @@
           Бытовая техника
         </template>
         <template v-slot:footer>
-          <Button to="бытовая-техника" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="35" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -692,13 +684,7 @@
           Проектирование электроснабжения
         </template>
         <template v-slot:footer>
-          <Button
-            to="проектирование-электроснабжения"
-            shape="rounded"
-            borders="outline"
-          >
-            Подробнее</Button
-          >
+          <Button to="36" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -709,13 +695,7 @@
           Заземление и молниезащита
         </template>
         <template v-slot:footer>
-          <Button
-            to="заземление-и-молниезащита"
-            shape="rounded"
-            borders="outline"
-          >
-            Подробнее</Button
-          >
+          <Button to="37" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
@@ -728,9 +708,7 @@
           Слаботочка
         </template>
         <template v-slot:footer>
-          <Button to="слаботочка" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="38" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
       <ServiceItem :col="'1'">
@@ -741,9 +719,7 @@
           Охранные системы и контроль доступа
         </template>
         <template v-slot:footer>
-          <Button to="охранные-системы" shape="rounded" borders="outline">
-            Подробнее</Button
-          >
+          <Button to="39" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
     </ServicesGrid>
