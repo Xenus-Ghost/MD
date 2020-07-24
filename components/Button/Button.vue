@@ -66,14 +66,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    // small: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    // big: {
-    //   type: Boolean,
-    //   default: false
-    // }
     color: {
       type: String,
       default: 'primary',
