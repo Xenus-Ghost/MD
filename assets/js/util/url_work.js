@@ -5,7 +5,6 @@ export function getUrl(path) {
 }
 
 export function getFileUrl(path) {
-  console.log(path)
   if (!path.includes(BACKEND_URL) && !path.includes('://')) {
     return BACKEND_URL + 'storage/' + path
   } else {

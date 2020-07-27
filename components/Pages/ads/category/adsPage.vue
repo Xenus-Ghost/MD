@@ -4,6 +4,12 @@
       {{ meta.title }}
       <template v-slot:right_column>
         <img
+          v-if="filterData.category_id === 110"
+          src="@/assets/img/icons/categories/demontage.svg"
+          alt=""
+          class="category__icon"
+        />
+        <img
           v-if="authorTypeId === 7"
           src="@/assets/img/icons/categories/buildings.svg"
           alt=""
@@ -30,7 +36,6 @@
       </template>
     </CategoryHeader>
     <Advertising :category="filterData.category_id"></Advertising>
-    <!--    <h2 class="text_center text_neon">{{ body.title }}</h2>-->
     <AdList v-bind="props" />
   </div>
 </template>
@@ -39,9 +44,9 @@
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
-// import { getUrl, jsonToParams } from '@/assets/js/util'
 
 export default {
+  name: 'AdsPage',
   layout: 'Category',
   components: {
     CategoryHeader,
@@ -92,6 +97,9 @@ export default {
       if (this.filterData.type_id) obj.push({ typeId: this.filterData.type_id })
       return obj
     },
+  },
+  created() {
+    console.log(this.filterData)
   },
   head() {
     return {

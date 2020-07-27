@@ -1,4 +1,4 @@
-import AdItem from './AdItem'
+import AdItem from './AdItem/AdItem'
 import AdList from './AdList'
 import adFilter from './filter/adFilter'
 import AdCategoriesList from './AdCategoriesList'

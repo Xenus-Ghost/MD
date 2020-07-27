@@ -471,12 +471,44 @@ export default {
       return this.$store.state.address.metroList
     },
     adItemComponent() {
-      const component =
-        [119, 127, 128, 129, 130].includes(this.category) ||
+      let component
+      /* [118, 119, 127, 128, 129, 130].includes(this.category) ||
         this.authorTypeId === 6
           ? 'AdItemBuilding'
-          : 'AdItem'
-      return () => import(`@/components/Ad/${component}`)
+          : 'AdItem' */
+      // if (this.authorTypeId === 4) component = 'AdItemOnline'
+      switch (this.authorTypeId) {
+        case 2: {
+          component = 'AdItem'
+          break
+        }
+        case 3: {
+          component = 'AdItemShop'
+          break
+        }
+        case 4: {
+          component = 'AdItemOnline'
+          break
+        }
+        case 5: {
+          component = 'AdItemCenter'
+          break
+        }
+        case 6: {
+          component = 'AdItemPlant'
+          break
+        }
+        case 7: {
+          component = 'AdItemBuilding'
+          break
+        }
+        default: {
+          component = 'AdItem'
+        }
+      }
+      console.log(component)
+      console.log(this.authorTypeId)
+      return () => import(`@/components/Ad/AdItem/${component}`)
     },
   },
   created() {

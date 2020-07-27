@@ -1,7 +1,7 @@
 <template>
   <div :class="classList">
     <image-slider
-      :slides="ad.photos"
+      :slides="ad.photo"
       :alt="ad.title"
       class="ad__slider"
       @click="adOpen"
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { getFileUrl } from '@/assets/js/util'
+import { getFileUrl } from '~/assets/js/util'
 import { ImageSlider } from '@/components/Slider'
 export default {
   name: 'AdItemBuilding',
@@ -62,6 +62,14 @@ export default {
     },
     customerAd: {
       type: Boolean,
+    },
+    adType: {
+      type: Number || String,
+      default: null,
+    },
+    authorType: {
+      type: Number || String,
+      default: null,
     },
   },
   computed: {
@@ -86,7 +94,7 @@ export default {
       if (this.adData.price_list)
         obj.price_list = getFileUrl(this.adData.price_list)
       if (this.adData.price) obj.price = this.adData.price
-      if (this.adData.photo && this.adData.photo.length > 0) {
+      if (this.adData.photos && this.adData.photos.length > 0) {
         obj.photos = this.adData.photos
         const photoLength = obj.photos.length
         for (let i = 0; i < photoLength; i++) {
@@ -147,5 +155,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'scss/ad_item';
+/*@import 'scss/ad_item';*/
 </style>

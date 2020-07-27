@@ -1,17 +1,6 @@
 <template>
   <div :class="classList">
-    <div
-      v-if="adType !== 2"
-      class="views ad__views"
-      :title="`Просмотров: ${ad.views}`"
-    >
-      <img
-        src="~assets/img/icons/eye.svg"
-        :alt="`Просмотров: ${ad.views}`"
-        class="views__icon"
-      />
-      <span class="views__value">{{ ad.views }}</span>
-    </div>
+    <ad-item-views v-if="adType !== 2" :views="ad.views" />
     <img
       v-if="authorType > 1 && (ad.logo || ad.img)"
       :src="ad.logo ? ad.logo : ad.img"
@@ -77,9 +66,13 @@
 </template>
 
 <script>
-import { getFileUrl } from '@/assets/js/util'
+import AdItemViews from './AdItemViews'
+import { getFileUrl } from '~/assets/js/util'
 export default {
   name: 'AdItem',
+  components: {
+    AdItemViews,
+  },
   props: {
     adData: {
       type: Object,

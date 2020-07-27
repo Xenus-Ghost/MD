@@ -82,7 +82,7 @@ export function getAdTypeIdByUrl(url) {
   let typeId = 1
   const slugs = splitUrl(url)
   if (slugs.includes('продажа')) typeId = 2
-  if (slugs.includes('жби') || slugs.includes('снос-демонтаж')) typeId = 2
+  if (slugs.includes('жби0') || slugs.includes('снос-демонтаж')) typeId = 2
   if (slugs.includes('заказчики') || slugs.includes('поиск-исполнителя'))
     typeId = 3
   return typeId
