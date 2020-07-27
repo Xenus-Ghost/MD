@@ -12,7 +12,7 @@
         <Button
           v-for="(cat, i) in categories"
           :key="i"
-          :to="cat.id"
+          :to="`${cat.id}`"
           shape="semi_rounded"
           borders="outline"
           class="grid__column_2"

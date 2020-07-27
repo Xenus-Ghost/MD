@@ -39,10 +39,15 @@ export default {
     const authorType = authorTypeList.find(
       (result) => getAuthorTypeByUrl(context.route.path) === result.id
     )
-    console.log(parseFloat(lastCategorySlug))
-    console.log(typeof parseFloat(lastCategorySlug))
+    console.log(lastCategorySlug)
+    console.log(parseFloat(lastCategorySlug + ''))
+    console.log(typeof (parseFloat(lastCategorySlug) + ''))
     const currentCategory = categoriesList.find(
-      (result) => parseFloat(lastCategorySlug) === result.id
+      (result) =>
+        (!isNaN(lastCategorySlug)
+          ? parseFloat(lastCategorySlug)
+          : lastCategorySlug) ===
+        (!isNaN(lastCategorySlug) ? result.id : result.name)
     )
     let routeValid = true
     const filterData = {
