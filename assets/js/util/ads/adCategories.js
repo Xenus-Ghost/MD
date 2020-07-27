@@ -68,6 +68,11 @@ export function getAuthorTypeByUrl(url) {
   if (
     slugs.includes('недвижимость') ||
     slugs.includes('новостройки') ||
+    slugs.includes('119') ||
+    slugs.includes('127') ||
+    slugs.includes('128') ||
+    slugs.includes('129') ||
+    slugs.includes('130') ||
     slugs.includes('загородная-недвижимость')
   )
     authorTypeId = 7
@@ -77,13 +82,7 @@ export function getAdTypeIdByUrl(url) {
   let typeId = 1
   const slugs = splitUrl(url)
   if (slugs.includes('продажа')) typeId = 2
-  if (
-    (slugs.includes('дома-бани-дачи') &&
-      slugs[slugs.length - 1] !== 'дома-бани-дачи') ||
-    slugs.includes('жби') ||
-    slugs.includes('снос-демонтаж')
-  )
-    typeId = 2
+  if (slugs.includes('жби') || slugs.includes('снос-демонтаж')) typeId = 2
   if (slugs.includes('заказчики') || slugs.includes('поиск-исполнителя'))
     typeId = 3
   return typeId

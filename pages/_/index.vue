@@ -63,12 +63,20 @@ export default {
       (result) => currentCategory && result.parent_id === currentCategory.id
     )
     const needAdsPage =
-      (slugs.includes('дома-бани-дачи') ||
+      (slugs.includes('119') ||
+        slugs.includes('127') ||
+        slugs.includes('128') ||
+        slugs.includes('129') ||
+        slugs.includes('130') ||
         slugs.includes('жби') ||
         slugs.includes('снос-демонтаж')) &&
       !subCategoriesList.length
     if (
-      (slugs.includes('дома-бани-дачи') || slugs.includes('жби')) &&
+      (slugs.includes('119') ||
+        slugs.includes('127') ||
+        slugs.includes('128') ||
+        slugs.includes('129') ||
+        slugs.includes('130')) &&
       !subCategoriesList.length
     ) {
       adType = adTypeList[1]
