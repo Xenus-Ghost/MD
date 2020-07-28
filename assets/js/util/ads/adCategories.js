@@ -73,6 +73,15 @@ export function getAuthorTypeByUrl(url) {
     slugs.includes('128') ||
     slugs.includes('129') ||
     slugs.includes('130') ||
+    slugs.includes('401') ||
+    slugs.includes('402') ||
+    slugs.includes('403') ||
+    slugs.includes('404') ||
+    slugs.includes('405') ||
+    slugs.includes('406') ||
+    slugs.includes('407') ||
+    slugs.includes('408') ||
+    slugs.includes('409') ||
     slugs.includes('загородная-недвижимость')
   )
     authorTypeId = 7
