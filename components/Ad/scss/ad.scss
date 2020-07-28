@@ -1,4 +1,5 @@
 @import '~assets/scss/app/index.scss';
+@import "ad_item";
 .ad {
   &__filter {
 
@@ -66,7 +67,6 @@
     }
   }
 
-
 }
 
 .ad-filter {
@@ -90,31 +90,15 @@
   }
   &__title {
     font-weight: bold;
-    //@include landscape() {
-    //  grid-column: span 2;
-    //}
   }
 
   &__select {
-    //background: rgba(14, 36, 62, 0.4);
-    //border: 1.5px solid #fff;
-    //border-radius: 10px;
-    //width: 100%;
-    //color: white;
-    //padding: 5px 15px;
-    //cursor: pointer;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
   }
 
   &__option {
-    //border: none;
-    //background: rgba(14, 36, 62, 0.4);
-    //background: transparent;
-    //color: white;
-    //padding: 5px;
-    //line-height: 3;
     -webkit-appearance: none;
     -moz-appearance: none;
 
@@ -124,6 +108,3 @@
     }
   }
 }
-
-//@import "ad_item";
-@import "ad_modal";

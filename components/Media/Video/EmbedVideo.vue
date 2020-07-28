@@ -8,9 +8,7 @@
         :height="height"
         class="embed__iframe"
         loading="lazy"
-        :src="`https://www.youtube-nocookie.com/embed/${
-          videoId && videoId.value ? videoId.value : videoId
-        }?autoplay=0&origin=${origin_url}`"
+        :src="videoSrc"
         frameborder="0"
         :style="styles"
       ></iframe>
@@ -20,6 +18,7 @@
 
 <script>
 // import { VueYouTubeEmbed, youtube } from 'vue-youtube-embed'
+import { convertYoutubeLink } from '~/assets/js/util'
 import { Measurable } from '@/assets/js/mixins/measurables/index.js'
 export default {
   name: 'EmbedVideo',
@@ -56,6 +55,12 @@ export default {
       // if (this.aspectRatio)
       //   styles['padding-bottom'] = `${this.aspectRatio * 100}%`
       return styles
+    },
+    videoSrc() {
+      const videoLink = `https://www.youtube-nocookie.com/embed/${convertYoutubeLink(
+        this.videoId.value ? this.videoId.value : this.videoId
+      )}?autoplay=0&origin=${this.origin_url}`
+      return videoLink
     },
   },
   created() {

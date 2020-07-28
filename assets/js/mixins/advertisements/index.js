@@ -11,6 +11,8 @@ import { getAuthorType } from './author_type'
 
 import { apiGetAds } from './api_get_ads'
 
+import { adProps, adMethods, adComputedData } from './adItemMixins'
+
 export {
   getCategoryIDByUrl,
   getCategory,
@@ -21,3 +23,4 @@ export {
   getCategorySlug,
   getCustomCategoryMeta,
 }
+export { adProps, adMethods, adComputedData }

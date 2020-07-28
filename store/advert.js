@@ -73,28 +73,29 @@ export const actions = {
         return getFileUrl(name)
       })
     }
-    data.socials = []
-    // console.log(data.social)
-    // console.log(Object.keys(data.social))
+    data.social = []
+    if (data.ig) data.social.push(data.ig)
+    if (data.vk) data.social.push(data.vk)
+    if (data.ok) data.social.push(data.ok)
+    if (data.fb) data.social.push(data.fb)
     try {
       if (data.social && data.social.length > 0) {
         data.social.forEach((item) => {
           if (typeof item === 'string') {
             if (item.includes('vk.com')) {
-              data.socials.push({ name: 'vk', value: item })
+              data.social.push({ name: 'vk', value: item })
             } else if (item.includes('ok.ru')) {
-              data.socials.push({ name: 'ok', value: item })
+              data.social.push({ name: 'ok', value: item })
             } else if (item.includes('facebook.com')) {
-              data.socials.push({ name: 'fb', value: item })
+              data.social.push({ name: 'fb', value: item })
             } else if (item.includes('instagram.com')) {
-              data.socials.push({ name: 'ig', value: item })
+              data.social.push({ name: 'ig', value: item })
             }
           }
         })
       }
     } catch {
       console.debug(data.social)
-      console.debug(data.socials)
     }
     if (data.socials && data.socials.length > 0) data.social = data.socials
 
