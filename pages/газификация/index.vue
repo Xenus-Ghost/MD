@@ -731,11 +731,11 @@
 </template>
 
 <script>
+import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
+import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
-import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
-import { SellingButtons } from '@/components/Ad/Category'
 
 export default {
   layout: 'Category',

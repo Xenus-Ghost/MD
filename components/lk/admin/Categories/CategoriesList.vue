@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import CategoriesItem from './CategoriesItem'
 import { listToTree } from '@/assets/js/util'
+import CategoriesItem from './CategoriesItem'
 
 export default {
   name: 'CategoriesList',

@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import Button from './../components/Button/Button'
-import Modal from './../components/Modal/Modal'
 import Card from '@/components/Card/Card'
 import LoginForm from '@/components/Registration/LoginForm'
 import XInput from '@/components/Input'
+import Modal from './../components/Modal/Modal'
+import Button from './../components/Button/Button'
 
 Vue.component('Button', Button)
 Vue.component('Modal', Modal)

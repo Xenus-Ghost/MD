@@ -18,8 +18,8 @@
 
 <script>
 // import { VueYouTubeEmbed, youtube } from 'vue-youtube-embed'
-import { convertYoutubeLink } from '~/assets/js/util'
 import { Measurable } from '@/assets/js/mixins/measurables/index.js'
+import { convertYoutubeLink } from '~/assets/js/util'
 export default {
   name: 'EmbedVideo',
   // components: [VueYouTubeEmbed, youtube],

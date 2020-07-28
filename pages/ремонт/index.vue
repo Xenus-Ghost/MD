@@ -534,10 +534,10 @@
 </template>
 
 <script>
+import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
-import { SellingButtons } from '@/components/Ad/Category'
 export default {
   layout: 'Category',
   components: {

@@ -166,10 +166,10 @@
 </template>
 
 <script>
-import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
 import { apiGetAds } from '@/assets/js/mixins'
+import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 export default {
   layout: 'Category',
   components: {
