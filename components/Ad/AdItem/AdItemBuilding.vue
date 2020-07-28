@@ -1,7 +1,7 @@
 <template>
   <div :class="classList">
     <image-slider
-      :slides="ad.photo"
+      :slides="ad.photos"
       :alt="ad.title"
       class="ad__slider"
       @click="adOpen"
@@ -13,19 +13,19 @@
     <div class="ad__contacts grid_cols_2">
       <div class="grid__column">
         <div v-if="ad.addresses && ad.addresses[0]" class="ad__address">
-          {{ ad.addresses[0] }}
+          {{ ad.addresses[0].value }}
         </div>
         <div v-if="ad.metro && ad.metro[0]" class="ad__metro">
-          {{ ad.metro[0] }}
+          {{ ad.metro[0].value }}
         </div>
       </div>
       <div class="grid__column">
         <a
           v-if="ad.phones && ad.phones.length > 0"
-          :href="`tel:${ad.phones[0]}`"
+          :href="`tel:${ad.phones[0].value}`"
           class="ad__phone"
         >
-          {{ ad.phones[0] }}
+          {{ ad.phones[0].value }}
         </a>
       </div>
     </div>

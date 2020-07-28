@@ -56,7 +56,7 @@ export default {
       if (parentCat && !parentCat.children) parentCat.children = []
       // eslint-disable-next-line camelcase
       console.log([parent_id, parentCat])
-      const cat = parentCat.children || this.categoriesList
+      const cat = parentCat ? parentCat.children : this.categoriesList
       cat.push({
         parent_id,
         meta: [

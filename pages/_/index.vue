@@ -63,21 +63,36 @@ export default {
       (result) => currentCategory && result.parent_id === currentCategory.id
     )
     const needAdsPage =
-      (slugs.includes('119') ||
-        slugs.includes('127') ||
+      (slugs.includes('127') ||
         slugs.includes('128') ||
         slugs.includes('129') ||
         slugs.includes('130') ||
+        slugs.includes('401') ||
+        slugs.includes('402') ||
+        slugs.includes('403') ||
+        slugs.includes('404') ||
+        slugs.includes('405') ||
+        slugs.includes('406') ||
+        slugs.includes('407') ||
+        slugs.includes('408') ||
+        slugs.includes('409') ||
         slugs.includes('жби') ||
         slugs.includes('снос-демонтаж')) &&
       !subCategoriesList.length
     if (
-      (slugs.includes('119') ||
-        slugs.includes('127') ||
-        slugs.includes('128') ||
-        slugs.includes('129') ||
-        slugs.includes('130')) &&
-      !subCategoriesList.length
+      slugs.includes('127') ||
+      slugs.includes('128') ||
+      slugs.includes('129') ||
+      slugs.includes('130') ||
+      slugs.includes('401') ||
+      slugs.includes('402') ||
+      slugs.includes('403') ||
+      slugs.includes('404') ||
+      slugs.includes('405') ||
+      slugs.includes('406') ||
+      slugs.includes('407') ||
+      slugs.includes('408') ||
+      (slugs.includes('409') && !subCategoriesList.length)
     ) {
       adType = adTypeList[1]
     } else if (slugs.includes('снос-демонтаж')) adType = adTypeList[0]
