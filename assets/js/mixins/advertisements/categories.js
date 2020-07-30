@@ -4,7 +4,7 @@ import { getCategoryIcon, getSubcategories } from '~/assets/js/util/ads'
 export const getCategoryIDByUrl = {
   created() {
     const categories = this.$store.state.categories.adCategoriesList
-    const slug = getCategorySlug(this.$route, categories)
+    const slug = getCategorySlug(this.$route)
     console.log(this.$route)
 
     const result = getCategory(slug, categories)
@@ -109,9 +109,9 @@ export const getCategoryMeta = {
 export const getCustomCategoryMeta = {
   // this.$route.path
   created() {
-    const categories = this.$store.state.categories
+    const categories = this.$store.state.categories.adCategoriesList
 
-    const categoryName = categories.adCategoriesList.find(
+    const categoryName = categories.find(
       (result) => result.name === this.$route.name
     ).title
     const headTitle = categoryName

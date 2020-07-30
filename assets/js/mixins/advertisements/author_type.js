@@ -1,7 +1,8 @@
 export function getAuthorType(context) {
   // async asyncData(context) {
   let authorTypeId = null
-  const slugs = context.route.path.split('/')
+  console.log()
+  const slugs = context.route ? context.route.path.split('/') : null
   authorTypeId = context.store.state.advert.authorType.find(
     (result) => result.slug === slugs[slugs.length - 1]
   )

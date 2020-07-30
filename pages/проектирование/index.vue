@@ -648,8 +648,7 @@
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
-import ServiceItem from '../../components/Services/ServiceItem'
-import ServiceGrid from '~/components/Services/ServiceGrid'
+import { ServiceItem, ServiceGrid } from '~/components/Services/'
 
 export default {
   layout: 'Category',

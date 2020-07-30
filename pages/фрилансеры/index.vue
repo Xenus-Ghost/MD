@@ -758,7 +758,7 @@
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import { ServiceItem, ServiceGrid } from '~/components/Services/'
 import { getCategoryIcon, getSubcategories } from '~/assets/js/util/ads'
-import { getCategoryIDByUrl, getCustomCategoryMeta } from '~/assets/js/mixins'
+import { getCustomCategoryMeta } from '~/assets/js/mixins'
 export default {
   layout: 'Category',
   components: {
@@ -766,7 +766,7 @@ export default {
     ServiceGrid,
     ServiceItem,
   },
-  mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  mixins: [getCustomCategoryMeta],
   data() {
     return {
       category: {

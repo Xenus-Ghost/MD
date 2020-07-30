@@ -722,6 +722,14 @@ export default {
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
   data() {
     return {
+      category: {
+        id: 20,
+        name: 'газификация',
+        title: 'Газификация',
+        parent: null,
+        icon: '2',
+      },
+      subCategories: [],
       categories: [
         {
           id: 51,
