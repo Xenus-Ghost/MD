@@ -1,14 +1,8 @@
 <template>
   <div class="container_wide layout_category grid-layout_ads">
-    <CategoryHeader>
+    <CategoryHeader :logo-src="icon" :category-id="category.id">
       {{ meta.title }}
-      <template v-slot:right_column>
-        <img
-          v-if="filterData.category_id === 110"
-          src="@/assets/img/icons/categories/demontage.svg"
-          alt=""
-          class="category__icon"
-        />
+      <template v-if="authorTypeId > 3" v-slot:right_column>
         <img
           v-if="authorTypeId === 7"
           src="@/assets/img/icons/categories/buildings.svg"
@@ -44,6 +38,7 @@
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import Advertising from '@/components/Advertising'
 import AdList from '@/components/Ad/AdList'
+import { getCategoryIcon } from '~/assets/js/util/ads'
 
 export default {
   name: 'AdsPage',
@@ -70,6 +65,10 @@ export default {
       type: Object,
       default: null,
     },
+    category: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
@@ -80,6 +79,7 @@ export default {
       body: {
         title: '',
       },
+      icon: null,
     }
   },
   computed: {
@@ -99,7 +99,10 @@ export default {
     },
   },
   created() {
-    console.log(this.filterData)
+    this.icon =
+      this.authorTypeId < 4
+        ? `/img/categories/${getCategoryIcon(this.category.id)}.svg`
+        : ''
   },
   head() {
     return {

@@ -8,7 +8,7 @@
     <div class="cat-widget__list-wrapper">
       <Button to="/" class="cat-widget__button_home">
         <template v-slot:icon_left>
-          <img src="~assets/img/icons/home_small.svg" alt="home" />
+          <svg-icon name="home_small" />
         </template>
         Перейти на главную
       </Button>

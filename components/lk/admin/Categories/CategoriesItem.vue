@@ -121,12 +121,12 @@
       >
     </details>
     <div class="category__actions">
-      <span class="my-ad__button_redo" @click="buttonUpdate"
-        ><img class="my-ad__icon" src="~assets/img/icons/redo.svg" alt=""
-      /></span>
-      <span class="my-ad__button_remove" @click="remove()"
-        ><img class="my-ad__icon" src="~assets/img/icons/remove.svg" alt=""
-      /></span>
+      <span class="my-ad__button_redo" @click="buttonUpdate">
+        <svg-icon class="my-ad__icon" name="redo" />
+      </span>
+      <span class="my-ad__button_remove" @click="remove()">
+        <svg-icon class="my-ad__icon" name="remove" />
+      </span>
     </div>
     <details
       v-if="categoryData.children"

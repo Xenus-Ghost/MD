@@ -1,13 +1,17 @@
 <template>
   <div :class="[classes, gridClasses]" class="service__item">
     <div class="service__icon">
-      <slot name="icon"></slot>
+      <slot v-if="!icon" name="icon"></slot>
+      <!--      <svg-icon v-if="!!icon" name="icon" />-->
+      <img v-if="!!icon" :src="`/img/categories/${icon}.svg`" :alt="title" />
     </div>
     <div class="service__title">
-      <slot name="default"></slot>
+      <slot v-if="!title" name="default"></slot>
+      {{ title }}
     </div>
     <div class="service__footer">
-      <slot name="footer"></slot>
+      <!--      <slot name="footer"></slot>-->
+      <Button :to="to" shape="rounded" borders="outline"> Подробнее</Button>
     </div>
     <svg
       width="11"
@@ -110,6 +114,20 @@ export default {
     col: {
       default: 'full',
       type: String,
+    },
+    icon: {
+      type: String,
+      default: null,
+    },
+    title: {
+      type: String,
+      default: null,
+      required: true,
+    },
+    to: {
+      type: String,
+      default: null,
+      required: true,
     },
   },
   computed: {

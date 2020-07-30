@@ -117,3 +117,24 @@ export function getCatSlugs(url) {
   // console.log(returnData)
   return returnData
 }
+
+export function getSubcategories(parent, categories) {
+  console.log(parent, 'parent')
+  console.log(Object.values(categories), 'Object.values(categories)')
+  const categoriesLength = categories.length
+  const result = []
+  /* categories.forEach((item) => {
+    if (item.parent === parent) result.push(item)
+  }) */
+  /* for (let i = 0; i < categoriesLength; i++) {
+    if (categories[i].parent === parent) result.push(categories[i])
+  }
+  return result */
+  return Object.values(categories).filter(
+    (result) => parseInt(result.parent_id) === parseInt(parent)
+  )
+}
+
+export function getParentCategory(id, categories) {
+  return categories.find((result) => result.id === id)
+}

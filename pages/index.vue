@@ -3,12 +3,13 @@
     <div class="container home-wrapper">
       <CircleContainer>
         <template v-slot:default>
-          <CircleItem v-for="(cat, i) in categories" :key="i" :to="cat.path">
-            <!--            <div class="circle__item">-->
-            <img :src="cat.icon_url" alt="" class="cat-button__image" />
-            <span class="cat-button__title">{{ cat.title }}</span>
-            <!--            </div>-->
-          </CircleItem>
+          <CircleItem
+            v-for="(cat, i) in categories"
+            :key="i"
+            :to="cat.path"
+            :title="cat.title"
+            :icon="cat.icon_url"
+          />
         </template>
         <template v-slot:circle_center>
           <div class="circle__center">
@@ -57,7 +58,7 @@
               @click.native="BlackListOpen"
             >
               <template v-slot:icon_left>
-                <img src="~/assets/img/icons/list.svg" alt="list" />
+                <svg-icon name="list" />
               </template>
               Чёрный список
             </Button>
@@ -114,7 +115,7 @@
       >
       <div class="home-page__categories">
         <div class="home-page__category">
-          <img src="~assets/img/icons/house.svg" alt="" />
+          <img src="/img/categories/house.svg" alt="" />
           <div class="home-page__category-title">Готовые дома, бани, дачи</div>
           <Button
             to="/дома-бани-дачи"
@@ -127,7 +128,7 @@
           <img class="divider" src="~assets/img/divider.svg" alt="" />
         </div>
         <div class="home-page__category">
-          <img src="~assets/img/icons/materials.svg" alt="" />
+          <img src="/img/categories/materials.svg" alt="" />
           <div class="home-page__category-title">
             Металлы. Дерево. <br />
             Стекло. Пластмасса.
@@ -138,7 +139,7 @@
           <img class="divider" src="~assets/img/divider.svg" alt="" />
         </div>
         <div class="home-page__category">
-          <img src="~assets/img/icons/mixer.svg" alt="" />
+          <img src="/img/categories/mixer.svg" alt="" />
           <div class="home-page__category-title">ЖБИ и заводы</div>
           <Button to="/жби" width="100%" borders="outline" shape="rounded">
             Подробнее</Button
@@ -146,7 +147,7 @@
           <img class="divider" src="~assets/img/divider.svg" alt="" />
         </div>
         <div class="home-page__category">
-          <img src="~assets/img/icons/digger.svg" alt="" />
+          <img src="/img/categories/digger.svg" alt="" />
           <div class="home-page__category-title">Механизация, спецтехника</div>
           <Button
             to="/механизация-спецтехника"
@@ -159,7 +160,7 @@
           <img class="divider" src="~assets/img/divider.svg" alt="" />
         </div>
         <div class="home-page__category">
-          <img src="~assets/img/icons/hook.svg" alt="" />
+          <img src="/img/categories/hook.svg" alt="" />
           <div class="home-page__category-title">Снос, демонтаж</div>
           <Button
             to="/снос-демонтаж"
@@ -173,7 +174,7 @@
           <img class="divider" src="~assets/img/divider.svg" alt="" />
         </div>
         <div class="home-page__category">
-          <img src="~assets/img/icons/builder.svg" alt="" />
+          <img src="/img/categories/builder.svg" alt="" />
           <div class="home-page__category-title">Фрилансеры</div>
           <Button
             to="/фрилансеры"
@@ -213,67 +214,67 @@ export default {
         monolith: {
           path: '/монолит',
           title: 'Монолит',
-          icon_url: 'img/categories/1.svg',
+          icon_url: '1',
         },
         building: {
           path: '/строительство',
           title: 'Строительство',
-          icon_url: 'img/categories/2.svg',
+          icon_url: '2',
         },
         renovation: {
           path: '/ремонт',
           title: 'Ремонт',
-          icon_url: 'img/categories/3.svg',
+          icon_url: '3',
         },
         electric: {
           path: '/электрика',
           title: 'Электрика',
-          icon_url: 'img/categories/4.svg',
+          icon_url: '4',
         },
         plumbing: {
           path: '/сантехника',
           title: 'Сантехника',
-          icon_url: 'img/categories/5.svg',
+          icon_url: '5',
         },
         welding: {
           path: '/сварка',
           title: 'Сварка',
-          icon_url: 'img/categories/6.svg',
+          icon_url: '6',
         },
         designing: {
           path: '/проектирование',
           title: 'Проектирование',
-          icon_url: 'img/categories/8.svg',
+          icon_url: '8',
         },
         roads: {
           path: '/дороги',
           title: 'Дороги',
-          icon_url: 'img/categories/9.svg',
+          icon_url: '9',
         },
         gas: {
           path: '/газификация',
           title: 'Газификация',
-          icon_url: 'img/categories/10.svg',
+          icon_url: '10',
         },
         landscape: {
           path: '/ландшафтный-дизайн',
           title: 'Ландшафтный дизайн',
-          icon_url: 'img/categories/12.svg',
+          icon_url: '12',
         },
         beautification: {
           path: '/благоустройство',
           title: 'Благоустройство',
-          icon_url: 'img/categories/13.svg',
+          icon_url: '13',
         },
         tools: {
           path: '/инструменты-и-оборудование',
           title: 'Инструменты и оборудование',
-          icon_url: 'img/categories/14.svg',
+          icon_url: '14',
         },
         stoves: {
           path: '/печи-и-камины',
           title: 'Печи и камины',
-          icon_url: 'img/categories/15.svg',
+          icon_url: '15',
         },
       },
       isBlackListShow: false,

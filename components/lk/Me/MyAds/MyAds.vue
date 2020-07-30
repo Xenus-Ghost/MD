@@ -71,24 +71,14 @@
               </div>
               <div class="my-ad__actions">
                 <span v-if="row.status_id === 1" class="my-ad__button_pause">
-                  <img
-                    class="my-ad__icon"
-                    src="~assets/img/icons/pause.svg"
-                    alt=""
-                  />
+                  <svg-icon name="pause" class="my-ad__icon" />
                 </span>
-                <span v-if="row.status_id !== 1" class="my-ad__button_redo"
-                  ><img
-                    class="my-ad__icon"
-                    src="~assets/img/icons/redo.svg"
-                    alt=""
-                /></span>
-                <span class="my-ad__button_remove" @click="removeAd(row.id)"
-                  ><img
-                    class="my-ad__icon"
-                    src="~assets/img/icons/remove.svg"
-                    alt=""
-                /></span>
+                <span v-if="row.status_id !== 1" class="my-ad__button_redo">
+                  <svg-icon name="redo" class="my-ad__icon" />
+                </span>
+                <span class="my-ad__button_remove" @click="removeAd(row.id)">
+                  <svg-icon name="remove" class="my-ad__icon" />
+                </span>
               </div>
             </div>
           </div>
@@ -105,11 +95,7 @@
           <div v-for="(row, i) in adList.private" :key="i" class="my-ads__row">
             <div class="my-ad__name">
               <span class="my-ad__button_edit">
-                <img
-                  src="~assets/img/icons/edit.svg"
-                  alt=""
-                  class="my-ad__icon"
-                />
+                <svg-icon name="edit" class="my-ad__icon" />
               </span>
               {{ row.name }}
             </div>
@@ -127,24 +113,14 @@
             </div>
             <div class="my-ad__actions">
               <span v-if="row.status_id === 1" class="my-ad__button_pause">
-                <img
-                  class="my-ad__icon"
-                  src="~assets/img/icons/pause.svg"
-                  alt=""
-                />
+                <svg-icon name="pause" class="my-ad__icon" />
               </span>
-              <span v-if="row.status_id !== 1" class="my-ad__button_redo"
-                ><img
-                  class="my-ad__icon"
-                  src="~assets/img/icons/redo.svg"
-                  alt=""
-              /></span>
-              <span class="my-ad__button_remove" @click="removeAd(row.id)"
-                ><img
-                  class="my-ad__icon"
-                  src="~assets/img/icons/remove.svg"
-                  alt=""
-              /></span>
+              <span v-if="row.status_id !== 1" class="my-ad__button_redo">
+                <svg-icon name="redo" class="my-ad__icon" />
+              </span>
+              <span class="my-ad__button_remove" @click="removeAd(row.id)">
+                <svg-icon name="remove" class="my-ad__icon" />
+              </span>
             </div>
           </div>
         </div>

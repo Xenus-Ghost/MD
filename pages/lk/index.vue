@@ -20,6 +20,7 @@
                   {{ user.email }}
                 </span>
                 <span v-if="user.phone" class="profile__phone">
+                  <svg-icon name="phone-call" />
                   {{ user.phone }}
                 </span>
               </div>
@@ -232,7 +233,7 @@ export default {
   &__phone {
     font-weight: 500;
     font-size: 20px;
-    &::before {
+    /*&::before {
       content: '';
       display: block;
       float: left;
@@ -240,7 +241,7 @@ export default {
       background-size: contain;
       padding: 8px;
       margin-right: 4px;
-    }
+    }*/
   }
   &__prop-table {
     padding: 15px;

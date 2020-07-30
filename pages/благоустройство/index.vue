@@ -164,136 +164,14 @@
         </template>
       </CategoryHeader>
       <ServicesGrid :cols="'6_tablet'" :col="'12'" width="100%">
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/museum.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Архитектура
-          </template>
-          <template v-slot:footer>
-            <Button to="58" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/idea.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Освещение
-          </template>
-          <template v-slot:footer>
-            <Button to="59" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/park.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Парки и скверы
-          </template>
-          <template v-slot:footer>
-            <Button to="60" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/garden.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Озеленение
-          </template>
-          <template v-slot:footer>
-            <Button to="61" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/billboard.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Рекламные конструкции
-          </template>
-          <template v-slot:footer>
-            <Button to="62" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/playground.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Детские и спорт площадки
-          </template>
-          <template v-slot:footer>
-            <Button to="63" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'" class="grid__column_offset-2_tablet">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/dog.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Площадки для выгула собак
-          </template>
-          <template v-slot:footer>
-            <Button to="64" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/fence.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Ограждения и заборы
-          </template>
-          <template v-slot:footer>
-            <Button to="65" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/hangar.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Строительство ангаров
-          </template>
-          <template v-slot:footer>
-            <Button to="66" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
-        <ServiceItem :col="'1'">
-          <template v-slot:icon>
-            <img src="@/assets/img/icons/growth.svg" alt="" />
-          </template>
-          <template v-slot:default>
-            Сад и огород
-          </template>
-          <template v-slot:footer>
-            <Button to="67" shape="rounded" borders="outline">
-              Подробнее</Button
-            >
-          </template>
-        </ServiceItem>
+        <ServiceItem
+          v-for="(cat, i) in categories"
+          :key="i"
+          :col="'1'"
+          :icon="cat.icon"
+          :to="`${cat.id}`"
+          :title="cat.title"
+        />
       </ServicesGrid>
       <SellingButtons></SellingButtons>
     </div>
@@ -316,12 +194,68 @@ export default {
     SellingButtons,
   },
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  data() {
+    return {
+      categories: [
+        {
+          id: 58,
+          title: 'Архитектура',
+          icon: 'museum',
+        },
+        {
+          id: 59,
+          title: 'Освещение',
+          icon: 'idea',
+        },
+        {
+          id: 60,
+          title: 'Парки и скверы',
+          icon: 'park',
+        },
+        {
+          id: 61,
+          title: 'Озеленение',
+          icon: 'garden',
+        },
+        {
+          id: 62,
+          title: 'Рекламные конструкции',
+          icon: 'billboard',
+        },
+        {
+          id: 63,
+          title: 'Детские и спорт площадки',
+          icon: 'playground',
+        },
+        {
+          id: 64,
+          title: 'Площадки для выгула собак',
+          icon: 'dog',
+        },
+        {
+          id: 65,
+          title: 'Ограждения и заборы',
+          icon: 'fence',
+        },
+        {
+          id: 66,
+          title: 'Строительство ангаров',
+          icon: 'hangar',
+        },
+        {
+          id: 67,
+          title: 'Сад и огород',
+          icon: 'growth',
+        },
+      ],
+    }
+  },
 }
 </script>
 
 <style lang="scss">
-@import '~~assets/scss/app/index.scss';
-@import '~~assets/scss/app/pages/_category.scss';
+@import '~/assets/scss/app/index.scss';
+@import '~/assets/scss/app/pages/_category.scss';
 .grid-layout_beautification {
   max-height: 100%;
   display: grid;
@@ -338,7 +272,6 @@ export default {
 .services {
   ::v-deep .services__list_grid {
     border-radius: 3.5rem;
-    /*padding: 10px 50px;*/
   }
 }
 </style>

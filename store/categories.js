@@ -21,6 +21,10 @@ export const state = () => ({
   evCategoriesList: {},
 })
 
+export const getters = {
+  getUserId: (state) => state.adCategoriesList,
+}
+
 export const mutations = {
   getAdCategories(state, data) {
     state.adCategoriesList = data

@@ -1,11 +1,19 @@
 <template>
   <div class="circle__item">
-    <!--    <nuxt-link to="">-->
-    <Button :to="to" shape="circle" borders="neon" height="100%" width="100%">
-      <slot></slot>
+    <Button
+      :to="`${to}`"
+      shape="circle"
+      borders="neon"
+      height="100%"
+      width="100%"
+    >
+      <img
+        :src="`/img/categories/${icon}.svg`"
+        class="cat-button__image"
+        :alt="title"
+      />
+      <span class="cat-button__title">{{ title }}</span>
     </Button>
-    <!--    </nuxt-link>-->
-
     <svg
       :style="styles"
       width="50"
@@ -28,6 +36,14 @@ export default {
     to: {
       default: null,
       type: String,
+    },
+    title: {
+      type: String,
+      default: null,
+    },
+    icon: {
+      type: String,
+      default: null,
     },
   },
   computed: {

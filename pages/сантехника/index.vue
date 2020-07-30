@@ -632,38 +632,10 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="'3_tablet'" :col="'12'" width="700">
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/radiator.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Отопление
-        </template>
-        <template v-slot:footer>
-          <Button to="40" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'1'" icon="radiator" title="Отопление" to="40" />
+      <ServiceItem :col="'1'" icon="valve" title="Водоснабжение" to="41">
       </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/valve.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Водоснабжение
-        </template>
-        <template v-slot:footer>
-          <Button to="41" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/valve (1).svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Канализация
-        </template>
-        <template v-slot:footer>
-          <Button to="42" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'1'" icon="valve (1)" title="Канализация" to="42">
       </ServiceItem>
     </ServicesGrid>
     <SellingButtons></SellingButtons>

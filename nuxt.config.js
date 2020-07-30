@@ -1,5 +1,4 @@
 import { BACKEND_API_URL } from './constants'
-// console.log(BACKEND_API_URL)
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
@@ -66,7 +65,7 @@ export default {
     '@nuxtjs/auth',
     '@nuxtjs/component-cache',
     'nuxt-vuex-router-sync',
-    // ['@nuxtjs/localtunnel', { subdomain: 'md' }],
+    '@nuxtjs/svg-sprite',
     [
       'nuxt-imagemin',
       {
@@ -86,24 +85,8 @@ export default {
    */
   axios: {
     baseURL: BACKEND_API_URL,
-    // crossDomain: true,
-    // proxy: true,
-    // proxyHeaders: false,
     credentials: false,
-    // proxy: {
-    //   '/api/': 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/',
-    //   '^/api/': 'https://admin.xn--80aaledd0beefeg0ch.xn--p1ai/api/',
-    // },
   },
-  /* proxy: {
-    '/api/': {
-      changeOrigin: true,
-      // localAddress: '127.0.0.1',
-      // protocolRewrite: 'https',
-      target: `${BACKEND_URL}api/`,
-      // ws: false,
-    },
-  }, */
   toast: {
     position: 'top-right',
     register: [
@@ -162,8 +145,6 @@ export default {
             url: `${BACKEND_API_URL}auth/refresh`,
           },
         },
-        // tokenRequired: true,
-        // tokenType: 'bearer'
       },
     },
   },
@@ -183,9 +164,6 @@ export default {
     },
     cssSourceMap: !!isDev,
     postcss: require('autoprefixer')(),
-    // splitChunks: {
-    //   layouts: true
-    // },
     splitChunks: {
       layouts: true,
       pages: false,
@@ -239,15 +217,6 @@ export default {
   router: {
     routeNameSplitter: '/',
     // trailingSlash: false,
-    /* extendRoutes(routes, resolve) {
-     routes.splice(
-       0,
-       routes.length,
-       ...routes.map((route) => {
-         return { ...route, component: resolve(__dirname, route.component) }
-       })
-     )
-     }, */
   },
   server: {
     port: 3333,

@@ -198,45 +198,24 @@
       <ServiceItem
         :col="'0'"
         class="grid__column_1-tablet grid__column_3-phone"
-      >
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/weld.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Металло-конструкции
-        </template>
-        <template v-slot:footer>
-          <Button to="43" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+        title="Металло-конструкции"
+        icon="weld"
+        to="43"
+      />
       <ServiceItem
         :col="'0'"
         class="grid__column_1-tablet grid__column_3-phone"
-      >
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/pipe.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Трубопровод
-        </template>
-        <template v-slot:footer>
-          <Button to="44" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+        title="Трубопровод"
+        icon="pipe"
+        to="44"
+      />
       <ServiceItem
         :col="'0'"
         class="grid__column_1-tablet grid__column_3-phone"
-      >
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/ladder.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Металлические лестницы
-        </template>
-        <template v-slot:footer>
-          <Button to="45" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+        title="Металлические лестницы"
+        icon="ladder"
+        to="45"
+      />
     </ServicesGrid>
     <SellingButtons></SellingButtons>
   </div>

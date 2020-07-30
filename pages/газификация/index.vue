@@ -691,41 +691,16 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'3_tablet'" :col="'12'" width="700px">
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/house.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Частные дома, ИЖС, СНТ
-        </template>
-        <template v-slot:footer>
-          <Button to="51" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/boiler.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Котельные
-        </template>
-        <template v-slot:footer>
-          <Button to="52" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/valve (2).svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Промышленное газифицирование
-        </template>
-        <template v-slot:footer>
-          <Button to="53" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-    </ServicesGrid>
+    <ServiceGrid :cols="'3_tablet'" :col="'12'" width="700px">
+      <ServiceItem
+        v-for="(cat, i) in categories"
+        :key="i"
+        :col="'1'"
+        :icon="cat.icon"
+        :to="`${cat.id}`"
+        :title="cat.title"
+      />
+    </ServiceGrid>
     <SellingButtons></SellingButtons>
   </div>
 </template>
@@ -734,18 +709,38 @@
 import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
 import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
-import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import { ServiceItem, ServiceGrid } from '../../components/Services'
 
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
     SellingButtons,
   },
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  data() {
+    return {
+      categories: [
+        {
+          id: 51,
+          title: 'Архитектура',
+          icon: 'museum',
+        },
+        {
+          id: 52,
+          title: 'Освещение',
+          icon: 'idea',
+        },
+        {
+          id: 53,
+          title: 'Парки и скверы',
+          icon: 'park',
+        },
+      ],
+    }
+  },
 }
 </script>
 

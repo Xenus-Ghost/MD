@@ -21,11 +21,10 @@
           :title="`Просмотров: ${adModalData.views}`"
           style="justify-self: end;"
         >
-          <img
-            src="~assets/img/icons/eye.svg"
-            :alt="`Просмотров: ${adModalData.views}`"
-            :title="`Просмотров: ${adModalData.views}`"
+          <svg-icon
             class="views__icon"
+            name="eye"
+            :title="`Просмотров: ${adModalData.views}`"
           />
           <span class="views__value">{{ adModalData.views }}</span>
         </div>

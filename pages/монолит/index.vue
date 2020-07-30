@@ -452,45 +452,14 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="'3_tablet'" :col="'12'" width="703px" height="auto">
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img alt="" src="~assets/img/icons/cement-truck.svg" />
-        </template>
-        <template v-slot:default>
-          Заливка бетона
-        </template>
-        <template v-slot:footer>
-          <Button to="72" shape="rounded" borders="outline" width="100%"
-            >Подробнее</Button
-          >
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/grid.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Армирующие каркасы
-        </template>
-        <template v-slot:footer>
-          <Button to="73" shape="rounded" borders="outline" width="100%"
-            >Подробнее</Button
-          >
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/fence.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Монтаж опалубки
-        </template>
-        <template v-slot:footer>
-          <Button to="74" shape="rounded" borders="outline" width="100%"
-            >Подробнее</Button
-          >
-        </template>
-      </ServiceItem>
+      <ServiceItem
+        :col="'1'"
+        icon="cement-truck"
+        title="Заливка бетона"
+        to="72"
+      />
+      <ServiceItem :col="'1'" icon="grid" title="Армирующие каркасы" to="73" />
+      <ServiceItem :col="'1'" icon="fence" title="Монтаж опалубки" to="74" />
     </ServicesGrid>
     <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>

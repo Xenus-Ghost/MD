@@ -1,11 +1,8 @@
 <template>
   <article class="container_full layout_category">
     <div class="grid-layout_sub-category">
-      <CategoryHeader>
+      <CategoryHeader :category-id="category.id">
         {{ meta.title }}
-        <template v-slot:right_column>
-          <!--          <img src="@/assets/img/icons/MD_logo.svg" alt="" />-->
-        </template>
       </CategoryHeader>
       <div class="grid__column_12 grid_cols_2_tablet" style="grid-gap: 3vw;">
         <div v-if="adType.isCustomer" class="сustomers">
@@ -138,6 +135,7 @@
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
 import SellingButtons from '@/components/Ad/Category/SellingButtons'
 // import { getCategoryIDByUrl, getCategoryMeta } from '@/assets/js/mixins'
+import { getCategoryIcon } from '~/assets/js/util/ads'
 
 export default {
   layout: 'Category',
@@ -159,6 +157,7 @@ export default {
   data() {
     return {
       a: 'a',
+      icon: null,
     }
   },
   computed: {
@@ -206,6 +205,9 @@ export default {
       )
       return obj
     },
+  },
+  created() {
+    this.icon = `/img/categories/${getCategoryIcon(this.categoryId)}.svg`
   },
   methods: {
     getVisibility(adType = null, authorType = null) {

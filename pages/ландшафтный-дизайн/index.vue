@@ -121,50 +121,20 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="'4_tablet'" :col="'12'" width="970px">
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/tree.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Авторский надзор
-        </template>
-        <template v-slot:footer>
-          <Button to="54" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/camera.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Геодезическая съемка
-        </template>
-        <template v-slot:footer>
-          <Button to="55" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/consultation.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Консультация
-        </template>
-        <template v-slot:footer>
-          <Button to="56" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/engineering.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Проект
-        </template>
-        <template v-slot:footer>
-          <Button to="57" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+      <ServiceItem :col="'1'" icon="tree" title="Авторский надзор" to="54" />
+      <ServiceItem
+        :col="'1'"
+        icon="camera"
+        title="Геодезическая съемка"
+        to="55"
+      />
+      <ServiceItem
+        :col="'1'"
+        icon="consultation"
+        title="Консультация"
+        to="56"
+      />
+      <ServiceItem :col="'1'" icon="engineering" title="Проект" to="57" />
     </ServicesGrid>
   </div>
 </template>

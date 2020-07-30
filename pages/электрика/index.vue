@@ -634,7 +634,7 @@
     <ServicesGrid :cols="'3_tablet'" :col="'9'" width="100%">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/wire.svg" alt="" />
+          <img src="/img/categories/wire.svg" alt="" />
         </template>
         <template v-slot:default>
           Кабели и проводка
@@ -645,7 +645,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/idea.svg" alt="" />
+          <img src="/img/categories/idea.svg" alt="" />
         </template>
         <template v-slot:default>
           Свет и освещение
@@ -656,7 +656,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/electric-meter.svg" alt="" />
+          <img src="/img/categories/electric-meter.svg" alt="" />
         </template>
         <template v-slot:default>
           Автоматы, счетчики
@@ -667,7 +667,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/washing-machine.svg" alt="" />
+          <img src="/img/categories/washing-machine.svg" alt="" />
         </template>
         <template v-slot:default>
           Бытовая техника
@@ -678,7 +678,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/engineering.svg" alt="" />
+          <img src="/img/categories/engineering.svg" alt="" />
         </template>
         <template v-slot:default>
           Проектирование электроснабжения
@@ -689,7 +689,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/flash.svg" alt="" />
+          <img src="/img/categories/flash.svg" alt="" />
         </template>
         <template v-slot:default>
           Заземление и молниезащита
@@ -702,7 +702,7 @@
     <ServicesGrid :cols="1" :col="'3'" width="100%">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/wire_2.svg" alt="" />
+          <img src="/img/categories/wire_2.svg" alt="" />
         </template>
         <template v-slot:default>
           Слаботочка
@@ -713,7 +713,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/key.svg" alt="" />
+          <img src="/img/categories/key.svg" alt="" />
         </template>
         <template v-slot:default>
           Охранные системы и контроль доступа

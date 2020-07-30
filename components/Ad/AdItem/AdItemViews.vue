@@ -1,10 +1,6 @@
 <template>
   <div class="views ad__views" :title="`Просмотров: ${views}`">
-    <img
-      src="~assets/img/icons/eye.svg"
-      :alt="`Просмотров: ${views}`"
-      class="views__icon"
-    />
+    <svg-icon class="views__icon" name="eye" :title="`Просмотров: ${views}`" />
     <span class="views__value">{{ views }}</span>
   </div>
 </template>

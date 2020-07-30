@@ -462,71 +462,22 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="'12_tablet'" :col="'12'" width="100%">
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/lamp.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Потолки
-        </template>
-        <template v-slot:footer>
-          <Button to="26" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'2'" icon="lamp" title="Потолки" to="26">
       </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/plastering_2.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Штукатурные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="27" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem
+        :col="'2'"
+        icon="plastering_2"
+        title="Штукатурные работы"
+        to="27"
+      >
       </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/mat.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Обои и малярные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="28" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'2'" icon="mat" title="Обои и малярные работы" to="28">
       </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/parquet.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Полы
-        </template>
-        <template v-slot:footer>
-          <Button to="29" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'2'" icon="parquet" title="Полы" to="29">
       </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/tatami.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Напольные покрытия
-        </template>
-        <template v-slot:footer>
-          <Button to="30" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'2'" icon="tatami" title="Напольные покрытия" to="30">
       </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/parquet_2.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Плитка
-        </template>
-        <template v-slot:footer>
-          <Button to="31" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
+      <ServiceItem :col="'2'" icon="parquet_2" title="Плитка" to="31">
       </ServiceItem>
     </ServicesGrid>
     <SellingButtons></SellingButtons>

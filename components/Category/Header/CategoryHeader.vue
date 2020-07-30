@@ -18,12 +18,28 @@
       </Button>
     </div>
     <div class="header__col_right">
-      <slot name="right_column"></slot>
+      <slot v-if="!logoSrc" name="right_column"></slot>
+      <div v-if="!$slots.right_column" class="header__circle">
+        <img
+          v-if="!!logoSrc"
+          class="header__logo_right"
+          :src="logoSrc"
+          alt=""
+        />
+        <img
+          v-if="!logoSrc && !$slots.right_column"
+          class="header__logo_right"
+          :src="icon"
+          alt=""
+        />
+      </div>
     </div>
   </header>
 </template>
 
 <script>
+import { getCategoryIcon } from '~/assets/js/util/ads'
+
 export default {
   name: 'CategoryHeader',
   props: {
@@ -35,12 +51,21 @@ export default {
       type: String,
       default: null,
     },
+    logoSrc: {
+      type: String,
+      default: null,
+    },
+    categoryId: {
+      type: Number || String,
+      default: 0,
+    },
   },
   data() {
     return {
       back: this.$store.state.route.from.fullPath
         ? this.$store.state.route.from.fullPath
         : '',
+      icon: null,
     }
   },
   computed: {
@@ -51,6 +76,9 @@ export default {
       if (url[url.length - 1] === 'продажа') url.pop()
       return this.backUrl || (url.length > 1 ? url.join('/') : '/')
     },
+  },
+  mounted() {
+    this.icon = `/img/categories/${getCategoryIcon(this.categoryId)}.svg`
   },
 }
 </script>

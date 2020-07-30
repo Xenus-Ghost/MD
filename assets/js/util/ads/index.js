@@ -6,6 +6,8 @@ import {
   getAdType,
   splitUrl,
   getCatSlugs,
+  getParentCategory,
+  getSubcategories,
 } from './adCategories'
 
 import {
@@ -14,6 +16,8 @@ import {
   getMaxVideos,
   getMaxAddresses,
 } from './adForms'
+
+import { iconsArray, getCategoryIcon } from './icons'
 
 export {
   getAuthorTypeFieldName,
@@ -27,4 +31,8 @@ export {
   getMaxPhotos,
   getMaxVideos,
   getMaxAddresses,
+  getParentCategory,
+  getSubcategories,
+  iconsArray,
+  getCategoryIcon,
 }

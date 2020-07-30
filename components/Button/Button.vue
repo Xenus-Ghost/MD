@@ -12,9 +12,9 @@
     <div v-if="hasLeftIcon" class="button__icon button__icon_left">
       <slot name="icon_left"></slot>
     </div>
-    <div class="button__content">
+    <span class="button__content">
       <slot name="default"></slot>
-    </div>
+    </span>
     <div v-if="hasRightIcon" class="button__icon button__icon_right">
       <slot name="icon_right"></slot>
     </div>
@@ -91,7 +91,7 @@ export default {
     },
     append() {
       return !!(
-        this.to &&
+        !!this.to &&
         this.to[0] !== '/' &&
         !this.to.includes('http://') &&
         !this.to.includes('https://')

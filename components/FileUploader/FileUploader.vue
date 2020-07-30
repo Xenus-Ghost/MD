@@ -25,11 +25,10 @@
             :alt="j"
             title="Загружено"
           />
-          <img
+          <svg-icon
             v-if="fileType === 'document'"
-            src="@/assets/img/icons/doc.svg"
+            name="doc"
             class="uploader__document_loaded"
-            :alt="j"
             :title="getFileUrl(file.path)"
           />
           <div

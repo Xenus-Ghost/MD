@@ -741,120 +741,51 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'12_tablet'" :col="'12'" width="100%">
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/cabinet.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Интерьеры
-        </template>
-        <template v-slot:footer>
-          <Button to="81" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/museum.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Архитектура
-        </template>
-        <template v-slot:footer>
-          <Button to="82" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/3d.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Визуализация 3D
-        </template>
-        <template v-slot:footer>
-          <Button to="83" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/tree.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Ландшафтный дизайн
-        </template>
-        <template v-slot:footer>
-          <Button to="84" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/engineering.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Инжиниринг, проектирование
-        </template>
-        <template v-slot:footer>
-          <Button to="85" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/monitor.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Макетирование
-        </template>
-        <template v-slot:footer>
-          <Button to="86" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'" class="grid__column_offset-4_tablet">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/graffiti.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Граффити
-        </template>
-        <template v-slot:footer>
-          <Button to="87" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/billboard.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Макеты рекламы
-        </template>
-        <template v-slot:footer>
-          <Button to="88" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/paint-palette-and-brush.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Художники
-        </template>
-        <template v-slot:footer>
-          <Button to="89" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-    </ServicesGrid>
+    <ServiceGrid :cols="'12_tablet'" :col="'12'" width="100%">
+      <ServiceItem
+        v-for="(cat, i) in subCategories"
+        :key="i"
+        :icon="cat.icon"
+        :title="cat.title"
+        :to="`${cat.id}`"
+        :col="'2'"
+      />
+    </ServiceGrid>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
-import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import { ServiceItem, ServiceGrid } from '~/components/Services/'
+import { getCategoryIcon, getSubcategories } from '~/assets/js/util/ads'
+import { getCategoryIDByUrl, getCustomCategoryMeta } from '~/assets/js/mixins'
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
+  },
+  mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  data() {
+    return {
+      category: {
+        id: 75,
+        name: 'фрилансеры',
+        title: 'Фрилансеры',
+        parent: null,
+        icon: '2',
+      },
+      subCategories: [],
+    }
+  },
+  created() {
+    const categories = this.$store.state.categories.adCategoriesList
+    const subCategories = getSubcategories(1, categories)
+    subCategories.forEach((item, index, array) => {
+      array[index].icon = getCategoryIcon(item.id)
+    })
+    this.$set(this, 'subCategories', subCategories)
   },
 }
 </script>

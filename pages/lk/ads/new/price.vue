@@ -5,7 +5,7 @@
       <template v-slot:right_column>
         <img
           class="header_category__image"
-          src="~/assets/img/icons/coins.svg"
+          src="/img/categories/coins.svg"
           alt=""
         />
       </template>

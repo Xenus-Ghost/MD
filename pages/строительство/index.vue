@@ -632,142 +632,14 @@
       </template>
     </CategoryHeader>
     <ServicesGrid :cols="'12_tablet'" :col="'12'" width="100%">
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/brick-wall.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Кладочные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="2" shape="rounded" borders="outline">
-            Подробнее
-          </Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/shovel.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Земляные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="3" shape="rounded" borders="outline">
-            Подробнее
-          </Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/worker.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Бурение
-        </template>
-        <template v-slot:footer>
-          <Button to="4" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/plastering.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Фасадные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="5" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/roof.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Кровельные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="6" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/rope.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Высотные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="7" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/pattern.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Тротуарная плитка
-        </template>
-        <template v-slot:footer>
-          <Button to="8" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/windows.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Окна и балконы
-        </template>
-        <template v-slot:footer>
-          <Button to="9" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/doorway.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Двери и замки
-        </template>
-        <template v-slot:footer>
-          <Button to="10" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/garage.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Рольставни и секц. ворота
-        </template>
-        <template v-slot:footer>
-          <Button to="11" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/fan.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Вентиляция и кондиционеры
-        </template>
-        <template v-slot:footer>
-          <Button to="12" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'2'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/no-sound.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Гидро- и звукоизоляция
-        </template>
-        <template v-slot:footer>
-          <Button to="13" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+      <ServiceItem
+        v-for="(cat, i) in subCategories"
+        :key="i"
+        :icon="cat.icon"
+        :title="cat.title"
+        :to="`${cat.id}`"
+        :col="'2'"
+      />
     </ServicesGrid>
     <SellingButtons></SellingButtons>
   </div>
@@ -779,6 +651,7 @@ import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
 import ServicesGrid from '~/components/Services/ServiceGrid'
+import { getSubcategories, getCategoryIcon } from '~/assets/js/util/ads'
 
 export default {
   components: {
@@ -788,6 +661,26 @@ export default {
     SellingButtons,
   },
   mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  data() {
+    return {
+      category: {
+        id: 1,
+        name: 'строительство',
+        title: 'Строительство',
+        parent: null,
+        icon: '2',
+      },
+      subCategories: [],
+    }
+  },
+  created() {
+    const categories = this.$store.state.categories.adCategoriesList
+    const subCategories = getSubcategories(1, categories)
+    subCategories.forEach((item, index, array) => {
+      array[index].icon = getCategoryIcon(item.id)
+    })
+    this.$set(this, 'subCategories', subCategories)
+  },
   layout: 'Category',
 }
 </script>

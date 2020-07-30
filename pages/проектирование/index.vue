@@ -637,61 +637,16 @@
       width="100%"
       max-width="1070px"
     >
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/lawyer.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Юрист
-        </template>
-        <template v-slot:footer>
-          <Button to="46" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/approve-invoice.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Сметы
-        </template>
-        <template v-slot:footer>
-          <Button to="47" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/terrain.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Геодезия
-        </template>
-        <template v-slot:footer>
-          <Button to="48" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/data.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Экспертиза
-        </template>
-        <template v-slot:footer>
-          <Button to="49" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="@/assets/img/icons/seeds.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Изыскательные работы
-        </template>
-        <template v-slot:footer>
-          <Button to="50" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+      <ServiceItem :col="'1'" icon="lawyer" title="Юрист" to="46" />
+      <ServiceItem :col="'1'" icon="approve-invoice" title="Сметы" to="47" />
+      <ServiceItem :col="'1'" icon="terrain" title="Геодезия" to="48" />
+      <ServiceItem :col="'1'" icon="data" title="Экспертиза" to="49" />
+      <ServiceItem
+        :col="'1'"
+        icon="seeds"
+        title="Изыскательные работы"
+        to="50"
+      />
     </ServicesGrid>
   </div>
 </template>

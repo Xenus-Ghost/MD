@@ -1,9 +1,8 @@
 <template>
   <article class="container_full layout_category">
     <div class="grid-layout_sub-category">
-      <CategoryHeader>
+      <CategoryHeader :category-id="category.id">
         {{ meta.title }}
-        <template v-slot:right_column> </template>
       </CategoryHeader>
       <div
         class="grid_cols_2_tablet container grid__column_12 grid_cols_6 buttons_grid"
@@ -30,6 +29,7 @@
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'
+import { getCategoryIcon } from '~/assets/js/util/ads'
 
 export default {
   layout: 'Category',
@@ -41,6 +41,10 @@ export default {
       type: Object,
       default: null,
     },
+    category: {
+      type: Object,
+      default: null,
+    },
     categories: {
       type: Array,
       default: null,
@@ -49,7 +53,11 @@ export default {
   data() {
     return {
       a: 'a',
+      icon: null,
     }
+  },
+  created() {
+    this.icon = `/img/categories/${getCategoryIcon(this.categoryId)}.svg`
   },
 }
 </script>

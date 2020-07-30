@@ -1,14 +1,18 @@
 import { getAuthorType } from './index'
+import { getCategoryIcon } from '~/assets/js/util/ads'
 
 export const getCategoryIDByUrl = {
   created() {
     const slug = getCategorySlug
+    console.log(this.$route)
 
     const result = getCategory(slug, this.$store.state.categories)
 
     this.$set(this, 'category', result.category)
 
     this.$set(this, 'subCategories', result.subCategories)
+    if (this.category && this.category.id)
+      this.$set(this.category, 'icon', getCategoryIcon(this.category.id))
   },
   data() {
     return {
@@ -17,6 +21,7 @@ export const getCategoryIDByUrl = {
         name: null,
         title: null,
         parent: null,
+        icon: null,
       },
       subCategories: [],
     }
@@ -43,6 +48,8 @@ export function getCategorySlug(
   route = this.$route ? this.$route : null,
   context
 ) {
+  // console.log(route)
+  // console.log(context)
   const slugs = route.path.split('/')
   if (getAuthorType(context)) slugs.pop()
   if (slugs[slugs.length - 1] === 'продажа') slugs.pop()

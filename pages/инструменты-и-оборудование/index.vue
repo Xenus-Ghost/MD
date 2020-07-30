@@ -180,7 +180,7 @@
       </template>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/jackhammer (1).svg" alt="" />
+          <img src="/img/categories/jackhammer (1).svg" alt="" />
         </template>
         <template v-slot:default>
           Проф. инструмент
@@ -191,7 +191,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/tools.svg" alt="" />
+          <img src="/img/categories/tools.svg" alt="" />
         </template>
         <template v-slot:default>
           Бытовой
@@ -202,7 +202,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/drill.svg" alt="" />
+          <img src="/img/categories/drill.svg" alt="" />
         </template>
         <template v-slot:default>
           Электрический
@@ -213,7 +213,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/jackhammer.svg" alt="" />
+          <img src="/img/categories/jackhammer.svg" alt="" />
         </template>
         <template v-slot:default>
           Строительный
@@ -224,7 +224,7 @@
       </ServiceItem>
       <ServiceItem :col="'1'">
         <template v-slot:icon>
-          <img src="@/assets/img/icons/jackhammer.svg" alt="" />
+          <img src="/img/categories/jackhammer.svg" alt="" />
         </template>
         <template v-slot:default>
           Спецодежда
