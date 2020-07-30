@@ -655,6 +655,18 @@ export default {
     ServiceItem,
     SellingButtons,
   },
+  data() {
+    return {
+      category: {
+        id: 16,
+        name: 'сантехника',
+        title: 'Сантехника',
+        parent: null,
+        icon: '4',
+      },
+      subCategories: [],
+    }
+  },
 }
 </script>
 

@@ -497,6 +497,18 @@ export default {
     ServiceItem,
     SellingButtons,
   },
+  data() {
+    return {
+      category: {
+        id: 14,
+        name: 'ремонт',
+        title: 'Ремонт',
+        parent: null,
+        icon: '4',
+      },
+      subCategories: [],
+    }
+  },
 }
 </script>
 

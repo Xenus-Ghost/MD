@@ -178,61 +178,16 @@
       <template v-slot:title>
         Продажа
       </template>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/jackhammer (1).svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Проф. инструмент
-        </template>
-        <template v-slot:footer>
-          <Button to="68" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/tools.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Бытовой
-        </template>
-        <template v-slot:footer>
-          <Button to="69" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/drill.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Электрический
-        </template>
-        <template v-slot:footer>
-          <Button to="70" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/jackhammer.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Строительный
-        </template>
-        <template v-slot:footer>
-          <Button to="71" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/jackhammer.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Спецодежда
-        </template>
-        <template v-slot:footer>
-          <Button to="144" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
+      <ServiceItem
+        :col="'1'"
+        icon="jackhammer (1)"
+        title="Проф. инструмент"
+        to="68"
+      />
+      <ServiceItem :col="'1'" icon="tools" title="Бытовой" to="69" />
+      <ServiceItem :col="'1'" icon="drill" title="Электрический" to="70" />
+      <ServiceItem :col="'1'" icon="jackhammer" title="Строительный" to="71" />
+      <ServiceItem :col="'1'" icon="jackhammer" title="Спецодежда" to="144" />
     </ServiceGrid>
     <div class="grid__column_12 grid__column_3-tablet selling">
       <h2 class="selling__title">Услуга</h2>
@@ -284,17 +239,6 @@ export default {
     height: 88vh;
   }
 }
-/*.header_category {
-  grid-column: 1/-1;
-}*/
-/*.services {
-  @include media_screen(desktop-fhd) {
-    grid-column: 1/13;
-  }
-}*/
-/*.services__list_grid {*/
-/*  grid-column: span 8;*/
-/*}*/
 .selling {
   &__buttons {
     display: grid;

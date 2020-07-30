@@ -481,6 +481,18 @@ export default {
     ServiceGrid,
     ServiceItem,
   },
+  data() {
+    return {
+      category: {
+        id: 25,
+        name: 'монолит',
+        title: 'Монолит',
+        parent: null,
+        icon: '2',
+      },
+      subCategories: [],
+    }
+  },
 }
 </script>
 

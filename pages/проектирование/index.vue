@@ -658,6 +658,18 @@ export default {
     ServiceGrid,
     ServiceItem,
   },
+  data() {
+    return {
+      category: {
+        id: 18,
+        name: 'проектирование',
+        title: 'Проектирование',
+        parent: null,
+        icon: '2',
+      },
+      subCategories: [],
+    }
+  },
 }
 </script>
 

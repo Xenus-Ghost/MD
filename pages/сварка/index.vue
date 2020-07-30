@@ -234,6 +234,18 @@ export default {
     ServiceItem,
     SellingButtons,
   },
+  data() {
+    return {
+      category: {
+        id: 17,
+        name: 'сварка',
+        title: 'Сварка',
+        parent: null,
+        icon: '4',
+      },
+      subCategories: [],
+    }
+  },
 }
 </script>
 
