@@ -27,7 +27,7 @@
       <CategorySelect
         v-model="bannerData.categories"
         :categories="categories"
-        :max="99"
+        :max="1"
       />
       <label for="">
         <select
