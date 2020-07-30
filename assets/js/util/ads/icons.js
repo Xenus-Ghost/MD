@@ -83,12 +83,13 @@ export const iconsArray = {
   88: 'billboard',
   89: 'paint-palette-and-brush',
   90: '',
-  91: '',
+  91: 'metal',
   99: 'mixer',
   110: 'hook',
   111: 'digger',
   116: 'house',
   144: 'jackhammer',
+  152: '15',
   153: '15',
 }
 

@@ -1,8 +1,7 @@
 <template>
   <div class="container_wide layout_category grid-layout_mdsp">
-    <CategoryHeader class="category__header_mdsp">
+    <CategoryHeader class="category__header_mdsp" :right-col-need="false">
       Металлы. Дерево. Стекло. Пластмасса.
-      <template v-slot:right_column style="display: none;"></template>
     </CategoryHeader>
     <div class="category">
       <CircleItem icon="metal" to="91" title="Металлы" />

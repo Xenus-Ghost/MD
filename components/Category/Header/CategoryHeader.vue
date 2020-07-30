@@ -5,7 +5,7 @@
         <div class="logo">MD</div>
         <div class="logo__title">Монтаж Демонтаж</div>
       </div>
-      <h1>
+      <h1 class="header__title_category">
         <slot>Монолит</slot>
       </h1>
       <Button
@@ -14,10 +14,13 @@
         borders="neon"
         class="header_category__button_back"
       >
+        <template #icon_left>
+          <svg-icon name="arrow-back" />
+        </template>
         {{ backTitle || 'Назад' }}
       </Button>
     </div>
-    <div class="header__col_right">
+    <div v-if="rightColNeed" class="header__col_right">
       <slot v-if="!logoSrc" name="right_column"></slot>
       <div v-if="!$slots.right_column" class="header__circle">
         <img
@@ -59,6 +62,10 @@ export default {
       type: Number || String,
       default: 0,
     },
+    rightColNeed: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -78,7 +85,9 @@ export default {
     },
   },
   mounted() {
-    this.icon = `/img/categories/${getCategoryIcon(this.categoryId)}.svg`
+    this.icon = this.categoryId
+      ? `/img/categories/${getCategoryIcon(this.categoryId)}.svg`
+      : null
   },
 }
 </script>
