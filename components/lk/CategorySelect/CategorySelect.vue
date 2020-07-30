@@ -114,7 +114,6 @@ export default {
   methods: {
     update(e) {
       const numbersLength = e.length
-      console.log(e)
       if (this.multiple) {
         const lastCategory = this.categories.find(
           (result) => result.id === e[numbersLength - 1]

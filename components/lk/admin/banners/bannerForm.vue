@@ -27,6 +27,7 @@
       <CategorySelect
         v-model="bannerData.categories"
         :categories="categories"
+        :max="99"
       />
       <label for="">
         <select
@@ -103,12 +104,29 @@ export default {
         success: false,
         errors: null,
       },
-      categories: this.$store.state.categories.adCategoriesList,
+      // categories: this.$store.state.categories.adCategoriesList,
     }
   },
   computed: {
     isEdit() {
       return !!this.banner
+    },
+    categories() {
+      const list = this.$store.state.categories.adCategoriesList
+      // let returnData = []
+
+      /* returnData = list.filter((result) =>
+        result.meta.find(
+          (res) =>
+            res.type_id === this.ad.type_id &&
+            authorTypeField !== null &&
+            res[authorTypeField] === 1
+        )
+      ) */
+      list.forEach((item) => {
+        item.label = item.title
+      })
+      return list
     },
   },
   created() {
