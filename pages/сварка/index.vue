@@ -194,7 +194,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="3" :col="'12'" width="700">
+    <ServiceGrid :cols="3" :col="'12'" width="700">
       <ServiceItem
         :col="'0'"
         class="grid__column_1-tablet grid__column_3-phone"
@@ -216,8 +216,8 @@
         icon="ladder"
         to="45"
       />
-    </ServicesGrid>
-    <SellingButtons></SellingButtons>
+    </ServiceGrid>
+    <SellingButtons :category="category" />
   </div>
 </template>
 
@@ -225,12 +225,12 @@
 import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import ServiceGrid from '~/components/Services/ServiceGrid'
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
     SellingButtons,
   },

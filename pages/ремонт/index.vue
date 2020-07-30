@@ -461,7 +461,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'12_tablet'" :col="'12'" width="100%">
+    <ServiceGrid :cols="'12_tablet'" :col="'12'" width="100%">
       <ServiceItem :col="'2'" icon="lamp" title="Потолки" to="26">
       </ServiceItem>
       <ServiceItem
@@ -479,8 +479,8 @@
       </ServiceItem>
       <ServiceItem :col="'2'" icon="parquet_2" title="Плитка" to="31">
       </ServiceItem>
-    </ServicesGrid>
-    <SellingButtons></SellingButtons>
+    </ServiceGrid>
+    <SellingButtons :category="category" />
   </div>
 </template>
 
@@ -488,12 +488,12 @@
 import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import ServiceGrid from '~/components/Services/ServiceGrid'
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
     SellingButtons,
   },

@@ -701,7 +701,7 @@
         :title="cat.title"
       />
     </ServiceGrid>
-    <SellingButtons></SellingButtons>
+    <SellingButtons :category="category" />
   </div>
 </template>
 

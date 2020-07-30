@@ -5,6 +5,7 @@ import {
   getCategoryMeta,
   getCategorySlug,
   getCustomCategoryMeta,
+  getSubcategoriesMixin,
 } from './categories'
 
 import { getAuthorType } from './author_type'
@@ -22,5 +23,6 @@ export {
   getCategoryMeta,
   getCategorySlug,
   getCustomCategoryMeta,
+  getSubcategoriesMixin,
 }
 export { adProps, adMethods, adComputedData }

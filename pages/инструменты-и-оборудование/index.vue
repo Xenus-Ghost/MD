@@ -170,7 +170,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid
+    <ServiceGrid
       :cols="'5_tablet'"
       class="grid__column_12 grid__column_9-tablet"
       width="100%"
@@ -233,7 +233,7 @@
           <Button to="144" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-    </ServicesGrid>
+    </ServiceGrid>
     <div class="grid__column_12 grid__column_3-tablet selling">
       <h2 class="selling__title">Услуга</h2>
       <div class="selling__buttons">
@@ -260,12 +260,12 @@
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import ServiceGrid from '~/components/Services/ServiceGrid'
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
   },
 }

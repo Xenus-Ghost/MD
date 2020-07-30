@@ -1,13 +1,14 @@
 import { getAuthorType } from './index'
-import { getCategoryIcon } from '~/assets/js/util/ads'
+import { getCategoryIcon, getSubcategories } from '~/assets/js/util/ads'
 
 export const getCategoryIDByUrl = {
   created() {
-    const slug = getCategorySlug
+    const categories = this.$store.state.categories.adCategoriesList
+    const slug = getCategorySlug(this.$route, categories)
     console.log(this.$route)
 
-    const result = getCategory(slug, this.$store.state.categories)
-
+    const result = getCategory(slug, categories)
+    console.log(result)
     this.$set(this, 'category', result.category)
 
     this.$set(this, 'subCategories', result.subCategories)
@@ -33,11 +34,9 @@ export const validateCategory = () => {}
 export function getCategory(slug = null, categories = null) {
   const result = {}
 
-  result.category = categories.adCategoriesList.find(
-    (item) => item.name === slug
-  )
+  result.category = categories.find((item) => item.name === slug)
 
-  result.subCategories = categories.adCategoriesList.filter(
+  result.subCategories = categories.filter(
     (item) => item.parent_id === result.id
   )
 
@@ -129,5 +128,19 @@ export const getCustomCategoryMeta = {
   },
   head() {
     return { title: this.head.title }
+  },
+}
+
+export const getSubcategoriesMixin = {
+  created() {
+    console.log('getSubcategoriesMixin')
+    console.log(this.category)
+    if (!this.category) return
+    const categories = this.$store.state.categories.adCategoriesList
+    const subCategories = getSubcategories(this.category.id, categories)
+    subCategories.forEach((item, index, array) => {
+      array[index].icon = getCategoryIcon(item.id)
+    })
+    this.$set(this, 'subCategories', subCategories)
   },
 }

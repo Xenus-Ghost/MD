@@ -163,7 +163,7 @@
           </svg>
         </template>
       </CategoryHeader>
-      <ServicesGrid :cols="'6_tablet'" :col="'12'" width="100%">
+      <ServiceGrid :cols="'6_tablet'" :col="'12'" width="100%">
         <ServiceItem
           v-for="(cat, i) in categories"
           :key="i"
@@ -172,14 +172,14 @@
           :to="`${cat.id}`"
           :title="cat.title"
         />
-      </ServicesGrid>
-      <SellingButtons></SellingButtons>
+      </ServiceGrid>
+      <SellingButtons :category="category" />
     </div>
   </article>
 </template>
 
 <script>
-import ServicesGrid from '@/components/Services/ServiceGrid'
+import ServiceGrid from '@/components/Services/ServiceGrid'
 import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
 import { SellingButtons } from '@/components/Ad/Category'
 import ServiceItem from '../../components/Services/ServiceItem'
@@ -189,7 +189,7 @@ export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
     SellingButtons,
   },

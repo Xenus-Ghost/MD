@@ -7,6 +7,7 @@ import {
   getCategoryMeta,
   getCustomCategoryMeta,
   getCategorySlug,
+  getSubcategoriesMixin,
 } from './advertisements'
 
 import { apiGetEvents } from './events'
@@ -21,4 +22,5 @@ export {
   getCustomCategoryMeta,
   getCategorySlug,
   apiGetEvents,
+  getSubcategoriesMixin,
 }

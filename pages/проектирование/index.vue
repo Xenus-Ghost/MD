@@ -631,12 +631,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid
-      :cols="'5_tablet'"
-      :col="'12'"
-      width="100%"
-      max-width="1070px"
-    >
+    <ServiceGrid :cols="'5_tablet'" :col="'12'" width="100%" max-width="1070px">
       <ServiceItem :col="'1'" icon="lawyer" title="Юрист" to="46" />
       <ServiceItem :col="'1'" icon="approve-invoice" title="Сметы" to="47" />
       <ServiceItem :col="'1'" icon="terrain" title="Геодезия" to="48" />
@@ -647,20 +642,20 @@
         title="Изыскательные работы"
         to="50"
       />
-    </ServicesGrid>
+    </ServiceGrid>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import ServiceGrid from '~/components/Services/ServiceGrid'
 
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
   },
 }

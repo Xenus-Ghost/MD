@@ -631,75 +631,17 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'3_tablet'" :col="'9'" width="100%">
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/wire.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Кабели и проводка
-        </template>
-        <template v-slot:footer>
-          <Button to="32" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/idea.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Свет и освещение
-        </template>
-        <template v-slot:footer>
-          <Button to="33" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/electric-meter.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Автоматы, счетчики
-        </template>
-        <template v-slot:footer>
-          <Button to="34" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/washing-machine.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Бытовая техника
-        </template>
-        <template v-slot:footer>
-          <Button to="35" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/engineering.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Проектирование электроснабжения
-        </template>
-        <template v-slot:footer>
-          <Button to="36" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-      <ServiceItem :col="'1'">
-        <template v-slot:icon>
-          <img src="/img/categories/flash.svg" alt="" />
-        </template>
-        <template v-slot:default>
-          Заземление и молниезащита
-        </template>
-        <template v-slot:footer>
-          <Button to="37" shape="rounded" borders="outline"> Подробнее</Button>
-        </template>
-      </ServiceItem>
-    </ServicesGrid>
-    <ServicesGrid :cols="1" :col="'3'" width="100%">
+    <ServiceGrid :cols="'3_tablet'" :col="'9'" width="100%">
+      <ServiceItem
+        v-for="(cat, i) in subCategories"
+        :key="i"
+        :icon="cat.icon"
+        :title="cat.title"
+        :to="`${cat.id}`"
+        :col="'1'"
+      />
+    </ServiceGrid>
+    <ServiceGrid :cols="1" :col="'3'" width="100%">
       <ServiceItem :col="'1'">
         <template v-slot:icon>
           <img src="/img/categories/wire_2.svg" alt="" />
@@ -722,7 +664,7 @@
           <Button to="39" shape="rounded" borders="outline"> Подробнее</Button>
         </template>
       </ServiceItem>
-    </ServicesGrid>
+    </ServiceGrid>
     <div class="grid__column_12 selling">
       <h2 class="selling__title">Продажа</h2>
       <div class="selling__buttons">
@@ -745,15 +687,38 @@
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
-import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import { ServiceItem, ServiceGrid } from '~/components/Services'
+import { getCategoryIcon, getSubcategories } from '~/assets/js/util/ads'
+import { getSubcategoriesMixin } from '~/assets/js/mixins'
+
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
   },
+  mixins: [getSubcategoriesMixin],
+  data() {
+    return {
+      category: {
+        id: 15,
+        name: 'электрика',
+        title: 'Электрика',
+        parent: null,
+        icon: '4',
+      },
+      subCategories: [],
+    }
+  },
+  /* created() {
+    const categories = this.$store.state.categories.adCategoriesList
+    const subCategories = getSubcategories(this.category.id, categories)
+    subCategories.forEach((item, index, array) => {
+      array[index].icon = getCategoryIcon(item.id)
+    })
+    this.$set(this, 'subCategories', subCategories)
+  }, */
 }
 </script>
 

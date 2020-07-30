@@ -120,7 +120,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'4_tablet'" :col="'12'" width="970px">
+    <ServiceGrid :cols="'4_tablet'" :col="'12'" width="970px">
       <ServiceItem :col="'1'" icon="tree" title="Авторский надзор" to="54" />
       <ServiceItem
         :col="'1'"
@@ -135,20 +135,20 @@
         to="56"
       />
       <ServiceItem :col="'1'" icon="engineering" title="Проект" to="57" />
-    </ServicesGrid>
+    </ServiceGrid>
   </div>
 </template>
 
 <script>
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
+import ServiceGrid from '~/components/Services/ServiceGrid'
 
 export default {
   layout: 'Category',
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
   },
 }

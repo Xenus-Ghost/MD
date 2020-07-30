@@ -126,7 +126,11 @@
           </svg>
         </div>
       </div>
-      <SellingButtons v-if="adType.isSell" :author-types="SellingAuthors" />
+      <SellingButtons
+        v-if="adType.isSell"
+        :category="category"
+        :author-types="SellingAuthors"
+      />
     </div>
   </article>
 </template>

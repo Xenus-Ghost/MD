@@ -631,7 +631,7 @@
         </svg>
       </template>
     </CategoryHeader>
-    <ServicesGrid :cols="'12_tablet'" :col="'12'" width="100%">
+    <ServiceGrid :cols="'12_tablet'" :col="'12'" width="100%">
       <ServiceItem
         v-for="(cat, i) in subCategories"
         :key="i"
@@ -640,27 +640,31 @@
         :to="`${cat.id}`"
         :col="'2'"
       />
-    </ServicesGrid>
-    <SellingButtons></SellingButtons>
+    </ServiceGrid>
+    <SellingButtons :category="category" />
   </div>
 </template>
 
 <script>
-import { getCategoryIDByUrl, getCustomCategoryMeta } from '@/assets/js/mixins'
+import {
+  // getCategoryIDByUrl,
+  getCustomCategoryMeta,
+  getSubcategoriesMixin,
+} from '@/assets/js/mixins'
 import { SellingButtons } from '@/components/Ad/Category'
 import CategoryHeader from '../../components/Category/Header/CategoryHeader'
 import ServiceItem from '../../components/Services/ServiceItem'
-import ServicesGrid from '~/components/Services/ServiceGrid'
-import { getSubcategories, getCategoryIcon } from '~/assets/js/util/ads'
+import ServiceGrid from '~/components/Services/ServiceGrid'
+// import { getSubcategories, getCategoryIcon } from '~/assets/js/util/ads'
 
 export default {
   components: {
     CategoryHeader,
-    ServicesGrid,
+    ServiceGrid,
     ServiceItem,
     SellingButtons,
   },
-  mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  mixins: [getCustomCategoryMeta, getSubcategoriesMixin],
   data() {
     return {
       category: {
@@ -673,14 +677,14 @@ export default {
       subCategories: [],
     }
   },
-  created() {
+  /* created() {
     const categories = this.$store.state.categories.adCategoriesList
-    const subCategories = getSubcategories(1, categories)
+    const subCategories = getSubcategories(this.category.id, categories)
     subCategories.forEach((item, index, array) => {
       array[index].icon = getCategoryIcon(item.id)
     })
     this.$set(this, 'subCategories', subCategories)
-  },
+  }, */
   layout: 'Category',
 }
 </script>
