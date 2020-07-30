@@ -193,9 +193,16 @@ export default {
     ServiceItem,
     SellingButtons,
   },
-  mixins: [getCategoryIDByUrl, getCustomCategoryMeta],
+  mixins: [getCustomCategoryMeta],
   data() {
     return {
+      category: {
+        id: 22,
+        name: 'благоустройство',
+        title: 'Благоустройство',
+        parent: null,
+        icon: '2',
+      },
       categories: [
         {
           id: 58,
