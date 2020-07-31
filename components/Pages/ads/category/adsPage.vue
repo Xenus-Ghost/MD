@@ -2,32 +2,6 @@
   <div class="container_wide layout_category grid-layout_ads">
     <CategoryHeader :logo-src="icon" :category-id="category.id">
       {{ meta.title }}
-      <template v-if="authorTypeId > 3" v-slot:right_column>
-        <img
-          v-if="authorTypeId === 7"
-          src="@/assets/img/icons/categories/buildings.svg"
-          alt=""
-          class="category__icon"
-        />
-        <img
-          v-if="authorTypeId === 4"
-          src="@/assets/img/icons/categories/eshop.svg"
-          alt=""
-          class="category__icon"
-        />
-        <img
-          v-if="authorTypeId === 6"
-          src="@/assets/img/icons/categories/plant.svg"
-          alt=""
-          class="category__icon"
-        />
-        <img
-          v-if="authorTypeId === 5"
-          src="@/assets/img/icons/categories/shoppingCenter.svg"
-          alt=""
-          class="category__icon"
-        />
-      </template>
     </CategoryHeader>
     <Advertising :category="filterData.category_id"></Advertising>
     <AdList v-bind="props" />
@@ -99,10 +73,28 @@ export default {
     },
   },
   created() {
-    this.icon =
-      this.authorTypeId < 4
-        ? `/img/categories/${getCategoryIcon(this.category.id)}.svg`
-        : ''
+    if (this.authorTypeId < 4) {
+      this.icon = `/img/categories/${getCategoryIcon(this.category.id)}.svg`
+    } else {
+      switch (this.authorTypeId) {
+        case 4: {
+          this.icon = `/img/categories/eshop.svg`
+          break
+        }
+        case 5: {
+          this.icon = `/img/categories/shoppingCenter.svg`
+          break
+        }
+        case 6: {
+          this.icon = `/img/categories/plant.svg`
+          break
+        }
+        case 7: {
+          this.icon = `/img/categories/buildings.svg`
+          break
+        }
+      }
+    }
   },
   head() {
     return {

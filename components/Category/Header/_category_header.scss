@@ -33,6 +33,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 12px 4px rgba(123, 215, 255, 0.6), 0 0 12px 4px rgba(123, 215, 255, 0.6) inset;
+  background-color: rgba(14, 36, 62, 0.1);
 }
 .header__logo{
   &_right {
@@ -45,6 +46,7 @@
     max-height: 50%;
     object-fit: contain;
     //margin: 3rem;
+    filter: drop-shadow(0 0 12px white);
   }
 }
 .header__title_category {
