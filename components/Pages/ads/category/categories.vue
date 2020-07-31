@@ -14,7 +14,13 @@
           :to="`${cat.id}`"
           shape="semi_rounded"
           borders="outline"
-          class="grid__column_2"
+          :class="[
+            'grid__column_2',
+            {
+              'grid-cats__button_last':
+                i === categories.length - 1 && categories.length % 3,
+            },
+          ]"
           height="100%"
           >{{
             cat.title
@@ -74,5 +80,8 @@ export default {
   @include media_screen(desktop-fhd) {
     grid-template-rows: 2fr 2fr auto;
   }
+}
+.grid-cats__button_last {
+  grid-column: 3 / span 2 !important;
 }
 </style>

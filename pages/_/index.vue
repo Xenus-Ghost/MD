@@ -19,13 +19,12 @@ import {
 } from '@/assets/js/util/ads'
 
 export default {
-  name: '',
   async asyncData(context) {
     const slugs = context.route.path
       .replace(/ /g, '')
       .split('/')
       .filter((result) => !!result)
-    const lastSlug = slugs[slugs.length - 1]
+    // const lastSlug = slugs[slugs.length - 1]
     // const preLastSlug = slugs[slugs.length - 2]
     const categoriesSlugs = getCatSlugs(context.route.path)
     const lastCategorySlug = categoriesSlugs[categoriesSlugs.length - 1]
@@ -49,6 +48,11 @@ export default {
           : lastCategorySlug) ===
         (!isNaN(lastCategorySlug) ? result.id : result.name)
     )
+    const subCategoriesList = currentCategory
+      ? categoriesList.filter(
+          (result) => currentCategory && result.parent_id === currentCategory.id
+        )
+      : null
     let routeValid = true
     const filterData = {
       with: ['categories', 'author'],
@@ -56,12 +60,11 @@ export default {
     const meta = {}
 
     let pageType = null
-    if (adType.id === 2 && !authorType) {
+    console.log(subCategoriesList.length, 'subCategoriesList.length')
+    if (adType.id === 2 && !authorType && subCategoriesList.length < 1) {
       pageType = 'adsPage'
     }
-    const subCategoriesList = categoriesList.filter(
-      (result) => currentCategory && result.parent_id === currentCategory.id
-    )
+
     const needAdsPage =
       (slugs.includes('127') ||
         slugs.includes('128') ||
@@ -78,7 +81,7 @@ export default {
         slugs.includes('409') ||
         slugs.includes('жби') ||
         slugs.includes('снос-демонтаж')) &&
-      !subCategoriesList.length
+      subCategoriesList.length < 1
     if (
       slugs.includes('127') ||
       slugs.includes('128') ||
@@ -92,11 +95,10 @@ export default {
       slugs.includes('406') ||
       slugs.includes('407') ||
       slugs.includes('408') ||
-      (slugs.includes('409') && !subCategoriesList.length)
+      (slugs.includes('409') && subCategoriesList.length < 1)
     ) {
       adType = adTypeList[1]
     } else if (slugs.includes('снос-демонтаж')) adType = adTypeList[0]
-
     if (
       authorType ||
       (adType && adType.id === 3) ||
@@ -105,10 +107,14 @@ export default {
     ) {
       meta.title = authorType ? authorType.name : adType.name
       pageType = 'adsPage'
+      console.log(pageType, 'pageType')
       if (currentCategory)
         meta.title += currentCategory.title
           ? ` - ${currentCategory.title}`
-          : null
+          : ` - ${getCategoryTitle(currentCategory, {
+              author_type_id: filterData.author_type_id,
+              type_id: filterData.type_id,
+            })}`
       routeValid = !!currentCategory
       filterData.category_id = currentCategory ? currentCategory.id : null
       filterData.author_type_id = authorType ? authorType.id : null

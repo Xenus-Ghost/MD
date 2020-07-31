@@ -68,7 +68,7 @@ export function getAuthorTypeByUrl(url) {
   if (
     slugs.includes('недвижимость') ||
     slugs.includes('новостройки') ||
-    slugs.includes('119') ||
+    // slugs.includes('119') ||
     slugs.includes('127') ||
     slugs.includes('128') ||
     slugs.includes('129') ||
