@@ -44,9 +44,9 @@
             name=""
             @change="update"
           >
-            <option class="input_option" :value="1"> Услуги</option>
-            <option class="input_option" :value="2"> Продажа </option>
-            <option class="input_option" :value="3"> заказчики</option>
+            <option class="input_option" :value="1">Услуги</option>
+            <option class="input_option" :value="2">Продажа</option>
+            <option class="input_option" :value="3">заказчики</option>
           </select>
         </label>
         <label class="label">
@@ -108,14 +108,14 @@
             @change="update"
           />
         </label>
-        <label class="label" style="flex-basis: 100%;">
+        <label class="label" style="flex-basis: 100%">
           <input v-model="data.meta[m].title" type="text" @change="update" />
         </label>
       </div>
       <Button
         shape="circle"
         borders="outline"
-        style="float: right;"
+        style="float: right"
         @click="addMeta"
         >+</Button
       >
@@ -130,7 +130,7 @@
     </div>
     <details
       v-if="categoryData.children"
-      style="flex-basis: 100%; padding-left: 2rem;"
+      style="flex-basis: 100%; padding-left: 2rem"
     >
       <summary>Подкатегории</summary>
       <CategoriesItem

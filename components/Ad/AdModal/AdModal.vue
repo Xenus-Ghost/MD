@@ -19,7 +19,7 @@
         <div
           class="views ad-modal__views"
           :title="`Просмотров: ${adModalData.views}`"
-          style="justify-self: end;"
+          style="justify-self: end"
         >
           <svg-icon
             class="views__icon"
@@ -81,7 +81,7 @@
             (adModalData.metro && adModalData.metro.length > 0)
           "
           class="grid__column_full"
-          style="position: relative;"
+          style="position: relative"
         >
           <ad-address-list
             :address-list="adModalData.addresses"
@@ -98,7 +98,7 @@
         <div v-if="customerAd" class="grid__column_1">
           <img
             v-if="customerAd"
-            style="width: 100%; height: 100%; object-fit: contain;"
+            style="width: 100%; height: 100%; object-fit: contain"
             src="/img/icons/employee.png"
             alt="Заказчик"
           />
@@ -160,12 +160,12 @@
           </div>
           <Share />
         </div>
-        <div :class="['grid__column_1']" style="grid-gap: 10px; display: grid;">
+        <div :class="['grid__column_1']" style="grid-gap: 10px; display: grid">
           <Button
             shape="rounded"
             borders="outline"
             block
-            style="--border-color: #ffb800;"
+            style="--border-color: #ffb800"
           >
             <template #icon_left>
               <svg
@@ -191,7 +191,7 @@
             Добавить в избранное
           </Button>
           <Button
-            v-if="(!!adModalData.videos && adModalData.videos.length> 0)"
+            v-if="!!adModalData.videos && adModalData.videos.length > 0"
             shape="rounded"
             borders="outline"
             block
@@ -311,11 +311,11 @@
       <div class="ad-modal__description">
         {{ adModalData.description }}
       </div>
-      <div class="flex" style="width: 100%;">
+      <div class="flex" style="width: 100%">
         <Button
           borders="outline"
           shape="rounded"
-          style="margin: 0 auto;"
+          style="margin: 0 auto"
           @click="claimFormShow = true"
           >Пожаловаться
         </Button>

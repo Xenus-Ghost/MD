@@ -646,9 +646,7 @@
         <template v-slot:icon>
           <img src="/img/categories/wire_2.svg" alt="" />
         </template>
-        <template v-slot:default>
-          Слаботочка
-        </template>
+        <template v-slot:default> Слаботочка </template>
         <template v-slot:footer>
           <Button to="38" shape="rounded" borders="outline"> Подробнее</Button>
         </template>

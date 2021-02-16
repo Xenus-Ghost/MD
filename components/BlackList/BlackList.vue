@@ -9,9 +9,7 @@
       >
         Пожаловаться
       </Button>
-      <h1 class="black-list__title">
-        Черный список
-      </h1>
+      <h1 class="black-list__title">Черный список</h1>
       <span class="black-list__caption">
         Мы настоятельно не рекомендуем доверять следующим организациям
       </span>

@@ -19,7 +19,7 @@
       viewBox="0 0 11 178"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style="display: none;"
+      style="display: none"
     >
       <g filter="url(#filter0_f)">
         <line

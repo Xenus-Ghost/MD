@@ -7,7 +7,7 @@
       @click="adOpen"
     />
     <span v-if="ad.title" class="ad__title ad__name">{{ ad.title }}</span>
-    <span class="ad__sub-title" style="text-align: center;">{{
+    <span class="ad__sub-title" style="text-align: center">{{
       ad.short_desc
     }}</span>
     <div class="ad__contacts grid_cols_2">

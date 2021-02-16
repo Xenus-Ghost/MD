@@ -12,16 +12,14 @@
     </CategoryHeader>
     <div
       class="container grid_cols_2_desktop grid-gap_8"
-      style="text-align: center;"
+      style="text-align: center"
     >
       <div class="grid__column_1">
         <h2>Услуги</h2>
         <Card>
           <div class="grid_cols_2 grid-gap_6">
             <div class="grid__column_1 grid_rows_3 grid-gap_4">
-              <h3 class="add-ad__title">
-                Частник
-              </h3>
+              <h3 class="add-ad__title">Частник</h3>
               <Button
                 shape="semi_rounded"
                 borders="neon"
@@ -46,9 +44,7 @@
               </Button>
             </div>
             <div class="grid__column_1 grid_rows_3 grid-gap_4">
-              <h3 class="add-ad__title">
-                Фирма
-              </h3>
+              <h3 class="add-ad__title">Фирма</h3>
               <Button
                 shape="semi_rounded"
                 borders="neon"
@@ -88,9 +84,7 @@
         <Card>
           <div class="grid_cols_2 grid-gap_6">
             <div class="grid__column_1 grid_rows_3 grid-gap_4">
-              <h3 class="add-ad__title">
-                Частник
-              </h3>
+              <h3 class="add-ad__title">Частник</h3>
               <Button
                 shape="semi_rounded"
                 borders="neon"
@@ -115,9 +109,7 @@
               </Button>
             </div>
             <div class="grid__column_1 grid_rows_3 grid-gap_4">
-              <h3 class="add-ad__title">
-                Фирма
-              </h3>
+              <h3 class="add-ad__title">Фирма</h3>
               <Button
                 shape="semi_rounded"
                 borders="neon"

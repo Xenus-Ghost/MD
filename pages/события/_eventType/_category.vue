@@ -1,5 +1,5 @@
-<template
-  ><div class="page">
+<template>
+  <div class="page">
     <div class="container_wide layout_category grid-layout_ads">
       <CategoryHeader>
         {{ meta.title }}
@@ -8,8 +8,9 @@
       <!--      <Advertising :category="filterData.category_id"></Advertising>-->
       <h2 class="text_center text_neon">{{ body.title }}</h2>
       <AdList v-bind="props" />
-    </div></div
-></template>
+    </div>
+  </div>
+</template>
 
 <script>
 import CategoryHeader from '@/components/Category/Header/CategoryHeader'

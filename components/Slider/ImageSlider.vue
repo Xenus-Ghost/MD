@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <Hooper style="height: 100%;">
+    <Hooper style="height: 100%">
       <Slide v-for="(slide, i) in slides" :key="i">
         <img :src="slide" :alt="i" class="slider__image" />
       </Slide>

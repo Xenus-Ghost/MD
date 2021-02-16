@@ -49,8 +49,9 @@
           :key="i"
           :value="metro"
           class="input_option ad-filter__option"
-          >{{ metro }}</option
         >
+          {{ metro }}
+        </option>
       </select>
     </label>
     <label
@@ -79,8 +80,9 @@
           :key="i"
           :value="city"
           class="input_option ad-filter__option"
-          >{{ city }}</option
         >
+          {{ city }}
+        </option>
       </select>
     </label>
   </div>

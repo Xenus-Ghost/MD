@@ -81,9 +81,9 @@
         />
         <x-input
           v-if="
-            (ad.author_type_id === 2 ||
-              ad.author_type_id === 5 ||
-              ad.author_type_id === 6)
+            ad.author_type_id === 2 ||
+            ad.author_type_id === 5 ||
+            ad.author_type_id === 6
           "
           id="inn"
           v-model="ad.inn"
@@ -287,16 +287,12 @@
             @change="changePeriod"
           />
         </label>
-        <Button type="submit">
-          Опубликовать
-        </Button>
+        <Button type="submit"> Опубликовать </Button>
         <div
           v-if="errors && errors.length >= 1"
           class="grid__column_3 advert-form__messages"
         >
-          <span class="advert-form__messages-title">
-            Ошибка
-          </span>
+          <span class="advert-form__messages-title"> Ошибка </span>
           <ul class="messages-list">
             <li
               v-for="(item, j) in errors"
@@ -309,7 +305,9 @@
         </div>
       </form>
       <div
-        v-if="!success && (errors && errors.length > 0 && errors.includes('limit'))"
+        v-if="
+          !success && errors && errors.length > 0 && errors.includes('limit')
+        "
         class="advert-form__message_error"
       >
         <h2>Ошибка!</h2>

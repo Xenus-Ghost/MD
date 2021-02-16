@@ -62,9 +62,7 @@
       <Button type="submit" shape="rounded" borders="neon"
         >Отправить жалобу</Button
       >
-      <div v-if="!!message.success" class="success">
-        Успешно!
-      </div>
+      <div v-if="!!message.success" class="success">Успешно!</div>
     </form>
   </Modal>
 </template>

@@ -1,8 +1,6 @@
 <template>
   <Modal @close="$emit('close')">
-    <template #header>
-      Заявить о выставке
-    </template>
+    <template #header> Заявить о выставке </template>
     <template>
       <form class="advert-form grid_cols_6">
         <label class="grid__column_full" for=""
@@ -17,16 +15,17 @@
             required
             @change="changeCategory"
           >
-            <option selected disabled value="0" class="input_option"
-              >Выберите категорию</option
-            >
+            <option selected disabled value="0" class="input_option">
+              Выберите категорию
+            </option>
             <option
               v-for="(item, j) in adRootCategories"
               :key="j"
               :value="item.id"
               class="input_option"
-              >{{ item.title }}</option
             >
+              {{ item.title }}
+            </option>
           </select>
         </label>
         <label for="category" class="label grid__column_6">
@@ -37,16 +36,17 @@
             name=""
             required
           >
-            <option selected disabled value="0" class="input_option"
-              >Выберите подкатегорию</option
-            >
+            <option selected disabled value="0" class="input_option">
+              Выберите подкатегорию
+            </option>
             <option
               v-for="(item, j) in adSubCategories"
               :key="j"
               :value="item.id"
               class="input_option"
-              >{{ item.title }}</option
             >
+              {{ item.title }}
+            </option>
           </select>
         </label>
         <Button

@@ -20,15 +20,11 @@
             </svg>
           </button>
           <div v-if="!!this.$slots.header" class="modal__header">
-            <slot name="header">
-              default header
-            </slot>
+            <slot name="header"> default header </slot>
           </div>
 
           <div class="modal__body">
-            <slot>
-              default body
-            </slot>
+            <slot> default body </slot>
           </div>
 
           <div class="modal__footer">

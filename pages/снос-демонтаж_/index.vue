@@ -9,7 +9,7 @@
           viewBox="0 0 395 395"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style="filter: drop-shadow(0 0 6px dodgerblue);"
+          style="filter: drop-shadow(0 0 6px dodgerblue)"
         >
           <g filter="url(#filter0_f)">
             <circle

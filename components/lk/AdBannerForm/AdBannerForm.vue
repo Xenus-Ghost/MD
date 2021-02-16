@@ -1,8 +1,6 @@
 <template>
   <Modal @close="$emit('close')">
-    <template #header>
-      Баннерная реклама
-    </template>
+    <template #header> Баннерная реклама </template>
     <template>
       <form class="advert-form grid_cols_6">
         <Button

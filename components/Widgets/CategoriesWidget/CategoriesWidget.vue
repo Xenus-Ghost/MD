@@ -19,9 +19,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/ремонт" class="cat-widget__link">
-            Ремонт
-          </NuxtLink>
+          <NuxtLink to="/ремонт" class="cat-widget__link"> Ремонт </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/электрика" class="cat-widget__link">
@@ -34,9 +32,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/сварка" class="cat-widget__link">
-            Сварка
-          </NuxtLink>
+          <NuxtLink to="/сварка" class="cat-widget__link"> Сварка </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/проектирование" class="cat-widget__link">
@@ -44,9 +40,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/дороги" class="cat-widget__link">
-            Дороги
-          </NuxtLink>
+          <NuxtLink to="/дороги" class="cat-widget__link"> Дороги </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/газификация" class="cat-widget__link">
@@ -74,9 +68,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/монолит" class="cat-widget__link">
-            Монолит
-          </NuxtLink>
+          <NuxtLink to="/монолит" class="cat-widget__link"> Монолит </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/" class="cat-widget__link">
@@ -89,9 +81,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
-            ЖБИ и заводы
-          </NuxtLink>
+          <NuxtLink to="/" class="cat-widget__link"> ЖБИ и заводы </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/" class="cat-widget__link">
@@ -99,14 +89,10 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
-            Снос, демонтаж
-          </NuxtLink>
+          <NuxtLink to="/" class="cat-widget__link"> Снос, демонтаж </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/" class="cat-widget__link">
-            Фрилансеры
-          </NuxtLink>
+          <NuxtLink to="/" class="cat-widget__link"> Фрилансеры </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/доставка" class="cat-widget__link">
@@ -114,9 +100,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/видео" class="cat-widget__link">
-            Видео
-          </NuxtLink>
+          <NuxtLink to="/видео" class="cat-widget__link"> Видео </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/мастер_на_час" class="cat-widget__link">
@@ -124,9 +108,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/клининг" class="cat-widget__link">
-            Клининг
-          </NuxtLink>
+          <NuxtLink to="/клининг" class="cat-widget__link"> Клининг </NuxtLink>
         </li>
         <li class="cat-widget__el">
           <NuxtLink to="/выставки" class="cat-widget__link">
@@ -134,9 +116,7 @@
           </NuxtLink>
         </li>
         <li class="cat-widget__el">
-          <NuxtLink to="/форумы" class="cat-widget__link">
-            Форумы
-          </NuxtLink>
+          <NuxtLink to="/форумы" class="cat-widget__link"> Форумы </NuxtLink>
         </li>
       </ul>
       <Button

@@ -20,12 +20,13 @@ import {
 
 export default {
   async asyncData(context) {
-    const slugs = context.route.path
+    const slugs = decodeURIComponent(context.route.path)
       .replace(/ /g, '')
       .split('/')
       .filter((result) => !!result)
     // const lastSlug = slugs[slugs.length - 1]
     // const preLastSlug = slugs[slugs.length - 2]
+    console.log({ slugs })
     const categoriesSlugs = getCatSlugs(context.route.path)
     const lastCategorySlug = categoriesSlugs[categoriesSlugs.length - 1]
     const categoriesList = context.store.state.categories.adCategoriesList
@@ -34,11 +35,14 @@ export default {
       getAdTypeIdByUrl(context.route.path) || 1,
       adTypeList
     )
+    console.log({ adType })
+    console.log('getAuthorTypeByUrl:', getAuthorTypeByUrl(context.route.path))
     const authorTypeList = context.store.state.advert.authorType
     const authorType = authorTypeList.find(
       (result) => getAuthorTypeByUrl(context.route.path) === result.id
     )
-    console.log(lastCategorySlug)
+    console.log({ authorType })
+    console.log({ lastCategorySlug })
     console.log(parseFloat(lastCategorySlug + ''))
     console.log(typeof (parseFloat(lastCategorySlug) + ''))
     const currentCategory = categoriesList.find(
@@ -60,7 +64,7 @@ export default {
     const meta = {}
 
     let pageType = null
-    console.log(subCategoriesList.length, 'subCategoriesList.length')
+    // console.log(subCategoriesList.length, 'subCategoriesList.length')
     if (adType.id === 2 && !authorType && subCategoriesList.length < 1) {
       pageType = 'adsPage'
     }

@@ -1,9 +1,7 @@
 <template>
   <div :class="[classes]" class="services">
     <h2 class="services__title">
-      <slot name="title">
-        Услуги
-      </slot>
+      <slot name="title"> Услуги </slot>
     </h2>
     <div
       :style="[measurableStyles, gridStyles]"

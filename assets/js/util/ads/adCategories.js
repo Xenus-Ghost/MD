@@ -38,8 +38,8 @@ export function getCategoryTitle(category, params = {}) {
   const authorTypeIdField = params
     ? getAuthorTypeFieldName(params.author_type_id)
     : null
-  console.log(category)
-  console.log(params)
+  console.log({ category })
+  console.log({ params })
   if (params && params.author_type_id && params.type_id && category.meta) {
     if (params.type_id === 2) {
       title = category.meta.find((result) => result.type_id === 2).title
@@ -51,15 +51,20 @@ export function getCategoryTitle(category, params = {}) {
         .title
     }
   } else {
-    console.log(category.title)
-    title = category.title ? category.title : category.name
+    console.log({ category })
+    if (category) {
+      console.log(category.title)
+      title = category.title ? category.title : category.name
+    }
   }
   return title
 }
 
 export function getAuthorTypeByUrl(url) {
+  console.log('getAuthorTypeByUrl')
   let authorTypeId
-  const slugs = splitUrl(url)
+  const slugs = splitUrl(decodeURIComponent(url))
+  console.log({ slugs })
   if (slugs.includes('частники')) authorTypeId = 1
   if (slugs.includes('фирмы-и-магазины')) authorTypeId = 2
   if (slugs.includes('интернет-магазины')) authorTypeId = 4
@@ -102,7 +107,7 @@ export function getAdType(id, adTypeList) {
 }
 
 export function getCatSlugs(url) {
-  const slugs = splitUrl(url)
+  const slugs = splitUrl(decodeURIComponent(url))
   const excludedItems = [
     'частники',
     'фирмы-и-магазины',

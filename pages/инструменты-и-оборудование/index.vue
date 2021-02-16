@@ -175,9 +175,7 @@
       class="grid__column_12 grid__column_9-tablet"
       width="100%"
     >
-      <template v-slot:title>
-        Продажа
-      </template>
+      <template v-slot:title> Продажа </template>
       <ServiceItem
         :col="'1'"
         icon="jackhammer (1)"

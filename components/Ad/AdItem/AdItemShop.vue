@@ -2,7 +2,7 @@
   <div :class="classList">
     <ad-item-views v-if="adType !== 2" :views="ad.views" />
     <img
-      v-if="(ad.logo || ad.img)"
+      v-if="ad.logo || ad.img"
       :src="ad.logo ? ad.logo : ad.img"
       :alt="ad.title"
       :class="[

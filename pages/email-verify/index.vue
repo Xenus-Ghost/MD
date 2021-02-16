@@ -1,10 +1,8 @@
 <template>
   <Modal @close="$nuxt.$router.replace({ path: '/' })">
-    <template v-slot:header>
-      Подтверждение E-Mail
-    </template>
+    <template v-slot:header> Подтверждение E-Mail </template>
     <template>
-      <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; flex-direction: column; align-items: center">
         <!--<Button
           v-if="result === ''"
           shape="semi-rounded"

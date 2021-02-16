@@ -53,7 +53,7 @@
             <Button
               borders="outline"
               shape="rounded"
-              style="align-self: center;"
+              style="align-self: center"
               :class="['home-page__button', 'button_black-list']"
               @click.native="BlackListOpen"
             >
@@ -67,7 +67,7 @@
       </CircleContainer>
       <Button
         to="/события/выставки"
-        style="grid-column: 1; grid-row: 1;"
+        style="grid-column: 1; grid-row: 1"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -75,7 +75,7 @@
       >
       <Button
         to="/события/форумы"
-        style="grid-column: 3; grid-row: 1; justify-self: right;"
+        style="grid-column: 3; grid-row: 1; justify-self: right"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -83,7 +83,7 @@
       >
       <Button
         to="/доставка"
-        style="grid-column: 1; grid-row: 3;"
+        style="grid-column: 1; grid-row: 3"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -91,7 +91,7 @@
       >
       <Button
         to="/видео"
-        style="grid-column: 1; grid-row: 4;"
+        style="grid-column: 1; grid-row: 4"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -99,7 +99,7 @@
       >
       <Button
         to="/мастер-на-час"
-        style="grid-column: 3; grid-row: 3; justify-self: right;"
+        style="grid-column: 3; grid-row: 3; justify-self: right"
         shape="rounded"
         borders="neon"
         class="button_aside"
@@ -107,7 +107,7 @@
       >
       <Button
         to="/клининг"
-        style="grid-column: 3; grid-row: 4; justify-self: right;"
+        style="grid-column: 3; grid-row: 4; justify-self: right"
         shape="rounded"
         borders="neon"
         class="button_aside"

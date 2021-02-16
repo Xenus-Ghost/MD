@@ -1,8 +1,6 @@
 <template>
   <div class="admin-page">
-    <CategoryHeader>
-      Административная панель
-    </CategoryHeader>
+    <CategoryHeader> Административная панель </CategoryHeader>
     <div class="profile__grid_actions">
       <Button
         to="banners"

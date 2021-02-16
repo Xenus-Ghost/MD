@@ -17,9 +17,7 @@
             <option :value="null" selected disabled class="input_option">
               Выберите...
             </option>
-            <option value="Москва" class="input_option">
-              Москва
-            </option>
+            <option value="Москва" class="input_option">Москва</option>
             <option value="Московская область" class="input_option">
               Московская область
             </option>
@@ -52,8 +50,9 @@
               :key="i"
               :value="city"
               class="input_option"
-              >{{ city }}</option
             >
+              {{ city }}
+            </option>
           </select>
         </label>
         <label
@@ -76,8 +75,9 @@
               :key="i"
               :value="metro"
               class="input_option"
-              >{{ metro }}</option
             >
+              {{ metro }}
+            </option>
           </select>
         </label>
       </li>

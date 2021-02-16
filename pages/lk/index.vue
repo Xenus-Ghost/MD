@@ -40,9 +40,7 @@
       </template>
     </CategoryHeader>
     <div class="container">
-      <h2 class="profile__title">
-        Объявления
-      </h2>
+      <h2 class="profile__title">Объявления</h2>
       <div class="profile__grid_actions">
         <Button borders="neon" shape="semi_rounded" class="profile__button">
           Поиск объявлений

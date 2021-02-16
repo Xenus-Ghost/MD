@@ -36,7 +36,7 @@
       <span class="menu__item menu__item_mobile" @click="categoriesOpen">
         Категории
       </span>
-      <div style="font-size: 0.9rem;">
+      <div style="font-size: 0.9rem">
         RU
         <img src="~assets/img/flags/ru.svg" alt="RU" />
       </div>

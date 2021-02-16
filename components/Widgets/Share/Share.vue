@@ -3,7 +3,7 @@
     <Button
       shape="rounded"
       borders="outline"
-      style="width: 100%;"
+      style="width: 100%"
       @click="runShare"
       >Поделиться</Button
     >
