@@ -471,7 +471,10 @@ export default {
         // console.log(data.creating_available)
       })
       .catch((error) => {
-        this.$toast.error(error.response.data.message)
+        // console.log('1')
+        // console.log({ error })
+        if (error && error.response)
+          this.$toast.error(error.response.data.message)
       })
     console.log(creatingAvailable)
     // eslint-disable-next-line camelcase
