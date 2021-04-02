@@ -129,8 +129,8 @@
         </div>
         <div class="home-page__category">
           <img src="/img/categories/materials.svg" alt="" />
-          <div class="home-page__category-title">
-            Металлы. Дерево. <br />
+          <div class="home-page__category-title home-page__category-title_long">
+            Металлы. Дерево.
             Стекло. Пластмасса.
           </div>
           <Button to="/мдсп" width="100%" borders="outline" shape="rounded">

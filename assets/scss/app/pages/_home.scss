@@ -156,6 +156,9 @@
   @include media_screen(desktop-wide) {
     font-size: 1.15rem;
     height: 55px;
+    &_long {
+      font-size: 0.92rem;
+    }
   }
 }
 
